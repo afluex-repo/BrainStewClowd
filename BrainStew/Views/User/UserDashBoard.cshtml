@@ -21,7 +21,7 @@
                             <h5 class=""><span class="w-currency"></span>Rs. @ViewBag.TotalBusiness</h5>
                         </div>
                     </a>
-                    <div class="particular-balance d-flex mt-5">
+                    <div class="particular-balance d-flex mt-3">
                         <div class="fisrtdiv">
                             <p>Self <svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg></p>
                             <h5 class=""><span class="w-currency"></span> Rs. @ViewBag.SelfBusiness</h5>
@@ -43,7 +43,7 @@
                             <h5 class=""><span class="w-currency"></span> @ViewBag.TotalDirect</h5>
                         </div>
                     </a>
-                    <div class="particular-balance d-flex mt-5">
+                    <div class="particular-balance d-flex mt-3">
                         <div class="fisrtdiv">
                             <p>Active </p>
                             <h5 class=""><span class="w-currency"></span> @ViewBag.TotalActive</</h5>
@@ -69,7 +69,7 @@
                             <h5 class=""><span class="w-currency"></span> @ViewBag.TotalTeam</h5>
                         </div>
                     </a>
-                    <div class="particular-balance d-flex mt-5">
+                    <div class="particular-balance d-flex mt-3">
                         <div class="fisrtdiv">
                             <p>Active </p>
                             <h5 class=""><span class="w-currency"></span> @ViewBag.TotalTeamActive</</h5>
@@ -93,7 +93,7 @@
                         <p>Level Bonus</p>
                         <h5 class=""><span class="w-currency"></span> @ViewBag.TotalIncome</h5>
                     </div>
-                    <div class="particular-balance d-flex mt-5">
+                    <div class="particular-balance d-flex mt-3">
                         <a href="/Report/LevelIncomeTr1">
                             <div class="fisrtdiv">
                                 <p> Joining </p>
@@ -119,7 +119,7 @@
                             <h5 class=""><span class="w-currency"></span>Rs. @ViewBag.TotalTPSAmountTobeReceived</h5>
                         </div>
                     </a>
-                    <div class="particular-balance d-flex mt-5">
+                    <div class="particular-balance d-flex mt-3">
                         <div class="firstdiv">
                             <p>Received</p>
                             <h5 class=""><span class="w-currency"></span> Rs. @ViewBag.TotalTPSAmountReceived</h5>
@@ -142,7 +142,7 @@
                             <p>Total Amount</p>
                             <h5 class=""><span class="w-currency"></span>Rs. @ViewBag.TotalAmount</h5>
                         </div>
-                    <div class="particular-balance d-flex mt-5">
+                    <div class="particular-balance d-flex mt-3">
                         <a href="/Report/PayoutWalletLedger">
                             <div class="fisrtdiv">
                                 <p>Payout</p>
@@ -158,28 +158,6 @@
                 </div>
             </div>
         </div>
-        @*<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mt-3">
-            <div class="widget widget-account-invoice-three seven">
-                <div class="widget-heading">
-                    <a href="/User/PinList">
-                        <div class="wallet-balance">
-                            <p>E-Pin</p>
-                            <h5 class=""><span class="w-currency"></span> @ViewBag.TotalPins</h5>
-                        </div>
-                    </a>
-                    <div class="particular-balance d-flex mt-5">
-                        <div class="fisrtdiv">
-                            <p>Used</p>
-                            <h5 class=""><span class="w-currency"></span> @ViewBag.UsedPins</</h5>
-                        </div>
-                        <div class="seconddiv">
-                            <p>Available</p>
-                            <h5 class=""><span class="w-currency"></span> @ViewBag.AvailablePins</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mt-3">
             <div class="widget widget-account-invoice-three eight">
                 <div class="widget-heading">
@@ -201,7 +179,29 @@
             </div>
 
         </div>
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mt-3">
+            <div class="widget widget-account-invoice-three five">
+                <div class="widget-heading" style="background: linear-gradient(60deg,#4a4338,#6c838d);">
+                    <div class="wallet-balance">
+                        <div class="">
+                            <p>REFERAL LINK</p>
+                            @if (Session["LoginId"].ToString() != "")
+                            {
+                                //var link = Session["Pk_UserId"].ToString();
 
+                                <span class="s-icon"><a href="mailto:?subject= Referral Link &amp;body=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Pk_UserId"].ToString(). Thanks." target="_blank" style="background:#871505"><i class="fa fa-envelope fa-lg"></i></a></span>
+                                <span class="s-icon"><a href="https://api.whatsapp.com/send?text=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Pk_UserId"].ToString()" target="_blank" style="background:#42f560" data-action="share/whatsapp/share"><i class="fa fa-whatsapp fa-lg"></i></a></span>
+                                    <span class="s-icon"><a href="https://www.facebook.com/sharer.php?u=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Pk_UserId"].ToString()" target="_blank" style="background:#4267B2"><i class="fa fa-facebook fa-lg"></i></a></span>
+                                    <span class="s-icon"><a href="https://www.instagram.com/?url=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Pk_UserId"].ToString()" target="_blank" style="background:#E1306C"><i class="fa fa-instagram fa-lg"></i></a></span>
+                                    <span class="s-icon"><a href="https://twitter.com/intent/tweet?text=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Pk_UserId"].ToString()" target="_blank" style="background:#1DA1F2"><i class="fa fa-twitter fa-lg"></i></a></span>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 mt-3">
             <div class="widget widget-chart-two ">
                 <div class="widget-heading">

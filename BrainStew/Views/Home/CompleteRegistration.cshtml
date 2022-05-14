@@ -149,27 +149,28 @@
         }
         function CheckWalletBalance() {
             debugger
-            var WalletBalance = $("#WalletBalance").val();
-            var Amount = "1000";
+            var r = confirm('    मैं Brainstew Foundation में अपने स्वच्छा से पूर्ण होशो हवास में बिना किसी के दबाव में अपनी राशि को डोनेट कर रहा हूँ  और इस डोनेशन को मैं वापिस लेने के लिए या किसी भी लालच में आकर नही कर रहा हूँ |');
+            if (r == true) {
+                var WalletBalance = $("#WalletBalance").val();
+                var Amount = "1000";
 
-           // Session["IdActivated"] = true;
-            if(Number(WalletBalance) < Number(Amount))
-            {
-                window.location.href = "/Wallet/AddWallet";
-            }
-            else
-            {
-                $.ajax({
-                    url: "/Home/ActivateUser",
-                    Type: "Get",
-                    DataType: "JSON",
-                    data: { Amount: Amount},
-                    success: function (data) {
-                        if (data.Result = "1") {
+                // Session["IdActivated"] = true;
+                if (Number(WalletBalance) < Number(Amount)) {
+                    window.location.href = "/Wallet/AddWallet";
+                }
+                else {
+                    $.ajax({
+                        url: "/Home/ActivateUser",
+                        Type: "Get",
+                        DataType: "JSON",
+                        data: { Amount: Amount },
+                        success: function (data) {
+                            if (data.Result = "1") {
 
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         }
     </script>
