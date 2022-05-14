@@ -11,6 +11,8 @@ namespace BrainStew.Models
     {
         public List<Home> lstMenu { get; set; }
         public List<Home> lstsubmenu { get; set; }
+        public string Amount { get; set; }
+        public string WalletBalance { get; set; }
         #region property
         public string SponsorId { get; set; }
         public string LoginId { get; set; }
@@ -213,6 +215,16 @@ namespace BrainStew.Models
         public DataSet CalculateROI()
         {
             DataSet ds = DBHelper.ExecuteQuery("CalculateROI");
+            return ds;
+        }
+        public DataSet ActivateUser()
+        {
+            SqlParameter[] para =
+            {
+                     new SqlParameter("@Fk_UserId",Fk_UserId),
+                     new SqlParameter("@Amount",Amount)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("ActivateUserByWallet", para);
             return ds;
         }
 

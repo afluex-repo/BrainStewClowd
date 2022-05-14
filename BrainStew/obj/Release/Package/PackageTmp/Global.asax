@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="GharAwas.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="BrainStew.Global" Language="C#" %>

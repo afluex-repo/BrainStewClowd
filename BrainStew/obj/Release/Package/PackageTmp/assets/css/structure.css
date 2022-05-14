@@ -227,9 +227,9 @@ code {
 
 .header-container {
     z-index: 1030;
-    box-shadow: 6px 7px 14px 3px #aeb1b96b !important;
-    height:70px;
-    background-color: #ffffff;
+    box-shadow: 6px 7px 3px 3px #0a3b9d !important;
+    height: 60px;
+    background-color: #70b7c9;
 }
 
     .header-container .navbar {
@@ -257,10 +257,9 @@ code {
 
             .navbar .theme-brand li.theme-logo img {
                 width: 70px;
-                height: 50px;
-                background: white;
+                /*background: white;
                 border-radius: 7px;
-                  box-shadow: 6px 7px 14px 3px #aeb1b96b !important;
+                  box-shadow: 6px 7px 14px 3px #aeb1b96b !important;*/
             }
 
         .navbar .theme-brand li.theme-text {
@@ -838,7 +837,7 @@ code {
     width: 50px;
     border-radius: 4px;
     height: 50px;
-     box-shadow: 6px 7px 14px 3px #aeb1b96b !important;
+     /*box-shadow: 6px 7px 14px 3px #aeb1b96b !important;*/
 }
 
 .navbar .navbar-item .nav-item.user-profile-dropdown .dropdown-menu {

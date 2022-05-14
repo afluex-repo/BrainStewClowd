@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LevelTree.aspx.cs" Inherits="GharAwas.LevelTree" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LevelTree.aspx.cs" Inherits="BrainStew.LevelTree" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,7 @@
 <head runat="server" id="hdf">
     <!-- Required meta tags -->
    
-    <title>GharAwas</title>
+    <title>BrainStew</title>
 </head><body>
     <form id="form1" runat="server">
         <div id="BrokerTree">
