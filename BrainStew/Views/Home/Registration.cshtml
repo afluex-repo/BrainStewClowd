@@ -258,16 +258,16 @@
                 $('#FirstName').focus();
                 return false;
             }
-            if ($('#MobileNo').val() == '') {
-                $("#MobileNo").addClass('errortext');
-                $('#MobileNo').focus();
-                return false;
-            }
-            if ($('#Email').val() == '') {
-                $("#Email").addClass('errortext');
-                $('#Email').focus();
-                return false;
-            }
+            //if ($('#MobileNo').val() == '') {
+            //    $("#MobileNo").addClass('errortext');
+            //    $('#MobileNo').focus();
+            //    return false;
+            //}
+            //if ($('#Email').val() == '') {
+            //    $("#Email").addClass('errortext');
+            //    $('#Email').focus();
+            //    return false;
+            //}
             if ($('#Password').val() == '') {
                 $("#Password").addClass('errortext');
                 $('#Password').focus();
@@ -301,9 +301,10 @@
             $("#Password").attr("disabled", false);
             $("#ConfirmPassword").attr("disabled", false);
             $("#Gender").attr("disabled", false);
-            $("#Email").attr("disabled", false);
+            $("#Email").attr("disabled", false); 
             $('#Confirm').show();
             $('#Confirm').attr("disabled", false);
+            $('#Register').attr("disabled", false);
             $('#divReg').hide();
         }
         function saveregistration() {

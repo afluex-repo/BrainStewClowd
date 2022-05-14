@@ -17,9 +17,8 @@ namespace BrainStew.Controllers
         public ActionResult Index()
         {
             //return Redirect("/Home/Login");
-
-            return View();
-            //return Redirect("~/BrainStewWebsite/index.html");
+            //return View();
+           return Redirect("~/BrainStew/index.html");
         }
         public ActionResult Login()
         {
