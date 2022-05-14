@@ -192,8 +192,6 @@
     <Content Include="assets\css\widgets\modules-widgets.css" />
     <Content Include="assets\img\addnew.png" />
     <Content Include="assets\img\dash.png" />
-    <Content Include="assets\img\BrainStewj.jpg" />
-    <Content Include="assets\img\BrainStewp.png" />
     <Content Include="assets\img\payment.png" />
     <Content Include="assets\img\pin.png" />
     <Content Include="assets\img\QR.jpeg" />
@@ -243,41 +241,6 @@
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bootstrap\js\popper.min.js" />
-    <Content Include="Coming.html" />
-    <Content Include="css\tree-responsive.css" />
-    <Content Include="css\tree.css" />
-    <Content Include="EmailTemplateActivation.html" />
-    <Content Include="EmailTemplateRegistration.html" />
-    <Content Include="BrainStewWebsite\assets\img\icon\008-apartment.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\broadband.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\card.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\commerci.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\dth.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\ecomm.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\elect.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\fastag.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\gas.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\insurance.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\landline.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\postpaid.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\prepaid.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\residen.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\residential.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\trade.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\transfer.png" />
-    <Content Include="BrainStewWebsite\assets\img\icon\water.png" />
-    <Content Include="BrainStewWebsite\assets\img\real-estate.jpg" />
-    <Content Include="BrainStewWebsite\assets\img\real-estate1.jpg" />
-    <Content Include="BrainStewWebsite\assets\img\real-estate2.jpg" />
-    <Content Include="BrainStewWebsite\assets\img\vision-mission.jpg" />
-    <Content Include="BrainStewWebsite\real-estate.html" />
-    <Content Include="BrainStewWebsite\assets\img\banner-image\find-home.jpg" />
-    <Content Include="BrainStewWebsite\assets\img\banner-image\BrainStew.jpg" />
-    <Content Include="BrainStewWebsite\assets\img\banner-image\main.jpg" />
-    <Content Include="Global.asax" />
-    <Content Include="images\noimage.jpg" />
-    <Content Include="LevelTree.aspx" />
-    <Content Include="Models\WebService\AgentServices.asmx" />
     <Content Include="BrainStewWebsite\about.html" />
     <Content Include="BrainStewWebsite\assets\css\animate.min.css" />
     <Content Include="BrainStewWebsite\assets\css\bootstrap.min.css" />
@@ -315,6 +278,9 @@
     <Content Include="BrainStewWebsite\assets\img\add\11.jpg" />
     <Content Include="BrainStewWebsite\assets\img\add\12.jpg" />
     <Content Include="BrainStewWebsite\assets\img\banner-image\circle1.png" />
+    <Content Include="BrainStewWebsite\assets\img\banner-image\find-home.png" />
+    <Content Include="BrainStewWebsite\assets\img\banner-image\gharawas.png" />
+    <Content Include="BrainStewWebsite\assets\img\banner-image\main.jpg" />
     <Content Include="BrainStewWebsite\assets\img\bg-map.png" />
     <Content Include="BrainStewWebsite\assets\img\blog-image\1.jpg" />
     <Content Include="BrainStewWebsite\assets\img\blog-image\2.jpg" />
@@ -344,15 +310,33 @@
     <Content Include="BrainStewWebsite\assets\img\how-it-works-image\7.png" />
     <Content Include="BrainStewWebsite\assets\img\how-it-works-image\8.png" />
     <Content Include="BrainStewWebsite\assets\img\how-it-works-image\c1.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\008-apartment.png" />
     <Content Include="BrainStewWebsite\assets\img\icon\24-hours.png" />
     <Content Include="BrainStewWebsite\assets\img\icon\24-hours1.png" />
     <Content Include="BrainStewWebsite\assets\img\icon\bill.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\broadband.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\card.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\commerci.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\dth.png" />
     <Content Include="BrainStewWebsite\assets\img\icon\e-commerce-2.png" />
     <Content Include="BrainStewWebsite\assets\img\icon\e-commerce.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\ecomm.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\elect.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\fastag.png" />
     <Content Include="BrainStewWebsite\assets\img\icon\forex.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\gas.png" />
     <Content Include="BrainStewWebsite\assets\img\icon\global.png" />
     <Content Include="BrainStewWebsite\assets\img\icon\global1.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\insurance.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\landline.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\postpaid.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\prepaid.png" />
     <Content Include="BrainStewWebsite\assets\img\icon\real-estate.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\residen.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\residential.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\trade.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\transfer.png" />
+    <Content Include="BrainStewWebsite\assets\img\icon\water.png" />
     <Content Include="BrainStewWebsite\assets\img\insta.png" />
     <Content Include="BrainStewWebsite\assets\img\invoicing-image\1.png" />
     <Content Include="BrainStewWebsite\assets\img\invoicing-image\2.png" />
@@ -414,6 +398,9 @@
     <Content Include="BrainStewWebsite\assets\img\partner5.png" />
     <Content Include="BrainStewWebsite\assets\img\payment.png" />
     <Content Include="BrainStewWebsite\assets\img\privacy.png" />
+    <Content Include="BrainStewWebsite\assets\img\real-estate.jpg" />
+    <Content Include="BrainStewWebsite\assets\img\real-estate1.jpg" />
+    <Content Include="BrainStewWebsite\assets\img\real-estate2.jpg" />
     <Content Include="BrainStewWebsite\assets\img\regi2.jpg" />
     <Content Include="BrainStewWebsite\assets\img\registration.png" />
     <Content Include="BrainStewWebsite\assets\img\serv1.png" />
@@ -426,6 +413,7 @@
     <Content Include="BrainStewWebsite\assets\img\support-img2.png" />
     <Content Include="BrainStewWebsite\assets\img\terms.jpg" />
     <Content Include="BrainStewWebsite\assets\img\twitter.png" />
+    <Content Include="BrainStewWebsite\assets\img\vision-mission.jpg" />
     <Content Include="BrainStewWebsite\assets\img\youtube.png" />
     <Content Include="BrainStewWebsite\assets\js\appear.min.js" />
     <Content Include="BrainStewWebsite\assets\js\bootstrap.bundle.min.js" />
@@ -449,9 +437,19 @@
     <Content Include="BrainStewWebsite\index.html" />
     <Content Include="BrainStewWebsite\login.html" />
     <Content Include="BrainStewWebsite\privacy.html" />
+    <Content Include="BrainStewWebsite\real-estate.html" />
     <Content Include="BrainStewWebsite\services.html" />
     <Content Include="BrainStewWebsite\sign-up.html" />
     <Content Include="BrainStewWebsite\terms&amp;condition.html" />
+    <Content Include="Coming.html" />
+    <Content Include="css\tree-responsive.css" />
+    <Content Include="css\tree.css" />
+    <Content Include="EmailTemplateActivation.html" />
+    <Content Include="EmailTemplateRegistration.html" />
+    <Content Include="Global.asax" />
+    <Content Include="images\noimage.jpg" />
+    <Content Include="LevelTree.aspx" />
+    <Content Include="Models\WebService\AgentServices.asmx" />
     <Content Include="plugins\animate\animate.css" />
     <Content Include="plugins\apex\apexcharts.css" />
     <Content Include="plugins\apex\apexcharts.min.js" />
@@ -586,24 +584,6 @@
     <Content Include="Web.config" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Registration.cshtml" />
-    <Content Include="WebsiteCss\js\appear.js" />
-    <Content Include="WebsiteCss\js\bootstrap.min.js" />
-    <Content Include="WebsiteCss\js\color-settings.js" />
-    <Content Include="WebsiteCss\js\jquery-ui.js" />
-    <Content Include="WebsiteCss\js\jquery.bootstrap-touchspin.js" />
-    <Content Include="WebsiteCss\js\jquery.countdown.js" />
-    <Content Include="WebsiteCss\js\jquery.fancybox.js" />
-    <Content Include="WebsiteCss\js\jquery.js" />
-    <Content Include="WebsiteCss\js\jquery.mCustomScrollbar.concat.min.js" />
-    <Content Include="WebsiteCss\js\main.js" />
-    <Content Include="WebsiteCss\js\map-script.js" />
-    <Content Include="WebsiteCss\js\mixitup.js" />
-    <Content Include="WebsiteCss\js\owl.js" />
-    <Content Include="WebsiteCss\js\popper.min.js" />
-    <Content Include="WebsiteCss\js\script.js" />
-    <Content Include="WebsiteCss\js\util.js" />
-    <Content Include="WebsiteCss\js\validate.js" />
-    <Content Include="WebsiteCss\js\wow.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -772,6 +752,7 @@
     <Content Include="Views\Admin\TransferWallet.cshtml" />
     <Content Include="Views\Admin\AdvanceDeduction.cshtml" />
     <Content Include="Views\Master\UploadFile.cshtml" />
+    <None Include="Properties\PublishProfiles\BrainStewNew.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -802,7 +783,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53405</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53405/</IISUrl>
+          <IISUrl>http://localhost:53406/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

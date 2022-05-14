@@ -1,1 +1,1 @@
-﻿<%@ WebService Language="C#" CodeBehind="AgentServices.asmx.cs" Class="GharAwas.Models.WebService.Agent" %>
+﻿<%@ WebService Language="C#" CodeBehind="AgentServices.asmx.cs" Class="BrainStew.Models.WebService.Agent" %>

@@ -61,7 +61,7 @@ namespace BrainStew.Models
             SqlParameter[] para = {
                                       new SqlParameter("@LoginId", LoginId),
                                       new SqlParameter("@Amount", Amount),
-                                      new SqlParameter("@PaymentMode", PaymentMode) ,
+                                    //new SqlParameter("@PaymentMode", 10) ,
                                       new SqlParameter("@DDChequeNo", DDChequeNo) ,
                                       new SqlParameter("@DDChequeDate", DDChequeDate) ,
                                       new SqlParameter("@BankBranch", BankBranch) ,
@@ -69,6 +69,7 @@ namespace BrainStew.Models
                                             new SqlParameter("@Remarks", Remark),
                                             new SqlParameter("@AddedBy", AddedBy)
                                      };
+
             DataSet ds = DBHelper.ExecuteQuery("EwalletRequest", para);
             return ds;
         }

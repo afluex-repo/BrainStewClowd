@@ -28,79 +28,111 @@
                             </div>
                         </div>
                         <div class="row mb-4">
-                            <div class="col-md-3">
-                                <div class="form-group row">
-                                    <div class="col-sm-9">
-                                        Id<span style="color: red">*</span>
-                                        @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control", @Placeholder = "Login Id", @onchange = "getmembername(this);", @Readonly = "true" })
+                            <div class="col-md-4">
+                                <div class="col-md-3" id="divQr">
+                                    <label id="lblQr"> Scan QR </label>
+                                    <img src="" id="ramdamImage" height="200" width="200" />
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row mb-4">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            Id<span style="color: red">*</span>
+                                            @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control", @Placeholder = "Login Id", @onchange = "getmembername(this);", @Readonly = "true" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            Amount<span style="color: red">*</span>
+                                            @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", @Placeholder = "Amount", @onkeypress = "return isNumberOrDecimal(event);" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4" style="display:none">
+                                        <div class="form-group row">
+                                            Payment Type<span style="color: red">*</span>
+                                            @Html.DropDownListFor(m => m.PaymentType, new SelectList(ViewBag.ddlpaymentType, "Value", "Text"), new { @class = "form-control", @onload = "getpaymentTypedetails();" })
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    @*<div class="col-md-3" id="bankname" style="display: none">*@
+                                    <div class="col-md-4" id="divbankname" style="display: none">
+                                        <label id="lblbank"></label><span style="color: red">*</span>
+                                        @Html.TextBoxFor(m => m.BankName, new { @class = "form-control", @placeholder = "Bank Name" })
+                                    </div>
+                                    @*<div class="col-md-3 form-it" id="bankbranch" style="display: none">*@
+                                    <div class="col-md-4" id="divbankbranch" style="display: none">
+                                        <label>  Branch <span style="color: red">*</span></label>
+                                        @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control", @placeholder = "Bank Branch" })
+                                    </div>
+                                    @*<div class="col-md-3 form-it" id="chequeno" style="display: none">*@
+                                    <div class="col-md-4" id="divtransactiono" style="display: none">
+                                        @*<label id="lbltno"> Transaction No</label> <span style="color: red">*</span>*@
+                                        <span id="txnNo"></span> <span id="spntrannumber" style="color: red">*</span>
+                                        @Html.TextBoxFor(m => m.DDChequeNo, new { @class = "form-control", @placeholder = "Transaction No" })
+                                    </div>
+                                    @*<div class="col-md-3 form-it" id="chequdate" style="display: none">*@
+                                    <div class="col-md-4" id="divPaymentMode" style="display: none">
+                                        @*<label> Transaction Date</label> <span style="color: red">*</span>*@
+                                        <span id="txndt"></span><span id="spntradate" style="color: red">*</span>
+                                        @Html.TextBoxFor(m => m.DDChequeDate, new { @class = "form-control", @placeholder = "Transaction Date", @readonly = true })
+                                    </div>
+                                    <div class="col-md-3" id="Remarks" style="display: none">
+                                        Remark
+                                        @Html.TextAreaFor(m => m.Remark, new { @class = "form-control", @Placeholder = "Remark" })
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="form-group row">
-                                    <div class="col-sm-9">
-                                        Amount<span style="color: red">*</span>
-                                        @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", @Placeholder = "Amount", @onkeypress = "return isNumberOrDecimal(event);" })
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group row">
-                                    <div class="col-sm-9">
-                                        Payment Type<span style="color: red">*</span>
-                                        @Html.DropDownListFor(m => m.PaymentType, new SelectList(ViewBag.ddlpaymentType, "Value", "Text"), new { @class = "form-control", @onload = "getpaymentTypedetails();" })
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3" id="paymentmode" style="display: none">
-                                Payment Mode<span style="color: red">*</span>
-                                @Html.DropDownListFor(m => m.PaymentMode, new SelectList(ViewBag.ddlpaymentmode, "Value", "Text"), new { @class = "form-control", @onchange = "getpaymentdetails();" })
-                            </div>
+
+
+                            @*<div class="col-md-3" id="paymentmode" style="display: none">
+                                    Payment Mode<span style="color: red">*</span>
+                                    @Html.DropDownListFor(m => m.PaymentMode, new SelectList(ViewBag.ddlpaymentmode, "Value", "Text"), new { @class = "form-control", @onchange = "getpaymentdetails();" })
+                                </div>*@
                         </div>
                         @*<div class="row mb-4" id="divPaymentMode">*@
-                        <div class="row mb-4">
-                            <div class="col-md-3" id="divQr" style="display: none">
-                                <label id="lblQr"> Scan QR </label>
-                                <img src="~/assets/img/QR.jpeg" height="200" width="200" />
-                            </div>
-                            @*<div class="col-md-3" id="bankname" style="display: none">*@
-                            <div class="col-md-3" id="divbankname" style="display: none">
-                                <label id="lblbank"></label><span style="color: red">*</span>
-                                @Html.TextBoxFor(m => m.BankName, new { @class = "form-control", @placeholder = "Bank Name" })
-                            </div>
-                            @*<div class="col-md-3 form-it" id="bankbranch" style="display: none">*@
-                            <div class="col-md-3" id="divbankbranch" style="display: none">
-                                <label>  Branch <span style="color: red">*</span></label>
-                                @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control", @placeholder = "Bank Branch" })
-                            </div>
-                            @*<div class="col-md-3 form-it" id="chequeno" style="display: none">*@
-                            <div class="col-md-3" id="divtransactiono" style="display: none">
-                                @*<label id="lbltno"> Transaction No</label> <span style="color: red">*</span>*@
-                                <span id="txnNo"></span> <span id="spntrannumber" style="color: red">*</span>
-                                @Html.TextBoxFor(m => m.DDChequeNo, new { @class = "form-control", @placeholder = "Transaction No" })
-                            </div>
-                            @*<div class="col-md-3 form-it" id="chequdate" style="display: none">*@
-                            <div class="col-md-3" id="divPaymentMode" style="display: none">
-                                @*<label> Transaction Date</label> <span style="color: red">*</span>*@
-                                <span id="txndt"></span><span id="spntradate" style="color: red">*</span>
-                                @Html.TextBoxFor(m => m.DDChequeDate, new { @class = "form-control", @placeholder = "Transaction Date", @readonly = true })
-                            </div>
-                            <div class="col-md-3" id="Remarks" style="display: none">
-                                Remark
-                                @Html.TextAreaFor(m => m.Remark, new { @class = "form-control", @Placeholder = "Remark" })
-                            </div>
-                        </div>
+
+
 
 
                         <div class="col-md-12">
                             <br />
-                            <input class="btn btn-success pull-left" type="submit" value="Submit" id="Save" name="Save" onclick="return validateform();" />
+                            @*<input class="btn btn-success pull-left" type="submit" value="Request" id="Save" name="Save" onclick="return validateform();" />*@
+
+                            <input class="btn btn-success" name="Save" id="Save" type="button" value="Request" onclick="return validateform();" data-toggle="modal" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5 class="text-center"><b> सपथ पत्र</b></h5>
+                    <p class="modal-text">
+                        मैं Brainstew Foundation में अपने स्वच्छा से पूर्ण होशो हवास में बिना किसी के दबाव में अपनी राशि को डोनेट कर रहा हु और इस डोनेशन को मैं वापिस लेने के लिए या किसी भी लालच में आकर नही कर रहा हूं।
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 }
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
@@ -109,11 +141,29 @@
 
 
 <script>
+
+
+    $(function () {
+        //Array of quotes
+        var randomImages = new Array("/assets/img/QR.jpeg", "/assets/img/QR1.jpeg", "/assets/img/QR2.jpeg");
+
+        //Random number to select an image. Use 8, not 7, since javascript arrays are 0 based
+        //Math.floor will take us from a floating point number to an integer base
+        var randomNumber = Math.floor((randomImages.length) * Math.random());
+        //Display that image
+        $('#ramdamImage').prop('src', randomImages[randomNumber]);
+    });
     $(document).ready(function () {
         $("#PaymentType").val("Offline");
         getpaymentTypedetails();
     });
+
+
+
     function validateform() {
+        debugger;
+        jQuery.noConflict();
+        $('#exampleModal').modal('hide');
         $(".errortext").removeClass("errortext");
         if ($('#LoginId').val() == '') {
             $("#LoginId").addClass('errortext');
@@ -130,56 +180,125 @@
             $('#PaymentType').focus();
             return false;
         }
-        if ($('#PaymentMode').val() == '') {
-            $("#PaymentMode").addClass('errortext');
-            $('#PaymentMode').focus();
+        if ($('#BankName').val() == '') {
+            $("#BankName").addClass('errortext');
+            $('#BankName').focus();
             return false;
         }
-        if (($("#PaymentMode option:selected").text()) != 'Cash' && ($("#PaymentMode option:selected").text()) != "UPI") {
-            if ($('#BankName').val() == '') {
-                $("#BankName").addClass('errortext');
-                $('#BankName').focus();
-                return false;
-            }
-            if ($('#DDChequeNo').val() == '') {
-                $("#DDChequeNo").addClass('errortext');
-                $('#DDChequeNo').focus();
-                return false;
-            }
-            if ($('#DDChequeDate').val() == '') {
-                $("#DDChequeDate").addClass('errortext');
-                $('#DDChequeDate').focus();
-                return false;
-            }
-            if ($('#BankBranch').val() == '') {
-                $("#BankBranch").addClass('errortext');
-                $('#BankBranch').focus();
-                return false;
-            }
+        if ($('#DDChequeNo').val() == '') {
+            $("#DDChequeNo").addClass('errortext');
+            $('#DDChequeNo').focus();
+            return false;
         }
-        else if ($("#PaymentMode option:selected").text() == "UPI") {
-            if ($('#BankName').val() == '') {
-                $("#BankName").addClass('errortext');
-                $('#BankName').focus();
-                return false;
-            }
-            if ($('#DDChequeNo').val() == '') {
-                $("#DDChequeNo").addClass('errortext');
-                $('#DDChequeNo').focus();
-                return false;
-            }
-            if ($('#DDChequeDate').val() == '') {
-                $("#DDChequeDate").addClass('errortext');
-                $('#DDChequeDate').focus();
-                return false;
-            }
+        if ($('#DDChequeDate').val() == '') {
+            $("#DDChequeDate").addClass('errortext');
+            $('#DDChequeDate').focus();
+            return false;
+
         }
         else {
-
+            SetAmountandPackage();
+            return true;
         }
-        return true;
 
     }
+
+
+    function SetAmountandPackage() {
+        debugger;
+        jQuery.noConflict();
+        $('#exampleModal').modal('show');
+    }
+
+
+
+    //function validateform() {
+    //    debugger;
+    //    $(".errortext").removeClass("errortext");
+
+    //    if ($('#LoginId').val() == '') {
+    //        $("#LoginId").addClass('errortext');
+    //        $('#LoginId').focus();
+    //        return false;
+    //    }
+    //    if ($('#Amount').val() == '') {
+    //        $("#Amount").addClass('errortext');
+    //        $('#Amount').focus();
+    //        return false;
+    //    }
+    //     if ($('#PaymentType').val() == '') {
+    //        $("#PaymentType").addClass('errortext');
+    //        $('#PaymentType').focus();
+    //        return false;
+    //    }
+    //     if ($('#BankName').val() == '') {
+    //        $("#BankName").addClass('errortext');
+    //        $('#BankName').focus();
+    //        return false;
+    //    }
+    //     if ($('#DDChequeNo').val() == '') {
+    //        $("#DDChequeNo").addClass('errortext');
+    //        $('#DDChequeNo').focus();
+    //        return false;
+    //    }
+    //     if ($('#DDChequeDate').val() == '') {
+    //        $("#DDChequeDate").addClass('errortext');
+    //        $('#DDChequeDate').focus();
+    //        return false;
+
+    //    }
+
+    //     return true;
+
+
+    //        //if ($('#PaymentMode').val() == '') {
+    //        //    $("#PaymentMode").addClass('errortext');
+    //        //    $('#PaymentMode').focus();
+    //        //    return false;
+    //        //}
+    //        //if (($("#PaymentMode option:selected").text()) != 'Cash' && ($("#PaymentMode option:selected").text()) != "UPI") {
+    //        //    if ($('#BankName').val() == '') {
+    //        //        $("#BankName").addClass('errortext');
+    //        //        $('#BankName').focus();
+    //        //        return false;
+    //        //    }
+    //        //    if ($('#DDChequeNo').val() == '') {
+    //        //        $("#DDChequeNo").addClass('errortext');
+    //        //        $('#DDChequeNo').focus();
+    //        //        return false;
+    //        //    }
+    //        //    if ($('#DDChequeDate').val() == '') {
+    //        //        $("#DDChequeDate").addClass('errortext');
+    //        //        $('#DDChequeDate').focus();
+    //        //        return false;
+    //        //    }
+    //        //    if ($('#BankBranch').val() == '') {
+    //        //        $("#BankBranch").addClass('errortext');
+    //        //        $('#BankBranch').focus();
+    //        //        return false;
+    //        //    }
+    //        //}
+    //        //else if ($("#PaymentMode option:selected").text() == "UPI") {
+    //        //    if ($('#BankName').val() == '') {
+    //        //        $("#BankName").addClass('errortext');
+    //        //        $('#BankName').focus();
+    //        //        return false;
+    //        //    }
+    //        //    if ($('#DDChequeNo').val() == '') {
+    //        //        $("#DDChequeNo").addClass('errortext');
+    //        //        $('#DDChequeNo').focus();
+    //        //        return false;
+    //        //    }
+    //        //    if ($('#DDChequeDate').val() == '') {
+    //        //        $("#DDChequeDate").addClass('errortext');
+    //        //        $('#DDChequeDate').focus();
+    //        //        return false;
+    //        //    }
+    //        //}
+
+
+
+    //}
 
     $('#DDChequeDate').datepicker({
         dateFormat: 'dd/mm/yy',
@@ -244,7 +363,7 @@
     function getpaymentTypedetails() {
         debugger;
         if ($('#PaymentType').val() == 'Offline') {
-        
+
             $("#PaymentMode").val(10);
             $("#paymentmode").show();
             $("#divQr").show();
@@ -254,7 +373,7 @@
             $("#divPaymentMode").show();
             $("#Remarks").hide();
             $("#lblbank").show();
-            $('#lblbank').html('UPI ID.');
+            $('#lblbank').html('UPI ID./ Mobile No');
             $('#txnNo').html('Transaction ID.');
             $('#txndt').html('Transaction Date.');
             $("#BankName").attr("placeholder", "UPI Id");
@@ -271,7 +390,7 @@
             $("#lblbank").hide();
             $("#Remarks").hide();
             $("#divbankbranch").hide();
-            
+
 
         }
     }
@@ -289,7 +408,7 @@
             $("#divQr").hide();
         }
         else if ($('#PaymentMode').val() == '2') {
-    
+
             $("#divPaymentMode").show();
             $("#divtransactiono").show();
             $("#divbankname").show();
@@ -316,7 +435,7 @@
             $("#lblbank").attr("placeholder", "Bank Name");
             $("#DDChequeNo").attr("placeholder", "Transaction No.");
             $("#DDChequeDate").attr("placeholder", "Transaction Date");
-      
+
         }
         else if ($('#PaymentMode').val() == '4') {
             $("#divPaymentMode").show();
@@ -400,7 +519,7 @@
 
     }
 
-//////////////////////////////////
+    //////////////////////////////////
 
 
     //function getpaymentdetails_s() {

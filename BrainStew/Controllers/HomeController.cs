@@ -16,7 +16,10 @@ namespace BrainStew.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return Redirect("~/BrainStewWebsite/index.html");
+            //return Redirect("/Home/Login");
+
+            return View();
+            //return Redirect("~/BrainStewWebsite/index.html");
         }
         public ActionResult Login()
         {
@@ -204,10 +207,54 @@ namespace BrainStew.Controllers
         {
             return View();
         }
-        public ActionResult CompleteRegistration()
+        public ActionResult CompleteRegistration(Home model)
         {
-            return View();
+            if (Session["LoginId"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            #region Product Bind
+            Common objcomm = new Common();
+           
+            objcomm.Fk_UserId = Session["Pk_userId"].ToString();
+            DataSet dsbalance = objcomm.GetWalletBalance();
+           if(dsbalance !=null && dsbalance.Tables.Count>0 &&dsbalance.Tables[0].Rows.Count>0)
+            {
+                model.WalletBalance = dsbalance.Tables[0].Rows[0]["amount"].ToString();
+            }
+            List<SelectListItem> ddlProduct = new List<SelectListItem>();
+            DataSet ds1 = objcomm.BindProductForJoiningForUser();
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            {
+                int count = 0;
+                foreach (DataRow r in ds1.Tables[0].Rows)
+                {
+                    //if (count == 0)
+                    //{
+                    //    ddlProduct.Add(new SelectListItem { Text = "Select", Value = "0" });
+                    //}
+                    ddlProduct.Add(new SelectListItem { Text = r["ProductName"].ToString(), Value = r["Pk_ProductId"].ToString() });
+                    count++;
+                }
+            }
+            ViewBag.ddlProduct = ddlProduct;
+            #endregion
+            return View(model);
         }
+      
+        public ActionResult FillAmount(string ProductId)
+        {
+            Admin obj = new Admin();
+            obj.Package = ProductId;
+            DataSet ds = obj.BindPriceByProduct();
+            if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
+            {
+                obj.Amount = Convert.ToInt32(ds.Tables[0].Rows[0]["FinalAmount"]).ToString();
+            }
+            else { }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+   
         public ActionResult emailtemplate()
         {
             return View();
@@ -219,16 +266,11 @@ namespace BrainStew.Controllers
             DataSet ds = obj.GetMemberDetails();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-                if (ds.Tables[0].Rows[0]["TeamPermanent"].ToString() == "P" || ds.Tables[0].Rows[0]["TeamPermanent"].ToString() == "O")
-                {
+               
                     obj.DisplayName = ds.Tables[0].Rows[0]["FullName"].ToString();
                     obj.Result = "Yes";
-                }
-                else
-                {
-                    obj.Result = "Sponsor Id is not Active";
-                }
-
+                
+               
             }
             else { obj.Result = "Invalid SponsorId"; }
             return Json(obj, JsonRequestBehavior.AllowGet);
@@ -347,5 +389,40 @@ namespace BrainStew.Controllers
            DataSet ds = model.CalculateROI();
             return View();
         }
+    
+        public ActionResult ActivateUser(string Amount)
+        {
+            Home model = new Home();
+            try
+            {
+                model.Fk_UserId = Session["Pk_UserId"].ToString();
+                model.Amount = Amount;
+                DataSet ds = model.ActivateUser();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        model.Result = "1";
+                        return View("Dashboard", "User");
+                    }
+                    else
+                    {
+                        return RedirectToAction("CompleteRegistration", "Home");
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("CompleteRegistration", "Home");
+                }
+                // Return on PaymentPage with Order data
+            }
+            catch (Exception ex)
+            {
+                model.Result = "0";
+                TempData["error"] = ex.Message;
+                return RedirectToAction("CompleteRegistration", "Home");
+            }
+        }
+
     }
 }

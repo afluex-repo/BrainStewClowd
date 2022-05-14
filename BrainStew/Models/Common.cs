@@ -232,5 +232,10 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("GetPPPList", para);
             return ds;
         }
+        public DataSet BindProductForJoiningForUser()
+        {
+            DataSet ds = DBHelper.ExecuteQuery("GetProductListForJoiningUser");
+            return ds;
+        }
     }
 }

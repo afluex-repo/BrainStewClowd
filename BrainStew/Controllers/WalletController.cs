@@ -85,8 +85,8 @@ namespace BrainStew.Controllers
         }
 
         [HttpPost]
-        [ActionName("AddWallet")]
-        [OnAction(ButtonName = "Save")]
+        //[ActionName("AddWallet")]
+        //[OnAction(ButtonName = "Save")]
         public ActionResult AddWallet(UserWallet model)
         {
             try
@@ -119,6 +119,12 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("AddWallet", "Wallet");
         }
+
+
+
+
+
+
         public ActionResult ROIWallet()
         {
             UserWallet model = new UserWallet();
