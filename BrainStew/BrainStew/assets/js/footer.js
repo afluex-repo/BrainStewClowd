@@ -8,9 +8,7 @@ document.write(`
                     <div class="footer__widget mb-30">
                         <h5 class="semi-02-title mb-25">Brain Stew</h5>
                        <p>Brain Stew is a digital platform which provide you a superb opportunity for your bright future with the guidance of dedicated team and committed professional having best experience in network marketing.</p>
-                       <div class="footer-log mt-25">
-                            <a href="index.html" class="footer-logo mb-30"><img src="assets/img/logo/footer_logo2.png" alt=""></a>
-                       </div>
+                       
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInUp2 animated" data-wow-delay='.3s'>
