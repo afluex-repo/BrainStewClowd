@@ -284,6 +284,7 @@ namespace BrainStew.Controllers
                     obj.WalletId = r["WalletId"].ToString();
                     obj.LoginId = r["LoginId"].ToString();
                     obj.DisplayName = r["Name"].ToString();
+                    obj.PostedFile = r["Document"].ToString();
                     lst.Add(obj);
                 }
                 model.lstWallet = lst;
@@ -318,6 +319,7 @@ namespace BrainStew.Controllers
                     obj.WalletId = r["WalletId"].ToString();
                     obj.LoginId = r["LoginId"].ToString();
                     obj.DisplayName = r["Name"].ToString();
+                    obj.PostedFile = r["Document"].ToString();
                     lst.Add(obj);
                 }
                 model.lstWallet = lst;

@@ -97,7 +97,10 @@ namespace BrainStew.Models
         public string IFSCCode { get; set; }
         public string MemberAccNo { get; set; }
         public string Deduction { get; set; }
-      
+        public string PostedFile { get; set; }
+
+        
+
         #endregion
         #region PinGenerated
         public DataSet CreatePin()
