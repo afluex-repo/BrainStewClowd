@@ -82,9 +82,18 @@
                                         <span id="txndt"></span><span id="spntradate" style="color: red">*</span>
                                         @Html.TextBoxFor(m => m.DDChequeDate, new { @class = "form-control", @placeholder = "Transaction Date", @readonly = true })
                                     </div>
+                               
+
                                     <div class="col-md-3" id="Remarks" style="display: none">
                                         Remark
                                         @Html.TextAreaFor(m => m.Remark, new { @class = "form-control", @Placeholder = "Remark" })
+                                    </div>
+                                </div>
+                              
+                                <div class="col-md-4">
+                                    <div class="col-md-3" id="divQr">
+                                        <label id="lblQr">Document<span id="spntradate" style="color: red">*</span></label>
+                                        <input type="file" name="PostedFile" id="PostedFile" />
                                     </div>
                                 </div>
                             </div>
@@ -196,6 +205,12 @@
             return false;
 
         }
+        if ($('#PostedFile').val() == '') {
+            $("#PostedFile").addClass('errortext');
+            $('#PostedFile').focus();
+            return false;
+        }
+        
         else {
             SetAmountandPackage();
             return true;

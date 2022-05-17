@@ -44,6 +44,8 @@ namespace BrainStew.Models
         public string PK_RequestID { get; set; }
         public string Balance { get; set; }
         public string Pk_InvestmentId { get; set; }
+        public string PostedFile { get; set; }
+
 
         public DataSet GetMemberDetails()
         {
@@ -67,9 +69,9 @@ namespace BrainStew.Models
                                       new SqlParameter("@BankBranch", BankBranch) ,
                                           new SqlParameter("@BankName", BankName),
                                             new SqlParameter("@Remarks", Remark),
+                                                   new SqlParameter("@Document",PostedFile),
                                             new SqlParameter("@AddedBy", AddedBy)
                                      };
-
             DataSet ds = DBHelper.ExecuteQuery("EwalletRequest", para);
             return ds;
         }

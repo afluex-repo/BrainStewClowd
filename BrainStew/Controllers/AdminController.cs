@@ -229,7 +229,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         [HttpPost]
         [OnAction(ButtonName = "GetDetails")]
         [ActionName("PinTransferReportForAdmin")]
@@ -257,9 +256,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
-
         public ActionResult WalletList()
         {
             Admin model = new Admin();
@@ -284,6 +280,7 @@ namespace BrainStew.Controllers
                     obj.WalletId = r["WalletId"].ToString();
                     obj.LoginId = r["LoginId"].ToString();
                     obj.DisplayName = r["Name"].ToString();
+                    obj.PostedFile = r["Document"].ToString();
                     lst.Add(obj);
                 }
                 model.lstWallet = lst;
@@ -318,6 +315,7 @@ namespace BrainStew.Controllers
                     obj.WalletId = r["WalletId"].ToString();
                     obj.LoginId = r["LoginId"].ToString();
                     obj.DisplayName = r["Name"].ToString();
+                    obj.PostedFile = r["Document"].ToString();
                     lst.Add(obj);
                 }
                 model.lstWallet = lst;
