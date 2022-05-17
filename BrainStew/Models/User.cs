@@ -115,7 +115,7 @@ namespace BrainStew.Models
                                     new SqlParameter("@NomineeRelation",NomineeRelation),
                                      new SqlParameter("@NomineeAge",NomineeAge),
                                          new SqlParameter("@PanImage",Image),
-                                           new SqlParameter("@UPIID",UPIID),
+                                           //new SqlParameter("@UPIID",UPIID),
 
                                       new SqlParameter("@UpdatedBy",Fk_UserId)
             };
