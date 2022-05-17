@@ -257,9 +257,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
-
         public ActionResult WalletList()
         {
             Admin model = new Admin();
