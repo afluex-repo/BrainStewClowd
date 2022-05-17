@@ -8,7 +8,7 @@ document.write(`
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--Links of CSS files-->
-    <link rel="icon" type="jpg/png" href="assets/img/logo/favicon.png"/>
+    <link rel="icon" type="jpg/png" href="assets/img/logo/favicon.jpg"/>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
@@ -36,8 +36,8 @@ document.write(`
                 <div class="row align-items-center">
                     <div class="col-xl-6 col-lg-7">
                         <div class="top-cta">
-                            <span><i class="far fa-phone"></i> <b>Call</b> :  1234567890</span>
-                            <span><i class="far fa-envelope"></i> <b>Email</b> :  supportbrainstew@gmail.com</span>
+                            <span><i class="far fa-phone"></i> <b>Call</b> : (+91) 6389303001</span>
+                            <span><i class="far fa-envelope"></i> <b>Email</b> :  brainstewfoundation@gmail.com</span>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-5 text-right">
@@ -53,7 +53,7 @@ document.write(`
                 <div class="row align-items-center justify-content-between">
                     <div class="col-xl-2 col-lg-2 col-md-6 col-6">
                         <div class="logo">
-                            <a class="logo-img" href="index.html"><img src="assets/img/logo/header_logo_1.png" alt=""></a>
+                            <a class="logo-img" href="index.html"><img src="assets/img/logo/brainstew_logo.jpg" class="logo_img" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-7 col-lg-6 d-none d-lg-block text-lg-center text-xl-right">
@@ -124,14 +124,14 @@ document.write(`
         <nav class="side-mobile-menu">
             <ul id="mobile-menu-active">
                 <li>
-                    <a href="#">Home</a>
+                    <a href="index.html">Home</a>
                 </li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Our Projects</a>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="projects.html">Our Projects</a>
                 </li>
-                <li><a href="#">Our Gallery</a>
+                <li><a href="gallery.html">Our Gallery</a>
                 </li>
-                <li><a href="#">Contacts Us</a></li>
+                <li><a href="contact.html">Contacts Us</a></li>
             </ul>
         </nav>
         <!-- side-mobile-menu end -->
