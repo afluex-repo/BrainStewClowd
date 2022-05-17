@@ -216,17 +216,31 @@
     <script src="~/BrainStewWebsite/assets/js/contact-form-script.js"></script>
     <script src="~/BrainStewWebsite/assets/js/main.js"></script>
     <script>
+        $(document).ready(function () {
+            getsponsordetails()
+        })
         function getsponsordetails(obj) {
+            alert(obj);
+            obj1 = $(obj).val();
+            if (obj == undefined)
+            {
+                obj1 = "BrainStew";
+            }
+            else {
+                obj1 = $(obj).val();
+            }
             $("#divload").css({ 'display': '' });
             $(".errortext").removeClass("errortext");
             $.ajax({
                 url: '/Home/GetSponserDetails',
                 type: 'GET',
                 dataType: 'JSON',
-                data: { 'ReferBy': $(obj).val() },
+                data: { 'ReferBy': obj1 },
                 success: function (response) {
                     if (response.Result == "Yes") {
                         $('#SponsorName').val(response.DisplayName);
+                        $('#SponsorId').val(obj1);
+                        
                     }
                     else {
 
