@@ -403,6 +403,10 @@ section-title
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+  .page-title-area
+  {
+      min-height:260px !important;
+  }
 }
 .section-title h6 {
   color: #f15b43;
@@ -2175,7 +2179,7 @@ section-title
 }
 @media (max-width: 767px) {
   .main-header-area {
-    padding: 25px 15px;
+    /*padding: 25px 15px;*/
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
@@ -2283,7 +2287,7 @@ section-title
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.05);
 }
 .sticky .logo {
-  transform: translateY(2px);
+  /*transform: translateY(2px);*/
 }
 .sticky .hamburger-menu {
   top: 17px;
@@ -3002,6 +3006,7 @@ input.main-search-input:-ms-input-placeholder {
 .slider__content .btn-list li {
   display: inline-block;
   margin-right: 10px;
+  margin-top:5px;
 }
 
 .slider-area .slick-slider button {
@@ -7589,6 +7594,10 @@ input.main-search-input:-ms-input-placeholder {
 {
   height: 65px;
   width: 65px;
+}
+.logo_img
+{
+  height: 95px;
 }
 
 /*# sourceMappingURL=main.css.map */
