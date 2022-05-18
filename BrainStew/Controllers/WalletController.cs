@@ -4,6 +4,7 @@ using BrainStew.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -87,10 +88,16 @@ namespace BrainStew.Controllers
         [HttpPost]
         //[ActionName("AddWallet")]
         //[OnAction(ButtonName = "Save")]
-        public ActionResult AddWallet(UserWallet model)
+        public ActionResult AddWallet(UserWallet model,HttpPostedFileBase PostedFile)
         {
             try
             {
+                if (PostedFile != null)
+                {
+                    model.PostedFile = "/Documents/" + Guid.NewGuid() + Path.GetExtension(PostedFile.FileName);
+                    PostedFile.SaveAs(Path.Combine(Server.MapPath(model.PostedFile)));
+                }
+
                 model.DDChequeDate = string.IsNullOrEmpty(model.DDChequeDate) ? null : Common.ConvertToSystemDate(model.DDChequeDate, "dd/mm/yyyy");
                 model.AddedBy = Session["Pk_userId"].ToString();
 
