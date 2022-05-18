@@ -15,7 +15,6 @@ document.write(`
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
     <link rel="stylesheet" href="assets/css/all.min.css">
     <link rel="stylesheet" href="assets/css/flaticon.css">
-    <link rel="stylesheet" href="assets/css/font.css">
     <link rel="stylesheet" href="assets/css/themify-icons.css">
     <link rel="stylesheet" href="assets/css/metisMenu.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
@@ -36,8 +35,8 @@ document.write(`
                 <div class="row align-items-center">
                     <div class="col-xl-6 col-lg-7">
                         <div class="top-cta">
-                            <span><i class="far fa-phone"></i> <b>Call</b> : (+91) 6389303001</span>
-                            <span><i class="far fa-envelope"></i> <b>Email</b> :  brainstewfoundation@gmail.com</span>
+                            <span><i class ="far fa-phone"></i> <b>Call</b>: <a href="tel:916389303001">(+91) 6389303001</a></span>
+                            <span><i class ="far fa-envelope"></i> <b>Email</b>: <a href="mailto:brainstewfoundation@gmail.com" target="_blank"> brainstewfoundation@gmail.com</a></span>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-5 text-right">
@@ -63,6 +62,7 @@ document.write(`
                                     <li><a class="active" href="index.html">Home</a></li>
                                     <li><a href="about.html">About Us</a></li>
                                     <li><a href="projects.html">Our Projects</a></li>
+                                    <li><a href="what-we-do.html">What We Do</a></li>
                                     <li><a href="gallery.html">Our Gallery</a></li>
                                     <li><a href="contact.html">Contact Us</a></li>
                                 </ul>
@@ -129,6 +129,7 @@ document.write(`
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="projects.html">Our Projects</a>
                 </li>
+                <li><a href="what-we-do.html">What We Do</a></li>
                 <li><a href="gallery.html">Our Gallery</a>
                 </li>
                 <li><a href="contact.html">Contacts Us</a></li>
