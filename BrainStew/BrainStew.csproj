@@ -918,6 +918,7 @@
     <Content Include="Views\Admin\AdvanceDeduction.cshtml" />
     <Content Include="Views\Master\UploadFile.cshtml" />
     <None Include="Properties\PublishProfiles\BrainStewNew.pubxml" />
+    <Content Include="Views\User\DonationByWallet.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
