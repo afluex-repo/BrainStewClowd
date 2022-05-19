@@ -139,9 +139,9 @@
             <div class="widget widget-account-invoice-three six">
                 <div class="widget-heading">
                     <div class="wallet-balance">
-                            <p>Total Amount</p>
-                            <h5 class=""><span class="w-currency"></span>Rs. @ViewBag.TotalAmount</h5>
-                        </div>
+                        <p>Total Amount</p>
+                        <h5 class=""><span class="w-currency"></span>Rs. @ViewBag.TotalAmount</h5>
+                    </div>
                     <div class="particular-balance d-flex mt-3">
                         <a href="/Report/PayoutWalletLedger">
                             <div class="fisrtdiv">
@@ -164,18 +164,18 @@
                     <div class="wallet-balance">
                         <a href="/Wallet/WalletLedgerList" class="btn btn-info mr-2"><i class="fa fa-folder-open" aria-hidden="true"></i> Wallet Balance Rs. @ViewBag.TotalWalletAmount</a>
                     </div>
-                   <div class="wallet-balance">
-                       <label class="btn btn-info mr-2">Total Donation : @ViewBag.TotalDonation</label>
-                       
-                      
+                    <div class="wallet-balance">
+                        <label class="btn btn-info mr-2">Total Donation : @ViewBag.TotalDonation</label>
+
+
                     </div>
-@*
-    <div class="wallet-balance">
-        <div class="fisrtdiv">
-            <a href="~/Coming.html" class="btn btn-secondary mr-2"><i class="fa fa-file-text" aria-hidden="true"></i> Bill Payment</a>
-            <p><a href="~/BrainStewWebsite/Coming.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i>  Bill Payment</a></p>
-        </div>
-    </div>*@
+                    @*
+                        <div class="wallet-balance">
+                            <div class="fisrtdiv">
+                                <a href="~/Coming.html" class="btn btn-secondary mr-2"><i class="fa fa-file-text" aria-hidden="true"></i> Bill Payment</a>
+                                <p><a href="~/BrainStewWebsite/Coming.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i>  Bill Payment</a></p>
+                            </div>
+                        </div>*@
                 </div>
 
             </div>
@@ -191,11 +191,11 @@
                             {
                                 //var link = Session["Pk_UserId"].ToString();
 
-                                <span class="s-icon"><a href="mailto:?subject= Referral Link &amp;body=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Pk_UserId"].ToString(). Thanks." target="_blank" style="background:#871505"><i class="fa fa-envelope fa-lg"></i></a></span>
-                                <span class="s-icon"><a href="https://api.whatsapp.com/send?text=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Pk_UserId"].ToString()" target="_blank" style="background:#42f560" data-action="share/whatsapp/share"><i class="fa fa-whatsapp fa-lg"></i></a></span>
-                                    <span class="s-icon"><a href="https://www.facebook.com/sharer.php?u=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Pk_UserId"].ToString()" target="_blank" style="background:#4267B2"><i class="fa fa-facebook fa-lg"></i></a></span>
-                                    <span class="s-icon"><a href="https://www.instagram.com/?url=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Pk_UserId"].ToString()" target="_blank" style="background:#E1306C"><i class="fa fa-instagram fa-lg"></i></a></span>
-                                    <span class="s-icon"><a href="https://twitter.com/intent/tweet?text=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Pk_UserId"].ToString()" target="_blank" style="background:#1DA1F2"><i class="fa fa-twitter fa-lg"></i></a></span>
+                                <span class="s-icon"><a href="mailto:?subject= Referral Link &amp;body=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString(). Thanks." target="_blank" style="background:#871505"><i class="fa fa-envelope fa-lg"></i></a></span>
+                                <span class="s-icon"><a href="https://api.whatsapp.com/send?text=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#42f560" data-action="share/whatsapp/share"><i class="fa fa-whatsapp fa-lg"></i></a></span>
+                                <span class="s-icon"><a href="https://www.facebook.com/sharer.php?u=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#4267B2"><i class="fa fa-facebook fa-lg"></i></a></span>
+                                    <span class="s-icon"><a href="https://www.instagram.com/?url=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#E1306C"><i class="fa fa-instagram fa-lg"></i></a></span>
+                                    <span class="s-icon"><a href="https://twitter.com/intent/tweet?text=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#1DA1F2"><i class="fa fa-twitter fa-lg"></i></a></span>
                             }
                         </div>
                     </div>
@@ -344,7 +344,7 @@
 
                         <a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></a>*@
 
-        
+
 
         @*
             </div>*@
@@ -411,7 +411,7 @@
         //PPP Id
 
         labels: ['Active', 'InActive'],
-        colors: ['#d7740f', '#f10909' ],
+        colors: ['#d7740f', '#f10909'],
         series: [@ViewBag.TotalActive, @ViewBag.TotalInActive],
         borderColor: '#F97300',
         responsive: [{

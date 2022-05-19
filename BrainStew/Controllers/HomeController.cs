@@ -53,6 +53,7 @@ namespace BrainStew.Controllers
                                 Session["Branch"] = ds.Tables[0].Rows[0]["MemberBranch"].ToString();
                                 Session["Bank"] = ds.Tables[0].Rows[0]["MemberBankName"].ToString();
                                 Session["Status"] = ds.Tables[0].Rows[0]["Status"].ToString();
+                                Session["Encrytid"] = Crypto.Encrypt(ds.Tables[0].Rows[0]["Pk_userId"].ToString());
                                 if (ds.Tables[0].Rows[0]["TeamPermanent"].ToString() == "O" || ds.Tables[0].Rows[0]["TeamPermanent"].ToString() == "P")
                                 {
                                     Session["IdActivated"] = true;
@@ -135,7 +136,7 @@ namespace BrainStew.Controllers
             ViewBag.Gender = Gender;
             if (!string.IsNullOrEmpty(PId))
             {
-                obj.Fk_UserId = PId;
+                obj.Fk_UserId = Crypto.Decrypt(PId); ;
                 // var d = Crypto.Decrypt(PId);
                 DataSet ds = obj.GetMemberNameWithUserId();
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)

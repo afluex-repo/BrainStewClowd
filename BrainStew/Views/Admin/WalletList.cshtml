@@ -88,7 +88,14 @@
                                                         <td>@Item.PaymentMode- (@Item.BankName,@Item.BankBranch, <b>Txn No.-@Item.ChequeDDNo</b>, <b>Txn Date-</b>@Item.ChequeDDDate)</td>
                                                     }
                                                     <td>@Item.TransactionDate</td>
-                                                    <td><img src="@Item.PostedFile" height="100" /></td>
+                                                    <td>@if (Item.PostedFile !="N/A")
+                                                    {
+                                                        <img src="@Item.PostedFile" height="100" />
+                                                    }
+                                                    else
+                                                    {
+                                                        @Item.PostedFile
+                                                    }</td>
                                                     <td>@Item.Status</td>
                                                     @if (Item.Status == "Pending")
                                                     {

@@ -159,3 +159,4 @@ E:\repository\BrainStewClowd\BrainStew\bin\System.Web.Http.WebHost.xml
 E:\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.dll
 E:\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.pdb
 E:\Repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.csprojResolveAssemblyReference.cache
+E:\SachinMishraProject\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.csprojResolveAssemblyReference.cache

@@ -43,8 +43,9 @@
                                                         <th>S No.</th>
                                                         <th>LoginId</th>
                                                         <th>Name</th>
+                                                        <th>Mobile</th>
                                                         <th>Sponsor Id</th>
-                                                        <th>Sponsor Name</th>
+                                                        @*<th>Sponsor Name</th>*@
                                                         <th>Status</th>
                                                         <th>Level</th>
                                                         <th>Activation Date</th>
@@ -72,8 +73,9 @@
                                                                     <td>@i</td>
                                                                     <td>@Item.LoginId</td>
                                                                     <td>@Item.FirstName</td>
+                                                                    <td>@Item.Mobile</td>
                                                                     <td>@Item.SponsorID</td>
-                                                                    <td>@Item.SponsorName</td>
+                                                                    @*<td>@Item.SponsorName</td>*@
 
                                                                     <td>
                                                                         @if (Item.ActiveStatus == "Inactive")

@@ -126,12 +126,6 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("AddWallet", "Wallet");
         }
-
-
-
-
-
-
         public ActionResult ROIWallet()
         {
             UserWallet model = new UserWallet();
