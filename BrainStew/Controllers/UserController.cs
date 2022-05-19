@@ -280,6 +280,55 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("Topup", "User");
         }
+        public ActionResult DonationByWallet()
+        {
+            Account model = new Account();
+            model.LoginId = Session["LoginId"].ToString();
+            #region Check Balance
+            Common objcomm = new Common();
+            objcomm.Fk_UserId = Session["Pk_UserId"].ToString();
+            DataSet ds = objcomm.GetWalletBalance();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                ViewBag.WalletBalance = ds.Tables[0].Rows[0]["amount"].ToString();
+            }
+            #endregion
+            return View(model);
+        }
+        public ActionResult Donation(string Amount)
+        {
+            Account model = new Account();
+            try
+            {
+                model.Fk_UserId = Session["Pk_UserId"].ToString();
+                model.Amount = Amount;
+                DataSet ds = model.DonationByWallet();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        model.Result = "1";
+                        return View("DonationByWallet", "User");
+                    }
+                    else
+                    {
+                        model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                        return View("DonationByWallet", "User");
+                    }
+                }
+                else
+                {
+                    return View("DonationByWallet", "User");
+                }
+                // Return on PaymentPage with Order data
+            }
+            catch (Exception ex)
+            {
+                model.Result = "0";
+                TempData["error"] = ex.Message;
+                return View("DonationByWallet", "User");
+            }
+        }
         public ActionResult FillAmount(string ProductId)
         {
             Admin obj = new Admin();

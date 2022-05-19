@@ -480,8 +480,8 @@ $('.chart2').easyPieChart({
 
 
 //nice-select
-$(document).ready(function() {
-	$('select').niceSelect();
-  });   
-
-})(jQuery);
+//$(document).ready(function() {
+//	$('select').niceSelect();
+//  });   
+})
+(jQuery);

@@ -1,14 +1,13 @@
 document.write(`
  <!-- Footer Section -->
    <!--footer-area start-->
-    <footer class="footer-area black-bg pos-rel pt-80 pb-50" style="background-image:url(assets/img/bg/02.png)">
+    <footer class="footer-area black-bg pos-rel pt-80 pb-50">
         <div class="container">
             <div class="row mb-20">
                 <div class="col-xl-3 col-lg-3 col-md-6  wow fadeInUp2 animated" data-wow-delay='.1s'>
                     <div class="footer__widget mb-30">
                         <h5 class="semi-02-title mb-25">Brain Stew</h5>
-                       <p>Brain Stew is a digital platform which provide you a superb opportunity for your bright future with the guidance of dedicated team and committed professional having best experience in network marketing.</p>
-                       
+                       <p>Brain Stew is a non-government organization ngo, working as a charitable society or trust for the welfare and development of deprived street children, orphans, destitute women, poor old age people.</p>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInUp2 animated" data-wow-delay='.3s'>
@@ -28,39 +27,39 @@ document.write(`
                         <h5 class="semi-02-title mb-25">Photo Gallery</h5>
                         <div class="insta-feed">
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/01.jpg" alt="">
+                                <img src="assets/img/instagram/1.png" alt="" class ="img-fluid">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/02.jpg" alt="">
+                                <img src="assets/img/instagram/2.png" alt="">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/03.jpg" alt="">
+                                <img src="assets/img/instagram/3.png" alt="">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/04.jpg" alt="">
+                                <img src="assets/img/instagram/4.png" alt="">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/05.jpg" alt="">
+                                <img src="assets/img/instagram/5.png" alt="">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/06.jpg" alt="">
+                                <img src="assets/img/instagram/6.png" alt="">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/07.jpg" alt="">
+                                <img src="assets/img/instagram/7.png" alt="">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/08.jpg" alt="">
+                                <img src="assets/img/instagram/8.png" alt="">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/09.jpg" alt="">
+                                <img src="assets/img/instagram/9.png" alt="">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                         </div>
@@ -95,8 +94,6 @@ document.write(`
     </footer>
     <!--footer-area end-->
 
-
-
     <!-- JS here -->
     <script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
@@ -107,7 +104,6 @@ document.write(`
     <script src="assets/js/slick.min.js"></script>
     <script src="assets/js/jquery.meanmenu.min.js"></script>
     <script src="assets/js/metisMenu.min.js"></script>
-    <script src="assets/js/jquery.nice-select.js"></script>
     <script src="assets/js/ajax-form.js"></script>
     <script src="assets/js/wow.min.js"></script>
     <script src="assets/js/jquery.counterup.min.js"></script>

@@ -70,5 +70,15 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("GetTopUpDetails", para);
             return ds;
         }
+        public DataSet DonationByWallet()
+        {
+            SqlParameter[] para =
+            {
+                     new SqlParameter("@Fk_UserId",Fk_UserId),
+                     new SqlParameter("@Amount",Amount)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("DonationUserByWallet", para);
+            return ds;
+        }
     }
 }

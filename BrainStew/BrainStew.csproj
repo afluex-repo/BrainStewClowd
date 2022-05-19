@@ -594,6 +594,7 @@
     <Content Include="BrainStew\gallery.html" />
     <Content Include="BrainStew\index.html" />
     <Content Include="BrainStew\projects.html" />
+    <Content Include="BrainStew\what-we-do.html" />
     <Content Include="Coming.html" />
     <Content Include="css\tree-responsive.css" />
     <Content Include="css\tree.css" />
@@ -918,6 +919,7 @@
     <Content Include="Views\Admin\AdvanceDeduction.cshtml" />
     <Content Include="Views\Master\UploadFile.cshtml" />
     <None Include="Properties\PublishProfiles\BrainStewNew.pubxml" />
+    <Content Include="Views\User\DonationByWallet.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
