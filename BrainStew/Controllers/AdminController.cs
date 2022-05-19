@@ -178,7 +178,6 @@ namespace BrainStew.Controllers
         {
             return View();
         }
-
         [HttpPost]
         [ActionName("ChangePassword")]
         public ActionResult ChangePassword(Admin model)
@@ -205,8 +204,6 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("ChangePassword", "Admin");
         }
-
-
         public ActionResult PinTransferReportForAdmin()
         {
             AdminReports model = new AdminReports();
@@ -229,8 +226,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
         [HttpPost]
         [OnAction(ButtonName = "GetDetails")]
         [ActionName("PinTransferReportForAdmin")]
@@ -289,7 +284,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         [HttpPost]
         [OnAction(ButtonName = "GetDetails")]
         [ActionName("WalletList")]
@@ -324,9 +318,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
-
         public ActionResult Approve(string id)
         {
             try
