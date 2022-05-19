@@ -161,7 +161,7 @@
     </div>
     <div class="row layout-top-spacing">
 
-        <div id="tableCaption" class="col-lg-3 col-12 layout-spacing">
+        <div id="tableCaption" class="col-lg-4 col-12 layout-spacing">
             <div class="statbox widget box box-shadow">
 
                 <div class="widget-content widget-content-area">
@@ -170,7 +170,8 @@
                             <thead>
                                 <tr>
                                     <th class="text-center level-th" style="white-space:normal">Member(S) At Level</th>
-                                    <th class="text-center level-th" style="white-space:normal">Associate</th>
+                                    <th class="text-center level-th" style="white-space:normal">Target Member</th>
+                                    <th class="text-center level-th" style="white-space:normal">Member</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -182,6 +183,7 @@
                                         {
                                             <tr>
                                                 <td class="text-center">Level-@item.LevelName</td>
+                                                <td class=""><span class="shadow-none badge outline-badge-primary">@item.TargetMember</span></td>
                                                 <td class=""><span class="shadow-none badge outline-badge-primary" onclick="return GetTreeMembers(@item.LevelName);">Member-@item.NumberOfMembers</span></td>
                                             </tr>
                                         }
@@ -195,7 +197,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-9 col-12 layout-spacing">
+        <div class="col-lg-8 col-12 layout-spacing">
             <div class="row" id="divMember">
                 @if (Model != null)
                 {
@@ -203,7 +205,7 @@
                     {
                         foreach (var item in Model.lstMember)
                         {
-                            <div id="card_1" class="col-lg-3 layout-spacing">
+                            <div id="card_1" class="col-lg-4 layout-spacing">
                                 <div class="statbox widget box box-shadow">
                                     <div class="widget-content widget-content-area">
                                         <div class="icon-svg">
