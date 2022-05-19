@@ -1074,6 +1074,7 @@ namespace BrainStew.Controllers
                 {
                     TreeMembers obj = new TreeMembers();
                     obj.LevelName = r["LevelNo"].ToString();
+                    obj.TargetMember = r["TargetMember"].ToString();
                     obj.NumberOfMembers = r["TotalAssociate"].ToString();
                     lst.Add(obj);
                 }
