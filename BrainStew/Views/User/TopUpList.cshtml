@@ -14,7 +14,7 @@
                     <div class="widget-header">
                         <div class="row">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                <h4>TopUp List</h4>
+                                <h4>Donation List</h4>
                                 <span class="text-danger">
                                     @TempData["Package"]
                                 </span>
@@ -49,15 +49,15 @@
                                     <tr>
                                         <th>S No.</th>
                                         <th>Name</th>
-                                        <th>Product Name</th>
-                                        <th>Topup Amount</th>
+                                        @*<th>Product Name</th>*@
+                                        <th>Amount</th>
                                         @*<th>Used For</th>*@
-                                        <th>BV</th>
+                                        @*<th>BV</th>*@
                                         @*<th>Is Calculated</th>*@
-                                        <th>Transaction By</th>
+                                        @*<th>Transaction By</th>
                                         <th>Status</th>
                                         <th>PPP Percentage</th>
-                                        <th>Days</th>
+                                        <th>Days</th>*@
                                         <th>Date</th>
                                     </tr>
                                 </thead>
@@ -72,15 +72,15 @@
                                                 <tr class="text-left">
                                                     <td>@i</td>
                                                     <td>@Item.Name</td>
-                                                    <td>@Item.ProductName</td>
+                                                    @*<td>@Item.ProductName</td>*@
                                                     <td>@Item.PinAmount</td>
                                                     @*<td>@Item.UsedFor</td>*@
-                                                    <td>@Item.BV</td>
+                                                    @*<td>@Item.BV</td>*@
                                                     @*<td>@Item.IsCalculated</td>*@
-                                                    <td>@Item.TransactionBy</td>
+                                                    @*<td>@Item.TransactionBy</td>
                                                     <td>@Item.Status</td>
                                                     <td>@Item.ROIPercentage %</td>
-                                                    <td><a class="btn btn-info btn-sm" href="/Wallet/ViewROI?InvId=@Item.InvestmentId">@Item.PackageDays</a></td>
+                                                    <td><a class="btn btn-info btn-sm" href="/Wallet/ViewROI?InvId=@Item.InvestmentId">@Item.PackageDays</a></td>*@
                                                     <td>@Item.TopUpDate</td>
                                                 </tr>
                                                 i++;

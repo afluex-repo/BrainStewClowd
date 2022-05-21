@@ -220,6 +220,7 @@ namespace BrainStew.Controllers
                     obj.SponsorID = r["SponsorId"].ToString();
                     obj.SponsorName = r["SponsorName"].ToString();
                     obj.ActivationDate = r["PermanentDate"].ToString();
+                    obj.Mobile = r["Mobile"].ToString();
                     obj.Lvl = r["Level"].ToString();
                     lst.Add(obj);
                 }

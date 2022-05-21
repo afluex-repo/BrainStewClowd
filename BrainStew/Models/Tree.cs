@@ -76,6 +76,7 @@ namespace BrainStew.Models
     {
         public string LevelName { get; set; }
         public string NumberOfMembers { get; set; }
+        public string TargetMember { get; set; }
     }
     public class MemberDetails
     {

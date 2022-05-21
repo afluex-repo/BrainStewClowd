@@ -49,6 +49,22 @@ namespace BrainStew.Controllers
                 ViewBag.TotalPins = ds.Tables[0].Rows[0]["TotalPins"].ToString();
                 ViewBag.Status = ds.Tables[2].Rows[0]["Status"].ToString();
                 ViewBag.TotalAmount = Convert.ToDecimal(ds.Tables[0].Rows[0]["TotalPayoutWalletAmount"])+ 0;
+                ViewBag.TotalDonation = ds.Tables[0].Rows[0]["TotalDonation"].ToString();
+
+                ViewBag.LevelIncome = ds.Tables[6].Rows[0]["LevelIncome"].ToString();
+                ViewBag.LevelUpgradeIncome = ds.Tables[6].Rows[0]["LevelUpgradeIncome"].ToString();
+                ViewBag.ReferralSponsorIncome = ds.Tables[6].Rows[0]["ReferralSponsorIncome"].ToString();
+                ViewBag.MatrixIncome = ds.Tables[6].Rows[0]["MatrixIncome"].ToString();
+                ViewBag.ForeverMatrixIncome = ds.Tables[6].Rows[0]["ForeverMatrixIncome"].ToString();
+                ViewBag.ForeverLevelIncome = ds.Tables[6].Rows[0]["ForeverLevelIncome"].ToString();
+                ViewBag.TotalIncome = ds.Tables[6].Rows[0]["TotalIncome"].ToString();
+                ViewBag.TopupWallet = ds.Tables[6].Rows[0]["TopupWallet"].ToString();
+                ViewBag.MyWallet = ds.Tables[6].Rows[0]["MyWallet"].ToString();
+                ViewBag.MatrixWallet = ds.Tables[6].Rows[0]["MatrixWallet"].ToString();
+                ViewBag.WithdrawlAmount = ds.Tables[6].Rows[0]["WithdrawlAmount"].ToString();
+                ViewBag.CurrentLevel = ds.Tables[6].Rows[0]["CurrentLevel"].ToString();
+                ViewBag.UpgradeMatrix = ds.Tables[6].Rows[0]["UpgradeMatrix"].ToString(); 
+                ViewBag.ReferralIncentive = ds.Tables[6].Rows[0]["ReferralIncentive"].ToString();
                 if (ViewBag.Status == "InActive")
                 {
                     return RedirectToAction("ActivateByPin", "User");
@@ -1073,6 +1089,7 @@ namespace BrainStew.Controllers
                 {
                     TreeMembers obj = new TreeMembers();
                     obj.LevelName = r["LevelNo"].ToString();
+                    obj.TargetMember = r["TargetMember"].ToString();
                     obj.NumberOfMembers = r["TotalAssociate"].ToString();
                     lst.Add(obj);
                 }
@@ -1222,19 +1239,19 @@ namespace BrainStew.Controllers
             }
 
             #region ddlPlotSize
-            int count = 0;
+            //int count = 0;
             List<SelectListItem> ddlProductName = new List<SelectListItem>();
             DataSet dss = model.GetProductName();
             if (dss != null && dss.Tables.Count > 0 && dss.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in dss.Tables[0].Rows)
                 {
-                    if (count == 0)
-                    {
-                        ddlProductName.Add(new SelectListItem { Text = "-Select-", Value = "" });
-                    }
+                    //if (count == 0)
+                    //{
+                    //    ddlProductName.Add(new SelectListItem { Text = "-Select-", Value = "" });
+                    //}
                     ddlProductName.Add(new SelectListItem { Text = r["ProductName"].ToString(), Value = r["PK_ProductID"].ToString() });
-                    count = count + 1;
+                    //count = count + 1;
                 }
             }
 
