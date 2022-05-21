@@ -159,7 +159,7 @@
                 </div>
             </div>*@
     </div>
-    @*<div class="row layout-top-spacing">
+    <div class="row layout-top-spacing">
 
         <div id="tableCaption" class="col-lg-3 col-12 layout-spacing">
             <div class="statbox widget box box-shadow">
@@ -170,7 +170,8 @@
                             <thead>
                                 <tr>
                                     <th class="text-center level-th" style="white-space:normal">Member(S) At Level</th>
-                                    <th class="text-center level-th" style="white-space:normal">Associate</th>
+                                    <th class="text-center level-th" style="white-space:normal">Target Member</th>
+                                    <th class="text-center level-th" style="white-space:normal">Member</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -178,12 +179,15 @@
                                 {
                                     if (Model.lst != null)
                                     {
+                                        var i = 5;
                                         foreach (var item in Model.lst)
                                         {
                                             <tr>
                                                 <td class="text-center">Level-@item.LevelName</td>
+                                                <td class="text-center">@i</td>
                                                 <td class=""><span class="shadow-none badge outline-badge-primary" onclick="return GetTreeMembers(@item.LevelName);">Member-@item.NumberOfMembers</span></td>
                                             </tr>
+                                            i = i + i + i + i + i;
                                         }
                                     }
                                 }
@@ -220,7 +224,7 @@
                 }
             </div>
         </div>
-    </div>*@
+    </div>
 </div>
 
 <script>
