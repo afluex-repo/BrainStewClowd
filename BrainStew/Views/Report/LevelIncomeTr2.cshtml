@@ -38,7 +38,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-3 col-md-3">
+                            @*<div class="col-lg-3 col-md-3">
                                 <div class="form-group">
                                     <input type="hidden" value="@Model.Status" id="st" />
                                     <label>Status</label>
@@ -47,7 +47,7 @@
                                         <option value="1">Paid</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div>*@
 
                             <div class="col-lg-3 col-md-3" style="margin-top:28px">
                                 <div class="form-group">
@@ -64,9 +64,9 @@
                                         <th>From Member</th>
                                         <th>Business Amount</th>
                                         <th>Income</th>
-                                        <th>Percentage</th>
+                                        @*<th>Percentage</th>*@
                                         <th>Level</th>
-                                        <th>Status</th>
+                                        @*<th>Status</th>*@
                                         <th>Transaction Date</th>
                                     </tr>
                                 </thead>
@@ -84,9 +84,9 @@
                                                     <td>@Item.FromName</td>
                                                     <td>@Item.BusinessAmount</td>
                                                     <td>@Item.Amount</td>
-                                                    <td>@Item.Percentage %</td>
+                                                    @*<td>@Item.Percentage %</td>*@
                                                     <td>@Item.Level</td>
-                                                    <td>@Item.Status</td>
+                                                    @*<td>@Item.Status</td>*@
                                                     <td>@Item.TransactionDate</td>
                                                 </tr>
                                                 i++;

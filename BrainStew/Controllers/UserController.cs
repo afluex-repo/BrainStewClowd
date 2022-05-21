@@ -49,6 +49,7 @@ namespace BrainStew.Controllers
                 ViewBag.TotalPins = ds.Tables[0].Rows[0]["TotalPins"].ToString();
                 ViewBag.Status = ds.Tables[2].Rows[0]["Status"].ToString();
                 ViewBag.TotalAmount = Convert.ToDecimal(ds.Tables[0].Rows[0]["TotalPayoutWalletAmount"])+ 0;
+                ViewBag.TotalDonation = ds.Tables[0].Rows[0]["TotalDonation"].ToString();
                 if (ViewBag.Status == "InActive")
                 {
                     return RedirectToAction("ActivateByPin", "User");
@@ -1073,6 +1074,7 @@ namespace BrainStew.Controllers
                 {
                     TreeMembers obj = new TreeMembers();
                     obj.LevelName = r["LevelNo"].ToString();
+                    obj.TargetMember = r["TargetMember"].ToString();
                     obj.NumberOfMembers = r["TotalAssociate"].ToString();
                     lst.Add(obj);
                 }
