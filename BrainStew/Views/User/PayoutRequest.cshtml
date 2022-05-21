@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="widget-content widget-content-area">
-                        <p style="color:red">Note : 2% Transfer Charges And Minimum Rs. 10</p><br />
+                        <p style="color:red">Note : 15% Transfer Charges And Minimum Rs. 1 and Maximum Rs. 25k</p><br />
                         <div class="row">
                             <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
@@ -152,13 +152,23 @@
 
     function GetFinalAmount() {
         debugger;
-        var deductionAmount = parseFloat($("#Amount").val()) * 0.02;
-        if (parseFloat($("#Amount").val()) < 500) {
-            deductionAmount = 10;
+        var amount = $("#Amount").val();
+        if (Number(amount) > 25000)
+        {
+            alert('you can not enter amount greater than 25k');
+            $("#Amount").val('');
+            $("#lbld").text(parseFloat(0));
+            $("#lblf").text(parseFloat(0));
         }
-        $("#lbld").text(parseFloat(deductionAmount));
-        var finalAmount = parseFloat($("#Amount").val()) - parseFloat(deductionAmount);
-        $("#lblf").text(parseFloat(finalAmount));
+        else {
+            var deductionAmount = parseFloat($("#Amount").val()) * 0.15;
+            if (parseFloat($("#Amount").val()) < 500) {
+                deductionAmount = 10;
+            }
+            $("#lbld").text(parseFloat(deductionAmount));
+            var finalAmount = parseFloat($("#Amount").val()) - parseFloat(deductionAmount);
+            $("#lblf").text(parseFloat(finalAmount));
+        }
     }
 </script>
 <script>
