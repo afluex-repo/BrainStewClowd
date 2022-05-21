@@ -50,6 +50,21 @@ namespace BrainStew.Controllers
                 ViewBag.Status = ds.Tables[2].Rows[0]["Status"].ToString();
                 ViewBag.TotalAmount = Convert.ToDecimal(ds.Tables[0].Rows[0]["TotalPayoutWalletAmount"])+ 0;
                 ViewBag.TotalDonation = ds.Tables[0].Rows[0]["TotalDonation"].ToString();
+
+                ViewBag.LevelIncome = ds.Tables[6].Rows[0]["LevelIncome"].ToString();
+                ViewBag.LevelUpgradeIncome = ds.Tables[6].Rows[0]["LevelUpgradeIncome"].ToString();
+                ViewBag.ReferralSponsorIncome = ds.Tables[6].Rows[0]["ReferralSponsorIncome"].ToString();
+                ViewBag.MatrixIncome = ds.Tables[6].Rows[0]["MatrixIncome"].ToString();
+                ViewBag.ForeverMatrixIncome = ds.Tables[6].Rows[0]["ForeverMatrixIncome"].ToString();
+                ViewBag.ForeverLevelIncome = ds.Tables[6].Rows[0]["ForeverLevelIncome"].ToString();
+                ViewBag.TotalIncome = ds.Tables[6].Rows[0]["TotalIncome"].ToString();
+                ViewBag.TopupWallet = ds.Tables[6].Rows[0]["TopupWallet"].ToString();
+                ViewBag.MyWallet = ds.Tables[6].Rows[0]["MyWallet"].ToString();
+                ViewBag.MatrixWallet = ds.Tables[6].Rows[0]["MatrixWallet"].ToString();
+                ViewBag.WithdrawlAmount = ds.Tables[6].Rows[0]["WithdrawlAmount"].ToString();
+                ViewBag.CurrentLevel = ds.Tables[6].Rows[0]["CurrentLevel"].ToString();
+                ViewBag.UpgradeMatrix = ds.Tables[6].Rows[0]["UpgradeMatrix"].ToString(); 
+                ViewBag.ReferralIncentive = ds.Tables[6].Rows[0]["ReferralIncentive"].ToString();
                 if (ViewBag.Status == "InActive")
                 {
                     return RedirectToAction("ActivateByPin", "User");
