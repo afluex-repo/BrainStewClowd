@@ -9,6 +9,42 @@
 <link href="~/assets/css/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
 <link href="~/assets/css/elements/alert.css" rel="stylesheet" />
 <style>
+   @@media(max-width:600px)
+   {
+         .col-xl-3
+    {
+       max-width:100% !important;
+    }
+   }
+   @@media(min-width:768px) and (max-width:992px)
+   {
+         .col-xl-3
+    {
+       max-width:25% !important;
+    }
+         .particular-balance.d-flex p 
+       {
+           font-size:13px !important;
+       }
+   }
+   @@media(max-width:1024px) and (min-width:1024px)
+   {
+       .col-xl-3
+    {
+       max-width:25% !important;
+    }
+       .particular-balance.d-flex p 
+       {
+           font-size:10px !important;
+       }
+       .s-icon a 
+       {
+        margin: 0px;
+        width: 25px;
+        height: 25px;
+        line-height: 23px;
+        }
+     }
     .icon_css {
         height: 40px;
         width: 40px;
@@ -17,10 +53,12 @@
         padding: 5px 10px 0px 9px;
         background: #fff;
     }
+    
     .col-xl-3
     {
-        max-width:20% !important;
-    }
+    max-width:20%;
+   }
+  
 </style>
 
 <div class="layout-px-spacing" style="margin-bottom: 70px;">
@@ -405,11 +443,11 @@
 
                         <div class="carousel-inner">
                             @if (Model != null)
-                            {
-                                if (Model.lstReward != null)
-                                {
-                                    for (int i = 0; i < 1; i++)
-                                    {
+        {
+            if (Model.lstReward != null)
+            {
+                for (int i = 0; i < 1; i++)
+                {
 
                                         <div class="carousel-item active" style="padding: 10px;">
                                             <img class="d-block w-100 img-height" src="@Model.lstReward[i].Image" alt="First slide" style="border-radius: 10px;">
@@ -421,11 +459,11 @@
                                 }
                             }
                             @if (Model != null)
-                            {
-                                if (Model.lstReward != null)
-                                {
-                                    for (int i = 1; i < Model.lstReward.Count; i++)
-                                    {
+    {
+        if (Model.lstReward != null)
+        {
+            for (int i = 1; i < Model.lstReward.Count; i++)
+            {
 
                                         <div class="carousel-item">
                                             <img class="d-block w-100 img-height" src="@Model.lstReward[i].Image" alt="First slide">
