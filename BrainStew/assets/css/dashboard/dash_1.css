@@ -6,7 +6,7 @@
     padding: 20px;
     border-radius: 6px;
     border: none;
-    background: #fff;
+    /*background: #fff;*/
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
@@ -478,7 +478,7 @@
 
 .widget-table-one .widget-heading {
     display: flex;
-    margin-bottom: 31px;
+    /*margin-bottom: 31px;*/
     justify-content: space-between;
 }
 .widget-table-one .widget-heading .task-action .dropdown-toggle svg {
@@ -903,7 +903,7 @@
     /* height: 215px; */
     /* border-top-right-radius: 25px; */
     /* border-top-left-radius: 25px; */
-    background: #fdfdfd;
+    /*background: #fdfdfd;*/
     border: none;
     /* border: 1px solid #e0e6ed; */
     box-shadow: 0 0 40px 0 rgb(94 92 154 / 6%);
@@ -914,7 +914,7 @@
     background-color: rgb(22, 15, 107);
     border-radius:10px;
     background-image: linear-gradient(315deg, #160f6b 0%, #4361ee 74%);
-    min-height: 120px; 
+    min-height: 110px; 
     /* height: 100%; */
 }
 .widget-account-invoice-three .widget-heading .wallet-usr-info {
