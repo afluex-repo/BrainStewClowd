@@ -1239,19 +1239,19 @@ namespace BrainStew.Controllers
             }
 
             #region ddlPlotSize
-            int count = 0;
+            //int count = 0;
             List<SelectListItem> ddlProductName = new List<SelectListItem>();
             DataSet dss = model.GetProductName();
             if (dss != null && dss.Tables.Count > 0 && dss.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in dss.Tables[0].Rows)
                 {
-                    if (count == 0)
-                    {
-                        ddlProductName.Add(new SelectListItem { Text = "-Select-", Value = "" });
-                    }
+                    //if (count == 0)
+                    //{
+                    //    ddlProductName.Add(new SelectListItem { Text = "-Select-", Value = "" });
+                    //}
                     ddlProductName.Add(new SelectListItem { Text = r["ProductName"].ToString(), Value = r["PK_ProductID"].ToString() });
-                    count = count + 1;
+                    //count = count + 1;
                 }
             }
 
