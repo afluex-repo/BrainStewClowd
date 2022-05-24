@@ -156,15 +156,15 @@
             </div>
         </div>
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mt-2">
-            <div class="widget widget-account-invoice-three four">
+            <div class="widget widget-account-invoice-three nine">
                 <div class="widget-heading">
                     <a href="#">
                         <div class="wallet-balance">
-                            <p class="icon_css" style=""><i class="fa fa fa-inr" style="color:#009286"></i></p>
+                            <p class="icon_css"><i class="fa fa fa-inr" style="color:#009286"></i></p>
                             <h4 class="text-white text-uppercase">@ViewBag.MatrixIncome</h4>
                         </div>
                     </a>
-                    <div class="particular-balance d-flex mt-3">
+                    <div class="particular-balance d-flex mt-2">
                         <div class="fisrtdiv">
                         </div>
                         <div class="seconddiv">
@@ -183,7 +183,7 @@
                             <h4 class="text-white text-uppercase">@ViewBag.ForeverMatrixIncome</h4>
                         </div>
                     </a>
-                    <div class="particular-balance d-flex mt-3">
+                    <div class="particular-balance d-flex mt-2">
                         <div class="fisrtdiv">
                         </div>
                         <div class="seconddiv">
@@ -194,11 +194,11 @@
             </div>
         </div>
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mt-2">
-            <div class="widget widget-account-invoice-three six">
+            <div class="widget widget-account-invoice-three nine">
                 <div class="widget-heading">
                     <a href="#">
                         <div class="wallet-balance">
-                            <p class="icon_css" style=""><i class="fa fa fa-inr" style="color:#009286"></i></p>
+                            <p class="icon_css"><i class="fa fa fa-inr" style="color:#009286"></i></p>
                             <h4 class="text-white text-uppercase">@ViewBag.ForeverLevelIncome </h4>
                         </div>
                     </a>
@@ -213,11 +213,11 @@
             </div>
         </div>
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mt-2">
-            <div class="widget widget-account-invoice-three five">
+            <div class="widget widget-account-invoice-three ten">
                 <div class="widget-heading">
                     <a href="#">
                         <div class="wallet-balance">
-                            <p class="icon_css" style=""><i class="fa fa-inr" style="color:#009286"></i></p>
+                            <p class="icon_css"><i class="fa fa-inr" style="color:#009286"></i></p>
                             <h4 class="text-white text-uppercase">@ViewBag.TotalIncome</h4>
                         </div>
                     </a>
@@ -327,7 +327,7 @@
             </div>
         </div>
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mt-2">
-            <div class="widget widget-account-invoice-three two">
+            <div class="widget widget-account-invoice-three one">
                 <div class="widget-heading">
                     <a href="#">
                         <div class="wallet-balance">
@@ -350,7 +350,7 @@
                 <div class="widget-heading" style="background: linear-gradient(60deg,#4a4338,#6c838d);">
                     <div class="wallet-balance">
                         <div class="">
-                            <p style="padding:9px;">REFERAL LINK</p>
+                            <p style="padding:4px;">REFERAL LINK</p>
                             @if (Session["LoginId"].ToString() != "")
                             {
                                 //var link = Session["Pk_UserId"].ToString();
@@ -369,33 +369,28 @@
 
         </div>
        
-        @*<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mt-3">
-            <div class="widget widget-account-invoice-three eight">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mt-2">
+            <div class="widget widget-table-one">
                 <div class="widget-heading">
-                    <div class="wallet-balance">
-                        <a href="/Wallet/WalletLedgerList" class="btn btn-info mr-2"><i class="fa fa-folder-open" aria-hidden="true"></i> Wallet Balance Rs. @ViewBag.TotalWalletAmount</a>
+                    <h6 class="font-weight-bold">Copy Referral Link</h6>
+                </div>
+                <div class="widget-content">
+                    <div class="weekly-bestsellers">
+                        <div class="t-item">
+                            <input type="hidden" name="leftlink" id="leftlink" value="http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" class="form-control">
+                            <a class="btn btn-block btn-success" onclick="myFunction(1);">
+                                <i class="fa fa-copy text-white"></i> &nbsp;Copy Referral Link
+                            </a>
+                        </div>
                     </div>
-                    <div class="wallet-balance">
-                        <label class="btn btn-info mr-2">Total Donation : @ViewBag.TotalDonation</label>
-
-
-                    </div>*@
-        @*
-            <div class="wallet-balance">
-                <div class="fisrtdiv">
-                    <a href="~/Coming.html" class="btn btn-secondary mr-2"><i class="fa fa-file-text" aria-hidden="true"></i> Bill Payment</a>
-                    <p><a href="~/BrainStewWebsite/Coming.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i>  Bill Payment</a></p>
                 </div>
-            </div>*@
-        @*</div>
+            </div>
 
-                </div>
-
-            </div>*@
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mt-3">
-            <div class="widget widget-chart-two ">
+            </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
+            <div class="widget widget-chart-two bg-white">
                 <div class="widget-heading">
-                    <h5 class="">News</h5>
+                    <h6 class="font-weight-bold">News</h6>
                 </div>
                 <div class="widget-content1">
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -466,21 +461,7 @@
             </div>
         </div>
         <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-            <div class="widget widget-table-one">
-                <div class="widget-heading">
-                    <h5 class="">Copy Referral Link</h5>
-                </div>
-                <div class="widget-content">
-                    <div class="weekly-bestsellers">
-                        <div class="t-item">
-                            <input type="hidden" name="leftlink" id="leftlink" value="http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" class="form-control">
-                            <a class="btn btn-block btn-success" onclick="myFunction(1);">
-                                <i class="las la-copy" style="font-size:30px;color:white"></i>Copy Referral Link
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </div>
 </div>
