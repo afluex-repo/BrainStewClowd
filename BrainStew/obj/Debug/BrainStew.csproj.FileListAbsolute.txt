@@ -51,4 +51,3 @@ E:\Repository-Projects\repository\BrainStewClowd\BrainStew\bin\System.Web.Http.x
 E:\Repository-Projects\repository\BrainStewClowd\BrainStew\bin\System.Web.Http.WebHost.xml
 E:\Repository-Projects\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.dll
 E:\Repository-Projects\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.pdb
-E:\Repository-Projects\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.csprojResolveAssemblyReference.cache

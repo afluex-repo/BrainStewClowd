@@ -227,7 +227,7 @@ code {
 
 .header-container {
     z-index: 1030;
-    box-shadow: 6px 7px 3px 3px #0a3b9d !important;
+    /*box-shadow: 6px 7px 3px 3px #0a3b9d !important;*/
     height: 60px;
     background-color: #70b7c9;
 }
@@ -238,10 +238,10 @@ code {
 
 .navbar {
     padding: 0;
-    background-image: #22396c;
+    /*background-image: #22396c;*/
     /*background: #ffa500e0;*/
-    /*background-image: linear-gradient(60deg,#ffa7261c,#fb8c00);*/
-    background-color:white;
+    background-image: linear-gradient(60deg,#fff,#009286);
+    /*background-color:white;*/
     
 }
 
@@ -1057,7 +1057,7 @@ code {
     width: 227px;
     position: fixed;
     z-index: 1028;
-    border-radius: 6px 6px 0 0;
+    /*border-radius: 6px 6px 0 0;*/
     transition: .600s;
     height: 100vh;
     touch-action: none;
@@ -1069,7 +1069,7 @@ code {
 }
 
 .sidebar-theme {
-    background-color: white;
+    background-color:#009286;
     color: black;
     /*background-image: linear-gradient(60deg,#fff,#fff);*/
 }
@@ -1177,7 +1177,7 @@ code {
     justify-content: space-between;
     cursor: pointer;
     font-size: 13px;
-    color: black;
+    color: #fff;
     padding: 11px 14px;
     transition: .600s;
     margin-bottom: 4px;
@@ -1194,7 +1194,7 @@ code {
 }
 
 #sidebar ul.menu-categories li.menu > .dropdown-toggle svg {
-    color: black;
+    color: #fff;
     margin-right: 10px;
     vertical-align: middle;
     width: 20px;
