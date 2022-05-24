@@ -17,18 +17,22 @@
         padding: 5px 10px 0px 9px;
         background: #fff;
     }
-
+    .col-xl-3
+    {
+        max-width:20% !important;
+    }
 </style>
 
 <div class="layout-px-spacing" style="margin-bottom: 70px;">
     <div class="row layout-top-spacing">
+
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mt-2">
             <div class="widget widget-account-invoice-three one">
                 <div class="widget-heading">
                     <a href="#">
                         <div class="wallet-balance">
                             <p class="icon_css" style=""><i class="fa fa-shopping-cart" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.Status</h4>
+                            <h5 class="text-white text-uppercase">@ViewBag.Status</h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
@@ -47,7 +51,7 @@
                     <a href="#">
                         <div class="wallet-balance">
                             <p class="icon_css" style=""><i class="fa fa-inr" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.TotalDonation</h4>
+                            <h5 class="text-white text-uppercase">@ViewBag.TotalDonation</h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
@@ -66,7 +70,7 @@
                     <a href="#">
                         <div class="wallet-balance">
                             <p class="icon_css" style=""><i class="fa fa-user" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.TotalDirect</h4>
+                            <h5 class="text-white text-uppercase">@ViewBag.TotalDirect</h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
@@ -84,15 +88,15 @@
                 <div class="widget-heading">
                     <a href="#">
                         <div class="wallet-balance">
-                            <p class="icon_css" style=""><i class="fa fa fa-inr" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.ReferralIncentive</h4>
+                            <p class="icon_css"><i class="fa fa fa-inr" style="color:#009286"></i></p>
+                            <h5 class="text-white text-uppercase">@ViewBag.ReferralIncentive</h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
                         <div class="fisrtdiv">
                         </div>
                         <div class="seconddiv">
-                            <p><b> Referal Benefits </b></p>
+                            <p><b> Referral Benefits </b></p>
                         </div>
                     </div>
                 </div>
@@ -104,7 +108,7 @@
                     <a href="#">
                         <div class="wallet-balance">
                             <p class="icon_css" style=""><i class="fa fa fa-inr" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.LevelIncome</h4>
+                            <h5 class="text-white text-uppercase">@ViewBag.LevelIncome</h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
@@ -123,7 +127,7 @@
                     <a href="#">
                         <div class="wallet-balance">
                             <p class="icon_css" style=""><i class="fa fa fa-inr" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.LevelUpgradeIncome</h4>
+                            <h5 class="text-white text-uppercase">@ViewBag.LevelUpgradeIncome</h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
@@ -142,7 +146,7 @@
                     <a href="#">
                         <div class="wallet-balance">
                             <p class="icon_css" style=""><i class="fa fa fa-inr" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.ReferralSponsorIncome</h4>
+                            <h5 class="text-white text-uppercase">@ViewBag.ReferralSponsorIncome</h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
@@ -161,7 +165,7 @@
                     <a href="#">
                         <div class="wallet-balance">
                             <p class="icon_css"><i class="fa fa fa-inr" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.MatrixIncome</h4>
+                            <h5 class="text-white text-uppercase">@ViewBag.MatrixIncome</h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
@@ -180,7 +184,7 @@
                     <a href="#">
                         <div class="wallet-balance">
                             <p class="icon_css" style=""><i class="fa fa fa-inr" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.ForeverMatrixIncome</h4>
+                            <h5 class="text-white text-uppercase">@ViewBag.ForeverMatrixIncome</h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
@@ -199,7 +203,7 @@
                     <a href="#">
                         <div class="wallet-balance">
                             <p class="icon_css"><i class="fa fa fa-inr" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.ForeverLevelIncome </h4>
+                            <h5 class="text-white text-uppercase">@ViewBag.ForeverLevelIncome </h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
@@ -218,7 +222,7 @@
                     <a href="#">
                         <div class="wallet-balance">
                             <p class="icon_css"><i class="fa fa-inr" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.TotalIncome</h4>
+                            <h5 class="text-white text-uppercase">@ViewBag.TotalIncome</h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
@@ -237,7 +241,7 @@
                     <a href="#">
                         <div class="wallet-balance">
                             <p class="icon_css" style=""><i class="fa fa-briefcase" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.TopupWallet</h4>
+                            <h5 class="text-white text-uppercase">@ViewBag.TopupWallet</h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
@@ -256,7 +260,7 @@
                     <a href="#">
                         <div class="wallet-balance">
                             <p class="icon_css" style=""><i class="fa fa-briefcase" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.TotalWalletAmount</h4>
+                            <h5 class="text-white text-uppercase">@ViewBag.TotalWalletAmount</h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
@@ -275,7 +279,7 @@
                     <a href="#">
                         <div class="wallet-balance">
                             <p class="icon_css" style=""><i class="fa fa-briefcase" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.MatrixWallet</h4>
+                            <h5 class="text-white text-uppercase">@ViewBag.MatrixWallet</h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
@@ -294,7 +298,7 @@
                     <a href="#">
                         <div class="wallet-balance">
                             <p class="icon_css"><i class="fa fa-inr" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.WithdrawlAmount</h4>
+                            <h5 class="text-white text-uppercase">@ViewBag.WithdrawlAmount</h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
@@ -313,7 +317,7 @@
                     <a href="#">
                         <div class="wallet-balance">
                             <p class="icon_css" style=""><i class="fa fa-level-up" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.CurrentLevel</h4>
+                            <h5 class="text-white text-uppercase">@ViewBag.CurrentLevel</h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
@@ -332,7 +336,7 @@
                     <a href="#">
                         <div class="wallet-balance">
                             <p class="icon_css" style=""><i class="fa fa-inr" style="color:#009286"></i></p>
-                            <h4 class="text-white text-uppercase">@ViewBag.UpgradeMatrix</h4>
+                            <h5 class="text-white text-uppercase">@ViewBag.UpgradeMatrix</h5>
                         </div>
                     </a>
                     <div class="particular-balance d-flex mt-2">
@@ -350,16 +354,16 @@
                 <div class="widget-heading" style="background: linear-gradient(60deg,#4a4338,#6c838d);">
                     <div class="wallet-balance">
                         <div class="">
-                            <p style="padding:4px;">SHARE REFERAL LINK</p>
+                            <h6 class="text-white" style="padding:4px;">SHARE REFERAL LINK</h6>
                             @if (Session["LoginId"].ToString() != "")
                             {
                                 //var link = Session["Pk_UserId"].ToString();
 
-                                <span class="s-icon"><a href="mailto:?subject= Referral Link &amp;body=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString(). Thanks." target="_blank" style="background:#871505"><i class="fa fa-envelope fa-lg"></i></a></span>
-                                <span class="s-icon"><a href="https://api.whatsapp.com/send?text=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#42f560" data-action="share/whatsapp/share"><i class="fa fa-whatsapp fa-lg"></i></a></span>
-                                <span class="s-icon"><a href="https://www.facebook.com/sharer.php?u=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#4267B2"><i class="fa fa-facebook fa-lg"></i></a></span>
-                                <span class="s-icon"><a href="https://www.instagram.com/?url=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#E1306C"><i class="fa fa-instagram fa-lg"></i></a></span>
-                                <span class="s-icon"><a href="https://twitter.com/intent/tweet?text=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#1DA1F2"><i class="fa fa-twitter fa-lg"></i></a></span>
+                                <span class="s-icon"><a href="mailto:?subject= Referral Link &amp;body=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString(). Thanks." target="_blank" style="background:#871505"><i class="fa fa-envelope fa-md"></i></a></span>
+                                <span class="s-icon"><a href="https://api.whatsapp.com/send?text=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#42f560" data-action="share/whatsapp/share"><i class="fa fa-whatsapp fa-md"></i></a></span>
+                                <span class="s-icon"><a href="https://www.facebook.com/sharer.php?u=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#4267B2"><i class="fa fa-facebook fa-md"></i></a></span>
+                                <span class="s-icon"><a href="https://www.instagram.com/?url=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#E1306C"><i class="fa fa-instagram fa-md"></i></a></span>
+                                <span class="s-icon"><a href="https://twitter.com/intent/tweet?text=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#1DA1F2"><i class="fa fa-twitter fa-md"></i></a></span>
                             }
                         </div>
                     </div>
@@ -369,7 +373,7 @@
 
         </div>
        
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mt-2">
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 mt-2">
             <div class="widget widget-table-one">
                 <div class="widget-heading">
                     <h6 class="font-weight-bold">Copy Referral Link</h6>
@@ -385,8 +389,7 @@
                     </div>
                 </div>
             </div>
-
-            </div>
+          </div>
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
             <div class="widget widget-chart-two bg-white">
                 <div class="widget-heading">
