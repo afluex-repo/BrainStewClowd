@@ -912,8 +912,9 @@
     /* padding: 24px 30px 63px 30px; */
     /* border-radius: 15px; */
     background-color: rgb(22, 15, 107);
+    border-radius:10px;
     background-image: linear-gradient(315deg, #160f6b 0%, #4361ee 74%);
-    min-height: 125px; 
+    min-height: 120px; 
     /* height: 100%; */
 }
 .widget-account-invoice-three .widget-heading .wallet-usr-info {
