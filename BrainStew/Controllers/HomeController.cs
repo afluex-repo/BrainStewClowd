@@ -129,10 +129,11 @@ namespace BrainStew.Controllers
 
             return RedirectToAction(FormName, Controller);
         }
-        public ActionResult Registration(string PId)
+        public ActionResult Registration(string PId, Home obj)
         {
-            Home obj = new Home();
+            //Home obj = new Home();
             List<SelectListItem> Gender = Common.BindGender();
+           // obj.SponsorId = Crypto.Decrypt(PId);
             ViewBag.Gender = Gender;
             if (!string.IsNullOrEmpty(PId))
             {
@@ -146,7 +147,7 @@ namespace BrainStew.Controllers
                 // ViewBag.SponsorId = d.Split('|')[0];
                 //ViewBag.Leg = d.Split('|')[1];
             }
-            return View();
+            return View(obj);
         }
 
         public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string MobileNo, string PinCode, string Leg, string Password, string Email, string Gender, string State, string City)
