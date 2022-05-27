@@ -15,7 +15,7 @@
                     <div class="widget-header">
                         <div class="row">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                <h4>Level Bonus PPP</h4>
+                                <h4>DIRECT BENEFITS </h4>
                             </div>
                         </div>
                     </div>
@@ -38,16 +38,17 @@
                                 </div>
                             </div>
 
-                            @*<div class="col-lg-3 col-md-3">
+                            <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
                                     <input type="hidden" value="@Model.Status" id="st" />
                                     <label>Status</label>
                                     <select id="Status" name="Status" class="form-control">
+                                        <option value="">Select</option>
                                         <option value="0">Unpaid</option>
                                         <option value="1">Paid</option>
                                     </select>
                                 </div>
-                            </div>*@
+                            </div>
 
                             <div class="col-lg-3 col-md-3" style="margin-top:28px">
                                 <div class="form-group">
@@ -60,13 +61,13 @@
                                 <thead>
                                     <tr>
                                         <th>Sr No.</th>
-                                        <th>Payout No</th>
+                                        @*<th>Payout No</th>*@
                                         <th>From Member</th>
                                         <th>Business Amount</th>
                                         <th>Income</th>
                                         @*<th>Percentage</th>*@
-                                        <th>Level</th>
-                                        @*<th>Status</th>*@
+                                        @*<th>Level</th>*@
+                                        <th>Status</th>
                                         <th>Transaction Date</th>
                                     </tr>
                                 </thead>
@@ -80,13 +81,13 @@
                                             {
                                                 <tr class="text-left">
                                                     <td>@i</td>
-                                                    <td>@Item.PayoutNo</td>
+                                                    @*<td>@Item.PayoutNo</td>*@
                                                     <td>@Item.FromName</td>
                                                     <td>@Item.BusinessAmount</td>
                                                     <td>@Item.Amount</td>
                                                     @*<td>@Item.Percentage %</td>*@
-                                                    <td>@Item.Level</td>
-                                                    @*<td>@Item.Status</td>*@
+                                                    @*<td>@Item.Level</td>*@
+                                                    <td>@Item.Status</td>
                                                     <td>@Item.TransactionDate</td>
                                                 </tr>
                                                 i++;
@@ -112,5 +113,5 @@
     var f4 = flatpickr(document.getElementById('ToDate'), {
         mode: "range"
     });
-    $("#Status").val($("#st").val()).attr("selected", "selected");
+    //$("#Status").val($("#st").val()).attr("selected", "selected");
 </script>

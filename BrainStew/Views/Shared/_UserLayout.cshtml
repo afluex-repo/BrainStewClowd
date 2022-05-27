@@ -419,7 +419,7 @@
                         <a href="#Wallet" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <i class="fa fa-folder-open"></i>
-                                <span>BrainStew Wallet</span>
+                                <span>Topup Wallet</span>
                             </div>
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -431,13 +431,16 @@
                                 if (Convert.ToBoolean(Session["IdActivated"]) == true)
                                 {
                             <li>
-                                <a href="/Wallet/AddWallet">Wallet Request</a>
+                                <a href="/Wallet/AddWallet">Topup Wallet Request</a>
                             </li>
                             <li>
-                                <a href="/Wallet/WalletList">Wallet Request List</a>
+                                <a href="/Wallet/WalletList">Topup Wallet Request List</a>
                             </li>
                             <li>
-                                <a href="/Wallet/WalletLedgerList">Wallet Ledger</a>
+                                <a href="/Wallet/WalletLedgerList">Topup Wallet Ledger</a>
+                            </li>
+                            <li>
+                                <a href="/Wallet/TransferToOtherWallet">Wallet Transfer</a>
                             </li>
                             @*<li>
                                     <a href="/User/PayoutRequest">Transfer to Account</a>
@@ -500,9 +503,7 @@
                             <li>
                                 <a href="/user/TopUpList">Donation List</a>
                             </li>
-                            <li>
-                                <a href="/User/PayoutRequest">Transfer To Bank</a>
-                            </li>
+                          
                                 }
                                 else
                                 {
@@ -596,7 +597,7 @@
                             </li>
                         </ul>
                     </li>*@
-                    <li class="menu">
+                    @*<li class="menu">
                         <a href="#LevelBonus" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <i class="fa fa-cubes"></i>
@@ -609,12 +610,12 @@
                         <ul class="collapse submenu list-unstyled" id="LevelBonus" data-parent="#accordionExample">
                             <li>
                                 <a href="/Report/LevelIncomeTr1">Level Bonus Joining</a>
-                            </li>
+                            </li>*@
                             @*<li>
                                 <a href="/Report/LevelIncomeTr2">Level Bonus PPP</a>
                             </li>*@
-                        </ul>
-                    </li>
+                        @*</ul>
+                    </li>*@
                     <li class="menu">
                         <a href="#Payout" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
@@ -626,12 +627,63 @@
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled" id="Payout" data-parent="#accordionExample">
-                            <li>
-                                <a href="/Report/PayoutWalletLedger">Benefits Wallet</a>
-                            </li>
-                            <li>
+                           
+                            @*<li>
                                 <a href="/Report/PayoutDetail">Benefits Detail</a>
+                            </li>*@
+                            <li>
+                                <a href="/Report/LevelIncomeTr2">DIRECT BENEFITS</a>
                             </li>
+                            <li>
+                                <a href="/Report/LevelIncomeTr1">LEVEL BENEFITS</a>
+                            </li>
+                            <li>
+                                <a href="#">PLACEMENT  BENEFITS</a>
+                            </li>
+                            <li>
+                                <a href="#">UPGRADE  BENEFITS</a>
+                            </li>
+                            <li>
+                                <a href="#">BRAIN MATRIX BENEFITS</a>
+                            </li>
+                            <li>
+                                <a href="#">BRAIN LEVEL BENEFITS</a>
+                            </li>
+                            <li>
+                                <a href="#">STEW MATRIX BENEFITS</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu">
+                        <a href="#MyWallet" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <div class="">
+                                <i class="fa fa-folder-open"></i>
+                                <span>My Wallet</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="MyWallet" data-parent="#accordionExample">
+                            @if (Session["IdActivated"] != null)
+                            {
+                                if (Convert.ToBoolean(Session["IdActivated"]) == true)
+                                {
+                                    <li>
+                                        <a href="/Report/PayoutWalletLedger">My Wallet</a>
+                                    </li>
+                                    <li>
+                                        <a href="/User/PayoutRequest">Transfer To Bank</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Wallet/TransfertoPayoutWallet">Transfer To Topup Wallet</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                }
+                            }
+
                         </ul>
                     </li>
                     <li class="menu">

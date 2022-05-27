@@ -22,6 +22,7 @@ namespace BrainStew.Controllers
             List<UserReports> lst = new List<UserReports>();
             UserReports model = new UserReports();
             model.LoginId = Session["LoginId"].ToString();
+           
             DataSet ds = model.PayoutWalletLedger();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
@@ -37,6 +38,13 @@ namespace BrainStew.Controllers
                     lst.Add(obj);
                 }
                 model.lst = lst;
+            }
+            User obj1 = new User();
+            obj1.Fk_UserId = Session["Pk_userId"].ToString();
+            DataSet ds11 = obj1.GetPayoutBalance();
+            if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
+            {
+                ViewBag.BalanceAmount = ds11.Tables[0].Rows[0]["Balance"].ToString();
             }
             return View(model);
         }
@@ -228,6 +236,37 @@ namespace BrainStew.Controllers
                 model.lst = lst;
             }
             return View(model);
+        }
+        public ActionResult TransferotherWallet(string LoginId,string Amount)
+        {
+            User model = new User();
+            try
+            {
+                model.Amount = Convert.ToDecimal(Amount);
+                model.LoginId = LoginId;
+                model.AddedBy = Session["Pk_UserId"].ToString();
+                DataSet ds = model.TransfertoOther();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                    {
+                        model.Result = "1";
+                    }
+                    else if (ds.Tables[0].Rows[0][0].ToString() == "0")
+                    {
+                        model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                    else
+                    {
+                        model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                model.Result = ex.Message;
+            }
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
     }
 }

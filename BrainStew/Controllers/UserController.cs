@@ -50,7 +50,6 @@ namespace BrainStew.Controllers
                 ViewBag.Status = ds.Tables[2].Rows[0]["Status"].ToString();
                 ViewBag.TotalAmount = Convert.ToDecimal(ds.Tables[0].Rows[0]["TotalPayoutWalletAmount"])+ 0;
                 ViewBag.TotalDonation = ds.Tables[0].Rows[0]["TotalDonation"].ToString();
-
                 ViewBag.LevelIncome = ds.Tables[6].Rows[0]["LevelIncome"].ToString();
                 ViewBag.LevelUpgradeIncome = ds.Tables[6].Rows[0]["LevelUpgradeIncome"].ToString();
                 ViewBag.ReferralSponsorIncome = ds.Tables[6].Rows[0]["ReferralSponsorIncome"].ToString();
@@ -79,9 +78,6 @@ namespace BrainStew.Controllers
                 }
                 ViewBag.Tr2Business = ds.Tables[1].Rows[0]["Tr2Business"].ToString();
             }
-
-
-
             List<Dashboard> lst = new List<Dashboard>();
             obj.AddedBy = Session["Pk_userId"].ToString();
             DataSet ds1 = obj.GetRewarDetails();
@@ -295,28 +291,37 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("Topup", "User");
         }
-        public ActionResult DonationByWallet()
+        public ActionResult DonationByWallet(Account model)
         {
-            Account model = new Account();
             model.LoginId = Session["LoginId"].ToString();
+            #region GetDonationAmount
+            model.Fk_UserId = Session["Pk_UserId"].ToString();
+            DataSet ds1 = model.GetDonationAmount();
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            {
+                model.DonationAmount = ds1.Tables[0].Rows[0]["Amount"].ToString();
+                model.DonationPlanId = ds1.Tables[0].Rows[0]["Pk_DonationPlanId"].ToString();
+            }
+            #endregion
             #region Check Balance
             Common objcomm = new Common();
             objcomm.Fk_UserId = Session["Pk_UserId"].ToString();
             DataSet ds = objcomm.GetWalletBalance();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-                ViewBag.WalletBalance = ds.Tables[0].Rows[0]["amount"].ToString();
+                ViewBag.WalletBalance = Decimal.Parse(ds.Tables[0].Rows[0]["amount"].ToString()).ToString("0.00");  ;
             }
             #endregion
             return View(model);
         }
-        public ActionResult Donation(string Amount)
+        public ActionResult Donation(string Amount,string donationplanid)
         {
             Account model = new Account();
             try
             {
                 model.Fk_UserId = Session["Pk_UserId"].ToString();
                 model.Amount = Amount;
+                model.DonationPlanId = donationplanid;
                 DataSet ds = model.DonationByWallet();
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
@@ -1357,6 +1362,8 @@ namespace BrainStew.Controllers
                     obj.Name = r["Name"].ToString();
                     obj.ROIPercentage = r["BackColor"].ToString();
                     obj.TransactionNo = r["TransactionNo"].ToString();
+                    obj.GrossAmount = r["GrossAmount"].ToString();
+                    obj.ProcessingFee = r["DeductionCharges"].ToString();
                     lst.Add(obj);
                 }
                 model.lstPayoutRequest = lst;
@@ -1366,10 +1373,10 @@ namespace BrainStew.Controllers
                     model.Status = ds1.Tables[1].Rows[0]["PanStatus"].ToString();
             }
             #region Check Balance
-            DataSet ds11 = model.GetWalletBalance();
+            DataSet ds11 = model.GetPayoutBalance();
             if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
             {
-                model.PayoutBalance = ds11.Tables[0].Rows[0]["amount"].ToString();
+                model.PayoutBalance = ds11.Tables[0].Rows[0]["Balance"].ToString();
             }
             #endregion
             return View(model);
@@ -1383,12 +1390,13 @@ namespace BrainStew.Controllers
             try
             {
                 model.AddedBy = Session["Pk_userId"].ToString();
+               // model.TransactionDate = string.IsNullOrEmpty(model.TransactionDate) ? null : Common.ConvertToSystemDate(model.TransactionDate, "dd/MM/yyyy");
                 DataSet ds = model.PayoutRequest();
                 if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
                 {
                     if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
                     {
-                        TempData["msg"] = "Transfer To Account Initiated Successfully.";
+                        TempData["msg"] = "Transfer To Account with in 24 hour.";
                     }
                     else
                     {
@@ -1468,6 +1476,31 @@ namespace BrainStew.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
+        [HttpPost]
+        public ActionResult GetNameDetails(string LoginId)
+        {
+            Admin model = new Admin();
+            model.LoginId = LoginId;
+            DataSet ds = model.GetNameDetails();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                {
+                    model.Result = "yes";
+                    model.Fk_UserId = ds.Tables[0].Rows[0]["PK_UserId"].ToString();
+                    model.Name = ds.Tables[0].Rows[0]["Name"].ToString();
+                }
+                else
+                {
+                    model.Result = "no";
+                }
+              
+            }
+            else
+            {
+                model.Result = "no";
+            }
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
     }
 }

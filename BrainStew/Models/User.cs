@@ -62,8 +62,8 @@ namespace BrainStew.Models
         public List<User> lstReward { get; set; }
         public string PK_RewardId { get; set; }
         public string UPIID { get; set; }
-        
-
+        public string GrossAmount { get; set; }
+        public string ProcessingFee { get; set; }
 
 
         #endregion
@@ -217,8 +217,26 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("GetPayoutRequest", para);
             return ds;
         }
-
-
+        public DataSet TransfertoOther()
+        {
+            SqlParameter[] para = {
+                                  new SqlParameter("@LoginId",LoginId),
+                                   new SqlParameter("@Amount",Amount),
+                                    new SqlParameter("@AddedBy",AddedBy)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("PayoutRequestOther", para);
+            return ds;
+        }
+        public DataSet TransfertoTopupWallet()
+        {
+            SqlParameter[] para = {
+                                  new SqlParameter("@LoginId",LoginId),
+                                   new SqlParameter("@Amount",Amount),
+                                    new SqlParameter("@AddedBy",AddedBy)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("TransferToPayoutWallet", para);
+            return ds;
+        }
 
         public DataSet GetRewarDetails()
         {

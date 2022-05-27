@@ -24,7 +24,7 @@
                         <div class="row mb-4">
                             <div class="col-md-12">
                                 <input type="hidden" id="WalletAmount" value="@ViewBag.WalletBalance" />
-                                <label style="color:red">Wallet Balance: @ViewBag.WalletBalance</label>
+                                <label style="color:red">Topup Wallet Balance: @ViewBag.WalletBalance</label>
 
                                 @if (ViewBag.WalletBalance == "0")
                                 {
@@ -40,15 +40,15 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="LoginId">Amount</label>
-                                <label class = "form-control">1000</label>
-                                <p class="text-success" id="spName"></p>
+                                @Html.TextBoxFor(m => m.DonationAmount, new { @class = "form-control", @placeholder = "Donation Amount", @disabled = "disabled" })
+                               @Html.HiddenFor(m=>m.DonationPlanId)
                             </div>
                         </div>
                      
                         <div class="col-md-4">
                             @if (ViewBag.WalletBalance != "0")
                                 {
-                            <input type="submit" class="btn btn-sm btn-success fa-pull-left" onclick="return CheckWalletBalance();" name="btnActivate" value="Donation By Wallet" />
+                            <input type="submit" class="btn btn-sm btn-success fa-pull-left" onclick="return CheckWalletBalance();" id="btnActivate" name="btnActivate" value="Donation By Wallet" />
                             }
                         </div>
                     </div>
@@ -60,34 +60,52 @@
 <script src="~/BrainStewWebsite/assets/js/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
+    $(document).ready(function () {
+        if($("#DonationPlanId").val() !="1")
+        {
+            document.getElementById("btnActivate").value = 'Upgrade By Wallet';
+         
+        }
+    });
     function CheckWalletBalance() {
         debugger
         var r = confirm('मैं Brainstew Foundation में अपने स्वच्छा से पूर्ण होशो हवास में बिना किसी के दबाव में अपनी राशि को डोनेट कर रहा हूँ  और इस डोनेशन को मैं वापिस लेने के लिए या किसी भी लालच में आकर नही कर रहा हूँ |');
         if (r == true) {
+            debugger
             var WalletBalance = $("#WalletAmount").val();
-            var Amount = "1000";
+            var Amount = $("#DonationAmount").val();
+            var donationplanid = $("#DonationPlanId").val();
             // Session["IdActivated"] = true;
             if (Number(WalletBalance) < Number(Amount)) {
+                //window.location.href = "http://brainstewfoundation.com//Wallet/AddWallet";
+                alert('Donate Amount is less than balance amount please add amount in your wallet !!')
                 window.location.href = '@Url.Action("AddWallet", "Wallet")';
+                return false;
             }
             else {
-                $.ajax({
-                    url: "/User/Donation",
-                    Type: "Get",
-                    DataType: "JSON",
-                    data: { Amount: Amount },
-                    success: function (data) {
-                        if (data.Result = "1") {
-                            alert('Donate Amount Successfully !!')
-                            window.location.reload();
+                    $.ajax({
+                        url: "/User/Donation",
+                        Type: "Get",
+                        DataType: "JSON",
+                        data: { Amount: Amount, donationplanid: donationplanid },
+                        success: function (data) {
+                            if (data.Result = "1") {
+                                alert('Donate Amount Successfully !!')
+                                window.location.href = '@Url.Action("DonationByWallet", "User")';
+                                //window.location.reload();
+                            }
+                            else {
+                                alert(data.Result);
+                            }
                         }
-                        else
-                        {
-                            alert(data.Result);
-                        }
-                    }
-                });
+                    });
             }
         }
-    }
+   }
 </script>
+<style>
+    .errortext {
+        border: 1px solid red !important;
+        background-color: #fff0f0 !important;
+    }
+</style>
