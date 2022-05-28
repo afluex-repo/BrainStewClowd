@@ -589,6 +589,7 @@
     <Content Include="BrainStew\assets\js\vendor\modernizr-3.5.0.min.js" />
     <Content Include="BrainStew\assets\js\waypoints.min.js" />
     <Content Include="BrainStew\assets\js\wow.min.js" />
+    <Content Include="BrainStew\congratulation.html" />
     <Content Include="BrainStew\contact.html" />
     <Content Include="BrainStew\donation.html" />
     <Content Include="BrainStew\gallery.html" />
