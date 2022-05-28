@@ -3,6 +3,8 @@ using BrainStew.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Net;
+using System.Net.Mail;
 using System.Web.Mvc;
 namespace BrainStew.Controllers
 {
@@ -1373,6 +1375,40 @@ namespace BrainStew.Controllers
                     if (ds.Tables[0].Rows[0][0].ToString() == "1")
                     {
                         //TempData["msg"] = "Your request has been approved Successfully !!";
+                        model.Email = ds.Tables[0].Rows[0]["Email"].ToString();
+                        model.Name = ds.Tables[0].Rows[0]["Name"].ToString();
+                        //if (model.Email != null)
+                        //{
+                        //    string mailbody = "";
+                        //    try
+                        //    {
+                        //        mailbody = "Dear  " + model.Name + ", <br/>Your request has been approved Successfully";
+
+                        //        System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient
+                        //        {
+                        //            Host = "smtp.gmail.com",
+                        //            Port = 587,
+                        //            EnableSsl = true,
+                        //            DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
+                        //            UseDefaultCredentials = true,
+                        //            Credentials = new NetworkCredential("developer2.afluex@gmail.com", "deve@486")
+                        //        };
+                        //        using (var message = new MailMessage("developer2.afluex@gmail.com", model.Email)
+                        //        {
+                        //            IsBodyHtml = true,
+                        //            Subject = "Approve Payout",
+                        //            Body = mailbody
+                        //        })
+                        //            smtp.Send(message);
+
+                        //    }
+                        //    catch (Exception ex)
+                        //    {
+
+                        //    }
+                        //}
+                        
+
                         model.Result = "1";
                     }
                     else
