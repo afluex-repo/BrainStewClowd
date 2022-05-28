@@ -98,8 +98,10 @@ namespace BrainStew.Models
         public string MemberAccNo { get; set; }
         public string Deduction { get; set; }
         public string PostedFile { get; set; }
-
+        public string Email { get; set; }
         
+
+
 
         #endregion
         #region PinGenerated

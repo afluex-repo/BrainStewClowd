@@ -93,5 +93,36 @@ namespace BrainStew
             message.To.Add(new MailAddress(MailId));
             smtp.Send(message);
         }
+
+        public static void SendApprovePayout(string UserName, string LoginId, string Password, string Subject, string MailId)
+        {
+            MailMessage message = new MailMessage();
+            SmtpClient smtp = new SmtpClient();
+            string str = string.Empty;
+            string MailText = string.Empty;
+            message.From = new MailAddress("coustomer.BrainStew@gmail.com");
+            using (StreamReader reader = new StreamReader(HttpContext.Current.Server.MapPath("~/EmailTemplateRegistration.html")))
+            {
+                MailText = reader.ReadToEnd();
+            }
+            MailText = MailText.Replace("[UserName]", UserName);
+            MailText = MailText.Replace("[LoginId]", LoginId);
+            MailText = MailText.Replace("[Password]", Password);
+            message.Subject = Subject;
+            message.IsBodyHtml = true; //to make message body as html  
+            message.Body = MailText;
+            smtp.Port = 587;
+            smtp.Host = "smtp.gmail.com"; //for gmail host  
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential("coustomer.BrainStew@gmail.com", "BrainStew@2022");
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.EnableSsl = true;
+            message.To.Add(new MailAddress(MailId));
+            smtp.Send(message);
+        }
+
+
+
+
     }
 }
