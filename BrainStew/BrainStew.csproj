@@ -922,6 +922,7 @@
     <Content Include="Views\User\DonationByWallet.cshtml" />
     <Content Include="Views\Wallet\TransferToOtherWallet.cshtml" />
     <Content Include="Views\Wallet\TransfertoPayoutWallet.cshtml" />
+    <Content Include="Views\Admin\PayoutRequestList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
