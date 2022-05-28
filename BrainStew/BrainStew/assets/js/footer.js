@@ -8,6 +8,7 @@ document.write(`
                     <div class="footer__widget mb-30">
                         <h5 class="semi-02-title mb-25">Brain Stew</h5>
                        <p>Brain Stew is a non-government organization ngo, working as a charitable society or trust for the welfare and development of deprived street children, orphans, destitute women, poor old age people.</p>
+                       
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInUp2 animated" data-wow-delay='.3s'>

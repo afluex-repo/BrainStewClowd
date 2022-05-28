@@ -268,5 +268,64 @@ namespace BrainStew.Controllers
             }
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult PlacementBenefits()
+        {
+            List<UserReports> lst = new List<UserReports>();
+            UserReports model = new UserReports();
+            model.LoginId = Session["LoginId"].ToString();
+            model.Status = "0";
+            DataSet ds = model.PlacementBenefits();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    UserReports obj = new UserReports();
+                    obj.FromName = r["FromName"].ToString();
+                    obj.FromLoginId = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["BusinessAmount"].ToString();
+                    obj.Percentage = r["CommissionPercentage"].ToString();
+                    obj.PayoutNo = r["PayoutNo"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.Level = r["Lvl"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult PlacementBenefits(UserReports model)
+        {
+            List<UserReports> lst = new List<UserReports>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            model.LoginId = Session["LoginId"].ToString();
+            DataSet ds = model.PlacementBenefits();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    UserReports obj = new UserReports();
+                    obj.FromName = r["FromName"].ToString();
+                    obj.FromLoginId = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["BusinessAmount"].ToString();
+                    obj.Percentage = r["CommissionPercentage"].ToString();
+                    obj.PayoutNo = r["PayoutNo"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.Level = r["Lvl"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
     }
 }
+
+

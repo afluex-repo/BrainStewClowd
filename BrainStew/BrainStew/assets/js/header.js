@@ -8,7 +8,7 @@ document.write(`
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--Links of CSS files-->
-    <link rel="icon" type="jpg/png" href="assets/img/logo/favicon.jpg"/>
+    <link rel="icon" type="jpg/png" href="assets/img/logo/favicon.png"/>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
@@ -33,13 +33,22 @@ document.write(`
         <div class="header-top-area head-top-03 theme-bg pt-10 pb-10 mb-10 d-lg-block">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-xl-6 col-lg-7">
+                    <div class="col-xl-6 col-lg-8">
                         <div class="top-cta">
                             <span><i class ="far fa-phone"></i> <b>Call</b>: <a href="tel:916389303001">(+91) 6389303001</a></span>
                             <span><i class ="far fa-envelope"></i> <b>Email</b>: <a href="mailto:brainstewfoundation@gmail.com" target="_blank"> brainstewfoundation@gmail.com</a></span>
+                            
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-5 text-right">
+                    <div class ="col-xl-3 col-lg-3">
+                    <span class ="header-social text-center"><a href="https://www.facebook.com/Brainstewfoundation/" target="_blank"><i class ="fab fa-facebook-f text-white"></i></a>
+                        <a href="https://twitter.com/FoundationStew" target="_blank"><i class ="fab fa-twitter text-white"></i></a>
+                        <a href="https://www.instagram.com/accounts/login/?next=/brainstewfoundation/" target="_blank"><i class ="fab fa-instagram text-white"></i></a>
+                        <a href="https://t.me/Brainstewfoundation" target="_blank"><i class ="fab fa-telegram text-white"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=916389303001&text=Hello" target="_blank"><i class ="fab fa-whatsapp text-white"></i></a>
+                     </span>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 text-right">
                         <div class="top-right-nav">
                             <a href="/Home/login"><i class="far fa-user-circle"></i> Signup <span>or Login</span></a>
                         </div>
@@ -52,7 +61,7 @@ document.write(`
                 <div class="row align-items-center justify-content-between">
                     <div class="col-xl-2 col-lg-2 col-md-6 col-6">
                         <div class="logo">
-                            <a class="logo-img" href="index.html"><img src="assets/img/logo/brainstew_logo.jpg" class="logo_img" alt=""></a>
+                            <a class ="logo-img" href="index.html"><img src="assets/img/logo/brainstew-logo.png" class ="logo_img" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-7 col-lg-6 d-none d-lg-block text-lg-center text-xl-right">
