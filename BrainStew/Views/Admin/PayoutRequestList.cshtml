@@ -87,7 +87,8 @@
                                                     @if (Item.Status == "Pending")
                                                     {
                                                         <td>
-                                                            <a href="/Admin/ApprovePayout?id=@Item.PK_RequestID" class="btn btn-success btn-sm " onclick="return confirm('Are you sure you want to approve this request ?') ">Approve</a>
+                                                            @*<a href="/Admin/ApprovePayout?id=@Item.PK_RequestID"  class="btn btn-success btn-sm pull-right mb-2" onclick="openPopup();">Approve</a>*@
+                                                            <a class="btn btn-success btn-sm pull-right" onclick="openPopup(@Item.PK_RequestID);">Approve</a>
                                                             <a href="/Admin/DeclinePayout?id=@Item.PK_RequestID" class="btn btn-danger btn-sm " onclick="return confirm('Are you sure you want to decline this request  ?') ">Decline</a>
 
                                                         </td>
@@ -104,24 +105,72 @@
                                 </tbody>
                             </table>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+<div class="modal fade" id="myModal" role="dialog" style="display: none;padding-top:55px;">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Approve Request</h5>
+                <button type="button" class="close" data-dismiss="modal" onclick="closeModal();">&times;</button>
+            </div>
+            <div class="modal-body" style="color: black">
+               @Html.HiddenFor(m=>m.PK_RequestID)
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Transaction Number</label>
+                            @Html.TextBoxFor(m => m.TransactionNo, new { @class = "form-control", @placeholder = "Transaction Number" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Transaction Date</label>
+                            @Html.TextBoxFor(m => m.TransactionDate, new { @class = "form-control", @placeholder = "Transaction Date" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="button" class="btn btn-sm btn-success" onclick="return approved()" value="Submit" />&nbsp;&nbsp;
+                            <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" onclick="closeModal();">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+
+    </div>
+</div>
 }
 
-<script src="~/plugins/flatpickr/flatpickr.js"></script>
-<script src="~/plugins/flatpickr/custom-flatpickr.js"></script>
+@*<script src="~/plugins/flatpickr/flatpickr.js"></script>
+<script src="~/plugins/flatpickr/custom-flatpickr.js"></script>*@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
 <script>
-    var f3 = flatpickr(document.getElementById('FromDate'),
-        {
-            // mode: "range"
-        });
-    var f3 = flatpickr(document.getElementById('ToDate'),
-        {
-            // mode: "range"
-        });
+    $('#TransactionDate').datepicker({
+        dateFormat: 'dd/mm/yy',
+    });
+    //var f3 = flatpickr(document.getElementById('FromDate'),
+    //    {
+    //        // mode: "range"
+    //    });
+    //var f3 = flatpickr(document.getElementById('ToDate'),
+    //    {
+    //        // mode: "range"
+    //    });
 
     function isNumberKey(evt) {
 
@@ -208,6 +257,53 @@
         //}
     //}
 
+
+    function openPopup(requestid) {
+        debugger
+        jQuery.noConflict();
+        var requestid = $("#PK_RequestID").val(requestid)
+        $("#myModal").modal('show');
+
+    }
+
+    function approved() {
+        debugger;
+        jQuery.noConflict();
+        $(".errortext").removeClass("errortext");
+        var TransactionNo = $("#TransactionNo").val();
+        var TransactionDate = $("#TransactionDate").val();
+        var requestid = $('#PK_RequestID').val();
+
+        if (TransactionNo == "") {
+            $("#TransactionNo").addClass('errortext');
+            $('#TransactionNo').focus();
+            return false;
+        }
+        if (TransactionDate == "") {
+            $("#TransactionDate").addClass('errortext');
+            $('#TransactionDate').focus();
+            return false;
+        }
+        else
+        {
+            $.ajax({
+                url: "/Admin/ApprovePayout",
+                Type: "post",
+                DataType: "JSON",
+                data: { TransactionNo: TransactionNo, TransactionDate: TransactionDate, requestid: requestid },
+                success: function (data) {
+                    if (data.Result == "1") {
+                        $("#myModal").modal('hide');
+                        alert("Your request has been approved Successfully !!");
+                        location.reload();
+                    }
+                    else {
+                        alert(data.Result);
+                    }
+                }
+            });
+        }
+    }
 </script>
 
 
