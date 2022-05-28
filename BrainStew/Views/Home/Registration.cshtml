@@ -29,7 +29,7 @@
 
     <title>BrainStew</title>
 
-    <link rel="icon" type="image/png" href="~/BrainStew/assets/img/logo/favicon.png">
+    <link rel="icon" type="image/png" href="~/BrainStew/assets/img/logo/favicon.jpg">
     <style>
         .errortext {
             border: 2px solid red !important;
@@ -75,8 +75,8 @@
                         <div class="d-table-cell">
                             <div class="signup-form">
                                 <div class="logo">
-                                    <a href="/Home/index"><img src="~/BrainStew/assets/img/logo/brainstew-logo.png" alt="image" width="150px"></a>
-                                    
+                                    <a href="/Home/index"><img src="~/BrainStewWebsite/assets/img/logo.png" alt="image" width="100px"></a>
+
                                 </div>
                                 <h3>Registration</h3>
                                 <p>Already signed up? <a href="/Home/Login">Log in</a></p>
@@ -87,7 +87,7 @@
                                         @if (ViewBag.SponsorId != null && ViewBag.SponsorId != "")
                                         {
                                             <h5 style="color: black; font-size: 14px;">Congratulations! For joining us under sponsor code: @ViewBag.SponsorId</h5>
-                                                <input type="hidden" value="@ViewBag.SponsorId" id="SponsorId" name="SponsorId" />
+                                            <input type="hidden" value="@ViewBag.SponsorId" id="SponsorId" name="SponsorId" />
                                         }
                                         else
                                         {
@@ -220,11 +220,15 @@
             getsponsordetails()
         })
         function getsponsordetails(obj) {
-        
+            debugger
             obj1 = $(obj).val();
-            if (obj == undefined)
+            if($("#SponsorId").val()=="")
             {
-                obj1 = "BrainStew";
+                obj1="BrainStew";
+            }
+            else if (obj == undefined)
+            {
+                obj1 = "@ViewBag.SponsorId";
             }
             else {
                 obj1 = $(obj).val();
@@ -240,7 +244,7 @@
                     if (response.Result == "Yes") {
                         $('#SponsorName').val(response.DisplayName);
                         $('#SponsorId').val(obj1);
-                        
+
                     }
                     else {
 
@@ -315,7 +319,7 @@
             $("#Password").attr("disabled", false);
             $("#ConfirmPassword").attr("disabled", false);
             $("#Gender").attr("disabled", false);
-            $("#Email").attr("disabled", false); 
+            $("#Email").attr("disabled", false);
             $('#Confirm').show();
             $('#Confirm').attr("disabled", false);
             $('#Register').attr("disabled", false);

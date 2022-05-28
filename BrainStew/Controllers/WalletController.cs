@@ -55,7 +55,7 @@ namespace BrainStew.Controllers
             DataSet ds = obj.GetWalletBalance();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-                ViewBag.WalletBalance = ds.Tables[0].Rows[0]["amount"].ToString();
+                ViewBag.WalletBalance = Decimal.Parse(ds.Tables[0].Rows[0]["amount"].ToString()).ToString("0.00"); ;
             }
             #endregion
 
@@ -86,8 +86,8 @@ namespace BrainStew.Controllers
         }
 
         [HttpPost]
-        //[ActionName("AddWallet")]
-        //[OnAction(ButtonName = "Save")]
+        [ActionName("AddWallet")]
+        [OnAction(ButtonName = "Save")]
         public ActionResult AddWallet(UserWallet model,HttpPostedFileBase PostedFile)
         {
             try
@@ -319,7 +319,11 @@ namespace BrainStew.Controllers
                 ViewBag.Available = double.Parse(ds.Tables[0].Compute("sum(CrAmount)-sum(DrAmount)", "").ToString()).ToString("n2");
             }
 
-
+            DataSet ds11 = model.GetWalletBalance();
+            if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
+            {
+                ViewBag.BalanceAmount = ds11.Tables[0].Rows[0]["amount"].ToString();
+            }
             return View(model);
         }
 
@@ -384,7 +388,82 @@ namespace BrainStew.Controllers
             return RedirectToAction("WalletList", "Wallet");
 
         }
-
+        public ActionResult TransferToOtherWallet(User model)
+        {
+            model.Fk_UserId = Session["Pk_UserId"].ToString();
+            DataSet ds11 = model.GetWalletBalance();
+            if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
+            {
+                ViewBag.BalanceAmount = ds11.Tables[0].Rows[0]["amount"].ToString();
+            }
+            return View();
+        }
+        [HttpPost]
+        [ActionName("TransferToOtherWallet")]
+        [OnAction(ButtonName = "Transfer")]
+        public ActionResult TransferWallet(User model)
+        {
+            try
+            {
+                model.AddedBy = Session["Pk_UserId"].ToString();
+                DataSet ds = model.TransfertoOther();
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                    {
+                        TempData["TransferWallet"] = "Transferred  successfully";
+                    }
+                    else
+                    {
+                        TempData["TransferWallet"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["TransferToOtherWallet"] = ex.Message;
+            }
+            return RedirectToAction("TransferToOtherWallet", "Wallet");
+        }
+        public ActionResult TransfertoPayoutWallet(UserWallet obj)
+        {
+            User model = new Models.User();
+            model.Fk_UserId = Session["Pk_UserId"].ToString();
+            DataSet ds11 = model.GetPayoutBalance();
+            if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
+            {
+                obj.Balance = ds11.Tables[0].Rows[0]["Balance"].ToString();
+            }
+            return View(obj);
+        }
+        [HttpPost]
+        [ActionName("TransfertoPayoutWallet")]
+        [OnAction(ButtonName = "TransferPayoutWallet")]
+        public ActionResult TransfertoPayoutWallet(User model)
+        {
+            try
+            {
+                model.AddedBy = Session["Pk_UserId"].ToString();
+                model.LoginId= Session["LoginId"].ToString();
+                DataSet ds = model.TransfertoTopupWallet();
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                    {
+                        TempData["msg"] = "Transferred  successfully";
+                    }
+                    else
+                    {
+                        TempData["msg"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["msg"] = ex.Message;
+            }
+            return RedirectToAction("TransfertoPayoutWallet", "Wallet");
+        }
 
     }
 }

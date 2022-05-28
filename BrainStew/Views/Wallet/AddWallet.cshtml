@@ -14,7 +14,7 @@
                     <div class="widget-header">
                         <div class="row">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                <h4>Wallet Request</h4>
+                                <h4>Topup Wallet Request</h4>
                                 @*<span class="text-danger">
                                         @TempData["Wallet"]
                                     </span>*@
@@ -24,7 +24,7 @@
                     <div class="widget-content widget-content-area">
                         <div class="row">
                             <div class="col-md-4">
-                                <label style="color:red">Wallet Balance: @ViewBag.WalletBalance</label>
+                                <label style="color:red">Topup Wallet Balance: @ViewBag.WalletBalance</label>
                             </div>
                         </div>
                         <div class="row mb-4">
@@ -113,7 +113,7 @@
                             <br />
                             @*<input class="btn btn-success pull-left" type="submit" value="Request" id="Save" name="Save" onclick="return validateform();" />*@
 
-                            <input class="btn btn-success" name="Save" id="Save" type="button" value="Request" onclick="return validateform();" data-toggle="modal" />
+                            <input class="btn btn-success" name="Save" id="Save" type="submit" value="Request" onclick="return validateform();"/>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
 
 
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    @*<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -139,7 +139,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
 
 
 
@@ -172,7 +172,7 @@
     function validateform() {
         debugger;
         jQuery.noConflict();
-        $('#exampleModal').modal('hide');
+        //$('#exampleModal').modal('hide');
         $(".errortext").removeClass("errortext");
         if ($('#LoginId').val() == '') {
             $("#LoginId").addClass('errortext');
@@ -184,11 +184,11 @@
             $('#Amount').focus();
             return false;
         }
-        if ($('#PaymentType').val() == '') {
-            $("#PaymentType").addClass('errortext');
-            $('#PaymentType').focus();
-            return false;
-        }
+        //if ($('#PaymentType').val() == '') {
+        //    $("#PaymentType").addClass('errortext');
+        //    $('#PaymentType').focus();
+        //    return false;
+        //}
         if ($('#BankName').val() == '') {
             $("#BankName").addClass('errortext');
             $('#BankName').focus();
@@ -205,25 +205,25 @@
             return false;
 
         }
-        if ($('#PostedFile').val() == '') {
-            $("#PostedFile").addClass('errortext');
-            $('#PostedFile').focus();
-            return false;
-        }
+        //if ($('#PostedFile').val() == '') {
+        //    $("#PostedFile").addClass('errortext');
+        //    $('#PostedFile').focus();
+        //    return false;
+        //}
         
         else {
-            SetAmountandPackage();
+            //SetAmountandPackage();
             return true;
         }
 
     }
 
 
-    function SetAmountandPackage() {
-        debugger;
-        jQuery.noConflict();
-        $('#exampleModal').modal('show');
-    }
+    //function SetAmountandPackage() {
+    //    debugger;
+    //    jQuery.noConflict();
+    //    $('#exampleModal').modal('show');
+    //}
 
 
 

@@ -45,6 +45,8 @@ namespace BrainStew.Models
         public string BonusAmount { get; set; }
         //public string Monthid { get; set; }
         public string ROI { get; set; }
+        public string DonationAmount { get; set; }
+        public string DonationPlanId { get; set; }
         public DataSet TopUp()
         {
             SqlParameter[] para = {
@@ -75,10 +77,19 @@ namespace BrainStew.Models
             SqlParameter[] para =
             {
                      new SqlParameter("@Fk_UserId",Fk_UserId),
-                     new SqlParameter("@Amount",Amount)
+                     new SqlParameter("@Amount",Amount),
+                     new SqlParameter("@DonationPlanId",DonationPlanId)
             };
-            DataSet ds = DBHelper.ExecuteQuery("DonationUserByWallet", para);
+            DataSet ds = DBHelper.ExecuteQuery("ActivateUserByWallet", para);
             return ds;
+        }
+        public DataSet GetDonationAmount()
+        {
+            SqlParameter[] para = { new SqlParameter("@PK_USerID", Fk_UserId) };
+            DataSet ds = DBHelper.ExecuteQuery("GetDonationAmount", para);
+
+            return ds;
+
         }
     }
 }

@@ -1320,6 +1320,7 @@ namespace BrainStew.Controllers
                     obj.LoginId = r["LoginId"].ToString();
                     obj.Name = r["Name"].ToString();
                     obj.TransactionNo = r["TransactionNo"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
                     lst.Add(obj);
                 }
                 model.lst = lst;
@@ -1349,18 +1350,21 @@ namespace BrainStew.Controllers
                     obj.LoginId = r["LoginId"].ToString();
                     obj.Name = r["Name"].ToString();
                     obj.TransactionNo = r["TransactionNo"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
                     lst.Add(obj);
                 }
                 model.lst = lst;
             }
             return View(model);
         }
-        public ActionResult ApprovePayout(string id)
+        public ActionResult ApprovePayout(string TransactionNo, string TransactionDate, string requestid )
         {
+            Admin model = new Admin();
             try
             {
-                Admin model = new Admin();
-                model.PK_RequestID = id;
+                model.PK_RequestID = requestid;
+                model.TransactionDate = string.IsNullOrEmpty(TransactionDate) ? null : Common.ConvertToSystemDate(TransactionDate, "dd/MM/yyyy");
+                model.TransactionNo = TransactionNo;
                 model.Status = (model.Status = "Approved");
                 model.UpdatedBy = Session["Pk_AdminId"].ToString();
                 DataSet ds = model.ApprovePayoutRequest();
@@ -1368,20 +1372,49 @@ namespace BrainStew.Controllers
                 {
                     if (ds.Tables[0].Rows[0][0].ToString() == "1")
                     {
-                        TempData["msg"] = "Transfer to account approved Successfully";
+                        //TempData["msg"] = "Your request has been approved Successfully !!";
+                        model.Result = "1";
                     }
                     else
                     {
-                        TempData["msg"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                        model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                     }
                 }
             }
             catch (Exception ex)
             {
-                TempData["msg"] = ex.Message;
+                model.Result = ex.Message;
             }
-            return RedirectToAction("PayoutRequestList", "Admin");
+            return Json(model, JsonRequestBehavior.AllowGet);
+            //return RedirectToAction("PayoutRequestList", "Admin");
         }
+        //public ActionResult ApprovePayout(string id)
+        //{
+        //    try
+        //    {
+        //        Admin model = new Admin();
+        //        model.PK_RequestID = id;
+        //        model.Status = (model.Status = "Approved");
+        //        model.UpdatedBy = Session["Pk_AdminId"].ToString();
+        //        DataSet ds = model.ApprovePayoutRequest();
+        //        if (ds != null && ds.Tables.Count > 0)
+        //        {
+        //            if (ds.Tables[0].Rows[0][0].ToString() == "1")
+        //            {
+        //                TempData["msg"] = "Transfer to account approved Successfully";
+        //            }
+        //            else
+        //            {
+        //                TempData["msg"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        TempData["msg"] = ex.Message;
+        //    }
+        //    return RedirectToAction("PayoutRequestList", "Admin");
+        //}
 
         public ActionResult DeclinePayout(string id)
         {

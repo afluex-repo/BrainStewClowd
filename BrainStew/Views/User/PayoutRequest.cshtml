@@ -69,7 +69,9 @@
                                         <th>Transaction No</th>
                                         <th>Login Id</th>
                                         <th>Name</th>
-                                        <th>Amount</th>
+                                        <th>Withdrawl Amount</th>
+                                        <th>Processing Fee</th>
+                                        <th>Gross Amount</th>
                                         <th>Date</th>
                                         <th>IFSC Code</th>
                                         <th>Account No</th>
@@ -92,6 +94,8 @@
                                                     <td>@Item.LoginId</td>
                                                     <td>@Item.Name</td>
                                                     <td>@Item.Amount</td>
+                                                    <td>@Item.ProcessingFee</td>
+                                                    <td>@Item.GrossAmount</td>
                                                     <td>@Item.Date</td>
                                                     <td>@Item.IFSCCode</td>
                                                     <td>@Item.AccountNo</td>
@@ -126,7 +130,6 @@
         {
             // mode: "range"
         });
-
     function isNumberKey(evt) {
         var charCode = (evt.which) ? evt.which : event.keyCode;
         if (charCode != 46 && charCode > 31
@@ -144,8 +147,8 @@
             $('#Amount').focus();
             return false;
         }
-        if (parseFloat($("#Amount").val()) < 100) {
-            alert("Transfer amount should not be less than 100 Rs.");
+        if (parseFloat($("#Amount").val()) < 1) {
+            alert("Transfer amount should not be less than 1 Rs.");
             return false;
         }
     }
@@ -153,8 +156,7 @@
     function GetFinalAmount() {
         debugger;
         var amount = $("#Amount").val();
-        if (Number(amount) > 25000)
-        {
+        if (Number(amount) > 25000) {
             alert('you can not enter amount greater than 25k');
             $("#Amount").val('');
             $("#lbld").text(parseFloat(0));
@@ -162,9 +164,9 @@
         }
         else {
             var deductionAmount = parseFloat($("#Amount").val()) * 0.15;
-            if (parseFloat($("#Amount").val()) < 500) {
-                deductionAmount = 10;
-            }
+            //if (parseFloat($("#Amount").val()) < 500) {
+            //    deductionAmount = 10;
+            //}
             $("#lbld").text(parseFloat(deductionAmount));
             var finalAmount = parseFloat($("#Amount").val()) - parseFloat(deductionAmount);
             $("#lblf").text(parseFloat(finalAmount));

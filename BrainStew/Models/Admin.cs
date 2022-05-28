@@ -336,7 +336,9 @@ namespace BrainStew.Models
                 new SqlParameter("@LoginId", LoginId),
                 new SqlParameter("@FromDate", FromDate),
                 new SqlParameter("@ToDate", ToDate),
-                 new SqlParameter("@Status", Status)
+                 new SqlParameter("@Status", Status),
+                 new SqlParameter("@TransactionNo", TransactionNo),
+                 new SqlParameter("@TransactionDate",TransactionDate)
             };
             DataSet ds = DBHelper.ExecuteQuery("GetPayoutRequest", para);
             return ds;
@@ -346,7 +348,9 @@ namespace BrainStew.Models
             SqlParameter[] para = {
                 new SqlParameter("@Pk_RequestId",PK_RequestID),
                  new SqlParameter("@Status",Status),
-                new SqlParameter("@ApprovedBy",UpdatedBy)
+                new SqlParameter("@ApprovedBy",UpdatedBy),
+                new SqlParameter("@TransactionDate",TransactionDate),
+                new SqlParameter("@TransactionNo",TransactionNo)
             };
             DataSet ds = DBHelper.ExecuteQuery("ApprovePayoutRequest", para);
             return ds;
