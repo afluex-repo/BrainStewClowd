@@ -91,8 +91,8 @@
                         success: function (data) {
                             if (data.Result = "1") {
                                 alert('Donate Amount Successfully !!')
-                                window.location.href = '@Url.Action("DonationByWallet", "User")';
-                                //window.location.reload();
+                                @*window.location.href = '@Url.Action("DonationByWallet", "User")';*@
+                                window.location.reload();
                             }
                             else {
                                 alert(data.Result);

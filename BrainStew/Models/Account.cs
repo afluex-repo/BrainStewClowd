@@ -80,7 +80,7 @@ namespace BrainStew.Models
                      new SqlParameter("@Amount",Amount),
                      new SqlParameter("@DonationPlanId",DonationPlanId)
             };
-            DataSet ds = DBHelper.ExecuteQuery("DonationUserByWallet", para);
+            DataSet ds = DBHelper.ExecuteQuery("ActivateUserByWallet", para);
             return ds;
         }
         public DataSet GetDonationAmount()
