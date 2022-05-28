@@ -1407,21 +1407,7 @@ namespace BrainStew.Controllers
 
                         //    }
                         //}
-
-                        if (obj.Email != "" && obj.Email != null)
-                        {
-                            try
-                            {
-                                BLMail.SendRegistrationMail(Session["DisplayName"].ToString(), Session["LoginId"].ToString(), Session["PassWord"].ToString(), "Registration Successful", obj.Email);
-                            }
-                            catch (Exception ex)
-                            {
-
-                            }
-                        }
-
-
-
+                        
 
                         model.Result = "1";
                     }
