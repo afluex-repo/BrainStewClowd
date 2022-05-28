@@ -62,9 +62,11 @@ namespace BrainStew.Controllers
                                 }
                                 else
                                 {
-                                    Session["IdActivated"] = false;
-                                    FormName = "CompleteRegistration";
-                                    Controller = "Home";
+                                    Session["IdActivated"] = true;
+                                    FormName = "UserDashBoard";
+                                    Controller = "User";
+                                    //FormName = "CompleteRegistration";
+                                    //Controller = "Home";
                                 }
 
                             }
@@ -242,7 +244,6 @@ namespace BrainStew.Controllers
             #endregion
             return View(model);
         }
-      
         public ActionResult FillAmount(string ProductId)
         {
             Admin obj = new Admin();
@@ -311,12 +312,10 @@ namespace BrainStew.Controllers
             return PartialView("_Menu", Menu);
         }
         #endregion
-
         public ActionResult ForgetPassword()
         {
             return View();
         }
-
         [HttpPost]
         [ActionName("ForgetPassword")]
         [OnAction(ButtonName = "forgetpassword")]
@@ -376,21 +375,18 @@ namespace BrainStew.Controllers
         {
             return View();
         }
-
         public ActionResult CalculateLevelIncomeTr2()
         {
             Home model = new Home();
             DataSet ds = model.CalculateLevelIncomeTr2();
             return View();
         }
-
         public ActionResult CalculateROI()
         {
             Home model = new Home();
            DataSet ds = model.CalculateROI();
             return View();
         }
-    
         public ActionResult ActivateUser(string Amount)
         {
             Home model = new Home();
@@ -404,7 +400,7 @@ namespace BrainStew.Controllers
                     if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
                     {
                         model.Result = "1";
-                        return View("Dashboard", "User");
+                        return View("UserDashboard", "User");
                     }
                     else
                     {
@@ -424,6 +420,5 @@ namespace BrainStew.Controllers
                 return RedirectToAction("CompleteRegistration", "Home");
             }
         }
-
     }
 }

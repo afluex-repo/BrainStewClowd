@@ -64,10 +64,10 @@ namespace BrainStew.Controllers
                 ViewBag.CurrentLevel = ds.Tables[6].Rows[0]["CurrentLevel"].ToString();
                 ViewBag.UpgradeMatrix = ds.Tables[6].Rows[0]["UpgradeMatrix"].ToString(); 
                 ViewBag.ReferralIncentive = ds.Tables[6].Rows[0]["ReferralIncentive"].ToString();
-                if (ViewBag.Status == "InActive")
-                {
-                    return RedirectToAction("ActivateByPin", "User");
-                }
+                //if (ViewBag.Status == "InActive")
+                //{
+                //    return RedirectToAction("ActivateByPin", "User");
+                //}
             }
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[1].Rows.Count > 0)
             {
@@ -328,17 +328,20 @@ namespace BrainStew.Controllers
                     if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
                     {
                         model.Result = "1";
-                        return View("DonationByWallet", "User");
+                        return Json(model, JsonRequestBehavior.AllowGet);
+                        //return View("DonationByWallet", "User");
                     }
                     else
                     {
                         model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
-                        return View("DonationByWallet", "User");
+                        return Json(model, JsonRequestBehavior.AllowGet);
+                        //return View("DonationByWallet", "User");
                     }
                 }
                 else
                 {
-                    return View("DonationByWallet", "User");
+                    //return View("DonationByWallet", "User");
+                    return Json(model, JsonRequestBehavior.AllowGet);
                 }
                 // Return on PaymentPage with Order data
             }
@@ -346,7 +349,8 @@ namespace BrainStew.Controllers
             {
                 model.Result = "0";
                 TempData["error"] = ex.Message;
-                return View("DonationByWallet", "User");
+                //return View("DonationByWallet", "User");
+                 return Json(model, JsonRequestBehavior.AllowGet);
             }
         }
         public ActionResult FillAmount(string ProductId)
