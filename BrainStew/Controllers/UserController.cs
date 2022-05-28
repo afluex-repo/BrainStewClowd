@@ -302,6 +302,11 @@ namespace BrainStew.Controllers
                 model.DonationAmount = ds1.Tables[0].Rows[0]["Amount"].ToString();
                 model.DonationPlanId = ds1.Tables[0].Rows[0]["Pk_DonationPlanId"].ToString();
             }
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[1].Rows.Count > 0)
+            {
+                
+                model.UpdatedDonationPlanId = ds1.Tables[1].Rows[0]["UpdatedDonationId"].ToString();
+            }
             #endregion
             #region Check Balance
             Common objcomm = new Common();
