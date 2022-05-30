@@ -211,4 +211,8 @@ E:\Repository\BrainStewClowd\BrainStew\bin\System.Web.Http.xml
 E:\Repository\BrainStewClowd\BrainStew\bin\System.Web.Http.WebHost.xml
 E:\Repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.dll
 E:\Repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.pdb
+<<<<<<< HEAD
 D:\Ashwani Afluex\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.csprojResolveAssemblyReference.cache
+=======
+E:\Repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.csprojResolveAssemblyReference.cache
+>>>>>>> 0f14ab0237377be0beb0761606f78d18c6cb9a4d
