@@ -46,10 +46,17 @@
                         </div>
                      
                         <div class="col-md-4">
-                            @if (ViewBag.WalletBalance != "0")
-                                {
-                            <input type="submit" class="btn btn-sm btn-success fa-pull-left" onclick="return CheckWalletBalance();" id="btnActivate" name="btnActivate" value="Donation By Wallet" />
+                           @if (Model.UpdatedDonationPlanId == "10")
+                           {
+                            <h6 style="color:green">You have already completed your donation level</h6>
+                           }
+                           else
+                           {
+                               if (ViewBag.WalletBalance != "0")
+                               {
+                                <input type="submit" class="btn btn-sm btn-success fa-pull-left" onclick="return CheckWalletBalance();" id="btnActivate" name="btnActivate" value="Donation By Wallet" />
                             }
+                           }
                         </div>
                     </div>
                 </div>

@@ -1378,10 +1378,14 @@ namespace BrainStew.Controllers
                     if (ds.Tables[0].Rows[0][0].ToString() == "1")
                     {
                         //TempData["msg"] = "Your request has been approved Successfully !!";
-                        //Session["Name"] = ds.Tables[0].Rows[0]["Name"].ToString();
-                        //Session["Email"] = ds.Tables[0].Rows[0]["Email"].ToString();
-                        //Session["TransactionNo"] = ds.Tables[0].Rows[0]["TransactionNo"].ToString();
-                        //Session["TransactionDate"] = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
+                        //model.Email = ds.Tables[0].Rows[0]["Email"].ToString();
+                        //model.Name = ds.Tables[0].Rows[0]["Name"].ToString();
+                        //if (model.Email != null)
+                        //{
+                        //    string mailbody = "";
+                        //    try
+                        //    {
+                        //        mailbody = "Dear  " + model.Name + ", <br/>Your request has been approved Successfully";
 
                        // model.Name = ds.Tables[0].Rows[0]["Name"].ToString();
                        //model.Email = ds.Tables[0].Rows[0]["Email"].ToString();
