@@ -84,5 +84,18 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("GetPlacementBenefitsReport", para);
             return ds;
         }
+
+        public DataSet UpgradeBenefits()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                  new SqlParameter("@Status", Status),
+                  new SqlParameter("@Fk_IncomeTypeId",4)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetBenefitsReports", para);
+            return ds;
+        }
     }
 }
