@@ -17,8 +17,8 @@ namespace BrainStew.Models
         public string CrAmount { get; set; }
         public string DrAmount { get; set; }
         public string TransactionDate { get; set; }
-        public string FromDate { get;  set; }
-        public string ToDate { get;  set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
         public string FromName { get; set; }
         public string FromLoginId { get; set; }
         public string BusinessAmount { get; set; }
@@ -28,7 +28,7 @@ namespace BrainStew.Models
         public string PayoutNo { get; set; }
         public string LevelIncomeTR1 { get; set; }
         public string LevelIncomeTR2 { get; set; }
-        public string GrossAmount { get;  set; }
+        public string GrossAmount { get; set; }
         public string ProcessingFee { get; set; }
         public string TDSAmount { get; set; }
         public string NetAmount { get; set; }
@@ -71,6 +71,30 @@ namespace BrainStew.Models
                 new SqlParameter("@ToDate", ToDate),
             };
             DataSet ds = DBHelper.ExecuteQuery("PayoutDetails", para);
+            return ds;
+        }
+
+        public DataSet PlacementBenefits()
+        {
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                  new SqlParameter("@Status", Status)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetPlacementBenefitsReport", para);
+            return ds;
+        }
+
+        public DataSet UpgradeBenefits()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                  new SqlParameter("@Status", Status),
+                  new SqlParameter("@Fk_IncomeTypeId",4)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetBenefitsReports", para);
             return ds;
         }
     }
