@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace BrainStew.Controllers
 {
-    public class AdminReportsController : Controller
+    public class AdminReportsController : AdminBaseController
     {
         // GET: AdminReports
         #region AssociateList
@@ -373,7 +373,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         [HttpPost]
         [ActionName("DirectListForAdmin")]
         [OnAction(ButtonName = "Search")]
@@ -410,8 +409,6 @@ namespace BrainStew.Controllers
             ViewBag.ddlleg = Leg;
             return View(model);
         }
-
-
         public ActionResult ViewProfileForAdmin(string Id)
         {
             AdminReports model = new AdminReports();
@@ -448,7 +445,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         [HttpPost]
         [ActionName("ViewProfileForAdmin")]
         [OnAction(ButtonName = "Update")]
@@ -483,9 +479,6 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("ViewProfileForAdmin", "AdminReports", new { Id = model.Fk_UserId });
         }
-
-
-
         public ActionResult DeleteUerDetails(string Id)
         {
             try
@@ -512,7 +505,6 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("AssociateList", "AdminReports");
         }
-
         public ActionResult ViewProfile(string Id)
         {
             AdminReports model = new AdminReports();
@@ -551,7 +543,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-        
         public ActionResult ViewProfileVeriFy(string Id)
         {
             AdminReports model = new AdminReports();
@@ -578,8 +569,50 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("ViewProfile","AdminReports",new { Id = Id });
         }
-
-
-
+        public ActionResult BrainMatrixBenefits()
+        {
+            List<UserReports> lst = new List<UserReports>();
+            UserReports model = new UserReports();
+            DataSet ds = model.GetBrainMatrixReport();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    UserReports obj = new UserReports();
+                    obj.FromName = r["Name"].ToString();
+                    obj.FromLoginId = r["LoginId"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.Level = r["BrainMatrixLevel"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult GetBrainMatrixReport(UserReports model)
+        {
+            List<UserReports> lst = new List<UserReports>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            model.LoginId = Session["LoginId"].ToString();
+            DataSet ds = model.GetBrainMatrixReport();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    UserReports obj = new UserReports();
+                    obj.FromName = r["Name"].ToString();
+                    obj.FromLoginId = r["LoginId"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.Level = r["BrainMatrixLevel"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
     }
 }

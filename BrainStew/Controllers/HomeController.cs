@@ -42,6 +42,7 @@ namespace BrainStew.Controllers
                            
                             if (obj.Password == Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString()))
                             {
+                                Session["BenefitsLevel"] = ds.Tables[0].Rows[0]["BenefitsLevel"].ToString();
                                 Session["LoginId"] = ds.Tables[0].Rows[0]["LoginId"].ToString();
                                 Session["Pk_userId"] = ds.Tables[0].Rows[0]["Pk_userId"].ToString();
                                 Session["UserType"] = ds.Tables[0].Rows[0]["UserType"].ToString();
