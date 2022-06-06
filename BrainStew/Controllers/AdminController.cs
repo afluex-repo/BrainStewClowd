@@ -1360,8 +1360,6 @@ namespace BrainStew.Controllers
             return View(model);
         }
 
-
-
         public ActionResult ApprovePayout(string TransactionNo, string TransactionDate, string requestid)
         {
             Admin model = new Admin();
@@ -1378,46 +1376,23 @@ namespace BrainStew.Controllers
                     if (ds.Tables[0].Rows[0][0].ToString() == "1")
                     {
                         //TempData["msg"] = "Your request has been approved Successfully !!";
-                        //Session["Name"] = ds.Tables[0].Rows[0]["Name"].ToString();
-                        //Session["Email"] = ds.Tables[0].Rows[0]["Email"].ToString();
-                        //Session["TransactionNo"] = ds.Tables[0].Rows[0]["TransactionNo"].ToString();
-                        //Session["TransactionDate"] = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
+                        Session["Name"] = ds.Tables[0].Rows[0]["Name"].ToString();
+                        Session["Email"] = ds.Tables[0].Rows[0]["Email"].ToString();
+                       model.Email = ds.Tables[0].Rows[0]["Email"].ToString();
+                        Session["TransactionNo"] = ds.Tables[0].Rows[0]["TransactionNo"].ToString();
+                        Session["TransactionDate"] = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
 
-                       // model.Name = ds.Tables[0].Rows[0]["Name"].ToString();
-                       //model.Email = ds.Tables[0].Rows[0]["Email"].ToString();
-                       //model.TransactionNo = ds.Tables[0].Rows[0]["TransactionNo"].ToString();
-                       //model.TransactionDate = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
+                        if (model.Email != "" && model.Email != null)
+                        {
+                            try
+                            {
+                                BLMail.SendApprovePayoutMail(Session["Name"].ToString(), Session["TransactionNo"].ToString(), Session["TransactionDate"].ToString(), "Your request has been approved Successfully", Session["Email"].ToString());
+                            }
+                            catch (Exception ex)
+                            {
 
-                       // if (model.Email != null)
-                       // {
-                       //     string mailbody = "";
-                       //     try
-                       //     {
-                       //         mailbody = "Dear  " + model.Name + ", <br/>Your TransactionNo"+ model.TransactionNo + " and <br/>Transaction Date"+ model.TransactionDate + " has been approved Successfully";
-
-                       //         System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient
-                       //         {
-                       //             Host = "smtp.gmail.com",
-                       //             Port = 587,
-                       //             EnableSsl = true,
-                       //             DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
-                       //             UseDefaultCredentials = true,
-                       //             Credentials = new NetworkCredential("developer2.afluex@gmail.com", "deve@486")
-                       //         };
-                       //         using (var message = new MailMessage("developer2.afluex@gmail.com", model.Email)
-                       //         {
-                       //             IsBodyHtml = true,
-                       //             Subject = "Approve Payout",
-                       //             Body = mailbody
-                       //         })
-                       //             smtp.Send(message);
-
-                       //     }
-                       //     catch (Exception ex)
-                       //     {
-
-                       //     }
-                       // }
+                            }
+                        }
 
                         model.Result = "1";
                     }
@@ -1434,37 +1409,33 @@ namespace BrainStew.Controllers
             return Json(model, JsonRequestBehavior.AllowGet);
             //return RedirectToAction("PayoutRequestList", "Admin");
         }
-
-
-
-
-        public ActionResult ApprovePayout(string id)
-        {
-            try
-            {
-                Admin model = new Admin();
-                model.PK_RequestID = id;
-                model.Status = (model.Status = "Approved");
-                model.UpdatedBy = Session["Pk_AdminId"].ToString();
-                DataSet ds = model.ApprovePayoutRequest();
-                if (ds != null && ds.Tables.Count > 0)
-                {
-                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
-                    {
-                        TempData["msg"] = "Transfer to account approved Successfully";
-                    }
-                    else
-                    {
-                        TempData["msg"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["msg"] = ex.Message;
-            }
-            return RedirectToAction("PayoutRequestList", "Admin");
-        }
+        //public ActionResult ApprovePayout(string id)
+        //{
+        //    try
+        //    {
+        //        Admin model = new Admin();
+        //        model.PK_RequestID = id;
+        //        model.Status = (model.Status = "Approved");
+        //        model.UpdatedBy = Session["Pk_AdminId"].ToString();
+        //        DataSet ds = model.ApprovePayoutRequest();
+        //        if (ds != null && ds.Tables.Count > 0)
+        //        {
+        //            if (ds.Tables[0].Rows[0][0].ToString() == "1")
+        //            {
+        //                TempData["msg"] = "Transfer to account approved Successfully";
+        //            }
+        //            else
+        //            {
+        //                TempData["msg"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        TempData["msg"] = ex.Message;
+        //    }
+        //    return RedirectToAction("PayoutRequestList", "Admin");
+        //}
 
         public ActionResult DeclinePayout(string id)
         {
