@@ -479,6 +479,9 @@
     <Content Include="BrainStew\assets\img\bg\08.jpg" />
     <Content Include="BrainStew\assets\img\bg\09.jpg" />
     <Content Include="BrainStew\assets\img\bg\10.jpg" />
+    <Content Include="BrainStew\assets\img\bg\breadcrumb.jpg" />
+    <Content Include="BrainStew\assets\img\bg\celebration_bg.png" />
+    <Content Include="BrainStew\assets\img\bg\con_bg.png" />
     <Content Include="BrainStew\assets\img\cases\01.jpg" />
     <Content Include="BrainStew\assets\img\cases\02.jpg" />
     <Content Include="BrainStew\assets\img\cases\03.jpg" />
@@ -541,7 +544,9 @@
     <Content Include="BrainStew\assets\img\instagram\07.jpg" />
     <Content Include="BrainStew\assets\img\instagram\08.jpg" />
     <Content Include="BrainStew\assets\img\instagram\09.jpg" />
+    <Content Include="BrainStew\assets\img\logo\favicon.jpg" />
     <Content Include="BrainStew\assets\img\logo\favicon.png" />
+    <Content Include="BrainStew\assets\img\logo\final_logo.png" />
     <Content Include="BrainStew\assets\img\logo\footer_logo.png" />
     <Content Include="BrainStew\assets\img\logo\footer_logo2.png" />
     <Content Include="BrainStew\assets\img\logo\header_logo_1.png" />
@@ -589,7 +594,6 @@
     <Content Include="BrainStew\assets\js\vendor\modernizr-3.5.0.min.js" />
     <Content Include="BrainStew\assets\js\waypoints.min.js" />
     <Content Include="BrainStew\assets\js\wow.min.js" />
-    <Content Include="BrainStew\congratulation.html" />
     <Content Include="BrainStew\contact.html" />
     <Content Include="BrainStew\donation.html" />
     <Content Include="BrainStew\gallery.html" />
@@ -597,6 +601,7 @@
     <Content Include="BrainStew\projects.html" />
     <Content Include="BrainStew\what-we-do.html" />
     <Content Include="Coming.html" />
+    <Content Include="congratulation.html" />
     <Content Include="css\tree-responsive.css" />
     <Content Include="css\tree.css" />
     <Content Include="EmailTemplateActivation.html" />
