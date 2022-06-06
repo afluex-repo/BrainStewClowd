@@ -692,6 +692,7 @@
     <Content Include="plugins\lightbox\default-skin\default-skin.png" />
     <Content Include="plugins\lightbox\default-skin\default-skin.svg" />
     <Content Include="plugins\lightbox\default-skin\preloader.gif" />
+    <Content Include="plugins\lightbox\default-skin\Spinner-1s-200px.gif" />
     <Content Include="plugins\lightbox\photoswipe-ui-default.min.js" />
     <Content Include="plugins\lightbox\photoswipe.css" />
     <Content Include="plugins\lightbox\photoswipe.min.js" />
