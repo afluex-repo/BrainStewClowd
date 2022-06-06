@@ -1,12 +1,12 @@
 ﻿@model BrainStew.Models.UserReports
-@{
-    ViewBag.Title = "LevelIncomeTr2";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
-}
 
+@{
+    ViewBag.Title = "BrainMatrixBenefits";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <link href="~/plugins/flatpickr/flatpickr.css" rel="stylesheet" type="text/css">
 <link href="~/plugins/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
-@using (Html.BeginForm("LevelIncomeTr2", "Report", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("BrainMatrixBenefits", "AdminReports", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
 {
     <div class="container">
         <div class="row layout-top-spacing">
@@ -15,7 +15,7 @@
                     <div class="widget-header">
                         <div class="row">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                <h4>DIRECT BENEFITS </h4>
+                                <h4>Brain Matrix Donation List</h4>
                             </div>
                         </div>
                     </div>
@@ -23,9 +23,14 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
-                                    <label>
-                                        From Date
-                                    </label>
+                                    <label>Login Id </label>
+                                    @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control", @Placeholder = "LoginId" })
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="form-group">
+                                    <label> From Date </label>
                                     @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @Placeholder = "From Date" })
 
                                 </div>
@@ -37,19 +42,6 @@
 
                                 </div>
                             </div>
-
-                            <div class="col-lg-3 col-md-3">
-                                <div class="form-group">
-                                    <input type="hidden" value="@Model.Status" id="st" />
-                                    <label>Status</label>
-                                    <select id="Status" name="Status" class="form-control">
-                                        <option value="">Select</option>
-                                        <option value="0">Unpaid</option>
-                                        <option value="1">Paid</option>
-                                    </select>
-                                </div>
-                            </div>
-
                             <div class="col-lg-3 col-md-3" style="margin-top:28px">
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-success" value="Search" name="btnSearch" />
@@ -61,13 +53,9 @@
                                 <thead>
                                     <tr>
                                         <th>Sr No.</th>
-                                        @*<th>Payout No</th>*@
-                                        <th>From Member</th>
-                                        <th>Donation Amount</th>
-                                        <th>Benefits</th>
-                                        @*<th>Percentage</th>*@
+                                        <th>Name</th>
+                                        <th>Amount</th>
                                         @*<th>Level</th>*@
-                                        <th>Status</th>
                                         <th>Transaction Date</th>
                                     </tr>
                                 </thead>
@@ -81,13 +69,9 @@
                                             {
                                                 <tr class="text-left">
                                                     <td>@i</td>
-                                                    @*<td>@Item.PayoutNo</td>*@
-                                                    <td>@Item.FromName</td>
-                                                    <td>@Item.BusinessAmount</td>
+                                                    <td>@Item.FromName (@Item.FromLoginId)</td>
                                                     <td>@Item.Amount</td>
-                                                    @*<td>@Item.Percentage %</td>*@
                                                     @*<td>@Item.Level</td>*@
-                                                    <td>@Item.Status</td>
                                                     <td>@Item.TransactionDate</td>
                                                 </tr>
                                                 i++;
@@ -115,3 +99,4 @@
     });
     //$("#Status").val($("#st").val()).attr("selected", "selected");
 </script>
+
