@@ -266,7 +266,6 @@
         <header class="header navbar navbar-expand-sm">
             <ul class="navbar-item theme-brand flex-row  text-center">
                 <li class="nav-item theme-logo">
-
                     <a href="/user/UserDashboard">
                         <img src="~/BrainStewWebsite/assets/img/logo.png" class="navbar-logo" alt="logo" />
                     </a>
@@ -293,11 +292,11 @@
                         if (Session["Gender"].ToString() == "F")
                         {
 
-                            <h6 class="text-white mt-2 mob-txt">Hello Mrs. @Session["FullName"] (@Session["LoginId"])</h6>
+                            <h6 class="text-white mt-2 mob-txt">Hello <br class="mob-br"/> Mrs. @Session["FullName"] <br class="mob-br" /> (@Session["LoginId"])</h6>
                         }
                         else
                         {
-                            <h6 class="text-white mt-3 mob-txt">Hello Mr. @Session["FullName"] (@Session["LoginId"])</h6>
+                            <h6 class="text-white mt-3 mob-txt">Hello <br class="mob-br" /> Mr. @Session["FullName"] <br class="mob-br" /> (@Session["LoginId"])</h6>
                         }
                     }
 
@@ -322,11 +321,11 @@
                                         if (Session["Gender"].ToString() == "F")
                                         {
 
-                                            <h6 class="text-white mt-3 mob-txt">Hello Mrs. @Session["FullName"] (@Session["LoginId"])</h6>
+                                            <h6 class="text-white mt-3 mob-txt">Hello <br class="mob-br" /> Mrs. @Session["FullName"] <br class="mob-br" /> (@Session["LoginId"])</h6>
                                         }
                                         else
                                         {
-                                            <h6 class="text-white mt-3 mob-txt">Hello Mr. @Session["FullName"] (@Session["LoginId"])</h6>
+                                            <h6 class="text-white mt-3 mob-txt">Hello <br class="mob-br" /> Mr. @Session["FullName"] <br class="mob-br" /> (@Session["LoginId"])</h6>
                                         }
                                     }
 
