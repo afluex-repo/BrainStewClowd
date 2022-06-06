@@ -104,7 +104,6 @@ E:\SachinMishraProject\repository\BrainStewClowd\BrainStew\bin\System.Web.Http.x
 E:\SachinMishraProject\repository\BrainStewClowd\BrainStew\bin\System.Web.Http.WebHost.xml
 E:\SachinMishraProject\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.dll
 E:\SachinMishraProject\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.pdb
-E:\Repository-Projects\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.csprojResolveAssemblyReference.cache
 D:\Ashwani Afluex\repository\BrainStewClowd\BrainStew\bin\ApplicationInsights.config
 D:\Ashwani Afluex\repository\BrainStewClowd\BrainStew\bin\roslyn\csc.exe
 D:\Ashwani Afluex\repository\BrainStewClowd\BrainStew\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
