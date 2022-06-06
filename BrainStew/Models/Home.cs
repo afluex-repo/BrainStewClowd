@@ -211,7 +211,16 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("CalculateLevelIncomeTR2");
             return ds;
         }
-
+        public DataSet CalculateLevelIncome()
+        {
+            DataSet ds = DBHelper.ExecuteQuery("CalculateLevelIncome");
+            return ds;
+        }
+        public DataSet TransferPlacementUpgradeIncome()
+        {
+            DataSet ds = DBHelper.ExecuteQuery("TransferPlacementUpgradeIncome");
+            return ds;
+        }
         public DataSet CalculateROI()
         {
             DataSet ds = DBHelper.ExecuteQuery("CalculateROI");
