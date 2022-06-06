@@ -68,14 +68,13 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
     $( document ).ready(function() {
-        if(@Model.UpdatedDonationPlanId < "3")
+        if(@Model.UpdatedDonationPlanId < "1")
         {
             var r = confirm('Please Complete your third level then use Brain matrix donation !!');
             window.location.href = '@Url.Action("UserDashboard", "User")';
 
         }
     });
-
     function CheckWalletBalance() {
         debugger
         var r = confirm('मैं Brainstew Foundation में अपने स्वच्छा से पूर्ण होशो हवास में बिना किसी के दबाव में अपनी राशि को डोनेट कर रहा हूँ  और इस डोनेशन को मैं वापिस लेने के लिए या किसी भी लालच में आकर नही कर रहा हूँ |');

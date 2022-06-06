@@ -421,5 +421,12 @@ namespace BrainStew.Controllers
                 return RedirectToAction("CompleteRegistration", "Home");
             }
         }
+        public ActionResult CalculateIncome()
+        {
+            Home model = new Home();
+            DataSet ds = model.CalculateLevelIncome();
+            DataSet ds1 = model.TransferPlacementUpgradeIncome();
+            return View();
+        }
     }
 }

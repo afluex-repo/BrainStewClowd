@@ -61,7 +61,7 @@ document.write(`
                 <div class="row align-items-center justify-content-between">
                     <div class="col-xl-2 col-lg-2 col-md-6 col-6">
                         <div class="logo">
-                            <a class ="logo-img" href="index.html"><img src="assets/img/logo/brainstew-logo.png" class ="logo_img" alt=""></a>
+                            <a class ="logo-img" href="index.html"><img src="assets/img/logo/final_logo.png" class ="logo_img" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-7 col-lg-6 d-none d-lg-block text-lg-center text-xl-right">

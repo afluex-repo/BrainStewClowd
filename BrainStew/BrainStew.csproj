@@ -929,6 +929,7 @@
     <Content Include="Views\User\BrainMatrixDonation.cshtml" />
     <Content Include="Views\Report\BrainMatrixBenefits.cshtml" />
     <Content Include="Views\AdminReports\BrainMatrixBenefits.cshtml" />
+    <Content Include="Views\Home\CalculateIncome.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

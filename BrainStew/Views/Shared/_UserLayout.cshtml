@@ -510,6 +510,8 @@
                                     <li>
                                         <a href="/user/TopUpList">Donation List</a>
                                     </li>
+                                    <li><a href="/Report/BrainMatrixBenefits">Brain Matrix Donation List</a></li>
+                                  
 
                                 }
                                 else
@@ -639,50 +641,56 @@
                                     <a href="/Report/PayoutDetail">Benefits Detail</a>
                                 </li>*@
                             <li>
-                                @if (Convert.ToInt32(Session["BenefitsLevel"].ToString()) >= 1)
-                                {
+                                @*@if (Convert.ToInt32(Session["BenefitsLevel"].ToString()) >= 1)
+                                {*@
                                     <a href="/Report/LevelIncomeTr2">DIRECT BENEFITS</a>
-                                }
+                                @*}
                                 else
                                 {
                                     <a href="#">DIRECT BENEFITS</a>
-                                }
+                                }*@
                             </li>
                             <li>
-                                @if (Convert.ToInt32(Session["BenefitsLevel"].ToString()) >= 2)
-                                {
+                                @*@if (Convert.ToInt32(Session["BenefitsLevel"].ToString()) >= 2)
+                                {*@
                                     <a href="/Report/LevelIncomeTr1">LEVEL BENEFITS</a>
-                                }
+                                @*}
                                 else
                                 {
                                     <a href="#">LEVEL BENEFITS</a>
-                                }
+                                }*@
 
                             </li>
                             <li>
-                                @if (Convert.ToInt32(Session["BenefitsLevel"].ToString()) >= 1)
-                                {
+                                @*@if (Convert.ToInt32(Session["BenefitsLevel"].ToString()) >= 3)
+                                {*@
                                     <a href="/Report/PlacementBenefits">PLACEMENT  BENEFITS</a>
-                                }
+                                @*}
                                 else
                                 {
                                     <a href="#">PLACEMENT  BENEFITS</a>
 
-                                }
+                                }*@
                             </li>
                             <li>
-                                @if (Session["BenefitsLevel"].ToString() == "4")
-                                {
+                              @*@if (Convert.ToInt32(Session["BenefitsLevel"].ToString()) >= 4)
+                              {*@
                                     <a href="/Report/UpgradeBenefits">UPGRADE  BENEFITS</a>
-                                }
+                                @*}
                                 else
                                 {
                                     <a href="#">UPGRADE  BENEFITS</a>
-                                }
-
+                                }*@
                             </li>
                             <li>
-                                <a href="/Report/BrainMatrixBenefits">BRAIN MATRIX BENEFITS</a>
+                                @*@if (Convert.ToInt32(Session["BenefitsLevel"].ToString()) >= 1 && Convert.ToInt32(ViewBag.MatrixIncomeLevel) >= 1)
+                                {*@
+                                    <a href="#">BRAIN MATRIX BENEFITS</a>
+                                @*}
+                                else
+                                {
+                                    <a href="#">BRAIN MATRIX BENEFITS</a>
+                                }*@
                             </li>
                             <li>
                                 <a href="#">BRAIN LEVEL BENEFITS</a>
