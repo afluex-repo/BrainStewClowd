@@ -92,5 +92,24 @@ namespace BrainStew.Models
             return ds;
 
         }
+        public DataSet GetBrainMatrixPlanAmount()
+        {
+            SqlParameter[] para = { new SqlParameter("@PK_USerID", Fk_UserId) };
+            DataSet ds = DBHelper.ExecuteQuery("GetBrainMatrixPlanAmount", para);
+
+            return ds;
+
+        }
+        public DataSet DonationBrainMatrixPlan()
+        {
+            SqlParameter[] para =
+            {
+                     new SqlParameter("@Fk_UserId",Fk_UserId),
+                     new SqlParameter("@Amount",Amount),
+                     new SqlParameter("@BrainMatrixPlanId",DonationPlanId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("SaveBrainMatrixPlanDetails", para);
+            return ds;
+        }
     }
 }

@@ -42,6 +42,7 @@ namespace BrainStew.Controllers
                            
                             if (obj.Password == Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString()))
                             {
+                                Session["BenefitsLevel"] = ds.Tables[0].Rows[0]["BenefitsLevel"].ToString();
                                 Session["LoginId"] = ds.Tables[0].Rows[0]["LoginId"].ToString();
                                 Session["Pk_userId"] = ds.Tables[0].Rows[0]["Pk_userId"].ToString();
                                 Session["UserType"] = ds.Tables[0].Rows[0]["UserType"].ToString();
@@ -419,6 +420,13 @@ namespace BrainStew.Controllers
                 TempData["error"] = ex.Message;
                 return RedirectToAction("CompleteRegistration", "Home");
             }
+        }
+        public ActionResult CalculateIncome()
+        {
+            Home model = new Home();
+            DataSet ds = model.CalculateLevelIncome();
+            DataSet ds1 = model.TransferPlacementUpgradeIncome();
+            return View();
         }
     }
 }

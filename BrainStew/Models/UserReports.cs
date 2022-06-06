@@ -97,5 +97,14 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("GetBenefitsReports", para);
             return ds;
         }
+        public DataSet GetBrainMatrixReport()
+        {
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetBrainMatrixReport", para);
+            return ds;
+        }
     }
 }
