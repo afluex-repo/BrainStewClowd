@@ -1695,3 +1695,15 @@ code {
         display: none;
     }
 }
+
+@media(max-width:600px)
+{
+    .mob-txt
+    {
+        color:#000 !important;
+    }
+}
+.border-10
+{
+    border-radius:10px;
+}
