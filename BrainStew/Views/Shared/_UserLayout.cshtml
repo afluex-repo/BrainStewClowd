@@ -87,7 +87,8 @@
             position: absolute;
             left: 50%; /* centers the loading animation horizontally one the screen */
             top: 50%; /* centers the loading animation vertically one the screen */
-            background-image: url("../imgs/loader.gif");
+            background-image: url('../../plugins/lightbox/default-skin/Spinner-1s-200px.gif');
+            /*background-image: url("../imgs/loader.gif");*/
             z-index: 9999; /* path to your loading animation */
             background-repeat: no-repeat;
             background-position: center;
@@ -266,7 +267,6 @@
         <header class="header navbar navbar-expand-sm">
             <ul class="navbar-item theme-brand flex-row  text-center">
                 <li class="nav-item theme-logo">
-
                     <a href="/user/UserDashboard">
                         <img src="~/BrainStewWebsite/assets/img/logo.png" class="navbar-logo" alt="logo" />
                     </a>
@@ -293,11 +293,11 @@
                         if (Session["Gender"].ToString() == "F")
                         {
 
-                            <h6 class="text-white mt-2">Hello Mrs. @Session["FullName"] (@Session["LoginId"])</h6>
+                            <h6 class="text-white mt-2 mob-txt">Hello <br class="mob-br"/> Mrs. @Session["FullName"] <br class="mob-br" /> (@Session["LoginId"])</h6>
                         }
                         else
                         {
-                            <h6 class="text-white mt-3">Hello Mr. @Session["FullName"] (@Session["LoginId"])</h6>
+                            <h6 class="text-white mt-3 mob-txt">Hello <br class="mob-br" /> Mr. @Session["FullName"] <br class="mob-br" /> (@Session["LoginId"])</h6>
                         }
                     }
 
@@ -322,11 +322,11 @@
                                         if (Session["Gender"].ToString() == "F")
                                         {
 
-                                            <h6 class="text-white mt-3">Hello Mrs. @Session["FullName"] (@Session["LoginId"])</h6>
+                                            <h6 class="text-white mt-3 mob-txt">Hello <br class="mob-br" /> Mrs. @Session["FullName"] <br class="mob-br" /> (@Session["LoginId"])</h6>
                                         }
                                         else
                                         {
-                                            <h6 class="text-white mt-3">Hello Mr. @Session["FullName"] (@Session["LoginId"])</h6>
+                                            <h6 class="text-white mt-3 mob-txt">Hello <br class="mob-br" /> Mr. @Session["FullName"] <br class="mob-br" /> (@Session["LoginId"])</h6>
                                         }
                                     }
 
@@ -953,7 +953,7 @@
     <script type="text/javascript">
         $(window).load(function () { // makes sure the whole site is loaded
             $('#status').fadeOut(); // will first fade out the loading animation
-            $('#preloader').delay(200).fadeOut(400); // will fade out the white DIV that covers the website.
+            $('#preloader').delay(200).fadeOut(800); // will fade out the white DIV that covers the website.
             $('body').delay(200).css({ 'overflow': 'visible' });
         })
     </script>

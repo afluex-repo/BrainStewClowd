@@ -80,17 +80,29 @@
         var r = confirm('मैं Brainstew Foundation में अपने स्वच्छा से पूर्ण होशो हवास में बिना किसी के दबाव में अपनी राशि को डोनेट कर रहा हूँ  और इस डोनेशन को मैं वापिस लेने के लिए या किसी भी लालच में आकर नही कर रहा हूँ |');
         if (r == true) {
             debugger
+            $("#preloader").css({'display': '' });
+            $("#status").css({ 'display': '' });
             var WalletBalance = $("#WalletAmount").val();
-            var Amount = $("#DonationAmount").val();
+            var Amount =$("#DonationAmount").val();
             var donationplanid = $("#DonationPlanId").val();
-            // Session["IdActivated"] = true;
+            if ($("#DonationAmount").val() == "0" || $("#DonationAmount").val() == "")
+            {
+                alert('please fill amount for donation !!')
+                $("#preloader").css({ 'display': 'none' });
+                $("#status").css({ 'display': 'none' });
+                window.location.reload();
+                return false();
+            }
             if (Number(WalletBalance) < Number(Amount)) {
-                //window.location.href = "http://brainstewfoundation.com//Wallet/AddWallet";
                 alert('Donate Amount is less than balance amount please add amount in your wallet !!')
                 window.location.href = '@Url.Action("AddWallet", "Wallet")';
+                $("#preloader").css({'display': '' });
+                $("#status").css({'display': '' });
                 return false;
             }
             else {
+                $("#preloader").css({'display': '' });
+                $("#status").css({'display': '' })
                 $.ajax({
                     url: "/User/BrainDonation",
                     Type: "Get",
@@ -104,6 +116,8 @@
                         }
                         else {
                             alert(data.Result);
+                            $("#preloader").css({'display': 'none' });
+                            $("#status").css({'display': 'none' });
                         }
                     }
                 });

@@ -1338,23 +1338,23 @@ namespace BrainStew.Controllers
                     if (ds.Tables[0].Rows[0][0].ToString() == "1")
                     {
                         //TempData["msg"] = "Your request has been approved Successfully !!";
-                        Session["Name"] = ds.Tables[0].Rows[0]["Name"].ToString();
-                        Session["Email"] = ds.Tables[0].Rows[0]["Email"].ToString();
-                       model.Email = ds.Tables[0].Rows[0]["Email"].ToString();
-                        Session["TransactionNo"] = ds.Tables[0].Rows[0]["TransactionNo"].ToString();
-                        Session["TransactionDate"] = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
+                       // Session["Name"] = ds.Tables[0].Rows[0]["Name"].ToString();
+                       // Session["Email"] = ds.Tables[0].Rows[0]["Email"].ToString();
+                       //model.Email = ds.Tables[0].Rows[0]["Email"].ToString();
+                       // Session["TransactionNo"] = ds.Tables[0].Rows[0]["TransactionNo"].ToString();
+                       // Session["TransactionDate"] = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
 
-                        if (model.Email != "" && model.Email != null)
-                        {
-                            try
-                            {
-                                BLMail.SendApprovePayoutMail(Session["Name"].ToString(), Session["TransactionNo"].ToString(), Session["TransactionDate"].ToString(), "Your request has been approved Successfully", Session["Email"].ToString());
-                            }
-                            catch (Exception ex)
-                            {
+                        //if (model.Email != "" && model.Email != null)
+                        //{
+                        //    try
+                        //    {
+                        //        BLMail.SendApprovePayoutMail(Session["Name"].ToString(), Session["TransactionNo"].ToString(), Session["TransactionDate"].ToString(), "Your request has been approved Successfully", Session["Email"].ToString());
+                        //    }
+                        //    catch (Exception ex)
+                        //    {
 
-                            }
-                        }
+                        //    }
+                        //}
 
                         model.Result = "1";
                     }
