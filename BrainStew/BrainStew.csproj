@@ -930,6 +930,7 @@
     <Content Include="Views\Wallet\TransfertoPayoutWallet.cshtml" />
     <Content Include="Views\Admin\PayoutRequestList.cshtml" />
     <Content Include="Views\Report\PlacementBenefits.cshtml" />
+    <Content Include="Views\Report\UpgradeBenefits.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

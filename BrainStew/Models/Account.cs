@@ -47,6 +47,7 @@ namespace BrainStew.Models
         public string ROI { get; set; }
         public string DonationAmount { get; set; }
         public string DonationPlanId { get; set; }
+        public string UpdatedDonationPlanId { get; set; }
         public DataSet TopUp()
         {
             SqlParameter[] para = {
