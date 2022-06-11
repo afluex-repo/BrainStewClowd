@@ -87,7 +87,8 @@
             position: absolute;
             left: 50%; /* centers the loading animation horizontally one the screen */
             top: 50%; /* centers the loading animation vertically one the screen */
-            background-image: url("../imgs/loader.gif");
+            background-image: url('../../plugins/lightbox/default-skin/Spinner-1s-200px.gif');
+            /*background-image: url("../imgs/loader.gif");*/
             z-index: 9999; /* path to your loading animation */
             background-repeat: no-repeat;
             background-position: center;
@@ -179,9 +180,9 @@
                 color: white;
             }
 
-          .widget-account-invoice-three .widget-heading {
-              padding: 1px 12px 15px 11px;
-            }
+        .widget-account-invoice-three .widget-heading {
+            padding: 1px 12px 15px 11px;
+        }
 
         .widget.referral {
             padding: 0px 20px;
@@ -201,7 +202,7 @@
         }
 
         .widget-account-invoice-three.four .widget-heading {
-           background: linear-gradient(60deg,#d6af3c,#239da3);
+            background: linear-gradient(60deg,#d6af3c,#239da3);
         }
 
         .widget-account-invoice-three.five .widget-heading {
@@ -209,7 +210,7 @@
         }
 
         .widget-account-invoice-three.six .widget-heading {
-               background: linear-gradient(60deg,#9b7dcc,#5c4bba);
+            background: linear-gradient(60deg,#9b7dcc,#5c4bba);
         }
 
         .widget-account-invoice-three.seven .widget-heading {
@@ -219,12 +220,15 @@
         .widget-account-invoice-three.eight .widget-heading {
             background: linear-gradient(60deg,#fbfbfd,#cccfd3);
         }
+
         .widget-account-invoice-three.nine .widget-heading {
-           background: linear-gradient(60deg,#43c4f4,#6594db);
+            background: linear-gradient(60deg,#43c4f4,#6594db);
         }
+
         .widget-account-invoice-three.ten .widget-heading {
             background: linear-gradient(60deg,#efbb70,#f35a27);
         }
+
         .carousel-caption {
             /*bottom: -16px;*/
             background-color: #282828ba;
@@ -245,7 +249,6 @@
         .img-height {
             height: 300px;
         }
-    
     </style>
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 </head>
@@ -264,7 +267,6 @@
         <header class="header navbar navbar-expand-sm">
             <ul class="navbar-item theme-brand flex-row  text-center">
                 <li class="nav-item theme-logo">
-
                     <a href="/user/UserDashboard">
                         <img src="~/BrainStewWebsite/assets/img/logo.png" class="navbar-logo" alt="logo" />
                     </a>
@@ -291,11 +293,11 @@
                         if (Session["Gender"].ToString() == "F")
                         {
 
-                            <h6 class="text-white mt-2">Hello Mrs. @Session["FullName"] (@Session["LoginId"])</h6>
+                            <h6 class="text-white mt-2 mob-txt">Hello <br class="mob-br"/> Mrs. @Session["FullName"] <br class="mob-br" /> (@Session["LoginId"])</h6>
                         }
                         else
                         {
-                            <h6 class="text-white mt-3">Hello Mr. @Session["FullName"] (@Session["LoginId"])</h6>
+                            <h6 class="text-white mt-3 mob-txt">Hello <br class="mob-br" /> Mr. @Session["FullName"] <br class="mob-br" /> (@Session["LoginId"])</h6>
                         }
                     }
 
@@ -320,11 +322,11 @@
                                         if (Session["Gender"].ToString() == "F")
                                         {
 
-                                            <h6 class="text-white mt-3">Hello Mrs. @Session["FullName"] (@Session["LoginId"])</h6>
+                                            <h6 class="text-white mt-3 mob-txt">Hello <br class="mob-br" /> Mrs. @Session["FullName"] <br class="mob-br" /> (@Session["LoginId"])</h6>
                                         }
                                         else
                                         {
-                                            <h6 class="text-white mt-3">Hello Mr. @Session["FullName"] (@Session["LoginId"])</h6>
+                                            <h6 class="text-white mt-3 mob-txt">Hello <br class="mob-br" /> Mr. @Session["FullName"] <br class="mob-br" /> (@Session["LoginId"])</h6>
                                         }
                                     }
 
@@ -369,8 +371,8 @@
                                 //var link = Session["Pk_UserId"].ToString();
 
                                 <span class="s-icon"><a href="mailto:?subject= Referral Link &amp;body=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString(). Thanks." target="_blank" style="background:#871505"><i class="fa fa-envelope fa-lg"></i></a></span>
-                                    <span class="s-icon"><a href="https://api.whatsapp.com/send?text=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#42f560" data-action="share/whatsapp/share"><i class="fa fa-whatsapp fa-lg"></i></a></span>
-                                    <span class="s-icon"><a href="https://www.facebook.com/sharer.php?u=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#4267B2"><i class="fa fa-facebook fa-lg"></i></a></span>
+                                <span class="s-icon"><a href="https://api.whatsapp.com/send?text=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#42f560" data-action="share/whatsapp/share"><i class="fa fa-whatsapp fa-lg"></i></a></span>
+                                <span class="s-icon"><a href="https://www.facebook.com/sharer.php?u=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#4267B2"><i class="fa fa-facebook fa-lg"></i></a></span>
                                     <span class="s-icon"><a href="https://www.instagram.com/?url=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#E1306C"><i class="fa fa-instagram fa-lg"></i></a></span>
                                     <span class="s-icon"><a href="https://twitter.com/intent/tweet?text=http://brainstewfoundation.com//Home/Registration?Pid=@Session["Encrytid"].ToString()" target="_blank" style="background:#1DA1F2"><i class="fa fa-twitter fa-lg"></i></a></span>
                             }
@@ -429,21 +431,21 @@
                             {
                                 if (Convert.ToBoolean(Session["IdActivated"]) == true)
                                 {
-                            <li>
-                                <a href="/Wallet/AddWallet">Topup Wallet Request</a>
-                            </li>
-                            <li>
-                                <a href="/Wallet/WalletList">Topup Wallet Request List</a>
-                            </li>
-                            <li>
-                                <a href="/Wallet/WalletLedgerList">Topup Wallet Ledger</a>
-                            </li>
-                            <li>
-                                <a href="/Wallet/TransferToOtherWallet">Wallet Transfer</a>
-                            </li>
-                            @*<li>
-                                    <a href="/User/PayoutRequest">Transfer to Account</a>
-                                </li>*@
+                                    <li>
+                                        <a href="/Wallet/AddWallet">Topup Wallet Request</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Wallet/WalletList">Topup Wallet Request List</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Wallet/WalletLedgerList">Topup Wallet Ledger</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Wallet/TransferToOtherWallet">Wallet Transfer</a>
+                                    </li>
+                                    @*<li>
+                                            <a href="/User/PayoutRequest">Transfer to Account</a>
+                                        </li>*@
                                 }
                                 else
                                 {
@@ -453,39 +455,39 @@
                         </ul>
                     </li>
                     @*<li class="menu">
-                        <a href="#Pin" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <i class="fa fa-thumb-tack"></i>
-                                <span>Pin Management</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="Pin" data-parent="#accordionExample">
-                            @if (Session["IdActivated"] != null)
-                            {
-                                if (Convert.ToBoolean(Session["IdActivated"]) == true)
+                            <a href="#Pin" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <div class="">
+                                    <i class="fa fa-thumb-tack"></i>
+                                    <span>Pin Management</span>
+                                </div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </div>
+                            </a>
+                            <ul class="collapse submenu list-unstyled" id="Pin" data-parent="#accordionExample">
+                                @if (Session["IdActivated"] != null)
                                 {
-                            <li>
-                                <a href="/User/EPinRequest">Generate E-Pin</a>
-                            </li>
+                                    if (Convert.ToBoolean(Session["IdActivated"]) == true)
+                                    {
+                                <li>
+                                    <a href="/User/EPinRequest">Generate E-Pin</a>
+                                </li>
+                                    }
                                 }
-                            }
-                            <li>
-                                <a href="/User/PinList">Pin List</a>
-                            </li>
-                            <li>
-                                <a href="/User/PinTransferReport">Transfer Report</a>
-                            </li>
-                        </ul>
-                    </li>*@
+                                <li>
+                                    <a href="/User/PinList">Pin List</a>
+                                </li>
+                                <li>
+                                    <a href="/User/PinTransferReport">Transfer Report</a>
+                                </li>
+                            </ul>
+                        </li>*@
                     <li class="menu">
                         <a href="#Account" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 @*<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-at-sign"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>*@
                                 <i class="fa fa-address-book"></i>
-                                <span>Account</span>
+                                <span>Donation</span>
                             </div>
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -496,13 +498,21 @@
                             {
                                 if (Convert.ToBoolean(Session["IdActivated"]) == true)
                                 {
-                            <li>
-                                <a href="/User/DonationByWallet">Donation By Wallet</a>
-                            </li>
-                            <li>
-                                <a href="/user/TopUpList">Donation List</a>
-                            </li>
-                          
+                                    <li>
+                                        <a href="/User/DonationByWallet">Donation By Wallet</a>
+                                    </li>
+                                    <li>
+                                        <a href="/User/BrainMatrixDonation">Brain Matrix Donation</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Stew Matrix Donation</a>
+                                    </li>
+                                    <li>
+                                        <a href="/user/TopUpList">Donation List</a>
+                                    </li>
+                                    <li><a href="/Report/BrainMatrixDonationList">Brain Matrix Donation List</a></li>
+                                  
+
                                 }
                                 else
                                 {
@@ -536,8 +546,8 @@
                                 <a href="/user/TreeTTP">Level Tree Joining</a>
                             </li>
                             @*<li>
-                                <a href="/user/Tree">Level Tree PPP</a>
-                            </li>*@
+                                    <a href="/user/Tree">Level Tree PPP</a>
+                                </li>*@
 
                             <li>
                                 <a href="/Downline/AssociateTree">Direct List</a>
@@ -577,25 +587,25 @@
                         </ul>
                     </li>
                     @*<li class="menu">
-                        <a href="#ROI" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <i class="fa fa-money"></i>
-                                <span>PPP Reports</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="ROI" data-parent="#accordionExample">
+                            <a href="#ROI" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <div class="">
+                                    <i class="fa fa-money"></i>
+                                    <span>PPP Reports</span>
+                                </div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </div>
+                            </a>
+                            <ul class="collapse submenu list-unstyled" id="ROI" data-parent="#accordionExample">
 
-                            <li>
-                                <a href="/Wallet/ROIWallet">PPP Wallet</a>
-                            </li>
-                            <li>
-                                <a href="/Wallet/ROIIncomeReports">PPP Income</a>
-                            </li>
-                        </ul>
-                    </li>*@
+                                <li>
+                                    <a href="/Wallet/ROIWallet">PPP Wallet</a>
+                                </li>
+                                <li>
+                                    <a href="/Wallet/ROIIncomeReports">PPP Income</a>
+                                </li>
+                            </ul>
+                        </li>*@
                     @*<li class="menu">
                         <a href="#LevelBonus" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
@@ -610,11 +620,11 @@
                             <li>
                                 <a href="/Report/LevelIncomeTr1">Level Bonus Joining</a>
                             </li>*@
-                            @*<li>
-                                <a href="/Report/LevelIncomeTr2">Level Bonus PPP</a>
-                            </li>*@
-                        @*</ul>
-                    </li>*@
+                    @*<li>
+                            <a href="/Report/LevelIncomeTr2">Level Bonus PPP</a>
+                        </li>*@
+                    @*</ul>
+                        </li>*@
                     <li class="menu">
                         <a href="#Payout" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
@@ -626,27 +636,64 @@
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled" id="Payout" data-parent="#accordionExample">
-                           
+
                             @*<li>
-                                <a href="/Report/PayoutDetail">Benefits Detail</a>
-                            </li>*@
+                                    <a href="/Report/PayoutDetail">Benefits Detail</a>
+                                </li>*@
                             <li>
-                                <a href="/Report/LevelIncomeTr2">DIRECT BENEFITS</a>
+                                @*@if (Convert.ToInt32(Session["BenefitsLevel"].ToString()) >= 1)
+                                {*@
+                                    <a href="/Report/LevelIncomeTr2">DIRECT BENEFITS</a>
+                                @*}
+                                else
+                                {
+                                    <a href="#">DIRECT BENEFITS</a>
+                                }*@
                             </li>
                             <li>
-                                <a href="/Report/LevelIncomeTr1">LEVEL BENEFITS</a>
+                                @*@if (Convert.ToInt32(Session["BenefitsLevel"].ToString()) >= 2)
+                                {*@
+                                    <a href="/Report/LevelIncomeTr1">LEVEL BENEFITS</a>
+                                @*}
+                                else
+                                {
+                                    <a href="#">LEVEL BENEFITS</a>
+                                }*@
+
                             </li>
                             <li>
-                                <a href="/Report/PlacementBenefits">PLACEMENT  BENEFITS</a>
+                                @*@if (Convert.ToInt32(Session["BenefitsLevel"].ToString()) >= 3)
+                                {*@
+                                    <a href="/Report/PlacementBenefits">PLACEMENT  BENEFITS</a>
+                                @*}
+                                else
+                                {
+                                    <a href="#">PLACEMENT  BENEFITS</a>
+
+                                }*@
                             </li>
                             <li>
-                                <a href="/Report/UpgradeBenefits">UPGRADE  BENEFITS</a>
+                              @*@if (Convert.ToInt32(Session["BenefitsLevel"].ToString()) >= 4)
+                              {*@
+                                    <a href="/Report/UpgradeBenefits">UPGRADE  BENEFITS</a>
+                                @*}
+                                else
+                                {
+                                    <a href="#">UPGRADE  BENEFITS</a>
+                                }*@
                             </li>
                             <li>
-                                <a href="#">BRAIN MATRIX BENEFITS</a>
+                                @*@if (Convert.ToInt32(Session["BenefitsLevel"].ToString()) >= 1 && Convert.ToInt32(ViewBag.MatrixIncomeLevel) >= 1)
+                                {*@
+                                    <a href="/Report/Brainmatrixbenefits">BRAIN MATRIX BENEFITS</a>
+                                @*}
+                                else
+                                {
+                                    <a href="#">BRAIN MATRIX BENEFITS</a>
+                                }*@
                             </li>
                             <li>
-                                <a href="#">BRAIN LEVEL BENEFITS</a>
+                                <a href="/Report/BrainlevelBenefits">BRAIN LEVEL BENEFITS</a>
                             </li>
                             <li>
                                 <a href="#">STEW MATRIX BENEFITS</a>
@@ -687,68 +734,68 @@
                     </li>
                     <li class="menu">
                         @*<a href="#Rewards" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <i class="fa fa-trophy"></i>
-                                <span>Rewards & Club</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>*@
+                                <div class="">
+                                    <i class="fa fa-trophy"></i>
+                                    <span>Rewards & Club</span>
+                                </div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </div>
+                            </a>*@
                         @*<ul class="collapse submenu list-unstyled" id="Rewards" data-parent="#accordionExample">
-                            <li>
-                                <a href="~/Coming.html">Member Award</a>
-                            </li>
-                            <li>
-                                <a href="~/Coming.html">BrainStew Rewards</a>
-                            </li>
-                            <li>
-                                <a href="~/Coming.html"> Team Club</a>
-                            </li>
-                            <li>
-                                <a href="~/Coming.html">Royalty Club</a>
-                            </li>
-                        </ul>*@
+                                <li>
+                                    <a href="~/Coming.html">Member Award</a>
+                                </li>
+                                <li>
+                                    <a href="~/Coming.html">BrainStew Rewards</a>
+                                </li>
+                                <li>
+                                    <a href="~/Coming.html"> Team Club</a>
+                                </li>
+                                <li>
+                                    <a href="~/Coming.html">Royalty Club</a>
+                                </li>
+                            </ul>*@
                     </li>
                     @*<li class="menu">
-                        <a href="#Forex" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <i class="fa fa-bar-chart"></i>
-                                <span>BrainStew FX</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="Forex" data-parent="#accordionExample">
+                            <a href="#Forex" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <div class="">
+                                    <i class="fa fa-bar-chart"></i>
+                                    <span>BrainStew FX</span>
+                                </div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </div>
+                            </a>
+                            <ul class="collapse submenu list-unstyled" id="Forex" data-parent="#accordionExample">
 
-                            <li>
-                                <a href="https://fbs.partners?ibl=49471&ibp=27409756" target="_blank">Self trading Account</a>
-                            </li>
-                            <li>
-                                <a href="~/Coming.html">Auto Trading Account</a>
-                            </li>
-                            <li>
-                                <a href="~/Coming.html">Forex Business Partner</a>
-                            </li>
-                        </ul>
-                    </li>*@
+                                <li>
+                                    <a href="https://fbs.partners?ibl=49471&ibp=27409756" target="_blank">Self trading Account</a>
+                                </li>
+                                <li>
+                                    <a href="~/Coming.html">Auto Trading Account</a>
+                                </li>
+                                <li>
+                                    <a href="~/Coming.html">Forex Business Partner</a>
+                                </li>
+                            </ul>
+                        </li>*@
                     @*<li class="menu">
-                        <a href="#Download" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <i class="fa fa-download"></i>
-                                <span>Download</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="Download" data-parent="#accordionExample">
-                            <li>
-                                <a href="/User/Download">Download</a>
-                            </li>
-                        </ul>
-                    </li>*@
+                            <a href="#Download" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <div class="">
+                                    <i class="fa fa-download"></i>
+                                    <span>Download</span>
+                                </div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </div>
+                            </a>
+                            <ul class="collapse submenu list-unstyled" id="Download" data-parent="#accordionExample">
+                                <li>
+                                    <a href="/User/Download">Download</a>
+                                </li>
+                            </ul>
+                        </li>*@
                     @*<li class="menu">
                             <a href="#Setting" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                                 <div class="">
@@ -906,7 +953,7 @@
     <script type="text/javascript">
         $(window).load(function () { // makes sure the whole site is loaded
             $('#status').fadeOut(); // will first fade out the loading animation
-            $('#preloader').delay(200).fadeOut(400); // will fade out the white DIV that covers the website.
+            $('#preloader').delay(200).fadeOut(800); // will fade out the white DIV that covers the website.
             $('body').delay(200).css({ 'overflow': 'visible' });
         })
     </script>

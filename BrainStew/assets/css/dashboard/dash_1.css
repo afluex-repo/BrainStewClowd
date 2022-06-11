@@ -22,7 +22,7 @@
     display: block;
     color: #0e1726;
     font-weight: 600;
-    margin-bottom: 0;
+    /*margin-bottom: 0;*/
 }
 .widget .widget-content {}
 
@@ -1473,7 +1473,7 @@
     */
 
     .widget-account-invoice-three .widget-heading {
-        padding: 24px 22px 63px 22px;
+        /*padding: 24px 22px 63px 22px;*/
     }
     .widget-account-invoice-three .widget-amount .w-a-info {
         padding: 12px 12px;

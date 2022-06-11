@@ -1,21 +1,21 @@
-﻿@model BrainStew.Models.UserReports
+﻿@model BrainStew.Models.Reports
+
 @{
-    ViewBag.Title = "LevelIncomeTr2";
+    ViewBag.Title = "BrainMatrixBenefits";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-
 <link href="~/plugins/flatpickr/flatpickr.css" rel="stylesheet" type="text/css">
 <link href="~/plugins/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
-@using (Html.BeginForm("LevelIncomeTr2", "Report", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("UpgradeBenefits", "Report", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
 {
-    <div class="container">
+<div class="container">
         <div class="row layout-top-spacing">
             <div class="col-lg-12 col-12 layout-spacing">
                 <div class="statbox widget box box-shadow">
                     <div class="widget-header">
                         <div class="row">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                <h4>DIRECT BENEFITS </h4>
+                                <h4>Brain Matrix Donation List</h4>
                             </div>
                         </div>
                     </div>
@@ -37,19 +37,6 @@
 
                                 </div>
                             </div>
-
-                            <div class="col-lg-3 col-md-3">
-                                <div class="form-group">
-                                    <input type="hidden" value="@Model.Status" id="st" />
-                                    <label>Status</label>
-                                    <select id="Status" name="Status" class="form-control">
-                                        <option value="">Select</option>
-                                        <option value="0">Unpaid</option>
-                                        <option value="1">Paid</option>
-                                    </select>
-                                </div>
-                            </div>
-
                             <div class="col-lg-3 col-md-3" style="margin-top:28px">
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-success" value="Search" name="btnSearch" />
@@ -61,18 +48,21 @@
                                 <thead>
                                     <tr>
                                         <th>Sr No.</th>
-                                        @*<th>Payout No</th>*@
-                                        <th>From Member</th>
-                                        <th>Donation Amount</th>
-                                        <th>Benefits</th>
-                                        @*<th>Percentage</th>*@
+                                        <th>Name</th>
+                                        <th>Amount</th>
                                         @*<th>Level</th>*@
-                                        <th>Status</th>
-                                        <th>Transaction Date</th>
+                                        <th>Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if (Model != null)
+                                    @                       __o = Model.Status;
+
+
+#line default
+#line hidden
+
+#line 7 "E:\SachinMishraProject\repository\BrainStewClowd\BrainStew\Views\Report\BrainMatrixBenefits.cshtml"
+                                    if (Model != null)
                                     {
                                         if (Model.lst != null)
                                         {
@@ -81,19 +71,29 @@
                                             {
                                                 <tr class="text-left">
                                                     <td>@i</td>
-                                                    @*<td>@Item.PayoutNo</td>*@
-                                                    <td>@Item.FromName</td>
+                                                    <td>@Item.FromName (@Item.FromLoginId)</td>
                                                     <td>@Item.BusinessAmount</td>
-                                                    <td>@Item.Amount</td>
-                                                    @*<td>@Item.Percentage %</td>*@
                                                     @*<td>@Item.Level</td>*@
-                                                    <td>@Item.Status</td>
-                                                    <td>@Item.TransactionDate</td>
-                                                </tr>
-                                                i++;
-                                            }
-                                        }
-                                    }
+                                                    <td>@Item.Amount</td>
+                                                </tr>Item.Status;
+
+
+#line default
+#line hidden
+
+#line 14 "E:\SachinMishraProject\repository\BrainStewClowd\BrainStew\Views\Report\BrainMatrixBenefits.cshtml"
+                __o = Item.TransactionDate;
+
+
+#line default
+#line hidden
+
+#line 15 "E:\SachinMishraProject\repository\BrainStewClowd\BrainStew\Views\Report\BrainMatrixBenefits.cshtml"
+
+                i++;
+            }
+        }
+    }
                                 </tbody>
                             </table>
                         </div>

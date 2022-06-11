@@ -53,7 +53,8 @@ namespace BrainStew.Controllers
                 ViewBag.LevelIncome = ds.Tables[6].Rows[0]["LevelIncome"].ToString();
                 ViewBag.LevelUpgradeIncome = ds.Tables[6].Rows[0]["LevelUpgradeIncome"].ToString();
                 ViewBag.ReferralSponsorIncome = ds.Tables[6].Rows[0]["ReferralSponsorIncome"].ToString();
-                ViewBag.MatrixIncome = ds.Tables[6].Rows[0]["MatrixIncome"].ToString();
+                ViewBag.MatrixIncomeLevel = ds.Tables[6].Rows[0]["MatrixIncomeLevel"].ToString();
+                ViewBag.MatrixIncomeUpdateDate = ds.Tables[6].Rows[0]["MatrixIncomeUpdateDate"].ToString();
                 ViewBag.ForeverMatrixIncome = ds.Tables[6].Rows[0]["ForeverMatrixIncome"].ToString();
                 ViewBag.ForeverLevelIncome = ds.Tables[6].Rows[0]["ForeverLevelIncome"].ToString();
                 ViewBag.TotalIncome = ds.Tables[6].Rows[0]["TotalIncome"].ToString();
@@ -1148,8 +1149,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
         public ActionResult TopUpList()
         {
             Account model = new Account();
@@ -1180,17 +1179,16 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         [HttpPost]
         [ActionName("TopUpList")]
         [OnAction(ButtonName = "Search")]
         public ActionResult TopUpList(Account model)
         {
             List<Account> lst = new List<Account>();
-            model.Pk_userId = Session["PK_UserId"].ToString();
+            model.Fk_UserId = Session["PK_UserId"].ToString();
             model.LoginId = Session["LoginId"].ToString();
-            model.Fk_UserId = model.Fk_UserId == "0" ? null : model.Fk_UserId;
-            model.LoginId = model.LoginId == "0" ? null : model.LoginId;
+            //model.Fk_UserId = model.Fk_UserId == "0" ? null : model.Fk_UserId;
+            //model.LoginId = model.LoginId == "0" ? null : model.LoginId;
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
             DataSet ds1 = model.GetTopUpDetails();
@@ -1216,8 +1214,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
         public ActionResult BusinessReportsForUser()
         {
             User model = new User();
@@ -1273,7 +1269,6 @@ namespace BrainStew.Controllers
             #endregion
             return View(model);
         }
-
         [HttpPost]
         [ActionName("BusinessReportsForUser")]
         [OnAction(ButtonName = "GetDetails")]
@@ -1338,8 +1333,6 @@ namespace BrainStew.Controllers
             #endregion
             return View(model);
         }
-
-
         public ActionResult PayoutRequest()
         {
             string FormName = "";
@@ -1390,7 +1383,6 @@ namespace BrainStew.Controllers
             #endregion
             return View(model);
         }
-
         [HttpPost]
         [ActionName("PayoutRequest")]
         [OnAction(ButtonName = "PayoutRequest")]
@@ -1399,6 +1391,7 @@ namespace BrainStew.Controllers
             try
             {
                 model.AddedBy = Session["Pk_userId"].ToString();
+              
                // model.TransactionDate = string.IsNullOrEmpty(model.TransactionDate) ? null : Common.ConvertToSystemDate(model.TransactionDate, "dd/MM/yyyy");
                 DataSet ds = model.PayoutRequest();
                 if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
@@ -1420,8 +1413,6 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("PayoutRequest", "User");
         }
-
-
         public ActionResult Download()
         {
             User model = new User();
@@ -1442,8 +1433,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
         [HttpPost]
         [ActionName("Download")]
         public ActionResult Download(User model)
@@ -1510,6 +1499,84 @@ namespace BrainStew.Controllers
                 model.Result = "no";
             }
             return Json(model, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult BrainMatrixDonation(Account model)
+        {
+            model.LoginId = Session["LoginId"].ToString();
+            #region GetDonationAmount
+            model.Fk_UserId = Session["Pk_UserId"].ToString();
+            DataSet ds1 = model.GetBrainMatrixPlanAmount();
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            {
+                model.DonationAmount = ds1.Tables[0].Rows[0]["Amount"].ToString();
+                model.DonationPlanId = ds1.Tables[0].Rows[0]["Pk_BrainMatrixPlanId"].ToString();
+            }
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[1].Rows.Count > 0)
+            {
+                model.UpdatedDonationPlanId = ds1.Tables[1].Rows[0]["UpdatedDonationId"].ToString();
+            }
+            #endregion
+            #region Check Balance
+            Common objcomm = new Common();
+            objcomm.Fk_UserId = Session["Pk_UserId"].ToString();
+            DataSet ds = objcomm.GetWalletBalance();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                ViewBag.WalletBalance = Decimal.Parse(ds.Tables[0].Rows[0]["amount"].ToString()).ToString("0.00"); ;
+            }
+            #endregion
+            return View(model);
+        }
+        public ActionResult BrainDonation(string Amount, string donationplanid)
+        {
+            Account model = new Account();
+            try
+            {
+                model.Fk_UserId = Session["Pk_UserId"].ToString();
+                model.Amount = Amount;
+                model.DonationPlanId = donationplanid;
+                DataSet ds = model.DonationBrainMatrixPlan();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        model.Result = "1";
+                        return Json(model, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                        return Json(model, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+                   
+                    return Json(model, JsonRequestBehavior.AllowGet);
+                }
+              
+            }
+            catch (Exception ex)
+            {
+                model.Result = "0";
+                TempData["error"] = ex.Message;
+                return Json(model, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public ActionResult StewMatrixDonation(Account model)
+        {
+            model.LoginId = Session["LoginId"].ToString();
+            
+            #region Check Balance
+            Common objcomm = new Common();
+            objcomm.Fk_UserId = Session["Pk_UserId"].ToString();
+            DataSet ds = objcomm.GetWalletBalance();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                ViewBag.WalletBalance = Decimal.Parse(ds.Tables[0].Rows[0]["amount"].ToString()).ToString("0.00"); ;
+            }
+            #endregion
+            return View(model);
         }
     }
 }

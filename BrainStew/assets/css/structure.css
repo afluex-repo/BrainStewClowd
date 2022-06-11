@@ -1695,3 +1695,34 @@ code {
         display: none;
     }
 }
+@media(min-width:1024px)
+{
+    .mob-br
+    {
+        display:none !important;
+    }
+}
+@media(max-width:992px)
+{
+  .mob-br
+    {
+        display:none !important;
+    }
+}
+@media(max-width:600px)
+{
+    .mob-txt
+    {
+        margin-top:0px !important;
+        color:#000 !important;
+        font-size:15px !important;
+    }
+    .mob-br
+    {
+        display:block !important;
+    }
+}
+.border-10
+{
+    border-radius:10px;
+}

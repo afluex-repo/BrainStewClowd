@@ -175,7 +175,6 @@ namespace BrainStew.Controllers
             else { obj.Result = "Invalid LoginId"; }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult ChangePassword()
         {
             return View();
@@ -347,7 +346,6 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("WalletList", "Admin");
         }
-
         public ActionResult DeClined(string id)
         {
             try
@@ -375,7 +373,6 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("WalletList", "Admin");
         }
-
         public ActionResult PaymentTypeMaster()
         {
 
@@ -417,7 +414,6 @@ namespace BrainStew.Controllers
             obj.lstWallet = lst;
             return View(obj);
         }
-
         [HttpPost]
         [OnAction(ButtonName = "Update")]
         [ActionName("PaymentTypeMaster")]
@@ -446,7 +442,6 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("PaymentTypeMaster", "Admin");
         }
-
         public ActionResult EPinRequestList()
         {
             Admin model = new Admin();
@@ -510,8 +505,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
         public ActionResult AcceptedEPinRequest(string id)
         {
             try
@@ -539,7 +532,6 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("EPinRequestList", "Admin");
         }
-
         public ActionResult RejectedEPinRequest(string id)
         {
             try
@@ -567,8 +559,6 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("EPinRequestList", "Admin");
         }
-
-
         public ActionResult ROIWalletForAdmin()
         {
             Admin model = new Admin();
@@ -590,8 +580,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
         [HttpPost]
         [ActionName("ROIWalletForAdmin")]
         [OnAction(ButtonName = "Search")]
@@ -619,7 +607,6 @@ namespace BrainStew.Controllers
             return View(model);
 
         }
-
         public ActionResult ROIIncomeReportsForAdmin()
         {
             Admin model = new Admin();
@@ -641,7 +628,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         public ActionResult ViewROIForAdmin(string Id)
         {
             Admin model = new Admin();
@@ -661,8 +647,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
         public ActionResult PayoutWalletLedgerForAdmin()
         {
             List<Admin> lst = new List<Admin>();
@@ -685,7 +669,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         [HttpPost]
         public ActionResult PayoutWalletLedgerForAdmin(Admin model)
         {
@@ -710,7 +693,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         public ActionResult LevelIncomeTr1ForAdmin()
         {
             List<Admin> lst = new List<Admin>();
@@ -735,7 +717,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         [HttpPost]
         [ActionName("LevelIncomeTr1ForAdmin")]
         [OnAction(ButtonName = "btnSearch")]
@@ -766,8 +747,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
         public ActionResult LevelIncomeTr2ForAdmin()
         {
             List<Admin> lst = new List<Admin>();
@@ -790,7 +769,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         [HttpPost]
         [ActionName("LevelIncomeTr2ForAdmin")]
         [OnAction(ButtonName = "btnSearch")]
@@ -817,7 +795,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         public ActionResult PayoutDetailForAdmin()
         {
             List<Admin> lst = new List<Admin>();
@@ -851,7 +828,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         [HttpPost]
         [ActionName("PayoutDetailForAdmin")]
         [OnAction(ButtonName = "btnSearch")]
@@ -893,7 +869,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         public ActionResult DistributePayment()
         {
             List<Admin> lst = new List<Admin>();
@@ -927,7 +902,6 @@ namespace BrainStew.Controllers
             //model.PayoutNo = ds.Tables[1].Rows[0]["PayoutNo"].ToString();
             return View(model);
         }
-
         [HttpPost]
         [ActionName("DistributePayment")]
         [OnAction(ButtonName = "GetDetails")]
@@ -964,11 +938,6 @@ namespace BrainStew.Controllers
             model.PayoutNo = ds.Tables[1].Rows[0]["PayoutNo"].ToString();
             return View(model);
         }
-
-
-
-
-
         [HttpPost]
         [ActionName("DistributePayment")]
         [OnAction(ButtonName = "btnSearch")]
@@ -997,7 +966,6 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("DistributePayment", "Admin");
         }
-
         public ActionResult DistributePaymentTPS()
         {
             Admin model = new Admin();
@@ -1028,8 +996,6 @@ namespace BrainStew.Controllers
             model.PayoutNo = ds.Tables[1].Rows[0]["PayoutNo"].ToString();
             return View(model);
         }
-
-
         [HttpPost]
         [ActionName("DistributePaymentTPS")]
         [OnAction(ButtonName = "GetDetails")]
@@ -1064,7 +1030,6 @@ namespace BrainStew.Controllers
             model.PayoutNo = ds.Tables[1].Rows[0]["PayoutNo"].ToString();
             return View(model);
         }
-
         [HttpPost]
         public ActionResult DistributePaymentTPSSave(Admin model)
         {
@@ -1090,8 +1055,6 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("DistributePaymentTPS", "Admin");
         }
-
-
         public ActionResult BusinessReports()
         {
             Admin model = new Admin();
@@ -1147,7 +1110,6 @@ namespace BrainStew.Controllers
             #endregion
             return View(model);
         }
-
         [HttpPost]
         [ActionName("BusinessReports")]
         [OnAction(ButtonName = "GetDetails")]
@@ -1360,8 +1322,6 @@ namespace BrainStew.Controllers
             return View(model);
         }
 
-
-
         public ActionResult ApprovePayout(string TransactionNo, string TransactionDate, string requestid)
         {
             Admin model = new Admin();
@@ -1378,50 +1338,23 @@ namespace BrainStew.Controllers
                     if (ds.Tables[0].Rows[0][0].ToString() == "1")
                     {
                         //TempData["msg"] = "Your request has been approved Successfully !!";
-                        //model.Email = ds.Tables[0].Rows[0]["Email"].ToString();
-                        //model.Name = ds.Tables[0].Rows[0]["Name"].ToString();
-                        //if (model.Email != null)
+                       // Session["Name"] = ds.Tables[0].Rows[0]["Name"].ToString();
+                       // Session["Email"] = ds.Tables[0].Rows[0]["Email"].ToString();
+                       //model.Email = ds.Tables[0].Rows[0]["Email"].ToString();
+                       // Session["TransactionNo"] = ds.Tables[0].Rows[0]["TransactionNo"].ToString();
+                       // Session["TransactionDate"] = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
+
+                        //if (model.Email != "" && model.Email != null)
                         //{
-                        //    string mailbody = "";
                         //    try
                         //    {
-                        //        mailbody = "Dear  " + model.Name + ", <br/>Your request has been approved Successfully";
+                        //        BLMail.SendApprovePayoutMail(Session["Name"].ToString(), Session["TransactionNo"].ToString(), Session["TransactionDate"].ToString(), "Your request has been approved Successfully", Session["Email"].ToString());
+                        //    }
+                        //    catch (Exception ex)
+                        //    {
 
-                       // model.Name = ds.Tables[0].Rows[0]["Name"].ToString();
-                       //model.Email = ds.Tables[0].Rows[0]["Email"].ToString();
-                       //model.TransactionNo = ds.Tables[0].Rows[0]["TransactionNo"].ToString();
-                       //model.TransactionDate = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
-
-                       // if (model.Email != null)
-                       // {
-                       //     string mailbody = "";
-                       //     try
-                       //     {
-                       //         mailbody = "Dear  " + model.Name + ", <br/>Your TransactionNo"+ model.TransactionNo + " and <br/>Transaction Date"+ model.TransactionDate + " has been approved Successfully";
-
-                       //         System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient
-                       //         {
-                       //             Host = "smtp.gmail.com",
-                       //             Port = 587,
-                       //             EnableSsl = true,
-                       //             DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
-                       //             UseDefaultCredentials = true,
-                       //             Credentials = new NetworkCredential("developer2.afluex@gmail.com", "deve@486")
-                       //         };
-                       //         using (var message = new MailMessage("developer2.afluex@gmail.com", model.Email)
-                       //         {
-                       //             IsBodyHtml = true,
-                       //             Subject = "Approve Payout",
-                       //             Body = mailbody
-                       //         })
-                       //             smtp.Send(message);
-
-                       //     }
-                       //     catch (Exception ex)
-                       //     {
-
-                       //     }
-                       // }
+                        //    }
+                        //}
 
                         model.Result = "1";
                     }
@@ -1438,38 +1371,33 @@ namespace BrainStew.Controllers
             return Json(model, JsonRequestBehavior.AllowGet);
             //return RedirectToAction("PayoutRequestList", "Admin");
         }
-
-
-
-
-        public ActionResult ApprovePayout(string id)
-        {
-            try
-            {
-                Admin model = new Admin();
-                model.PK_RequestID = id;
-                model.Status = (model.Status = "Approved");
-                model.UpdatedBy = Session["Pk_AdminId"].ToString();
-                DataSet ds = model.ApprovePayoutRequest();
-                if (ds != null && ds.Tables.Count > 0)
-                {
-                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
-                    {
-                        TempData["msg"] = "Transfer to account approved Successfully";
-                    }
-                    else
-                    {
-                        TempData["msg"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["msg"] = ex.Message;
-            }
-            return RedirectToAction("PayoutRequestList", "Admin");
-        }
-
+        //public ActionResult ApprovePayout(string id)
+        //{
+        //    try
+        //    {
+        //        Admin model = new Admin();
+        //        model.PK_RequestID = id;
+        //        model.Status = (model.Status = "Approved");
+        //        model.UpdatedBy = Session["Pk_AdminId"].ToString();
+        //        DataSet ds = model.ApprovePayoutRequest();
+        //        if (ds != null && ds.Tables.Count > 0)
+        //        {
+        //            if (ds.Tables[0].Rows[0][0].ToString() == "1")
+        //            {
+        //                TempData["msg"] = "Transfer to account approved Successfully";
+        //            }
+        //            else
+        //            {
+        //                TempData["msg"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        TempData["msg"] = ex.Message;
+        //    }
+        //    return RedirectToAction("PayoutRequestList", "Admin");
+        //}
         public ActionResult DeclinePayout(string id)
         {
             try
@@ -1497,7 +1425,6 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("PayoutRequestList", "Admin");
         }
-
         [HttpPost]
         public ActionResult GetNameDetails(string LoginId)
         {
@@ -1516,12 +1443,10 @@ namespace BrainStew.Controllers
             }
             return Json(model, JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult TransferWallet()
         {
             return View();
         }
-
         [HttpPost]
         [ActionName("TransferWallet")]
         [OnAction(ButtonName = "Transfer")]
@@ -1549,12 +1474,10 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("TransferWallet", "Admin");
         }
-
         public ActionResult AdvanceDeduction()
         {
             return View();
         }
-
         [HttpPost]
         [ActionName("AdvanceDeduction")]
         [OnAction(ButtonName = "Advance")]
