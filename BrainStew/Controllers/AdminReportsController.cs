@@ -573,7 +573,7 @@ namespace BrainStew.Controllers
         {
             List<UserReports> lst = new List<UserReports>();
             UserReports model = new UserReports();
-            DataSet ds = model.GetBrainMatrixReport();
+            DataSet ds = model.GetBrainMatrixDonation();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)
@@ -591,13 +591,15 @@ namespace BrainStew.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult GetBrainMatrixReport(UserReports model)
+        [ActionName("BrainMatrixBenefits")]
+        [OnAction(ButtonName = "btnSearch")]
+        public ActionResult GetBrainMatrixDonationReport(UserReports model)
         {
             List<UserReports> lst = new List<UserReports>();
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-            model.LoginId = Session["LoginId"].ToString();
-            DataSet ds = model.GetBrainMatrixReport();
+            //model.LoginId = Session["LoginId"].ToString();
+            DataSet ds = model.GetBrainMatrixDonation();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)

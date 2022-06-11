@@ -37,7 +37,7 @@ document.write(`
                         <div class="top-cta">
                             <span><i class ="far fa-phone"></i> <b>Call</b>: <a href="tel:916389303001">(+91) 6389303001</a></span>
                             <span><i class ="far fa-envelope"></i> <b>Email</b>: <a href="mailto:brainstewfoundation@gmail.com" target="_blank"> brainstewfoundation@gmail.com</a></span>
-                            
+
                         </div>
                     </div>
                     <div class ="col-xl-3 col-lg-3">
@@ -50,9 +50,11 @@ document.write(`
                     </div>
                     <div class="col-xl-3 col-lg-3 text-right">
                         <div class="top-right-nav">
-                            <a href="/Home/login"><i class="far fa-user-circle"></i> Signup <span>or Login</span></a>
+                            <a href="/Home/Registration"><i class ="far fa-user-circle"></i> Signup</span></a> &nbsp&nbsp &nbsp&nbsp &nbsp
+                             <a href="/Home/Login">&nbsp &nbsp<i class ="far fa-user-circle"></i> Login</span></a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

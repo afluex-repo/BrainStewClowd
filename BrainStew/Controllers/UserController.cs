@@ -1391,6 +1391,7 @@ namespace BrainStew.Controllers
             try
             {
                 model.AddedBy = Session["Pk_userId"].ToString();
+              
                // model.TransactionDate = string.IsNullOrEmpty(model.TransactionDate) ? null : Common.ConvertToSystemDate(model.TransactionDate, "dd/MM/yyyy");
                 DataSet ds = model.PayoutRequest();
                 if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
@@ -1561,6 +1562,21 @@ namespace BrainStew.Controllers
                 TempData["error"] = ex.Message;
                 return Json(model, JsonRequestBehavior.AllowGet);
             }
+        }
+        public ActionResult StewMatrixDonation(Account model)
+        {
+            model.LoginId = Session["LoginId"].ToString();
+            
+            #region Check Balance
+            Common objcomm = new Common();
+            objcomm.Fk_UserId = Session["Pk_UserId"].ToString();
+            DataSet ds = objcomm.GetWalletBalance();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                ViewBag.WalletBalance = Decimal.Parse(ds.Tables[0].Rows[0]["amount"].ToString()).ToString("0.00"); ;
+            }
+            #endregion
+            return View(model);
         }
     }
 }
