@@ -191,7 +191,7 @@ namespace BrainStew.Controllers
                             }
                             catch (Exception ex)
                             {
-
+                                obj.Result = ex.Message;
                             }
                         }
                     }
