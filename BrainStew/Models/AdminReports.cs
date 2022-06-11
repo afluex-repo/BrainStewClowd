@@ -92,7 +92,7 @@ namespace BrainStew.Models
                                       new SqlParameter("@ToDate", ToDate),
                                       new SqlParameter("@Package", Package),
                                       new SqlParameter("@ClaculationStatus", Status),
-                                      new SqlParameter("@Fk_BusinessId", BusinessType)
+                                      new SqlParameter("@BusinesAmount", BusinessType)
                                   };
 
             DataSet ds = DBHelper.ExecuteQuery("GetTopupreport", para);

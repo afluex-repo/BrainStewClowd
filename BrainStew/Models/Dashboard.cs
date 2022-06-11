@@ -16,12 +16,14 @@ namespace BrainStew.Models
         public string Message { get;  set; }
         public string MessageTitle { get;  set; }
         public string Pk_MessageId { get;  set; }
-
-
+        public string NewsID { get; set; }
+        public string PK_NewsId { get; set; }
+        public string News { get; set; }
         public string Image { get; set; }
         public string Title { get; set; }
         public List<Dashboard> lstReward { get; set; }
         public string PK_RewardId { get; set; }
+        public List<Dashboard> lstnews { get; set; }
 
 
 
@@ -45,6 +47,14 @@ namespace BrainStew.Models
                 new SqlParameter("@Title",Title)
             };
             DataSet ds = DBHelper.ExecuteQuery("GetRewarDetails", para);
+            return ds;
+        }
+        public DataSet GetNewsDetails()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@NewsID",NewsID)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("NewsList", para);
             return ds;
         }
     }
