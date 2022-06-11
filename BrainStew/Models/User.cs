@@ -51,7 +51,7 @@ namespace BrainStew.Models
 
         public string Status { get; set; }
         public string ROIPercentage { get; set; }
-        
+        public string Naration { get; set; }
 
         public List<User> lstBReports { get; set; }
         public List<SelectListItem> ddlProductName { get; set; }
@@ -189,7 +189,8 @@ namespace BrainStew.Models
             SqlParameter[] para = {
                                   new SqlParameter("@LoginId",LoginId),
                                    new SqlParameter("@Amount",Amount),
-                                    new SqlParameter("@AddedBy",AddedBy)
+                                    new SqlParameter("@AddedBy",AddedBy),
+                                    new SqlParameter("@Naration",Naration)
             };
             DataSet ds = DBHelper.ExecuteQuery("PayoutRequest", para);
             return ds;

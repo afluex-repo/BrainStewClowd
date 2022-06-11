@@ -1371,33 +1371,33 @@ namespace BrainStew.Controllers
             return Json(model, JsonRequestBehavior.AllowGet);
             //return RedirectToAction("PayoutRequestList", "Admin");
         }
-        public ActionResult ApprovePayout(string id)
-        {
-            try
-            {
-                Admin model = new Admin();
-                model.PK_RequestID = id;
-                model.Status = (model.Status = "Approved");
-                model.UpdatedBy = Session["Pk_AdminId"].ToString();
-                DataSet ds = model.ApprovePayoutRequest();
-                if (ds != null && ds.Tables.Count > 0)
-                {
-                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
-                    {
-                        TempData["msg"] = "Transfer to account approved Successfully";
-                    }
-                    else
-                    {
-                        TempData["msg"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["msg"] = ex.Message;
-            }
-            return RedirectToAction("PayoutRequestList", "Admin");
-        }
+        //public ActionResult ApprovePayout(string id)
+        //{
+        //    try
+        //    {
+        //        Admin model = new Admin();
+        //        model.PK_RequestID = id;
+        //        model.Status = (model.Status = "Approved");
+        //        model.UpdatedBy = Session["Pk_AdminId"].ToString();
+        //        DataSet ds = model.ApprovePayoutRequest();
+        //        if (ds != null && ds.Tables.Count > 0)
+        //        {
+        //            if (ds.Tables[0].Rows[0][0].ToString() == "1")
+        //            {
+        //                TempData["msg"] = "Transfer to account approved Successfully";
+        //            }
+        //            else
+        //            {
+        //                TempData["msg"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        TempData["msg"] = ex.Message;
+        //    }
+        //    return RedirectToAction("PayoutRequestList", "Admin");
+        //}
         public ActionResult DeclinePayout(string id)
         {
             try

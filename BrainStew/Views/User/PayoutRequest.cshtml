@@ -26,7 +26,36 @@
                         </div>
                     </div>
                     <div class="widget-content widget-content-area">
-                        <p style="color:red">Note : 15% Transfer Charges And Minimum Rs. 1 and Maximum Rs. 25k</p><br />
+                        <h5 style="color:red">Note : - <spn class="text-black"><b>when any one withdrawal from my wallet to bank account …..</b></spn></h5>
+                        <span style="padding-left:27px;">
+                            We(Brain stew foundation) provide withdrawal fund for charity work not this is your any profits because foundation member not get income from <br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp their foundation this foundation never give income to their member but also foundation give fund for charity work to their registered members.
+                        </span>
+                        <br />
+                        <br />
+                        <h4>Question <span class="text-danger">*</span>: <span style="font-size: 18px;">why you need this amount?</span></h4>
+                        <h4>
+                            Answer : &nbsp;&nbsp;<select id="Naration" name="Naration" class="form-control-sm">
+                                <option value="0">Select</option>
+                                <option value="Blood donation camp">Blood donation camp</option>
+                                <option value="Health check-up camp">Health check-up camp</option>
+                                <option value="Medicine distribution camp">Medicine distribution camp</option>
+                                <option value="Education products distribution camp">Education products distribution camp</option>
+                                <option value="Fruit distribution camp">Fruit distribution camp</option>
+                                <option value="Food distribution camp">Food distribution camp</option>
+                                <option value="Water distribution camp">Water distribution camp</option>
+                                <option value="Juice distribution camp">Juice distribution camp</option>
+                                <option value="Blanket distribution camp">Blanket distribution camp</option>
+                                <option value="Child mini education camp">Child mini education camp</option>
+                                <option value="Knowledge meet camp">Knowledge meet camp</option>
+                                <option value="Go green earth  knowledge camp">Go green earth  knowledge camp</option>
+                                <option value="Save water save earth knowledge camp">Save water save earth knowledge camp</option>
+                                <option value="Child shoe distribution">Child shoe distribution </option>
+                                <option value="Child books distribution">Child books distribution</option>
+                                <option value="Cloths distributions">Cloths distributions</option>
+                            </select>
+                        </h4>
+                        <br />
+                        <p style="color:red">Note : 15% Transfer Charges And Minimum Rs. 1 and Maximum Rs. 25k</p>
                         <div class="row">
                             <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
@@ -142,6 +171,11 @@
     function Validate() {
         debugger;
         $(".errortext").removeClass("errortext");
+        if ($('#Naration').val() == '0') {
+            $("#Naration").addClass('errortext');
+            $('#Naration').focus();
+            return false;
+        }
         if ($('#Amount').val() == '0') {
             $("#Amount").addClass('errortext');
             $('#Amount').focus();
