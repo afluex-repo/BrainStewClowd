@@ -936,6 +936,15 @@
     <Content Include="Views\Report\BrainMatrixBenefits.cshtml" />
     <Content Include="Views\AdminReports\BrainMatrixBenefits.cshtml" />
     <Content Include="Views\Home\CalculateIncome.cshtml" />
+    <Content Include="Views\AdminReports\BrainLevelBenefitsForAdmin.cshtml" />
+    <Content Include="Views\AdminReports\DirectBenefitsList.cshtml" />
+    <Content Include="Views\AdminReports\LevelBenefitsList.cshtml" />
+    <Content Include="Views\AdminReports\UpgradeBenefitsList.cshtml" />
+    <Content Include="Views\AdminReports\PlacementBenefitsList.cshtml" />
+    <Content Include="Views\AdminReports\BraintBenefitsList.cshtml" />
+    <Content Include="Views\AdminReports\BrainLevelBenefitsList.cshtml" />
+    <Content Include="Views\AdminReports\StewBenefitsList.cshtml" />
+    <Content Include="Views\AdminReports\StewLevelBenefitsList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
