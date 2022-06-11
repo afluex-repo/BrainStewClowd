@@ -1695,9 +1695,16 @@ code {
         display: none;
     }
 }
-@media(min-width:1200px)
+@media(min-width:1024px)
 {
     .mob-br
+    {
+        display:none !important;
+    }
+}
+@media(max-width:992px)
+{
+  .mob-br
     {
         display:none !important;
     }
@@ -1706,6 +1713,7 @@ code {
 {
     .mob-txt
     {
+        margin-top:0px !important;
         color:#000 !important;
         font-size:15px !important;
     }

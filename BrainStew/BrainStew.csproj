@@ -742,7 +742,6 @@
     <Content Include="TreeIcon\men-block1.png" />
     <Content Include="TreeIcon\men-inactive.png" />
     <Content Include="UploadFile\60cd7ff8-4b09-4b8e-b87a-470c88f6541f.png" />
-    <Content Include="Views\Report\BrainMatrixBenefits.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Registration.cshtml" />
@@ -934,10 +933,9 @@
     <Content Include="Views\Report\PlacementBenefits.cshtml" />
     <Content Include="Views\Report\UpgradeBenefits.cshtml" />
     <Content Include="Views\User\BrainMatrixDonation.cshtml" />
-    <Content Include="Views\Report\BrainMatrixDonationList.cshtml" />
+    <Content Include="Views\Report\BrainMatrixBenefits.cshtml" />
     <Content Include="Views\AdminReports\BrainMatrixBenefits.cshtml" />
     <Content Include="Views\Home\CalculateIncome.cshtml" />
-    <Content Include="Views\Report\BrainLevelBenefits.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -969,7 +967,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53405</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53409/</IISUrl>
+          <IISUrl>http://localhost:53404/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
