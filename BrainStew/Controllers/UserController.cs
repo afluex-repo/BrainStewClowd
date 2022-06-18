@@ -103,8 +103,21 @@ namespace BrainStew.Controllers
                 ViewBag.TotalTPSAmountReceived = double.Parse(ds.Tables[4].Compute("sum(TotalROI)", "").ToString()).ToString("n2");
                 ViewBag.TotalTPSBalanceAmount = Convert.ToDecimal(ViewBag.TotalTPSAmountTobeReceived) - Convert.ToDecimal(ViewBag.TotalTPSAmountReceived);
             }
-            
+            List<Dashboard> lstnews = new List<Dashboard>();
+            DataSet dsnews = obj.GetNewsDetails();
 
+            if (dsnews != null && dsnews.Tables.Count > 0 && dsnews.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in dsnews.Tables[0].Rows)
+                {
+                    Dashboard obj12 = new Dashboard();
+                    obj12.NewsID = r["PK_NewsID"].ToString();
+                    obj12.Title = r["NewsHeading"].ToString();
+                    obj12.News = r["NewsBody"].ToString();
+                    lstnews.Add(obj12);
+                }
+                obj.lstnews = lstnews;
+            }
             return View(obj);
         }
         public ActionResult ActivateByPin(User model)

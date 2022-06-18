@@ -185,14 +185,14 @@ namespace BrainStew.Controllers
                         obj.Result = "1";
                         if (obj.Email != "" && obj.Email != null)
                         {
-                            try
-                            {
-                                BLMail.SendRegistrationMail(Session["DisplayName"].ToString(), Session["LoginId"].ToString(), Session["PassWord"].ToString(), "Registration Successful", obj.Email);
-                            }
-                            catch (Exception ex)
-                            {
-                                obj.Result = ex.Message;
-                            }
+                            //try
+                            //{
+                            //    BLMail.SendRegistrationMail(Session["DisplayName"].ToString(), Session["LoginId"].ToString(), Session["PassWord"].ToString(), "Registration Successful", obj.Email);
+                            //}
+                            //catch (Exception ex)
+                            //{
+                            //    obj.Result = ex.Message;
+                            //}
                         }
                     }
                     else

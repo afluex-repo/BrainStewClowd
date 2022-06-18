@@ -66,12 +66,12 @@ namespace BrainStew.Models
         public string Image { get; set; }
 
 
-        public string FromLoginId { get; set; }
+        //public string FromLoginId { get; set; }
         public string BusinessAmount { get; set; }
-        public string Percentage { get; set; }
-        public string PayoutNo { get; set; }
-        public string Level { get; set; }
-
+        //public string Percentage { get; set; }
+        //public string PayoutNo { get; set; }
+        //public string Level { get; set; }
+        public string Fk_IncomeTypeId { get; set; }
         //public string SponserName { get; set; }
 
         #region associatelist
@@ -100,7 +100,7 @@ namespace BrainStew.Models
                                       new SqlParameter("@ToDate", ToDate),
                                       new SqlParameter("@Package", Package),
                                       new SqlParameter("@ClaculationStatus", Status),
-                                      new SqlParameter("@Fk_BusinessId", BusinessType)
+                                      new SqlParameter("@BusinesAmount", BusinessType)
                                   };
 
             DataSet ds = DBHelper.ExecuteQuery("GetTopupreport", para);
@@ -208,7 +208,7 @@ namespace BrainStew.Models
                   new SqlParameter("@Status", Status),
                   //new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
             };
-            DataSet ds = DBHelper.ExecuteQuery("GetBrainLevelBenefits", para);
+            DataSet ds = DBHelper.ExecuteQuery("GetLevelIncomeTr2", para);
             return ds;
         }
 
@@ -221,7 +221,7 @@ namespace BrainStew.Models
                   new SqlParameter("@Status", Status),
                   //new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
             };
-            DataSet ds = DBHelper.ExecuteQuery("GetBrainLevelBenefits", para);
+            DataSet ds = DBHelper.ExecuteQuery("GetLevelIncomeTr1", para);
             return ds;
         }
 
@@ -232,9 +232,9 @@ namespace BrainStew.Models
                 new SqlParameter("@FromDate", FromDate),
                 new SqlParameter("@ToDate", ToDate),
                   new SqlParameter("@Status", Status),
-                  //new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+                  new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
             };
-            DataSet ds = DBHelper.ExecuteQuery("GetBrainLevelBenefits", para);
+            DataSet ds = DBHelper.ExecuteQuery("GetBenefitsReports", para);
             return ds;
         }
 
@@ -247,7 +247,7 @@ namespace BrainStew.Models
                   new SqlParameter("@Status", Status),
                   //new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
             };
-            DataSet ds = DBHelper.ExecuteQuery("GetBrainLevelBenefits", para);
+            DataSet ds = DBHelper.ExecuteQuery("GetPlacementBenefitsReport", para);
             return ds;
         }
 
@@ -258,9 +258,9 @@ namespace BrainStew.Models
                 new SqlParameter("@FromDate", FromDate),
                 new SqlParameter("@ToDate", ToDate),
                   new SqlParameter("@Status", Status),
-                  //new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+                  new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
             };
-            DataSet ds = DBHelper.ExecuteQuery("GetBrainLevelBenefits", para);
+            DataSet ds = DBHelper.ExecuteQuery("GetBenefitsReports", para);
             return ds;
         }
 
@@ -300,6 +300,15 @@ namespace BrainStew.Models
                   //new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
             };
             DataSet ds = DBHelper.ExecuteQuery("GetBrainLevelBenefits", para);
+            return ds;
+        }
+        public DataSet getBenefitlist()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                  new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetBenefitsReportsForUserWise", para);
             return ds;
         }
 

@@ -519,6 +519,7 @@ namespace BrainStew.Controllers
                     obj.Status = r["Status"].ToString();
                     obj.Amount = r["Amount"].ToString();
                     obj.Level = r["Lvl"].ToString();
+                    obj.ToName= r["ToName"].ToString();
                     obj.TransactionDate = r["TransactionDate"].ToString();
                     lst.Add(obj);
                 }
