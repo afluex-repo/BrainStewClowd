@@ -14,7 +14,7 @@
                     <div class="widget-header">
                         <div class="row">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                <h4>Top Up Report</h4>
+                                <h4>Donation List</h4>
                             </div>
                         </div>
                     </div>
@@ -44,11 +44,11 @@
                             </div>
 
                             <div class="col-lg-3">
-                                Business Type
+                                User Type
                                 <select id="BusinessType" name="BusinessType" class="form-control">
-                                    <option value="">All Business</option>
-                                    <option value="1">New Business</option>
-                                    <option value="0">Other Business</option>
+                                    <option value="">All user</option>
+                                    <option value="1000">Active User</option>
+                                    <option value="1500">Upgrade User</option>
                                 </select>
                             </div>
                             <div class="col-lg-3">
@@ -66,8 +66,8 @@
                                         <th>Login Id</th>
                                         <th>Name</th>
                                         <th>Upgradation Date</th>
-                                        <th>Payment Mode</th>
-                                        <th>Description</th>
+                                        @*<th>Payment Mode</th>
+                                        <th>Description</th>*@
                                         <th>Price</th>
                                         <th>Calculation Status</th>
                                         @*<th>Print</th>*@
@@ -86,8 +86,8 @@
                                                     <td>@Item.LoginId</td>
                                                     <td>@Item.DisplayName</td>
                                                     <td>@Item.UpgradtionDate</td>
-                                                    <td>@Item.PaymentMode</td>
-                                                    <td>@Item.Description</td>
+                                                    @*<td>@Item.PaymentMode</td>
+                                                    <td>@Item.Description</td>*@
                                                     <td>@Item.Amount</td>
                                                     <td>@Item.Status</td>
                                                     @*<td>*@
@@ -106,8 +106,8 @@
                                         <th></th>
                                         <th></th>
                                         <th></th>
-                                        <th></th>
-                                        <th></th>
+                                        @*<th></th>
+                                        <th></th>*@
                                      
                                         <th style="text-align:right">Total Amount</th>
                                         <th style="color:dodgerblue;font-weight:800">@ViewBag.Total</th>

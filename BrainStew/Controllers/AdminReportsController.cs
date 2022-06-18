@@ -616,153 +616,27 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
-
-
-
-
-        //public ActionResult BrainMatrixBenefitsForAdmin()
-        //{
-        //    List<UserReports> lst = new List<UserReports>();
-        //    UserReports model = new UserReports();
-        //    //model.LoginId = Session["LoginId"].ToString();
-        //    //model.Status = "0";
-        //    model.Fk_IncomeTypeId = "6";
-        //    DataSet ds = model.GetbenefitsReport();
-        //    if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-        //    {
-        //        foreach (DataRow r in ds.Tables[0].Rows)
-        //        {
-        //            UserReports obj = new UserReports();
-        //            obj.FromName = r["FromName"].ToString();
-        //            obj.FromLoginId = r["LoginId"].ToString();
-        //            obj.BusinessAmount = r["BusinessAmount"].ToString();
-        //            obj.Percentage = r["CommissionPercentage"].ToString();
-        //            obj.PayoutNo = r["PayoutNo"].ToString();
-        //            obj.Status = r["Status"].ToString();
-        //            obj.Amount = r["Amount"].ToString();
-        //            obj.Level = r["Lvl"].ToString();
-        //            obj.TransactionDate = r["TransactionDate"].ToString();
-        //            lst.Add(obj);
-        //        }
-        //        model.lst = lst;
-        //    }
-        //    return View(model);
-
-        //}
-
-        [HttpPost]
-        [ActionName("BrainMatrixBenefits")]
-        [OnAction(ButtonName = "btnSearch")]
-        public ActionResult GetBrainMatrixbenefitsReportForAdmin(UserReports model)
-        {
-            List<UserReports> lst = new List<UserReports>();
-            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
-            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-            model.LoginId = Session["LoginId"].ToString();
-            model.Fk_IncomeTypeId = "6";
-            DataSet ds = model.GetbenefitsReport();
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                foreach (DataRow r in ds.Tables[0].Rows)
-                {
-                    UserReports obj = new UserReports();
-                    obj.FromName = r["FromName"].ToString();
-                    obj.FromLoginId = r["LoginId"].ToString();
-                    obj.BusinessAmount = r["BusinessAmount"].ToString();
-                    obj.Percentage = r["CommissionPercentage"].ToString();
-                    obj.PayoutNo = r["PayoutNo"].ToString();
-                    obj.Status = r["Status"].ToString();
-                    obj.Amount = r["Amount"].ToString();
-                    obj.Level = r["Lvl"].ToString();
-                    obj.TransactionDate = r["TransactionDate"].ToString();
-                    lst.Add(obj);
-                }
-                model.lst = lst;
-            }
-            return View(model);
-        }
-        public ActionResult BrainLevelBenefitsForAdmin()
-        {
-            List<UserReports> lst = new List<UserReports>();
-            UserReports model = new UserReports();
-            //model.LoginId = Session["LoginId"].ToString();
-            //model.Status = "0";
-            DataSet ds = model.GetBrainMatixLevelBenefits();
-            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            //{
-            //    foreach (DataRow r in ds.Tables[0].Rows)
-            //    {
-            //        UserReports obj = new UserReports();
-            //        obj.FromName = r["FromName"].ToString();
-            //        obj.FromLoginId = r["LoginId"].ToString();
-            //        obj.BusinessAmount = r["BusinessAmount"].ToString();
-            //        obj.Percentage = r["CommissionPercentage"].ToString();
-            //        obj.PayoutNo = r["PayoutNo"].ToString();
-            //        obj.Status = r["Status"].ToString();
-            //        obj.Amount = r["Amount"].ToString();
-            //        obj.Level = r["Lvl"].ToString();
-            //        obj.TransactionDate = r["TransactionDate"].ToString();
-            //        lst.Add(obj);
-            //    }
-            //    model.lst = lst;
-            //}
-            return View(model);
-
-        }
-
-        [HttpPost]
-        [ActionName("BrainLevelBenefits")]
-        [OnAction(ButtonName = "btnSearch")]
-        public ActionResult BrainLevelBenefitsReportForAdmin(UserReports model)
-        {
-            List<UserReports> lst = new List<UserReports>();
-            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
-            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-            model.LoginId = Session["LoginId"].ToString();
-            DataSet ds = model.GetBrainMatixLevelBenefits();
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                foreach (DataRow r in ds.Tables[0].Rows)
-                {
-                    UserReports obj = new UserReports();
-                    obj.FromName = r["FromName"].ToString();
-                    obj.FromLoginId = r["LoginId"].ToString();
-                    obj.BusinessAmount = r["BusinessAmount"].ToString();
-                    obj.Percentage = r["CommissionPercentage"].ToString();
-                    obj.PayoutNo = r["PayoutNo"].ToString();
-                    obj.Status = r["Status"].ToString();
-                    obj.Amount = r["Amount"].ToString();
-                    obj.Level = r["Lvl"].ToString();
-                    obj.TransactionDate = r["TransactionDate"].ToString();
-                    lst.Add(obj);
-                }
-                model.lst = lst;
-            }
-            return View(model);
-        }
-
         public ActionResult DirectBenefitsList()
         {
             List<AdminReports> lst = new List<AdminReports>();
             AdminReports model = new AdminReports();
-            DataSet ds = model.GetDirectBenefitsList();
-            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            //{
-            //    foreach (DataRow r in ds.Tables[0].Rows)
-            //    {
-            //        AdminReports obj = new AdminReports();
-            //        obj.FromName = r["Name"].ToString();
-            //        obj.FromLoginId = r["LoginId"].ToString();
-            //        obj.Amount = r["Amount"].ToString();
-            //        obj.Level = r["BrainMatrixLevel"].ToString();
-            //        obj.TransactionDate = r["TransactionDate"].ToString();
-            //        lst.Add(obj);
-            //    }
-            //    model.lst = lst;
-            //}
-            return View();
+            model.Fk_IncomeTypeId = "2";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
         }
 
         [HttpPost]
@@ -773,51 +647,45 @@ namespace BrainStew.Controllers
             List<AdminReports> lst = new List<AdminReports>();
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-            //model.LoginId = Session["LoginId"].ToString();
-            DataSet ds = model.GetDirectBenefitsList();
+            model.Fk_IncomeTypeId = "2";
+            DataSet ds = model.getBenefitlist();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     AdminReports obj = new AdminReports();
-                    obj.FromName = r["FromName"].ToString();
-                    obj.FromLoginId = r["LoginId"].ToString();
-                    obj.BusinessAmount = r["BusinessAmount"].ToString();
-                    obj.Percentage = r["CommissionPercentage"].ToString();
-                    obj.PayoutNo = r["PayoutNo"].ToString();
-                    obj.Status = r["Status"].ToString();
-                    obj.Amount = r["Amount"].ToString();
-                    obj.Level = r["Lvl"].ToString();
-                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
                     lst.Add(obj);
                 }
                 model.lst = lst;
             }
             return View(model);
         }
-
-
-
         public ActionResult LevelBenefitsList()
         {
             List<AdminReports> lst = new List<AdminReports>();
             AdminReports model = new AdminReports();
-            DataSet ds = model.GetLevelBenefitsList();
-            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            //{
-            //    foreach (DataRow r in ds.Tables[0].Rows)
-            //    {
-            //        AdminReports obj = new AdminReports();
-            //        obj.FromName = r["Name"].ToString();
-            //        obj.FromLoginId = r["LoginId"].ToString();
-            //        obj.Amount = r["Amount"].ToString();
-            //        obj.Level = r["BrainMatrixLevel"].ToString();
-            //        obj.TransactionDate = r["TransactionDate"].ToString();
-            //        lst.Add(obj);
-            //    }
-            //    model.lst = lst;
-            //}
-            return View();
+            model.Fk_IncomeTypeId = "1";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
         }
 
         [HttpPost]
@@ -828,52 +696,46 @@ namespace BrainStew.Controllers
             List<AdminReports> lst = new List<AdminReports>();
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-            //model.LoginId = Session["LoginId"].ToString();
-            DataSet ds = model.GetLevelBenefitsList();
+            model.Fk_IncomeTypeId = "1";
+            DataSet ds = model.getBenefitlist();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     AdminReports obj = new AdminReports();
-                    obj.FromName = r["FromName"].ToString();
-                    obj.FromLoginId = r["LoginId"].ToString();
-                    obj.BusinessAmount = r["BusinessAmount"].ToString();
-                    obj.Percentage = r["CommissionPercentage"].ToString();
-                    obj.PayoutNo = r["PayoutNo"].ToString();
-                    obj.Status = r["Status"].ToString();
-                    obj.Amount = r["Amount"].ToString();
-                    obj.Level = r["Lvl"].ToString();
-                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
                     lst.Add(obj);
                 }
                 model.lst = lst;
             }
             return View(model);
         }
-
-
         public ActionResult UpgradeBenefitsList()
         {
             List<AdminReports> lst = new List<AdminReports>();
             AdminReports model = new AdminReports();
-            DataSet ds = model.GetUpgradeBenefitsList();
-            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            //{
-            //    foreach (DataRow r in ds.Tables[0].Rows)
-            //    {
-            //        AdminReports obj = new AdminReports();
-            //        obj.FromName = r["Name"].ToString();
-            //        obj.FromLoginId = r["LoginId"].ToString();
-            //        obj.Amount = r["Amount"].ToString();
-            //        obj.Level = r["BrainMatrixLevel"].ToString();
-            //        obj.TransactionDate = r["TransactionDate"].ToString();
-            //        lst.Add(obj);
-            //    }
-            //    model.lst = lst;
-            //}
-            return View();
+            model.Fk_IncomeTypeId = "4";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
         }
-
         [HttpPost]
         [ActionName("UpgradeBenefitsList")]
         [OnAction(ButtonName = "btnSearch")]
@@ -882,52 +744,46 @@ namespace BrainStew.Controllers
             List<AdminReports> lst = new List<AdminReports>();
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-            //model.LoginId = Session["LoginId"].ToString();
-            DataSet ds = model.GetUpgradeBenefitsList();
+            model.Fk_IncomeTypeId = "4";
+            DataSet ds = model.getBenefitlist();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     AdminReports obj = new AdminReports();
-                    obj.FromName = r["FromName"].ToString();
-                    obj.FromLoginId = r["LoginId"].ToString();
-                    obj.BusinessAmount = r["BusinessAmount"].ToString();
-                    obj.Percentage = r["CommissionPercentage"].ToString();
-                    obj.PayoutNo = r["PayoutNo"].ToString();
-                    obj.Status = r["Status"].ToString();
-                    obj.Amount = r["Amount"].ToString();
-                    obj.Level = r["Lvl"].ToString();
-                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
                     lst.Add(obj);
                 }
                 model.lst = lst;
             }
             return View(model);
         }
-
-
         public ActionResult PlacementBenefitsList()
         {
             List<AdminReports> lst = new List<AdminReports>();
             AdminReports model = new AdminReports();
-            DataSet ds = model.GetPlacementBenefitsList();
-            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            //{
-            //    foreach (DataRow r in ds.Tables[0].Rows)
-            //    {
-            //        AdminReports obj = new AdminReports();
-            //        obj.FromName = r["Name"].ToString();
-            //        obj.FromLoginId = r["LoginId"].ToString();
-            //        obj.Amount = r["Amount"].ToString();
-            //        obj.Level = r["BrainMatrixLevel"].ToString();
-            //        obj.TransactionDate = r["TransactionDate"].ToString();
-            //        lst.Add(obj);
-            //    }
-            //    model.lst = lst;
-            //}
-            return View();
+            model.Fk_IncomeTypeId = "3";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
         }
-
         [HttpPost]
         [ActionName("PlacementBenefitsList")]
         [OnAction(ButtonName = "btnSearch")]
@@ -936,22 +792,18 @@ namespace BrainStew.Controllers
             List<AdminReports> lst = new List<AdminReports>();
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-            //model.LoginId = Session["LoginId"].ToString();
-            DataSet ds = model.GetPlacementBenefitsList();
+            model.Fk_IncomeTypeId = "3";
+            DataSet ds = model.getBenefitlist();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     AdminReports obj = new AdminReports();
-                    obj.FromName = r["FromName"].ToString();
-                    obj.FromLoginId = r["LoginId"].ToString();
-                    obj.BusinessAmount = r["BusinessAmount"].ToString();
-                    obj.Percentage = r["CommissionPercentage"].ToString();
-                    obj.PayoutNo = r["PayoutNo"].ToString();
-                    obj.Status = r["Status"].ToString();
-                    obj.Amount = r["Amount"].ToString();
-                    obj.Level = r["Lvl"].ToString();
-                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
                     lst.Add(obj);
                 }
                 model.lst = lst;
@@ -964,22 +816,23 @@ namespace BrainStew.Controllers
         {
             List<AdminReports> lst = new List<AdminReports>();
             AdminReports model = new AdminReports();
-            DataSet ds = model.GetBraintBenefitsList();
-            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            //{
-            //    foreach (DataRow r in ds.Tables[0].Rows)
-            //    {
-            //        AdminReports obj = new AdminReports();
-            //        obj.FromName = r["Name"].ToString();
-            //        obj.FromLoginId = r["LoginId"].ToString();
-            //        obj.Amount = r["Amount"].ToString();
-            //        obj.Level = r["BrainMatrixLevel"].ToString();
-            //        obj.TransactionDate = r["TransactionDate"].ToString();
-            //        lst.Add(obj);
-            //    }
-            //    model.lst = lst;
-            //}
-            return View();
+            model.Fk_IncomeTypeId = "6";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
         }
 
         [HttpPost]
@@ -990,22 +843,18 @@ namespace BrainStew.Controllers
             List<AdminReports> lst = new List<AdminReports>();
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-            //model.LoginId = Session["LoginId"].ToString();
-            DataSet ds = model.GetBraintBenefitsList();
+            model.Fk_IncomeTypeId = "6";
+            DataSet ds = model.getBenefitlist();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     AdminReports obj = new AdminReports();
-                    obj.FromName = r["FromName"].ToString();
-                    obj.FromLoginId = r["LoginId"].ToString();
-                    obj.BusinessAmount = r["BusinessAmount"].ToString();
-                    obj.Percentage = r["CommissionPercentage"].ToString();
-                    obj.PayoutNo = r["PayoutNo"].ToString();
-                    obj.Status = r["Status"].ToString();
-                    obj.Amount = r["Amount"].ToString();
-                    obj.Level = r["Lvl"].ToString();
-                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
                     lst.Add(obj);
                 }
                 model.lst = lst;
@@ -1018,22 +867,23 @@ namespace BrainStew.Controllers
         {
             List<AdminReports> lst = new List<AdminReports>();
             AdminReports model = new AdminReports();
-            DataSet ds = model.GetBrainLevelBenefitsList();
-            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            //{
-            //    foreach (DataRow r in ds.Tables[0].Rows)
-            //    {
-            //        AdminReports obj = new AdminReports();
-            //        obj.FromName = r["Name"].ToString();
-            //        obj.FromLoginId = r["LoginId"].ToString();
-            //        obj.Amount = r["Amount"].ToString();
-            //        obj.Level = r["BrainMatrixLevel"].ToString();
-            //        obj.TransactionDate = r["TransactionDate"].ToString();
-            //        lst.Add(obj);
-            //    }
-            //    model.lst = lst;
-            //}
-            return View();
+            model.Fk_IncomeTypeId = "7";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId ="7";
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
         }
 
         [HttpPost]
@@ -1044,74 +894,69 @@ namespace BrainStew.Controllers
             List<AdminReports> lst = new List<AdminReports>();
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-            //model.LoginId = Session["LoginId"].ToString();
-            DataSet ds = model.GetBrainLevelBenefitsList();
+            model.Fk_IncomeTypeId = "7";
+            DataSet ds = model.getBenefitlist();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     AdminReports obj = new AdminReports();
-                    obj.FromName = r["FromName"].ToString();
-                    obj.FromLoginId = r["LoginId"].ToString();
-                    obj.BusinessAmount = r["BusinessAmount"].ToString();
-                    obj.Percentage = r["CommissionPercentage"].ToString();
-                    obj.PayoutNo = r["PayoutNo"].ToString();
-                    obj.Status = r["Status"].ToString();
-                    obj.Amount = r["Amount"].ToString();
-                    obj.Level = r["Lvl"].ToString();
-                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = "7";
                     lst.Add(obj);
                 }
                 model.lst = lst;
             }
             return View(model);
         }
-
-        public ActionResult StewBenefitsList()
+        public ActionResult ViewBenefitsListByUser(string id,string Incomeid)
         {
             List<AdminReports> lst = new List<AdminReports>();
             AdminReports model = new AdminReports();
-            DataSet ds = model.GetStewBenefitsList();
-            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            //{
-            //    foreach (DataRow r in ds.Tables[0].Rows)
-            //    {
-            //        AdminReports obj = new AdminReports();
-            //        obj.FromName = r["Name"].ToString();
-            //        obj.FromLoginId = r["LoginId"].ToString();
-            //        obj.Amount = r["Amount"].ToString();
-            //        obj.Level = r["BrainMatrixLevel"].ToString();
-            //        obj.TransactionDate = r["TransactionDate"].ToString();
-            //        lst.Add(obj);
-            //    }
-            //    model.lst = lst;
-            //}
-            return View();
-        }
+            model.LoginId = id;
+            model.Fk_IncomeTypeId = Incomeid;
+            if(Incomeid== "1")
+            {
+                @TempData["BenefitsName"] = "LEVEL BENEFITS LIST";
+            }
+           else if (Incomeid == "2")
+            {
+                @TempData["BenefitsName"] = "DIRECT BENEFITS LIST";
+            }
+           else if (Incomeid == "4")
+            {
+                @TempData["BenefitsName"] = "UPGRADE BENEFITS LIST";
+            }
+            else if (Incomeid == "3")
+            {
+                @TempData["BenefitsName"] = "PLACEMENT BENEFITS LIST";
 
-        [HttpPost]
-        [ActionName("StewBenefitsList")]
-        [OnAction(ButtonName = "btnSearch")]
-        public ActionResult StewBenefitsListReport(AdminReports model)
-        {
-            List<AdminReports> lst = new List<AdminReports>();
-            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
-            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-            //model.LoginId = Session["LoginId"].ToString();
-            DataSet ds = model.GetStewBenefitsList();
+            }
+            else if (Incomeid == "6")
+            {
+                @TempData["BenefitsName"] = "BRAIN BENEFITS LIST";
+
+            }
+            else if (Incomeid == "7")
+            {
+                @TempData["BenefitsName"] ="BRAIN LEVEL BENEFITS LIST";
+
+            }
+            DataSet ds = model.GetBraintBenefitsList();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     AdminReports obj = new AdminReports();
                     obj.FromName = r["FromName"].ToString();
-                    obj.FromLoginId = r["LoginId"].ToString();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.FromLoginID = r["LoginId"].ToString();
                     obj.BusinessAmount = r["BusinessAmount"].ToString();
-                    obj.Percentage = r["CommissionPercentage"].ToString();
-                    obj.PayoutNo = r["PayoutNo"].ToString();
                     obj.Status = r["Status"].ToString();
                     obj.Amount = r["Amount"].ToString();
-                    obj.Level = r["Lvl"].ToString();
                     obj.TransactionDate = r["TransactionDate"].ToString();
                     lst.Add(obj);
                 }
@@ -1119,60 +964,5 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
-        public ActionResult StewLevelBenefitsList()
-        {
-            List<AdminReports> lst = new List<AdminReports>();
-            AdminReports model = new AdminReports();
-            DataSet ds = model.GetStewLevelBenefitsList();
-            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            //{
-            //    foreach (DataRow r in ds.Tables[0].Rows)
-            //    {
-            //        AdminReports obj = new AdminReports();
-            //        obj.FromName = r["Name"].ToString();
-            //        obj.FromLoginId = r["LoginId"].ToString();
-            //        obj.Amount = r["Amount"].ToString();
-            //        obj.Level = r["BrainMatrixLevel"].ToString();
-            //        obj.TransactionDate = r["TransactionDate"].ToString();
-            //        lst.Add(obj);
-            //    }
-            //    model.lst = lst;
-            //}
-            return View();
-        }
-
-        [HttpPost]
-        [ActionName("StewLevelBenefitsList")]
-        [OnAction(ButtonName = "btnSearch")]
-        public ActionResult StewLevelBenefitsListReport(AdminReports model)
-        {
-            List<AdminReports> lst = new List<AdminReports>();
-            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
-            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-            //model.LoginId = Session["LoginId"].ToString();
-            DataSet ds = model.GetStewLevelBenefitsList();
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                foreach (DataRow r in ds.Tables[0].Rows)
-                {
-                    AdminReports obj = new AdminReports();
-                    obj.FromName = r["FromName"].ToString();
-                    obj.FromLoginId = r["LoginId"].ToString();
-                    obj.BusinessAmount = r["BusinessAmount"].ToString();
-                    obj.Percentage = r["CommissionPercentage"].ToString();
-                    obj.PayoutNo = r["PayoutNo"].ToString();
-                    obj.Status = r["Status"].ToString();
-                    obj.Amount = r["Amount"].ToString();
-                    obj.Level = r["Lvl"].ToString();
-                    obj.TransactionDate = r["TransactionDate"].ToString();
-                    lst.Add(obj);
-                }
-                model.lst = lst;
-            }
-            return View(model);
-        }
-
     }
 }
