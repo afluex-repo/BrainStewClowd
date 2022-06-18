@@ -240,7 +240,7 @@ namespace BrainStew.Controllers
                     if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                     {
                         obj.NewsID = ds.Tables[0].Rows[0]["PK_NewsID"].ToString();
-                        obj.NewsDate = ds.Tables[0].Rows[0]["NewsDate"].ToString();
+                        //obj.NewsDate = ds.Tables[0].Rows[0]["NewsDate"].ToString();
                         obj.NewsHeading = ds.Tables[0].Rows[0]["NewsHeading"].ToString();
                         obj.NewsBody = ds.Tables[0].Rows[0]["NewsBody"].ToString();
                     }

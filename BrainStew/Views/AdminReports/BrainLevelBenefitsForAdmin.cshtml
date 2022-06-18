@@ -1,12 +1,12 @@
 ﻿@model BrainStew.Models.UserReports
-
 @{
-    ViewBag.Title = "BrainMatrixBenefits";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    ViewBag.Title = "BrainLevelBenefitsForAdmin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <link href="~/plugins/flatpickr/flatpickr.css" rel="stylesheet" type="text/css">
 <link href="~/plugins/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
-@using (Html.BeginForm("UpgradeBenefits", "Report", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("BrainLevelBenefitsForAdmin", "Report", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
 {
     <div class="container">
         <div class="row layout-top-spacing">
@@ -15,13 +15,20 @@
                     <div class="widget-header">
                         <div class="row">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                <h4>Brain Matrix Donation List</h4>
+                                <h4>BRAIN LEVEL BENEFITS</h4>
                             </div>
                         </div>
                     </div>
                     <div class="widget-content widget-content-area">
                         <div class="row">
                             <div class="col-lg-3 col-md-3">
+                                <div class="form-group">
+                                    <label>Login Id</label>
+                                    @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control", @Placeholder = "LoginId" })
+
+                                </div>
+                            </div>
+                            @*<div class="col-lg-3 col-md-3">
                                 <div class="form-group">
                                     <label>
                                         From Date
@@ -32,11 +39,22 @@
                             </div>
                             <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
+                                    <label>Status</label>
+                                    <input type="hidden" value="@Model.Status" id="st" />
+                                    <select id="Status" name="Status" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="0">Unpaid</option>
+                                        <option value="1">Paid</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="form-group">
                                     <label> To Date</label>
                                     @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @Placeholder = "To Date" })
 
                                 </div>
-                            </div>
+                            </div>*@
                             <div class="col-lg-3 col-md-3" style="margin-top:28px">
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-success" value="Search" name="btnSearch" />
@@ -48,10 +66,10 @@
                                 <thead>
                                     <tr>
                                         <th>Sr No.</th>
-                                        <th>Name</th>
-                                        <th>Amount</th>
-                                        @*<th>Level</th>*@
-                                        <th>Date</th>
+                                        <th>To Member</th>
+                                        <th>Donation Amount</th>
+                                        <th>Benefits</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,11 +82,11 @@
                                             {
                                                 <tr class="text-left">
                                                     <td>@i</td>
-                                                    <td>@Item.FromName (@Item.FromLoginId)</td>
+                                                    <td>@Item.ToName</td>
+                                                    <td>@Item.BusinessAmount</td>
                                                     <td>@Item.Amount</td>
-                                                    <td>@Item.TransactionDate</td>
+                                                    <td><a class="btn btn-info btn-sm" href="/AdminReports/ViewBenefitsListByUser?id=@Item.ToLoginID&&Incomeid=@Item.Fk_IncomeTypeId" target="_Blank">View</a></td>
                                                 </tr>
-
                                                 i++;
                                             }
                                         }

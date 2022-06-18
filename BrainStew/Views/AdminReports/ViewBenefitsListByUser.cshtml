@@ -1,12 +1,12 @@
-﻿@model BrainStew.Models.UserReports
+﻿@model BrainStew.Models.AdminReports
 
 @{
-    ViewBag.Title = "BrainMatrixBenefits";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    ViewBag.Title = @TempData["BenefitsName"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/plugins/flatpickr/flatpickr.css" rel="stylesheet" type="text/css">
 <link href="~/plugins/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
-@using (Html.BeginForm("UpgradeBenefits", "Report", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("ViewBenefitsListByUser", "AdminReports", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
 {
     <div class="container">
         <div class="row layout-top-spacing">
@@ -15,43 +15,22 @@
                     <div class="widget-header">
                         <div class="row">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                <h4>Brain Matrix Donation List</h4>
+                                <h4>@TempData["BenefitsName"]</h4>
                             </div>
                         </div>
                     </div>
                     <div class="widget-content widget-content-area">
                         <div class="row">
-                            <div class="col-lg-3 col-md-3">
-                                <div class="form-group">
-                                    <label>
-                                        From Date
-                                    </label>
-                                    @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @Placeholder = "From Date" })
-
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3">
-                                <div class="form-group">
-                                    <label> To Date</label>
-                                    @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @Placeholder = "To Date" })
-
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3" style="margin-top:28px">
-                                <div class="form-group">
-                                    <input type="submit" class="btn btn-success" value="Search" name="btnSearch" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
                             <table id="html5-extension" class="table table-hover non-hover" data-page-length='20'>
                                 <thead>
                                     <tr>
                                         <th>Sr No.</th>
-                                        <th>Name</th>
-                                        <th>Amount</th>
-                                        @*<th>Level</th>*@
-                                        <th>Date</th>
+                                        <th>From Member</th>
+                                        <th>To Member</th>
+                                        <th>Donation Amount</th>
+                                        <th>Benefits</th>
+                                        <th>Status</th>
+                                        <th>Transaction Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,11 +43,13 @@
                                             {
                                                 <tr class="text-left">
                                                     <td>@i</td>
-                                                    <td>@Item.FromName (@Item.FromLoginId)</td>
+                                                    <td>@Item.FromName (@Item.FromLoginID)</td>
+                                                    <td>@Item.ToName</td>
+                                                    <td>@Item.BusinessAmount</td>
                                                     <td>@Item.Amount</td>
+                                                    <td>@Item.Status</td>
                                                     <td>@Item.TransactionDate</td>
                                                 </tr>
-
                                                 i++;
                                             }
                                         }
@@ -94,3 +75,4 @@
     });
     //$("#Status").val($("#st").val()).attr("selected", "selected");
 </script>
+

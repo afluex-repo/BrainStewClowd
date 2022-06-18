@@ -10,6 +10,7 @@ namespace BrainStew.Models
     public class AdminReports : Common
     {
         public List<AdminReports> lsttopupreport { get; set; }
+        public List<AdminReports> lst { get; set; }
 
         public string isBlocked { get; set; }
 
@@ -64,6 +65,13 @@ namespace BrainStew.Models
         public string NomineeRelation { get; set; }
         public string Image { get; set; }
 
+
+        //public string FromLoginId { get; set; }
+        public string BusinessAmount { get; set; }
+        //public string Percentage { get; set; }
+        //public string PayoutNo { get; set; }
+        //public string Level { get; set; }
+        public string Fk_IncomeTypeId { get; set; }
         //public string SponserName { get; set; }
 
         #region associatelist
@@ -187,6 +195,122 @@ namespace BrainStew.Models
             return ds;
         }
 
+
+
+
+
+        public DataSet GetDirectBenefitsList()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                  new SqlParameter("@Status", Status),
+                  //new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetLevelIncomeTr2", para);
+            return ds;
+        }
+
+        public DataSet GetLevelBenefitsList()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                  new SqlParameter("@Status", Status),
+                  //new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetLevelIncomeTr1", para);
+            return ds;
+        }
+
+        public DataSet GetUpgradeBenefitsList()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                  new SqlParameter("@Status", Status),
+                  new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetBenefitsReports", para);
+            return ds;
+        }
+
+        public DataSet GetPlacementBenefitsList()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                  new SqlParameter("@Status", Status),
+                  //new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetPlacementBenefitsReport", para);
+            return ds;
+        }
+
+        public DataSet GetBraintBenefitsList()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                  new SqlParameter("@Status", Status),
+                  new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetBenefitsReports", para);
+            return ds;
+        }
+
+        public DataSet GetBrainLevelBenefitsList()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                  new SqlParameter("@Status", Status),
+                  //new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetBrainLevelBenefits", para);
+            return ds;
+        }
+
+        public DataSet GetStewBenefitsList()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                  new SqlParameter("@Status", Status),
+                  //new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetBrainLevelBenefits", para);
+            return ds;
+        }
+
+        public DataSet GetStewLevelBenefitsList()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                  new SqlParameter("@Status", Status),
+                  //new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetBrainLevelBenefits", para);
+            return ds;
+        }
+        public DataSet getBenefitlist()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                  new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetBenefitsReportsForUserWise", para);
+            return ds;
+        }
 
     }
 }
