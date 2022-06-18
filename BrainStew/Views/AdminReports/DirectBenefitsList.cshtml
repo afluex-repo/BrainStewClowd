@@ -17,9 +17,9 @@
                             <div class="col-xl-6 col-md-6 col-sm-6 col-6">
                                 <h4>DIRECT BENEFITS LIST </h4>
                             </div>
-                            <div class="col-xl-6 col-md-6 col-sm-6 col-6">
+                            @*<div class="col-xl-6 col-md-6 col-sm-6 col-6">
                                 <h4>DIRECT BENEFITS LIST </h4>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                     <div class="widget-content widget-content-area">
@@ -87,7 +87,7 @@
                                                     <td>@Item.ToName</td>
                                                     <td>@Item.BusinessAmount</td>
                                                     <td>@Item.Amount</td>
-                                                   <td><a class="btn btn-info btn-sm" href="/AdminReports/ViewBenefitsListByUser?id=@Item.ToLoginID&&Incomeid=@Item.Fk_IncomeTypeId" target="_Blank">View</a></td>
+                                                   <td><a class="btn btn-info btn-sm" href="/AdminReports/ViewBenefitsListByUser?id=@Item.ToLoginID&&Incomeid=@Item.Fk_IncomeTypeId">View</a></td>
                                                 </tr>
                                                 i++;
                                             }
