@@ -73,8 +73,19 @@ namespace BrainStew.Models
         //public string Level { get; set; }
         public string Fk_IncomeTypeId { get; set; }
         //public string SponserName { get; set; }
-
+        public string AvailableBalance { get; set; }
+        public List<AdminReports> lstWalletLedger { get; set; }
+        public string CrAmount { get; set; }
+        public string DrAmount { get; set; }
         #region associatelist
+        public DataSet WalletLedger()
+        {
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
+                                    new SqlParameter("@Name",Name)
+                                  };
+            DataSet ds = DBHelper.ExecuteQuery("PayoutWalletLedgerForAdmin", para);
+            return ds;
+        }
         public DataSet GetAssociateList()
         {
             SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
