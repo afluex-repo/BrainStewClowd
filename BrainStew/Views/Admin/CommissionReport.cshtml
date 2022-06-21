@@ -1,0 +1,99 @@
+﻿@model BrainStew.Models.Admin
+
+@{
+    ViewBag.Title = "CommissionReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/plugins/flatpickr/flatpickr.css" rel="stylesheet" type="text/css">
+<link href="~/plugins/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
+@using (Html.BeginForm("CommissionReport", "Admin", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+{
+    <div class="container">
+        <div class="row layout-top-spacing">
+            <div class="col-lg-12 col-12 layout-spacing">
+                <div class="statbox widget box box-shadow">
+                    <div class="widget-header">
+                        <div class="row">
+                            <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                <h4>Commission Report</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-content widget-content-area">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3">
+                                <div class="form-group">
+                                    <label>
+                                        From Date
+                                    </label>
+                                    @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @Placeholder = "From Date" })
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="form-group">
+                                    <label> To Date</label>
+                                    @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @Placeholder = "To Date" })
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-4" style="margin-top:28px">
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-success pull-left" value="Search" name="btnSearch" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <table id="html5-extension" class="table table-hover non-hover" data-page-length='20'>
+                                <thead>
+                                    <tr>
+                                        <th>Sr.No.</th>
+                                        <th>Name</th>
+                                        <th>Id Number</th>
+                                        <th>Total Wallet</th>
+                                        <th>My Wallet</th>
+                                        <th>TopUp Wallet</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @*@if (Model != null)
+                                        {
+                                            if (Model.lst != null)
+                                            {
+                                                int i = 1;
+                                                foreach (var Item in Model.lst)
+                                                {
+                                                    <tr class="text-left">
+                                                        <td>@i</td>
+                                                        <td>@Item.Name</td>
+                                                        <td>@Item.IdNumber</td>
+                                                        <td>@Item.Total Wallet</td>
+                                                        <td>@Item.My Wallet</td>
+                                                        <td>@Item.TopUp Wallet</td>
+                                                    </tr>
+                                                    i++;
+                                                }
+                                            }
+                                        }*@
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/plugins/flatpickr/flatpickr.js"></script>
+<script src="~/plugins/flatpickr/custom-flatpickr.js"></script>
+<script>
+    var f3 = flatpickr(document.getElementById('FromDate'), {
+        mode: "range"
+    });
+    var f4 = flatpickr(document.getElementById('ToDate'), {
+        mode: "range"
+    });
+</script>
+
