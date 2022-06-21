@@ -202,7 +202,7 @@
                                     <button type="button" class="btn btn-primary" onclick="return confirmregistration();" id="Confirm">Confirm</button>
                                     <div class="row" id="divReg" style="display: none">
                                         <div class="col-sm-12 col-md-6 col-lg-6">
-                                            <button type="button" class="btn btn-primary preloader" onclick="return saveregistration();" id="Register">Sign Up</button>
+                                            <button type="button" class="btn btn-primary" onclick="return saveregistration();" id="Register">Sign Up</button>
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <button type="button" class="btn btn-primary" onclick="return editregistration();" id="Edit">Edit</button>
@@ -432,8 +432,8 @@
     <script type="text/javascript">
         $(window).load(function () { // makes sure the whole site is loaded
             $('#status').fadeOut(); // will first fade out the loading animation
-            $('#preloader').delay(200).fadeOut(400); // will fade out the white DIV that covers the website.
-            $('body').delay(200).css({ 'overflow': 'visible' });
+            $('#preloader').delay(1000).fadeOut(2000); // will fade out the white DIV that covers the website.
+            $('body').delay(1000).css({ 'overflow': 'visible' });
         })
     </script>
 </body>

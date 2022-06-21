@@ -212,4 +212,3 @@ E:\Repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.csprojResolveAssembly
 E:\Repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.dll
 E:\Repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.pdb
 E:\SachinMishraProject\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.csprojResolveAssemblyReference.cache
-D:\Ashwani Afluex\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.csprojResolveAssemblyReference.cache
