@@ -910,7 +910,7 @@ namespace BrainStew.Controllers
                 }
                 model.lst = lst;
             }
-            return View(model);
+            return View(model); 
         }
         public ActionResult ViewBenefitsListByUser(string id,string Incomeid)
         {
@@ -970,5 +970,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
+        
     }
 }

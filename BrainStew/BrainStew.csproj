@@ -949,6 +949,7 @@
     <Content Include="Views\AdminReports\StewBenefitsList.cshtml" />
     <Content Include="Views\AdminReports\StewLevelBenefitsList.cshtml" />
     <Content Include="Views\AdminReports\ViewBenefitsListByUser.cshtml" />
+    <Content Include="Views\Admin\CommissionReport.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -202,7 +202,7 @@
                                     <button type="button" class="btn btn-primary" onclick="return confirmregistration();" id="Confirm">Confirm</button>
                                     <div class="row" id="divReg" style="display: none">
                                         <div class="col-sm-12 col-md-6 col-lg-6">
-                                            <button type="button" class="btn btn-primary" onclick="return saveregistration();" id="Register">Sign Up</button>
+                                            <button type="button" class="btn btn-primary preloader" onclick="return saveregistration();" id="Register">Sign Up</button>
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <button type="button" class="btn btn-primary" onclick="return editregistration();" id="Edit">Edit</button>
@@ -353,7 +353,7 @@
         }
         function saveregistration() {
             $('#Register').attr("disabled", "disabled");
-            $("#divload").css({ 'display': '' });
+            $(".preloader").css({ 'display': '' });
             var Leg = "";
             if ($('#left').prop('checked')) {
                 Leg = "L";
