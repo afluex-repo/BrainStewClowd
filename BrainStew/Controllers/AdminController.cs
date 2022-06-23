@@ -647,21 +647,27 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-        public ActionResult PayoutWalletLedgerForAdmin()
+        public ActionResult PayoutWalletLedgerForAdmin(string loginid)
         {
             List<Admin> lst = new List<Admin>();
             Admin model = new Admin();
+            model.LoginId = loginid;
             DataSet ds = model.PayoutWalletLedger();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
+                ViewBag.LoginId = ds.Tables[0].Rows[0]["LoginId"].ToString();
+                ViewBag.Name = ds.Tables[0].Rows[0]["Name"].ToString();
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
+                   
                     Admin obj = new Admin();
                     obj.PK_PayoutWalletId = r["PK_PayoutWalletId"].ToString();
                     obj.Fk_UserId = r["FK_UserId"].ToString();
                     obj.CrAmount = r["CrAmount"].ToString();
                     obj.DrAmount = r["DrAmount"].ToString();
                     obj.Narration = r["Narration"].ToString();
+                    obj.Balance = r["Balance"].ToString();
+                    obj.TransactionBy = r["TransactionBy"].ToString();
                     obj.TransactionDate = r["TransactionDate"].ToString();
                     lst.Add(obj);
                 }
@@ -670,9 +676,10 @@ namespace BrainStew.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult PayoutWalletLedgerForAdmin(Admin model)
+        public ActionResult PayoutWalletLedgerForAdmin(Admin model, string loginId)
         {
             List<Admin> lst = new List<Admin>();
+            model.LoginId = loginId;
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
             DataSet ds = model.PayoutWalletLedger();
@@ -1371,33 +1378,33 @@ namespace BrainStew.Controllers
             return Json(model, JsonRequestBehavior.AllowGet);
             //return RedirectToAction("PayoutRequestList", "Admin");
         }
-        public ActionResult ApprovePayout(string id)
-        {
-            try
-            {
-                Admin model = new Admin();
-                model.PK_RequestID = id;
-                model.Status = (model.Status = "Approved");
-                model.UpdatedBy = Session["Pk_AdminId"].ToString();
-                DataSet ds = model.ApprovePayoutRequest();
-                if (ds != null && ds.Tables.Count > 0)
-                {
-                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
-                    {
-                        TempData["msg"] = "Transfer to account approved Successfully";
-                    }
-                    else
-                    {
-                        TempData["msg"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["msg"] = ex.Message;
-            }
-            return RedirectToAction("PayoutRequestList", "Admin");
-        }
+        //public ActionResult ApprovePayout(string id)
+        //{
+        //    try
+        //    {
+        //        Admin model = new Admin();
+        //        model.PK_RequestID = id;
+        //        model.Status = (model.Status = "Approved");
+        //        model.UpdatedBy = Session["Pk_AdminId"].ToString();
+        //        DataSet ds = model.ApprovePayoutRequest();
+        //        if (ds != null && ds.Tables.Count > 0)
+        //        {
+        //            if (ds.Tables[0].Rows[0][0].ToString() == "1")
+        //            {
+        //                TempData["msg"] = "Transfer to account approved Successfully";
+        //            }
+        //            else
+        //            {
+        //                TempData["msg"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        TempData["msg"] = ex.Message;
+        //    }
+        //    return RedirectToAction("PayoutRequestList", "Admin");
+        //}
         public ActionResult DeclinePayout(string id)
         {
             try
@@ -1504,6 +1511,55 @@ namespace BrainStew.Controllers
                 TempData["deduction"] = ex.Message;
             }
             return RedirectToAction("AdvanceDeduction", "Admin");
+        }
+
+        public ActionResult CommissionReport()
+        {
+            //List<Admin> lst = new List<Admin>();
+            //Admin model = new Admin();
+            //DataSet ds = model.GetCommissionReport();
+            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            //{
+            //    foreach (DataRow r in ds.Tables[0].Rows)
+            //    {
+            //        Admin obj = new Admin();
+            //        //obj.PK_CommissionId = r["PK_CommissionId"].ToString();
+            //        obj.Name = r["Name"].ToString();
+            //        obj.IdNumber = r["IdNumber"].ToString();
+            //        obj.TotalWallet = r["TotalWallet"].ToString();
+            //        obj.MyWallet = r["MyWallet"].ToString();
+            //        obj.TopUpWallet = r["TopUpWallet"].ToString();
+            //        lst.Add(obj);
+            //    }
+            //    model.lst = lst;
+            //}
+            //return View(model);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CommissionReport(Admin model)
+        {
+            //List<Admin> lst = new List<Admin>();
+            //model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            //model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            //DataSet ds = model.CommissionReport();
+            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            //{
+            //    foreach (DataRow r in ds.Tables[0].Rows)
+            //    {
+            //        Admin obj = new Admin();
+            //        //obj.PK_CommissionId = r["PK_CommissionId"].ToString();
+            //        obj.Name = r["Name"].ToString();
+            //        obj.IdNumber = r["IdNumber"].ToString();
+            //        obj.TotalWallet = r["TotalWallet"].ToString();
+            //        obj.MyWallet = r["MyWallet"].ToString();
+            //        obj.TopUpWallet = r["TopUpWallet"].ToString();
+            //        lst.Add(obj);
+            //    }
+            //    model.lst = lst;
+            //}
+            return View(model);
         }
     }
 }

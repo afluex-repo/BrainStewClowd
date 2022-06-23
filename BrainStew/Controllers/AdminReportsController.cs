@@ -573,7 +573,7 @@ namespace BrainStew.Controllers
         {
             List<UserReports> lst = new List<UserReports>();
             UserReports model = new UserReports();
-            DataSet ds = model.GetBrainMatrixReport();
+            DataSet ds = model.GetBrainMatrixDonation();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)
@@ -591,13 +591,15 @@ namespace BrainStew.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult GetBrainMatrixReport(UserReports model)
+        [ActionName("BrainMatrixBenefits")]
+        [OnAction(ButtonName = "btnSearch")]
+        public ActionResult GetBrainMatrixDonationReport(UserReports model)
         {
             List<UserReports> lst = new List<UserReports>();
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-            model.LoginId = Session["LoginId"].ToString();
-            DataSet ds = model.GetBrainMatrixReport();
+            //model.LoginId = Session["LoginId"].ToString();
+            DataSet ds = model.GetBrainMatrixDonation();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)
@@ -614,5 +616,413 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
+        public ActionResult DirectBenefitsList()
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            AdminReports model = new AdminReports();
+            model.Fk_IncomeTypeId = "2";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("DirectBenefitsList")]
+        [OnAction(ButtonName = "btnSearch")]
+        public ActionResult DirectBenefitsListReport(AdminReports model)
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            model.Fk_IncomeTypeId = "2";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+        public ActionResult LevelBenefitsList()
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            AdminReports model = new AdminReports();
+            model.Fk_IncomeTypeId = "1";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("LevelBenefitsList")]
+        [OnAction(ButtonName = "btnSearch")]
+        public ActionResult LevelBenefitsListReport(AdminReports model)
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            model.Fk_IncomeTypeId = "1";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+        public ActionResult UpgradeBenefitsList()
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            AdminReports model = new AdminReports();
+            model.Fk_IncomeTypeId = "4";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+        [HttpPost]
+        [ActionName("UpgradeBenefitsList")]
+        [OnAction(ButtonName = "btnSearch")]
+        public ActionResult UpgradeBenefitsListReport(AdminReports model)
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            model.Fk_IncomeTypeId = "4";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+        public ActionResult PlacementBenefitsList()
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            AdminReports model = new AdminReports();
+            model.Fk_IncomeTypeId = "3";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+        [HttpPost]
+        [ActionName("PlacementBenefitsList")]
+        [OnAction(ButtonName = "btnSearch")]
+        public ActionResult PlacementBenefitsListReport(AdminReports model)
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            model.Fk_IncomeTypeId = "3";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+
+
+        public ActionResult BraintBenefitsList()
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            AdminReports model = new AdminReports();
+            model.Fk_IncomeTypeId = "6";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("BraintBenefitsList")]
+        [OnAction(ButtonName = "btnSearch")]
+        public ActionResult BraintBenefitsListReport(AdminReports model)
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            model.Fk_IncomeTypeId = "6";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+
+
+        public ActionResult BrainLevelBenefitsList()
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            AdminReports model = new AdminReports();
+            model.Fk_IncomeTypeId = "7";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId ="7";
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("BrainLevelBenefitsList")]
+        [OnAction(ButtonName = "btnSearch")]
+        public ActionResult BrainLevelBenefitsListReport(AdminReports model)
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            model.Fk_IncomeTypeId = "7";
+            DataSet ds = model.getBenefitlist();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = "7";
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model); 
+        }
+        public ActionResult ViewBenefitsListByUser(string id,string Incomeid)
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            AdminReports model = new AdminReports();
+            model.LoginId = id;
+            model.Fk_IncomeTypeId = Incomeid;
+            if(Incomeid== "1")
+            {
+                @TempData["BenefitsName"] = "LEVEL BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "LEVELBENEFITSLIST";
+            }
+           else if (Incomeid == "2")
+            {
+                @TempData["BenefitsName"] = "DIRECT BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "DIRECTBENEFITSLIST";
+            }
+           else if (Incomeid == "4")
+            {
+                @TempData["BenefitsName"] = "UPGRADE BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "UPGRADEBENEFITSLIST";
+            }
+            else if (Incomeid == "3")
+            {
+                @TempData["BenefitsName"] = "PLACEMENT BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "PLACEMENTBENEFITSLIST";
+
+            }
+            else if (Incomeid == "6")
+            {
+                @TempData["BenefitsName"] = "BRAIN BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "BRAINTBENEFITSLIST";
+
+            }
+            else if (Incomeid == "7")
+            {
+                @TempData["BenefitsName"] ="BRAIN LEVEL BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "BRAINLEVELBENEFITSLIST";
+
+            }
+            DataSet ds = model.GetBraintBenefitsList();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.FromName = r["FromName"].ToString();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.FromLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["BusinessAmount"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+        public ActionResult WalletLedger()
+        {
+            AdminReports model = new AdminReports();
+            List<AdminReports> lst = new List<AdminReports>();
+            DataSet ds = model.WalletLedger();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.Fk_UserId = r["FK_UserId"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
+                    obj.Name = r["Name"].ToString();
+                    obj.CrAmount = r["CrAmount"].ToString();
+                    obj.DrAmount = r["DrAmount"].ToString();
+                    obj.AvailableBalance = r["AvailableBalance"].ToString();
+                    lst.Add(obj);
+                }
+                ViewBag.CrAmount = double.Parse(ds.Tables[0].Compute("sum(CrAmount)", "").ToString()).ToString("n2");
+                ViewBag.DrAmount = double.Parse(ds.Tables[0].Compute("sum(DrAmount)", "").ToString()).ToString("n2");
+                ViewBag.AvailableBalance = double.Parse(ds.Tables[0].Compute("sum(AvailableBalance)", "").ToString()).ToString("n2");
+                model.lstWalletLedger = lst;
+
+            }
+            return View(model);
+        }
+        [HttpPost]
+        [ActionName("WalletLedger")]
+        [OnAction(ButtonName = "Search")]
+        public ActionResult WalletLedger(AdminReports model)
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            DataSet ds = model.WalletLedger();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.Fk_UserId = r["FK_UserId"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
+                    obj.Name = r["Name"].ToString();
+                    obj.CrAmount = r["CrAmount"].ToString();
+                    obj.DrAmount = r["DrAmount"].ToString();
+                    obj.AvailableBalance = r["AvailableBalance"].ToString();
+                    lst.Add(obj);
+                }
+                ViewBag.CrAmount = double.Parse(ds.Tables[0].Compute("sum(CrAmount)", "").ToString()).ToString("n2");
+                ViewBag.DrAmount = double.Parse(ds.Tables[0].Compute("sum(DrAmount)", "").ToString()).ToString("n2");
+                ViewBag.AvailableBalance = double.Parse(ds.Tables[0].Compute("sum(AvailableBalance)", "").ToString()).ToString("n2");
+                model.lstWalletLedger = lst;
+            }
+            return View(model);
+        }
+
     }
 }

@@ -510,7 +510,7 @@
                                     <li>
                                         <a href="/user/TopUpList">Donation List</a>
                                     </li>
-                                    <li><a href="/Report/BrainMatrixBenefits">Brain Matrix Donation List</a></li>
+                                    <li><a href="/Report/BrainMatrixDonationList">Brain Matrix Donation List</a></li>
                                   
 
                                 }
@@ -685,7 +685,7 @@
                             <li>
                                 @*@if (Convert.ToInt32(Session["BenefitsLevel"].ToString()) >= 1 && Convert.ToInt32(ViewBag.MatrixIncomeLevel) >= 1)
                                 {*@
-                                    <a href="#">BRAIN MATRIX BENEFITS</a>
+                                    <a href="/Report/Brainmatrixbenefits">BRAIN MATRIX BENEFITS</a>
                                 @*}
                                 else
                                 {
@@ -693,7 +693,7 @@
                                 }*@
                             </li>
                             <li>
-                                <a href="#">BRAIN LEVEL BENEFITS</a>
+                                <a href="/Report/BrainlevelBenefits">BRAIN LEVEL BENEFITS</a>
                             </li>
                             <li>
                                 <a href="#">STEW MATRIX BENEFITS</a>

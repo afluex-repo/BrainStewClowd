@@ -742,6 +742,9 @@
     <Content Include="TreeIcon\men-block1.png" />
     <Content Include="TreeIcon\men-inactive.png" />
     <Content Include="UploadFile\60cd7ff8-4b09-4b8e-b87a-470c88f6541f.png" />
+    <Content Include="Views\Master\AddNews.cshtml" />
+    <Content Include="Views\Master\NewsList.cshtml" />
+    <Content Include="Views\Report\BrainMatrixDonationList.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Registration.cshtml" />
@@ -936,6 +939,17 @@
     <Content Include="Views\Report\BrainMatrixBenefits.cshtml" />
     <Content Include="Views\AdminReports\BrainMatrixBenefits.cshtml" />
     <Content Include="Views\Home\CalculateIncome.cshtml" />
+    <Content Include="Views\AdminReports\BrainLevelBenefitsForAdmin.cshtml" />
+    <Content Include="Views\AdminReports\DirectBenefitsList.cshtml" />
+    <Content Include="Views\AdminReports\LevelBenefitsList.cshtml" />
+    <Content Include="Views\AdminReports\UpgradeBenefitsList.cshtml" />
+    <Content Include="Views\AdminReports\PlacementBenefitsList.cshtml" />
+    <Content Include="Views\AdminReports\BraintBenefitsList.cshtml" />
+    <Content Include="Views\AdminReports\BrainLevelBenefitsList.cshtml" />
+    <Content Include="Views\AdminReports\StewBenefitsList.cshtml" />
+    <Content Include="Views\AdminReports\StewLevelBenefitsList.cshtml" />
+    <Content Include="Views\AdminReports\ViewBenefitsListByUser.cshtml" />
+    <Content Include="Views\Admin\CommissionReport.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

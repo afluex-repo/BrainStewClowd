@@ -29,7 +29,11 @@ namespace BrainStew.Models
         public string Image { get; set; }
         public List<Master> lstReward { get; set; }
         public string PK_RewardId { get; set; }
-
+        public string NewsID { get; set; }
+        public string NewsHeading { get; set; }
+        public string NewsBody { get; set; }
+        public string NewsDate { get; set; }
+        public List<Master> lstNews { get; set; }
 
         #region ProductMaster
 
@@ -143,6 +147,46 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("DeleteFile", para);
             return ds;
         }
+        #endregion
+        #region NewsMaster
+
+        public DataSet SaveNews()
+        {
+            SqlParameter[] para = { new SqlParameter("@NewsHeading", NewsHeading),
+                                  new SqlParameter("@NewsBody", NewsBody),
+                                  new SqlParameter("@AddedBy", AddedBy)};
+
+            DataSet ds = DBHelper.ExecuteQuery("AddNews", para);
+            return ds;
+        }
+
+        public DataSet NewsList()
+        {
+            SqlParameter[] para = { new SqlParameter("@NewsID", NewsID) };
+            DataSet ds = DBHelper.ExecuteQuery("NewsList", para);
+            return ds;
+        }
+
+        public DataSet UpdateNews()
+        {
+            SqlParameter[] para = { new SqlParameter("@NewsID", NewsID),
+                                  new SqlParameter("@NewsHeading", NewsHeading),
+                                  new SqlParameter("@NewsBody", NewsBody),
+                                  new SqlParameter("@UpdatedBy", UpdatedBy) };
+
+            DataSet ds = DBHelper.ExecuteQuery("UpdateNews", para);
+            return ds;
+        }
+
+        public DataSet DeleteNews()
+        {
+            SqlParameter[] para = { new SqlParameter("@NewsID", NewsID),
+                                  new SqlParameter("@DeletedBy", AddedBy),};
+
+            DataSet ds = DBHelper.ExecuteQuery("DeleteNews", para);
+            return ds;
+        }
+
         #endregion
     }
 }
