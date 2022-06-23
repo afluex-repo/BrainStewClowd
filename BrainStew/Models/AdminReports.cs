@@ -323,5 +323,16 @@ namespace BrainStew.Models
             return ds;
         }
 
+
+        public DataSet TopUpWallet()
+        {
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
+                                    new SqlParameter("@Name",Name)
+                                  };
+            DataSet ds = DBHelper.ExecuteQuery("TopUpWalletLedgerForAdmin", para);
+            return ds;
+        }
+
+
     }
 }

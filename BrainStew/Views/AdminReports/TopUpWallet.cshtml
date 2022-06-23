@@ -1,10 +1,13 @@
 ﻿@model BrainStew.Models.AdminReports
 
+
 @{
-    ViewBag.Title = "WalletLedger";
+    ViewBag.Title = "TopUpWallet";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@using (Html.BeginForm("WalletLedger", "AdminReports", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+
+
+@using (Html.BeginForm("TopUpWallet", "AdminReports", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
 {
     <div class="container">
         <div class="row layout-top-spacing">
@@ -13,7 +16,7 @@
                     <div class="widget-header">
                         <div class="row">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                <h4>Member Wallet Reports</h4>
+                                <h4>TopUp Wallet Reports</h4>
                             </div>
                         </div>
                     </div>
@@ -60,7 +63,7 @@
                                                 <td>@Item.CrAmount</td>
                                                 <td>@Item.DrAmount</td>
                                                 <td>@Item.AvailableBalance</td>
-                                                <td><a target="_blank" class="btn btn-info btn-sm" href="/Admin/PayoutWalletLedgerForAdmin?loginid=@Item.LoginId">View Ledger</a></td>
+                                                <td><a target="_blank" class="btn btn-info btn-sm" href="/Admin/TopUpWalletLedgerForAdmin?loginid=@Item.LoginId">View Ledger</a></td>
                                             </tr>
                                             i++;
                                         }
