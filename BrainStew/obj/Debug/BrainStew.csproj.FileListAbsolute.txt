@@ -208,7 +208,6 @@ E:\Repository\BrainStewClowd\BrainStew\bin\Newtonsoft.Json.xml
 E:\Repository\BrainStewClowd\BrainStew\bin\System.Net.Http.Formatting.xml
 E:\Repository\BrainStewClowd\BrainStew\bin\System.Web.Http.xml
 E:\Repository\BrainStewClowd\BrainStew\bin\System.Web.Http.WebHost.xml
-E:\Repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.csprojResolveAssemblyReference.cache
 E:\Repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.dll
 E:\Repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.pdb
 E:\SachinMishraProject\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.csprojResolveAssemblyReference.cache
