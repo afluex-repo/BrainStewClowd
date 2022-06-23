@@ -54,7 +54,7 @@
                            {
                                if (ViewBag.WalletBalance != "0")
                                {
-                                <input type="submit" class="btn btn-sm btn-success fa-pull-left" onclick="return CheckWalletBalance();" id="btnActivate" name="btnActivate" value="Donation By Wallet" />
+                                <input type="submit" class="btn btn-sm btn-success fa-pull-left" onclick="return CheckWalletBalance();" id="btnActivate" name="btnActivate" value="ACTIVE FOR MEMBERSHIP" />
                             }
                            }
                         </div>
@@ -76,7 +76,7 @@
     });
     function CheckWalletBalance() {
         debugger
-        var r = confirm('मैं Brainstew Foundation में अपने स्वच्छा से पूर्ण होशो हवास में बिना किसी के दबाव में अपनी राशि को डोनेट कर रहा हूँ  और इस डोनेशन को मैं वापिस लेने के लिए या किसी भी लालच में आकर नही कर रहा हूँ |');
+        var r = confirm('मैं Brainstew Foundation में अपने स्वेछा से पूर्ण होशो हवास में बिना किसी के दबाव में अपनी राशि को डोनेट कर रहा हूँ  और इस डोनेशन को मैं वापिस लेने के लिए या किसी भी लालच में आकर नही कर रहा हूँ |');
         if (r == true) {
             debugger
             $("#preloader").css({ 'display': '' });

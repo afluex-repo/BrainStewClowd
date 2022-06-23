@@ -1,13 +1,12 @@
-﻿@model BrainStew.Models.Admin
+﻿@model BrainStew.Models.UserReports
 
 @{
-    ViewBag.Title = "PayoutWalletLedgerForAdmin";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "BrainMatrixBenefits";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-
 <link href="~/plugins/flatpickr/flatpickr.css" rel="stylesheet" type="text/css">
 <link href="~/plugins/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
-@using (Html.BeginForm("PayoutWalletLedgerForAdmin", "Admin", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("UpgradeBenefits", "Report", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
 {
     <div class="container">
         <div class="row layout-top-spacing">
@@ -16,21 +15,13 @@
                     <div class="widget-header">
                         <div class="row">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                <h4>View Ledger</h4>
+                                <h4>Brain Matrix Donation List</h4>
                             </div>
                         </div>
                     </div>
                     <div class="widget-content widget-content-area">
                         <div class="row">
-                            <div class="col-sm-3">
-                                <p style="color:#2196f3"><b>Login Id : @ViewBag.LoginId</b></p>
-                            </div>
-                            @*<div class="col-sm-3">
-                                <p style="color:#2196f3"><b>Name : @ViewBag.Name</b></p>
-                            </div>*@
-                        </div>
-                        @*<div class="row">
-                            <div class="col-lg-3 col-md-3" style="margin-left:10px">
+                            <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
                                     <label>
                                         From Date
@@ -51,18 +42,16 @@
                                     <input type="submit" class="btn btn-success" value="Search" name="btnSearch" />
                                 </div>
                             </div>
-                        </div>*@
+                        </div>
                         <div class="row">
                             <table id="html5-extension" class="table table-hover non-hover" data-page-length='20'>
                                 <thead>
                                     <tr>
                                         <th>Sr No.</th>
-                                        <th>Narration</th>
-                                        <th>Cr. Amount</th>
-                                        <th>Dr. Amount</th>
-                                        @*<th>Balance</th>*@
-                                        <th>Transaction By</th>
-                                        <th>Transaction Date</th>
+                                        <th>Name</th>
+                                        <th>Amount</th>
+                                        @*<th>Level</th>*@
+                                        <th>Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -75,13 +64,11 @@
                                             {
                                                 <tr class="text-left">
                                                     <td>@i</td>
-                                                    <td>@Item.Narration</td>
-                                                    <td>@Item.CrAmount</td>
-                                                    <td>@Item.DrAmount</td>
-                                                    @*<td>@Item.Balance</td>*@
-                                                    <td>@Item.TransactionBy</td>
+                                                    <td>@Item.FromName (@Item.FromLoginId)</td>
+                                                    <td>@Item.Amount</td>
                                                     <td>@Item.TransactionDate</td>
                                                 </tr>
+
                                                 i++;
                                             }
                                         }
@@ -97,6 +84,7 @@
 }
 <script src="~/plugins/flatpickr/flatpickr.js"></script>
 <script src="~/plugins/flatpickr/custom-flatpickr.js"></script>
+<script src="~/BrainStewWebsite/assets/js/jquery.min.js"></script>
 <script>
     var f3 = flatpickr(document.getElementById('FromDate'), {
         mode: "range"
@@ -104,8 +92,5 @@
     var f4 = flatpickr(document.getElementById('ToDate'), {
         mode: "range"
     });
+    //$("#Status").val($("#st").val()).attr("selected", "selected");
 </script>
-
-
-
-
