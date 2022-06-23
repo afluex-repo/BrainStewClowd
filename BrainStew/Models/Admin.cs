@@ -101,7 +101,11 @@ namespace BrainStew.Models
         public string Deduction { get; set; }
         public string PostedFile { get; set; }
         public string Email { get; set; }
-        
+
+        public string IdNumber { get; set; }
+        public string TotalWallet { get; set; }
+        public string MyWallet { get; set; }
+        public string TopUpWallet { get; set; }
 
 
 
@@ -387,6 +391,28 @@ namespace BrainStew.Models
                  new SqlParameter("@AddedBy",AddedBy)
             };
             DataSet ds = DBHelper.ExecuteQuery("SaveDeduction", para);
+            return ds;
+        }
+
+        //Commission Report
+        public DataSet CommissionReport()
+        {
+            SqlParameter[] para = {/*new SqlParameter("@PK_CommissionId", PK_CommissionId),*/
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+            };
+            DataSet ds = DBHelper.ExecuteQuery("CommissionReport", para);
+            return ds;
+        }
+
+        //GetCommission Report
+        public DataSet GetCommissionReport()
+        {
+            SqlParameter[] para = {/*new SqlParameter("@PK_CommissionId", PK_CommissionId),*/
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetCommissionReport", para);
             return ds;
         }
     }

@@ -910,7 +910,7 @@ namespace BrainStew.Controllers
                 }
                 model.lst = lst;
             }
-            return View(model);
+            return View(model); 
         }
         public ActionResult ViewBenefitsListByUser(string id,string Incomeid)
         {
@@ -921,28 +921,34 @@ namespace BrainStew.Controllers
             if(Incomeid== "1")
             {
                 @TempData["BenefitsName"] = "LEVEL BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "LEVELBENEFITSLIST";
             }
            else if (Incomeid == "2")
             {
                 @TempData["BenefitsName"] = "DIRECT BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "DIRECTBENEFITSLIST";
             }
            else if (Incomeid == "4")
             {
                 @TempData["BenefitsName"] = "UPGRADE BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "UPGRADEBENEFITSLIST";
             }
             else if (Incomeid == "3")
             {
                 @TempData["BenefitsName"] = "PLACEMENT BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "PLACEMENTBENEFITSLIST";
 
             }
             else if (Incomeid == "6")
             {
                 @TempData["BenefitsName"] = "BRAIN BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "BRAINTBENEFITSLIST";
 
             }
             else if (Incomeid == "7")
             {
                 @TempData["BenefitsName"] ="BRAIN LEVEL BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "BRAINLEVELBENEFITSLIST";
 
             }
             DataSet ds = model.GetBraintBenefitsList();

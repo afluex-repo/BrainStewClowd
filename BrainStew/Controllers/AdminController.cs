@@ -1512,5 +1512,54 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("AdvanceDeduction", "Admin");
         }
+
+        public ActionResult CommissionReport()
+        {
+            //List<Admin> lst = new List<Admin>();
+            //Admin model = new Admin();
+            //DataSet ds = model.GetCommissionReport();
+            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            //{
+            //    foreach (DataRow r in ds.Tables[0].Rows)
+            //    {
+            //        Admin obj = new Admin();
+            //        //obj.PK_CommissionId = r["PK_CommissionId"].ToString();
+            //        obj.Name = r["Name"].ToString();
+            //        obj.IdNumber = r["IdNumber"].ToString();
+            //        obj.TotalWallet = r["TotalWallet"].ToString();
+            //        obj.MyWallet = r["MyWallet"].ToString();
+            //        obj.TopUpWallet = r["TopUpWallet"].ToString();
+            //        lst.Add(obj);
+            //    }
+            //    model.lst = lst;
+            //}
+            //return View(model);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CommissionReport(Admin model)
+        {
+            //List<Admin> lst = new List<Admin>();
+            //model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            //model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            //DataSet ds = model.CommissionReport();
+            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            //{
+            //    foreach (DataRow r in ds.Tables[0].Rows)
+            //    {
+            //        Admin obj = new Admin();
+            //        //obj.PK_CommissionId = r["PK_CommissionId"].ToString();
+            //        obj.Name = r["Name"].ToString();
+            //        obj.IdNumber = r["IdNumber"].ToString();
+            //        obj.TotalWallet = r["TotalWallet"].ToString();
+            //        obj.MyWallet = r["MyWallet"].ToString();
+            //        obj.TopUpWallet = r["TopUpWallet"].ToString();
+            //        lst.Add(obj);
+            //    }
+            //    model.lst = lst;
+            //}
+            return View(model);
+        }
     }
 }
