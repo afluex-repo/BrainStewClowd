@@ -52,6 +52,8 @@ namespace BrainStew.Models
         public string DrAmount { get; set; }
         public string Narration { get; set; }
         public string RoiWalletId { get; set; }
+        public string Balance { get; set; }
+        public string TransactionBy { get; set; }
 
         public string Date { get; set; }
         public string TopUpAmount { get; set; }

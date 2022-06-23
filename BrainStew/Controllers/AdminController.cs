@@ -647,21 +647,27 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-        public ActionResult PayoutWalletLedgerForAdmin()
+        public ActionResult PayoutWalletLedgerForAdmin(string loginid)
         {
             List<Admin> lst = new List<Admin>();
             Admin model = new Admin();
+            model.LoginId = loginid;
             DataSet ds = model.PayoutWalletLedger();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
+                ViewBag.LoginId = ds.Tables[0].Rows[0]["LoginId"].ToString();
+                ViewBag.Name = ds.Tables[0].Rows[0]["Name"].ToString();
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
+                   
                     Admin obj = new Admin();
                     obj.PK_PayoutWalletId = r["PK_PayoutWalletId"].ToString();
                     obj.Fk_UserId = r["FK_UserId"].ToString();
                     obj.CrAmount = r["CrAmount"].ToString();
                     obj.DrAmount = r["DrAmount"].ToString();
                     obj.Narration = r["Narration"].ToString();
+                    obj.Balance = r["Balance"].ToString();
+                    obj.TransactionBy = r["TransactionBy"].ToString();
                     obj.TransactionDate = r["TransactionDate"].ToString();
                     lst.Add(obj);
                 }
@@ -670,9 +676,10 @@ namespace BrainStew.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult PayoutWalletLedgerForAdmin(Admin model)
+        public ActionResult PayoutWalletLedgerForAdmin(Admin model, string loginId)
         {
             List<Admin> lst = new List<Admin>();
+            model.LoginId = loginId;
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
             DataSet ds = model.PayoutWalletLedger();
