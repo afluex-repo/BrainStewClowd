@@ -9,6 +9,34 @@
 <link href="~/plugins/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
 <link href="~/plugins/sweetalerts/sweetalert.css" rel="stylesheet" type="text/css" />
 <link href="~/assets/css/components/custom-sweetalert.css" rel="stylesheet" type="text/css" />
+<style>
+    @@media(max-width:300px)
+    {
+        .form-control-sm
+        {
+            width:100% !important;
+        }
+        .widget-content-area 
+        {
+            padding:6px !important;
+        }
+    }
+    @@media(max-width:600px)
+    {
+         .widget-content-area 
+        {
+            padding:6px !important;
+        }
+        .dt--top-section
+        {
+            margin:0px !important;
+        }
+        .btn
+        {
+           padding: 0.25rem 0.5rem !important;
+        }
+    }
+</style>
 @using (Html.BeginForm("PayoutRequest", "User", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
 {
     <div class="container">
@@ -91,7 +119,7 @@
                             </div>
                         </div>
                         <div class="widget-content widget-content-area br-6">
-                            <table id="html5-extension" class="table table-hover non-hover" data-page-length='20'>
+                            <table id="html5-extension" class="table table-hover non-hover" data-page-length='20' style="padding-left:0px;padding-right:0px;">
                                 <thead>
                                     <tr>
                                         <th>Sr No.</th>
