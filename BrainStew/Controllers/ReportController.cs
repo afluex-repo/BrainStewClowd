@@ -100,6 +100,8 @@ namespace BrainStew.Controllers
         }
 
         [HttpPost]
+        [ActionName("BrainMatrixDonationList")]
+        [OnAction(ButtonName = "btnSearch")]
         public ActionResult GetBrainMatrixDonationReport(UserReports model)
         {
             List<UserReports> lst = new List<UserReports>();
@@ -445,24 +447,25 @@ namespace BrainStew.Controllers
             model.LoginId = Session["LoginId"].ToString();
             //model.Status = "0";
             model.Fk_IncomeTypeId = "6";
-            DataSet ds = model.GetbenefitsReport();
+            DataSet ds = model.GetbenefitReportNew();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     UserReports obj = new UserReports();
-                    obj.FromName = r["FromName"].ToString();
-                    obj.FromLoginId = r["LoginId"].ToString();
-                    obj.BusinessAmount = r["BusinessAmount"].ToString();
-                    obj.Percentage = r["CommissionPercentage"].ToString();
-                    obj.PayoutNo = r["PayoutNo"].ToString();
-                    obj.Status = r["Status"].ToString();
+                    //obj.FromName = r["FromName"].ToString();
+                    //obj.FromLoginId = r["LoginId"].ToString();
+                    //obj.BusinessAmount = r["BusinessAmount"].ToString();
+                    //obj.Percentage = r["CommissionPercentage"].ToString();
+                    //obj.PayoutNo = r["PayoutNo"].ToString();
+                    //obj.Status = r["Status"].ToString();
                     obj.Amount = r["Amount"].ToString();
                     obj.Level = r["Lvl"].ToString();
-                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    //obj.TransactionDate = r["TransactionDate"].ToString();
                     lst.Add(obj);
                 }
                 model.lst = lst;
+                ViewBag.Total = double.Parse(ds.Tables[0].Compute("sum(Amount)", "").ToString()).ToString("n2");
             }
             return View(model);
 
@@ -478,21 +481,21 @@ namespace BrainStew.Controllers
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
             model.LoginId = Session["LoginId"].ToString();
             model.Fk_IncomeTypeId = "6";
-            DataSet ds = model.GetbenefitsReport();
+            DataSet ds = model.GetbenefitReportNew();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     UserReports obj = new UserReports();
-                    obj.FromName = r["FromName"].ToString();
-                    obj.FromLoginId = r["LoginId"].ToString();
-                    obj.BusinessAmount = r["BusinessAmount"].ToString();
-                    obj.Percentage = r["CommissionPercentage"].ToString();
-                    obj.PayoutNo = r["PayoutNo"].ToString();
-                    obj.Status = r["Status"].ToString();
+                    //obj.FromName = r["FromName"].ToString();
+                    //obj.FromLoginId = r["LoginId"].ToString();
+                    //obj.BusinessAmount = r["BusinessAmount"].ToString();
+                    //obj.Percentage = r["CommissionPercentage"].ToString();
+                    //obj.PayoutNo = r["PayoutNo"].ToString();
+                    //obj.Status = r["Status"].ToString();
                     obj.Amount = r["Amount"].ToString();
                     obj.Level = r["Lvl"].ToString();
-                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    //obj.TransactionDate = r["TransactionDate"].ToString();
                     lst.Add(obj);
                 }
                 model.lst = lst;
@@ -524,6 +527,7 @@ namespace BrainStew.Controllers
                     lst.Add(obj);
                 }
                 model.lst = lst;
+                
             }
             return View(model);
 
@@ -559,8 +563,78 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-        
-     }
+        public ActionResult StewMatrixDonationList()
+        {
+            List<UserReports> lst = new List<UserReports>();
+            UserReports model = new UserReports();
+            model.LoginId = Session["LoginId"].ToString();
+            DataSet ds = model.GetStewMatrixDonation();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    UserReports obj = new UserReports();
+                    obj.FromName = r["Name"].ToString();
+                    obj.FromLoginId = r["LoginId"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.Level = r["stewMatrixLevel"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult GetStewMatrixDonationReport(UserReports model)
+        {
+            List<UserReports> lst = new List<UserReports>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            model.LoginId = Session["LoginId"].ToString();
+            DataSet ds = model.GetStewMatrixDonation();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    UserReports obj = new UserReports();
+                    obj.FromName = r["Name"].ToString();
+                    obj.FromLoginId = r["LoginId"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.Level = r["stewMatrixLevel"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+        public ActionResult StewMatrixBenefits()
+        {
+            List<UserReports> lst = new List<UserReports>();
+            UserReports model = new UserReports();
+            model.LoginId = Session["LoginId"].ToString();
+            //model.Status = "0";
+            model.Fk_IncomeTypeId = "8";
+            DataSet ds = model.getStewbenefitsReport();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    UserReports obj = new UserReports();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.Level = r["Lvl"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+                ViewBag.Total = double.Parse(ds.Tables[0].Compute("sum(Amount)", "").ToString()).ToString("n2");
+            }
+            return View(model);
+            
+
+        }
+    }
 }
 
 

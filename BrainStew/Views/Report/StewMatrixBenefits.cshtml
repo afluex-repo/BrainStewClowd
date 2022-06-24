@@ -1,13 +1,11 @@
 ﻿@model BrainStew.Models.UserReports
 
 @{
-    ViewBag.Title = "BrainMatrixBenefits";
+    ViewBag.Title = "StewMatrixBenefits";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<link href="~/plugins/flatpickr/flatpickr.css" rel="stylesheet" type="text/css">
-<link href="~/plugins/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
-@using (Html.BeginForm("BrainMatrixBenefits", "Report", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("StewMatrixBenefits", "Report", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
 {
     <div class="container">
         <div class="row layout-top-spacing">
@@ -16,46 +14,46 @@
                     <div class="widget-header">
                         <div class="row">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                <h4>BRAIN MATRIX BENEFITS</h4>
+                                <h4>STEW MATRIX BENEFITS</h4>
                             </div>
                         </div>
                     </div>
                     <div class="widget-content widget-content-area">
                         @*<div class="row">
-                            <div class="col-lg-3 col-md-3">
-                                <div class="form-group">
-                                    <label>
-                                        From Date
-                                    </label>
-                                    @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @Placeholder = "From Date" })
+                                <div class="col-lg-3 col-md-3">
+                                    <div class="form-group">
+                                        <label>
+                                            From Date
+                                        </label>
+                                        @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @Placeholder = "From Date" })
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3">
-                                <div class="form-group">
-                                    <label> To Date</label>
-                                    @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @Placeholder = "To Date" })
+                                <div class="col-lg-3 col-md-3">
+                                    <div class="form-group">
+                                        <label> To Date</label>
+                                        @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @Placeholder = "To Date" })
 
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-lg-3 col-md-3">
-                                <div class="form-group">
-                                    <label>Status</label>
-                                    <input type="hidden" value="@Model.Status" id="st" />
-                                    <select id="Status" name="Status" class="form-control">
-                                        <option value="">Select</option>
-                                        <option value="0">Unpaid</option>
-                                        <option value="1">Paid</option>
-                                    </select>
+                                <div class="col-lg-3 col-md-3">
+                                    <div class="form-group">
+                                        <label>Status</label>
+                                        <input type="hidden" value="@Model.Status" id="st" />
+                                        <select id="Status" name="Status" class="form-control">
+                                            <option value="">Select</option>
+                                            <option value="0">Unpaid</option>
+                                            <option value="1">Paid</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3" style="margin-top:28px">
-                                <div class="form-group">
-                                    <input type="submit" class="btn btn-success" value="Search" name="btnSearch" />
+                                <div class="col-lg-3 col-md-3" style="margin-top:28px">
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-success" value="Search" name="btnSearch" />
+                                    </div>
                                 </div>
-                            </div>
-                        </div>*@
+                            </div>*@
                         <div class="row">
                             <table id="html5-extension" class="table table-hover non-hover" data-page-length='20'>
                                 <thead>
@@ -63,13 +61,13 @@
                                         <th>Sr No.</th>
                                         @*<th>Payout No</th>*@
                                         @*<th>From Member</th>
-                                        <th>Donation Amount</th>*@
+                                            <th>Donation Amount</th>*@
                                         @*<th>Percentage</th>*@
                                         <th>Level</th>
                                         <th>Benefits</th>
                                         @*<th>Level</th>*@
                                         @*<th>Status</th>
-                                        <th>Transaction Date</th>*@
+                                            <th>Transaction Date</th>*@
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -84,13 +82,13 @@
                                                     <td>@i</td>
                                                     @*<td>@Item.PayoutNo</td>*@
                                                     @*<td>@Item.FromName (@Item.FromLoginId)</td>
-                                                    <td>@Item.BusinessAmount</td>*@
+                                                        <td>@Item.BusinessAmount</td>*@
                                                     @*<td>@Item.Percentage %</td>*@
                                                     <td>@Item.Level</td>
                                                     <td>@Item.Amount</td>
                                                     @*<td>@Item.Level</td>*@
                                                     @*<td>@Item.Status</td>
-                                                    <td>@Item.TransactionDate</td>*@
+                                                        <td>@Item.TransactionDate</td>*@
                                                 </tr>
                                                 i++;
                                             }
@@ -112,15 +110,3 @@
         </div>
     </div>
 }
-<script src="~/plugins/flatpickr/flatpickr.js"></script>
-<script src="~/plugins/flatpickr/custom-flatpickr.js"></script>
-<script src="~/BrainStewWebsite/assets/js/jquery.min.js"></script>
-<script>
-    var f3 = flatpickr(document.getElementById('FromDate'), {
-        mode: "range"
-    });
-    var f4 = flatpickr(document.getElementById('ToDate'), {
-        mode: "range"
-    });
-    //$("#Status").val($("#st").val()).attr("selected", "selected");
-</script>
