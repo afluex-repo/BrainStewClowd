@@ -631,11 +631,7 @@ namespace BrainStew.Controllers
                 ViewBag.Total = double.Parse(ds.Tables[0].Compute("sum(Amount)", "").ToString()).ToString("n2");
             }
             return View(model);
-            
-
         }
-
-
         public ActionResult StewMatrixLevelBenefits()
         {
             List<UserReports> lst = new List<UserReports>();
