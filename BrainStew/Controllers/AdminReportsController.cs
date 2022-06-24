@@ -1023,6 +1023,53 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
+        public ActionResult StewMatrixDonationListForAdmin()
+        {
+            List<UserReports> lst = new List<UserReports>();
+            UserReports model = new UserReports();
+            DataSet ds = model.GetStewMatrixDonation();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    UserReports obj = new UserReports();
+                    obj.FromName = r["Name"].ToString();
+                    obj.FromLoginId = r["LoginId"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.Level = r["stewMatrixLevel"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+        [HttpPost]
+        [ActionName("StewMatrixDonationListForAdmin")]
+        [OnAction(ButtonName = "btnSearch")]
+        public ActionResult GetStewnMatrixDonationReport(UserReports model)
+        {
+            List<UserReports> lst = new List<UserReports>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            //model.LoginId = Session["LoginId"].ToString();
+            DataSet ds = model.GetStewMatrixDonation();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    UserReports obj = new UserReports();
+                    obj.FromName = r["Name"].ToString();
+                    obj.FromLoginId = r["LoginId"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.Level = r["stewMatrixLevel"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
 
     }
 }
