@@ -9,6 +9,7 @@ namespace BrainStew.Models
 {
     public class AdminReports : Common
     {
+        public List<AdminReports> lstStew { get; set; }
         public List<AdminReports> lsttopupreport { get; set; }
         public List<AdminReports> lst { get; set; }
 
@@ -68,9 +69,9 @@ namespace BrainStew.Models
 
         //public string FromLoginId { get; set; }
         public string BusinessAmount { get; set; }
-        //public string Percentage { get; set; }
-        //public string PayoutNo { get; set; }
-        //public string Level { get; set; }
+        public string Percentage { get; set; }
+        public string PayoutNo { get; set; }
+        public string Level { get; set; }
         public string Fk_IncomeTypeId { get; set; }
         //public string SponserName { get; set; }
         public string AvailableBalance { get; set; }
@@ -330,6 +331,19 @@ namespace BrainStew.Models
                                     new SqlParameter("@Name",Name)
                                   };
             DataSet ds = DBHelper.ExecuteQuery("TopUpWalletLedgerForAdmin", para);
+            return ds;
+        }
+
+        public DataSet GetStewMatrixLevelBenefits()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                  new SqlParameter("@Status", Status),
+                  new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetStewMatrixLevelBenefits", para);
             return ds;
         }
 
