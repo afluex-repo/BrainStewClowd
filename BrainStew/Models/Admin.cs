@@ -417,5 +417,16 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("GetCommissionReport", para);
             return ds;
         }
+
+        public DataSet TopUpWalletLedger()
+        {
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+            };
+            DataSet ds = DBHelper.ExecuteQuery("TopUpWalletLedger", para);
+            return ds;
+        }
+
     }
 }

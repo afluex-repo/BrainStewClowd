@@ -742,7 +742,6 @@
     <Content Include="TreeIcon\men-block1.png" />
     <Content Include="TreeIcon\men-inactive.png" />
     <Content Include="UploadFile\60cd7ff8-4b09-4b8e-b87a-470c88f6541f.png" />
-    <Content Include="Views\AdminReports\WalletLedger.cshtml" />
     <Content Include="Views\Master\AddNews.cshtml" />
     <Content Include="Views\Master\NewsList.cshtml" />
     <Content Include="Views\Report\BrainMatrixDonationList.cshtml" />
@@ -951,10 +950,8 @@
     <Content Include="Views\AdminReports\StewLevelBenefitsList.cshtml" />
     <Content Include="Views\AdminReports\ViewBenefitsListByUser.cshtml" />
     <Content Include="Views\Admin\CommissionReport.cshtml" />
-    <Content Include="Views\User\StewMatrixDonation.cshtml" />
-    <Content Include="Views\Report\StewMatrixDonationList.cshtml" />
-    <Content Include="Views\AdminReports\StewMatrixDonationListForAdmin.cshtml" />
-    <Content Include="Views\Report\StewMatrixBenefits.cshtml" />
+    <Content Include="Views\AdminReports\TopUpWallet.cshtml" />
+    <Content Include="Views\Admin\TopUpWalletLedgerForAdmin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

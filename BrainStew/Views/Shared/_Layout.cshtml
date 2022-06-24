@@ -28,29 +28,29 @@
             background-color: #ffd3c6 !important;
         }
 
-            #preloader {
-    position: fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    background-color:#FFF; /* change if the mask should have another color then white */
-    z-index:99999; /* makes sure it stays on top */
-}
-#status {
-    width:100px;
-    height:100px;
-    position:absolute;
-    left:50%; /* centers the loading animation horizontally one the screen */
-    top:50%; /* centers the loading animation vertically one the screen */
-    background-image:url("../imgs/loader.gif");
-    z-index:9999; /* path to your loading animation */
-    background-repeat:no-repeat;
-    background-position:center;
-    background-size: cover;
-    margin:-50px 0 0 -50px; /* is width and height divided by two */
-}
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #FFF; /* change if the mask should have another color then white */
+            z-index: 99999; /* makes sure it stays on top */
+        }
 
+        #status {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 50%; /* centers the loading animation horizontally one the screen */
+            top: 50%; /* centers the loading animation vertically one the screen */
+            background-image: url("../imgs/loader.gif");
+            z-index: 9999; /* path to your loading animation */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            margin: -50px 0 0 -50px; /* is width and height divided by two */
+        }
     </style>
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 
@@ -85,15 +85,15 @@
                 </li>
             </ul>
             @*<ul class="navbar-item flex-row ml-md-0 ml-auto">
-                <li class="nav-item align-self-center search-animated">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search toggle-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                    <form class="form-inline search-full form-inline search" role="search">
-                        <div class="search-bar">
-                            <input type="text" class="form-control search-form-control  ml-lg-auto" placeholder="Search...">
-                        </div>
-                    </form>
-                </li>
-            </ul>*@
+                    <li class="nav-item align-self-center search-animated">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search toggle-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <form class="form-inline search-full form-inline search" role="search">
+                            <div class="search-bar">
+                                <input type="text" class="form-control search-form-control  ml-lg-auto" placeholder="Search...">
+                            </div>
+                        </form>
+                    </li>
+                </ul>*@
             <ul class="navbar-item flex-row ml-md-auto">
                 <li class="nav-item dropdown user-profile-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -107,7 +107,7 @@
                             <div class="dropdown-item">
                                 <a class="" href="/Home/Login"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> Sign Out</a>
                             </div>
-                           
+
                         </div>
                     </div>
                 </li>
@@ -117,11 +117,11 @@
     <!--  END NAVBAR  -->
     <!--  BEGIN NAVBAR  -->
     @*<div class="sub-header-container">
-        <header class="header navbar navbar-expand-sm">
-        
+            <header class="header navbar navbar-expand-sm">
 
-        </header>
-    </div>*@
+
+            </header>
+        </div>*@
     <!--  END NAVBAR  -->
     <!--  BEGIN MAIN CONTAINER  -->
     <div class="main-container" id="container">
@@ -176,7 +176,7 @@
     <script src="~/plugins/table/datatable/button-ext/buttons.html5.min.js"></script>
     <script src="~/plugins/table/datatable/button-ext/buttons.print.min.js"></script>
     <script>
-        $('#html5-extension').DataTable( {
+        $('#html5-extension').DataTable({
             "dom": "<'dt--top-section'<'row'<'col-sm-12 col-md-6 d-flex justify-content-md-start justify-content-center'B><'col-sm-12 col-md-6 d-flex justify-content-md-end justify-content-center mt-md-0 mt-3'f>>>" +
         "<'table-responsive'tr>" +
         "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
@@ -193,12 +193,12 @@
                 "sInfo": "Showing page _PAGE_ of _PAGES_",
                 "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
                 "sSearchPlaceholder": "Search...",
-               "sLengthMenu": "Results :  _MENU_",
+                "sLengthMenu": "Results :  _MENU_",
             },
             "stripeClasses": [],
             "lengthMenu": [7, 10, 20, 50],
             "pageLength": 20
-        } );
+        });
     </script>
 
     <div id="preloader">
@@ -207,11 +207,11 @@
     </div>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-$(window).load(function() { // makes sure the whole site is loaded
-$('#status').fadeOut(); // will first fade out the loading animation
-$('#preloader').delay(200).fadeOut(400); // will fade out the white DIV that covers the website.
-$('body').delay(200).css({'overflow':'visible'});
-})
+        $(window).load(function () { // makes sure the whole site is loaded
+            $('#status').fadeOut(); // will first fade out the loading animation
+            $('#preloader').delay(200).fadeOut(400); // will fade out the white DIV that covers the website.
+            $('body').delay(200).css({ 'overflow': 'visible' });
+        })
     </script>
 
 </body>

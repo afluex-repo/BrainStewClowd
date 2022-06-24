@@ -1562,5 +1562,64 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
+
+
+        public ActionResult TopUpWalletLedgerForAdmin(string loginid)
+        {
+            List<Admin> lst = new List<Admin>();
+            Admin model = new Admin();
+            model.LoginId = loginid;
+            DataSet ds = model.TopUpWalletLedger();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                ViewBag.LoginId = ds.Tables[0].Rows[0]["LoginId"].ToString();
+                ViewBag.Name = ds.Tables[0].Rows[0]["Name"].ToString();
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+
+                    Admin obj = new Admin();
+                    obj.WalletId = r["Pk_EwalletId"].ToString();
+                    obj.Fk_UserId = r["FK_UserId"].ToString();
+                    obj.CrAmount = r["CrAmount"].ToString();
+                    obj.DrAmount = r["DrAmount"].ToString();
+                    obj.Narration = r["Narration"].ToString();
+                    obj.Balance = r["Balance"].ToString();
+                    obj.TransactionBy = r["TransactionBy"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public ActionResult TopUpWalletLedgerForAdmin(Admin model, string loginId)
+        {
+            List<Admin> lst = new List<Admin>();
+            model.LoginId = loginId;
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            DataSet ds = model.TopUpWalletLedger();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Admin obj = new Admin();
+                    obj.WalletId = r["Pk_EwalletId"].ToString();
+                    obj.Fk_UserId = r["FK_UserId"].ToString();
+                    obj.CrAmount = r["CrAmount"].ToString();
+                    obj.DrAmount = r["DrAmount"].ToString();
+                    obj.Narration = r["Narration"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+
+
     }
 }
