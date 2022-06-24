@@ -505,13 +505,15 @@
                                         <a href="/User/BrainMatrixDonation">Brain Matrix Donation</a>
                                     </li>
                                     <li>
-                                        <a href="#">Stew Matrix Donation</a>
+                                        <a href="/User/StewMatrixDonation">Stew Matrix Donation</a>
                                     </li>
                                     <li>
                                         <a href="/user/TopUpList">Donation List</a>
                                     </li>
                                     <li><a href="/Report/BrainMatrixDonationList">Brain Matrix Donation List</a></li>
-                                  
+                                    <li>
+                                        <a href="/Report/StewMatrixDonationList">Stew Matrix Donation List</a>
+                                    </li>
 
                                 }
                                 else
@@ -643,7 +645,7 @@
                             <li>
                                 @*@if (Convert.ToInt32(Session["BenefitsLevel"].ToString()) >= 1)
                                 {*@
-                                    <a href="/Report/LevelIncomeTr2">DIRECT BENEFITS</a>
+                                    <a href="/Report/LevelIncomeTr2">REFERAL BENEFITS</a>
                                 @*}
                                 else
                                 {
@@ -693,10 +695,10 @@
                                 }*@
                             </li>
                             <li>
-                                <a href="/Report/BrainlevelBenefits">BRAIN LEVEL BENEFITS</a>
+                                <a href="/Report/BrainlevelBenefits">BRAIN MATRIX LEVEL BENEFITS</a>
                             </li>
                             <li>
-                                <a href="#">STEW MATRIX BENEFITS</a>
+                                <a href="/Report/StewMatrixBenefits">STEW MATRIX BENEFITS</a>
                             </li>
                         </ul>
                     </li>

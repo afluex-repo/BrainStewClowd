@@ -1,12 +1,12 @@
 ﻿@model BrainStew.Models.UserReports
 
 @{
-    ViewBag.Title = "BrainMatrixDonationList";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    ViewBag.Title = "StewMatrixDonationList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/plugins/flatpickr/flatpickr.css" rel="stylesheet" type="text/css">
 <link href="~/plugins/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
-@using (Html.BeginForm("BrainMatrixDonationList", "Report", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("StewMatrixDonationListForAdmin", "AdminReports", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
 {
     <div class="container">
         <div class="row layout-top-spacing">
@@ -15,7 +15,7 @@
                     <div class="widget-header">
                         <div class="row">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                <h4>Brain Matrix Donation List</h4>
+                                <h4>Stew Matrix Donation List</h4>
                             </div>
                         </div>
                     </div>
@@ -23,9 +23,14 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
-                                    <label>
-                                        From Date
-                                    </label>
+                                    <label>Login Id </label>
+                                    @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control", @Placeholder = "LoginId" })
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="form-group">
+                                    <label> From Date </label>
                                     @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @Placeholder = "From Date" })
 
                                 </div>
@@ -51,7 +56,7 @@
                                         <th>Name</th>
                                         <th>Amount</th>
                                         @*<th>Level</th>*@
-                                        <th>Date</th>
+                                        <th>Transaction Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -66,9 +71,9 @@
                                                     <td>@i</td>
                                                     <td>@Item.FromName (@Item.FromLoginId)</td>
                                                     <td>@Item.Amount</td>
+                                                    @*<td>@Item.Level</td>*@
                                                     <td>@Item.TransactionDate</td>
                                                 </tr>
-
                                                 i++;
                                             }
                                         }
@@ -84,7 +89,7 @@
 }
 <script src="~/plugins/flatpickr/flatpickr.js"></script>
 <script src="~/plugins/flatpickr/custom-flatpickr.js"></script>
-<script src="~/BrainStewWebsite/assets/js/jquery.min.js"></script>
+<script src="~/StewStewWebsite/assets/js/jquery.min.js"></script>
 <script>
     var f3 = flatpickr(document.getElementById('FromDate'), {
         mode: "range"
@@ -94,3 +99,4 @@
     });
     //$("#Status").val($("#st").val()).attr("selected", "selected");
 </script>
+

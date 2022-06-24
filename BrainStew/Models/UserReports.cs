@@ -119,5 +119,32 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("GetBrainLevelBenefits", para);
             return ds;
         }
+        public DataSet GetStewMatrixDonation()
+        {
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetStewMatrixReport", para);
+            return ds;
+        }
+        public DataSet GetbenefitReportNew()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                  new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetbrainmatrixReportNew", para);
+            return ds;
+        }
+        public DataSet getStewbenefitsReport()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                  new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetStewMatrixReportNew", para);
+            return ds;
+        }
     }
 }
