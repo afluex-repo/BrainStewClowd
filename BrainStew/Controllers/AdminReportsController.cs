@@ -1186,5 +1186,117 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
+
+
+        public ActionResult StewMatrixBenefitLists()
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            AdminReports model = new AdminReports();
+            model.Fk_IncomeTypeId = "8";
+            DataSet ds = model.GetStewMatrixBenefitsList();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lstStewMatrix = lst;
+            }
+            return View(model);
+        }
+
+
+        [HttpPost]
+        [ActionName("StewMatrixBenefitLists")]
+        [OnAction(ButtonName = "btnSearch")]
+        public ActionResult StewMatrixBenefitLists(AdminReports model)
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            model.Fk_IncomeTypeId = "8";
+            DataSet ds = model.GetStewMatrixBenefitsList();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = r["Fk_IncomeTypeId"].ToString();
+                    lst.Add(obj);
+                }
+                model.lstStewMatrix = lst;
+            }
+            return View(model);
+        }
+
+        public ActionResult ViewStewMatrixBenefitsListByUser(string id, string Incomeid)
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            AdminReports model = new AdminReports();
+            model.LoginId = id;
+            model.Fk_IncomeTypeId = Incomeid;
+            if (Incomeid == "1")
+            {
+                @TempData["BenefitsName"] = "LEVEL BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "LEVELBENEFITSLIST";
+            }
+            else if (Incomeid == "2")
+            {
+                @TempData["BenefitsName"] = "DIRECT BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "DIRECTBENEFITSLIST";
+            }
+            else if (Incomeid == "4")
+            {
+                @TempData["BenefitsName"] = "UPGRADE BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "UPGRADEBENEFITSLIST";
+            }
+            else if (Incomeid == "3")
+            {
+                @TempData["BenefitsName"] = "PLACEMENT BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "PLACEMENTBENEFITSLIST";
+
+            }
+            else if (Incomeid == "6")
+            {
+                @TempData["BenefitsName"] = "BRAIN BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "BRAINTBENEFITSLIST";
+
+            }
+            else if (Incomeid == "7")
+            {
+                @TempData["BenefitsName"] = "BRAIN LEVEL BENEFITS LIST";
+                @TempData["BenefitsNameList"] = "BRAINLEVELBENEFITSLIST";
+
+            }
+            DataSet ds = model.GetStewMatrixBenefitsLists();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.FromName = r["FromName"].ToString();
+                    obj.ToName = r["ToName"].ToString();
+                    obj.FromLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["BusinessAmount"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+
     }
 }
