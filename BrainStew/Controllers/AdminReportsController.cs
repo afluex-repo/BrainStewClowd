@@ -1186,8 +1186,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
         public ActionResult StewMatrixBenefitLists()
         {
             List<AdminReports> lst = new List<AdminReports>();
@@ -1210,8 +1208,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
         [HttpPost]
         [ActionName("StewMatrixBenefitLists")]
         [OnAction(ButtonName = "btnSearch")]
@@ -1238,7 +1234,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         public ActionResult ViewStewMatrixBenefitsListByUser(string id, string Incomeid)
         {
             List<AdminReports> lst = new List<AdminReports>();
@@ -1276,6 +1271,12 @@ namespace BrainStew.Controllers
             {
                 @TempData["BenefitsName"] = "BRAIN LEVEL BENEFITS LIST";
                 @TempData["BenefitsNameList"] = "BRAINLEVELBENEFITSLIST";
+
+            }
+            else if (Incomeid == "8")
+            {
+                @TempData["BenefitsName"] = "STEW MATRIX BENEFITS LIST"; 
+                @TempData["BenefitsNameList"] = "STEWMATRIXBENEFITLISTS";
 
             }
             DataSet ds = model.GetStewMatrixBenefitsLists();
