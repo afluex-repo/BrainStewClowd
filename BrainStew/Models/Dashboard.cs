@@ -24,6 +24,9 @@ namespace BrainStew.Models
         public List<Dashboard> lstReward { get; set; }
         public string PK_RewardId { get; set; }
         public List<Dashboard> lstnews { get; set; }
+        public string Stewmatrixincome { get; set; }
+
+        
 
 
 

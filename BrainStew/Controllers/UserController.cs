@@ -65,6 +65,7 @@ namespace BrainStew.Controllers
                 ViewBag.CurrentLevel = ds.Tables[6].Rows[0]["CurrentLevel"].ToString();
                 ViewBag.UpgradeMatrix = ds.Tables[6].Rows[0]["UpgradeMatrix"].ToString(); 
                 ViewBag.ReferralIncentive = ds.Tables[6].Rows[0]["ReferralIncentive"].ToString();
+                ViewBag.Stewmatrixincome = ds.Tables[6].Rows[0]["Stewmatrixincome"].ToString();
                 //if (ViewBag.Status == "InActive")
                 //{
                 //    return RedirectToAction("ActivateByPin", "User");
