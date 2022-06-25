@@ -954,6 +954,8 @@
     <Content Include="Views\Admin\TopUpWalletLedgerForAdmin.cshtml" />
     <Content Include="Views\Report\StewMatrixLevelBenefits.cshtml" />
     <Content Include="Views\AdminReports\StewMatrixLevelBenefitsForAdmin.cshtml" />
+    <Content Include="Views\AdminReports\StewMatrixBenefitLists.cshtml" />
+    <Content Include="Views\AdminReports\ViewStewMatrixBenefitsListByUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

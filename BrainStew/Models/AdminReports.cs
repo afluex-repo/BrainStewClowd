@@ -9,6 +9,7 @@ namespace BrainStew.Models
 {
     public class AdminReports : Common
     {
+        public List<AdminReports> lstStewMatrix { get; set; }
         public List<AdminReports> lstStew { get; set; }
         public List<AdminReports> lsttopupreport { get; set; }
         public List<AdminReports> lst { get; set; }
@@ -344,6 +345,31 @@ namespace BrainStew.Models
                   new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
             };
             DataSet ds = DBHelper.ExecuteQuery("GetStewMatrixLevelBenefits", para);
+            return ds;
+        }
+        
+
+        public DataSet GetStewMatrixBenefitsList()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                  new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetStewMatrixBenefitsReportsForUserWise", para);
+            return ds;
+        }
+
+
+        public DataSet GetStewMatrixBenefitsLists()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                  new SqlParameter("@Status", Status),
+                  new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetStewMatrixBenefitsReports", para);
             return ds;
         }
 
