@@ -956,6 +956,10 @@
     <Content Include="Views\AdminReports\StewMatrixLevelBenefitsForAdmin.cshtml" />
     <Content Include="Views\AdminReports\StewMatrixBenefitLists.cshtml" />
     <Content Include="Views\AdminReports\ViewStewMatrixBenefitsListByUser.cshtml" />
+    <Content Include="Views\AdminReports\WalletLedger.cshtml" />
+    <Content Include="Views\Report\BrainLevelBenefits.cshtml" />
+    <Content Include="Views\Report\StewMatrixBenefits.cshtml" />
+    <Content Include="Views\Report\StewMatrixDonationList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

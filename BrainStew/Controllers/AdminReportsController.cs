@@ -951,6 +951,12 @@ namespace BrainStew.Controllers
                 @TempData["BenefitsNameList"] = "BRAINLEVELBENEFITSLIST";
 
             }
+            else if (Incomeid == "9")
+            {
+                @TempData["BenefitsName"] = "STEW MATRIX LEVEL BENEFITS";
+                @TempData["BenefitsNameList"] = "StewMatrixLevelBenefitsForAdmin";
+
+            }
             DataSet ds = model.GetBraintBenefitsList();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
@@ -1134,55 +1140,45 @@ namespace BrainStew.Controllers
         {
             List<AdminReports> lst = new List<AdminReports>();
             AdminReports model = new AdminReports();
-            DataSet ds = model.GetStewMatrixLevelBenefits();
+            model.Fk_IncomeTypeId = "9";
+            DataSet ds = model.getBenefitlist();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     AdminReports obj = new AdminReports();
-                    obj.FromName = r["FromName"].ToString();
-                    obj.FromLoginID = r["LoginId"].ToString();
-                    obj.BusinessAmount = r["BusinessAmount"].ToString();
-                    obj.Percentage = r["CommissionPercentage"].ToString();
-                    obj.PayoutNo = r["PayoutNo"].ToString();
-                    obj.Status = r["Status"].ToString();
-                    obj.Amount = r["Amount"].ToString();
-                    obj.Level = r["Lvl"].ToString();
                     obj.ToName = r["ToName"].ToString();
-                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = "9";
                     lst.Add(obj);
                 }
-                model.lstStew = lst;
+                model.lst = lst;
             }
             return View(model);
         }
         [HttpPost]
         [ActionName("StewMatrixLevelBenefitsForAdmin")]
         [OnAction(ButtonName = "btnSearch")]
-        public ActionResult StewMatrixLevelBenefitsForAdmin(AdminReports model)
+        public ActionResult StewMatrixLevelBenefitsReport(AdminReports model)
         {
             List<AdminReports> lst = new List<AdminReports>();
-            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
-            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-            DataSet ds = model.GetStewMatrixLevelBenefits();
+            model.Fk_IncomeTypeId = "9";
+            DataSet ds = model.getBenefitlist();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     AdminReports obj = new AdminReports();
-                    obj.FromName = r["FromName"].ToString();
-                    obj.FromLoginID = r["LoginId"].ToString();
-                    obj.BusinessAmount = r["BusinessAmount"].ToString();
-                    obj.Percentage = r["CommissionPercentage"].ToString();
-                    obj.PayoutNo = r["PayoutNo"].ToString();
-                    obj.Status = r["Status"].ToString();
-                    obj.Amount = r["Amount"].ToString();
-                    obj.Level = r["Lvl"].ToString();
                     obj.ToName = r["ToName"].ToString();
-                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    obj.ToLoginID = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["TotalBusiness"].ToString();
+                    obj.Amount = r["TotalBenefits"].ToString();
+                    obj.Fk_IncomeTypeId = "9";
                     lst.Add(obj);
                 }
-                model.lstStew = lst;
+                model.lst = lst;
             }
             return View(model);
         }

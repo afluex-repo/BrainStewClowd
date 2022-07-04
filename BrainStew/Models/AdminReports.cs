@@ -355,7 +355,7 @@ namespace BrainStew.Models
                 new SqlParameter("@LoginId", LoginId),
                   new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
             };
-            DataSet ds = DBHelper.ExecuteQuery("GetStewMatrixBenefitsReportsForUserWise", para);
+            DataSet ds = DBHelper.ExecuteQuery("GetBenefitsReportsForUserWise", para);
             return ds;
         }
 
@@ -369,7 +369,7 @@ namespace BrainStew.Models
                   new SqlParameter("@Status", Status),
                   new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
             };
-            DataSet ds = DBHelper.ExecuteQuery("GetStewMatrixBenefitsReports", para);
+            DataSet ds = DBHelper.ExecuteQuery("GetBenefitsReports", para);
             return ds;
         }
 
