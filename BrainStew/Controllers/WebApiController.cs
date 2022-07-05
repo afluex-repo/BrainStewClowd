@@ -61,6 +61,8 @@ namespace BrainStew.Controllers
                         obj.SponsorId = model.SponsorId;
                         obj.LastName = model.LastName;
                         obj.PinCode = model.PinCode;
+                        obj.State = model.State;
+                        obj.City = model.City;
                         obj.Email = model.Email;
                         obj.ProfilePic = ds.Tables[0].Rows[0]["ProfilePic"].ToString();
                         obj.Status = "0";
@@ -68,8 +70,8 @@ namespace BrainStew.Controllers
                         obj.Message = "Registered Successfully";
                         if (obj.Email != "" && obj.Email != null)
                         {
-                            string Body = "Dear " + obj.FullName + ",\t\nThank you for your registration. Your Details are as Below: \t\nLogin ID: " + obj.LoginId + "\t\nPassword: " + obj.Password;
-                            BLMail.SendMail(obj.Email, "Registration Successful", Body, false);
+                            //string Body = "Dear " + obj.FullName + ",\t\nThank you for your registration. Your Details are as Below: \t\nLogin ID: " + obj.LoginId + "\t\nPassword: " + obj.Password;
+                            //BLMail.SendMail(obj.Email, "Registration Successful", Body, false);
                         }
                     }
                     else
@@ -276,6 +278,7 @@ namespace BrainStew.Controllers
             }
         }
         #endregion
+
         #region Dashboard
         //public ActionResult GetDashboard(AssociateDashBoard associate)
         //{
@@ -977,5 +980,121 @@ namespace BrainStew.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
+
+
+        public ActionResult GetUserDashBoard(AssociateDashBoard model)
+        {
+            DashboardResponse obj = new DashboardResponse();
+            DataSet ds = model.GetAssociateDashboard();
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+
+                obj.Status ="0";
+                obj.Message = "Record Found";
+                obj.TotalDownline = ds.Tables[0].Rows[0]["TotalDownline"].ToString();
+                //obj.TotalBusiness = ds.Tables[0].Rows[0]["TotalBusiness"].ToString();
+                //obj.TeamBusiness = ds.Tables[0].Rows[0]["TeamBusiness"].ToString();
+                //obj.SelfBusiness = ds.Tables[0].Rows[0]["SelfBusiness"].ToString();
+                obj.TotalDirect = ds.Tables[0].Rows[0]["TotalDirect"].ToString();
+                obj.TotalActive = ds.Tables[0].Rows[0]["TotalActive"].ToString();
+                obj.TotalInActive = ds.Tables[0].Rows[0]["TotalInActive"].ToString();
+                obj.TPSId = ds.Tables[0].Rows[0]["TPSId"].ToString();
+                obj.TotalBlocked = ds.Tables[0].Rows[0]["TotalBlocked"].ToString();
+                obj.TotalROI = ds.Tables[0].Rows[0]["TotalROIWalletAmount"].ToString();
+                obj.TotalPayoutWallet = ds.Tables[0].Rows[0]["TotalPayoutWalletAmount"].ToString();
+                obj.TotalWalletAmount = ds.Tables[0].Rows[0]["TotalWalletAmount"].ToString();
+                //obj.TotalTeam = ds.Tables[0].Rows[0]["TotalTeam"].ToString();
+                //obj.TotalTeamActive = ds.Tables[0].Rows[0]["TotalTeamActive"].ToString();
+                //obj.TotalTeamInActive = ds.Tables[0].Rows[0]["TotalTeamInActive"].ToString();
+                //obj.TotalTeamTPSId = ds.Tables[0].Rows[0]["TotalTeamTPSId"].ToString();
+                //obj.TotalIncome = Convert.ToDecimal(ds.Tables[0].Rows[0]["TotalLevelIncomeTTP"]) + Convert.ToDecimal(ds.Tables[0].Rows[0]["TotalLevelIncomeTPS"]);
+                //obj.LevelIncomeTr1 = ds.Tables[0].Rows[0]["TotalLevelIncomeTTP"].ToString();
+                //obj.LevelIncomeTr2 = ds.Tables[0].Rows[0]["TotalLevelIncomeTPS"].ToString();
+                //obj.LevelIncomeTR1ForPayout = ds.Tables[0].Rows[0]["LevelIncomeTR1ForPayout"].ToString();
+                //obj.LevelIncomeTR2ForPayout = ds.Tables[0].Rows[0]["LevelIncomeTR2ForPayout"].ToString();
+                //obj.TotalPayout = ds.Tables[0].Rows[0]["TotalPayout"].ToString();
+                //obj.UsedPins = ds.Tables[0].Rows[0]["UsedPins"].ToString();
+                //obj.AvailablePins = ds.Tables[0].Rows[0]["AvailablePins"].ToString();
+                //obj.TotalPins = ds.Tables[0].Rows[0]["TotalPins"].ToString();
+                obj.Status = ds.Tables[2].Rows[0]["Status"].ToString();
+                //obj.TotalAmount = Convert.ToDecimal(ds.Tables[0].Rows[0]["TotalPayoutWalletAmount"]) + 0;
+                obj.TotalDonation = ds.Tables[0].Rows[0]["TotalDonation"].ToString();
+                obj.LevelIncome = ds.Tables[6].Rows[0]["LevelIncome"].ToString();
+                obj.LevelUpgradeIncome = ds.Tables[6].Rows[0]["LevelUpgradeIncome"].ToString();
+                obj.ReferralSponsorIncome = ds.Tables[6].Rows[0]["ReferralSponsorIncome"].ToString();
+                obj.MatrixIncomeLevel = ds.Tables[6].Rows[0]["MatrixIncomeLevel"].ToString();
+                obj.MatrixIncomeUpdateDate = ds.Tables[6].Rows[0]["MatrixIncomeUpdateDate"].ToString();
+                obj.ForeverMatrixIncome = ds.Tables[6].Rows[0]["ForeverMatrixIncome"].ToString();
+                obj.ForeverLevelIncome = ds.Tables[6].Rows[0]["ForeverLevelIncome"].ToString();
+                obj.TotalIncome = ds.Tables[6].Rows[0]["TotalIncome"].ToString();
+                obj.TopupWallet = ds.Tables[6].Rows[0]["TopupWallet"].ToString();
+                obj.MyWallet = ds.Tables[6].Rows[0]["MyWallet"].ToString();
+                obj.MatrixWallet = ds.Tables[6].Rows[0]["MatrixWallet"].ToString();
+                obj.WithdrawlAmount = ds.Tables[6].Rows[0]["WithdrawlAmount"].ToString();
+                obj.CurrentLevel = ds.Tables[6].Rows[0]["CurrentLevel"].ToString();
+                obj.UpgradeMatrix = ds.Tables[6].Rows[0]["UpgradeMatrix"].ToString();
+                obj.ReferralIncentive = ds.Tables[6].Rows[0]["ReferralIncentive"].ToString();
+                obj.Stewmatrixincome = ds.Tables[6].Rows[0]["Stewmatrixincome"].ToString();
+                //if (ViewBag.Status == "InActive")
+                //{
+                //    return RedirectToAction("ActivateByPin", "User");
+                //}
+            }
+            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[1].Rows.Count > 0)
+            //{
+            //    ViewBag.Tr1Business = ds.Tables[1].Rows[0]["Tr1Business"].ToString();
+            //    if (ViewBag.Tr1Business == "")
+            //    {
+            //        ViewBag.Tr1Business = 0;
+            //    }
+            //    ViewBag.Tr2Business = ds.Tables[1].Rows[0]["Tr2Business"].ToString();
+            //}
+            //List<Dashboard> lst = new List<Dashboard>();
+            //obj.AddedBy = Session["Pk_userId"].ToString();
+            //DataSet ds1 = obj.GetRewarDetails();
+            //if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            //{
+            //    foreach (DataRow r in ds1.Tables[0].Rows)
+            //    {
+            //        Dashboard obj1 = new Dashboard();
+            //        obj1.PK_RewardId = r["PK_RewardId"].ToString();
+            //        obj1.Title = r["Title"].ToString();
+            //        obj1.Image = "/UploadReward/" + r["postedFile"].ToString();
+            //        lst.Add(obj1);
+            //    }
+            //    obj.lstReward = lst;
+            //}
+            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[3].Rows.Count > 0)
+            //{
+            //    ViewBag.TotalTPSAmountTobeReceived = double.Parse(ds.Tables[3].Compute("sum(TopUpAmount)", "").ToString()).ToString("n2");
+            //}
+            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[4].Rows.Count > 0)
+            //{
+            //    ViewBag.TotalTPSAmountReceived = double.Parse(ds.Tables[4].Compute("sum(TotalROI)", "").ToString()).ToString("n2");
+            //    ViewBag.TotalTPSBalanceAmount = Convert.ToDecimal(ViewBag.TotalTPSAmountTobeReceived) - Convert.ToDecimal(ViewBag.TotalTPSAmountReceived);
+            //}
+            //List<Dashboard> lstnews = new List<Dashboard>();
+            //DataSet dsnews = obj.GetNewsDetails();
+
+            //if (dsnews != null && dsnews.Tables.Count > 0 && dsnews.Tables[0].Rows.Count > 0)
+            //{
+            //    foreach (DataRow r in dsnews.Tables[0].Rows)
+            //    {
+            //        Dashboard obj12 = new Dashboard();
+            //        obj12.NewsID = r["PK_NewsID"].ToString();
+            //        obj12.Title = r["NewsHeading"].ToString();
+            //        obj12.News = r["NewsBody"].ToString();
+            //        lstnews.Add(obj12);
+            //    }
+            //    obj.lstnews = lstnews;
+            //}
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+
+
     }
 }
