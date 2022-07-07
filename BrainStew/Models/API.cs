@@ -55,7 +55,7 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("Registration", para);
             return ds;
         }
-        
+
 
     }
     #endregion
@@ -65,7 +65,7 @@ namespace BrainStew.Models
         public string Status { get; set; }
         public string Message { get; set; }
         public string sponsorId { get; set; }
-  
+
         public DataSet GetMemberDetails()
         {
             SqlParameter[] para = {
@@ -183,51 +183,30 @@ namespace BrainStew.Models
 
     }
 
-    //public class lstDashboardResponse
-    //{
-    //    public string TotalDownline { get; set; }
-    //    public string TotalDirect { get; set; }
-    //    public List<DashboardResponse> lst { get; set; }
-    //}
-    
     public class DashboardResponse
     {
-        public string TotalDownline { get; set; }
-        public string TotalDirect { get; set; }
-        public string TotalActive { get; set; }
-        public string TotalInActive { get; set; }
-        public string ActiveStatus { get; set; }
         public string Status { get; set; }
         public string Message { get; set; }
-        public string ReferralLink { get; set; }
-        
-        public string TPSId { get; set; }
-        public string TotalBlocked { get; set; }
-        public string TotalROI { get; set; }
-        public string TotalPayoutWallet { get; set; }
-        public string TotalWalletAmount { get; set; }
- 
-        public string TotalAmount { get; set; }
+        public string ActiveStatus { get; set; }
         public string TotalDonation { get; set; }
+        public string TotalDirect { get; set; }
+        public string ReferralIncentive { get; set; }
         public string LevelIncome { get; set; }
         public string LevelUpgradeIncome { get; set; }
         public string ReferralSponsorIncome { get; set; }
-        public string MatrixIncomeLevel { get; set; }
         public string MatrixIncomeUpdateDate { get; set; }
+        public string MatrixIncomeLevel { get; set; }
         public string ForeverMatrixIncome { get; set; }
-
         public string ForeverLevelIncome { get; set; }
         public string TotalIncome { get; set; }
         public string TopupWallet { get; set; }
-        public string MyWallet { get; set; }
-        public string MatrixWallet { get; set; }
+        public string TotalWalletAmount { get; set; }
         public string WithdrawlAmount { get; set; }
+        public string MatrixWallet { get; set; }
         public string CurrentLevel { get; set; }
         public string UpgradeMatrix { get; set; }
-
-        public string ReferralIncentive { get; set; }
+        public string ReferralLink { get; set; }
         public string Stewmatrixincome { get; set; }
-        
     }
     public class UpdateProfile
     {
@@ -538,12 +517,12 @@ namespace BrainStew.Models
     }
     public class PinDetails
     {
-        public string ePinNo { get;  set; }
-        public string FromId { get;  set; }
-        public string FromName { get;  set; }
-        public string ToId { get;  set; }
-        public string ToName { get;  set; }
-        public string TransferDate { get;  set; }
+        public string ePinNo { get; set; }
+        public string FromId { get; set; }
+        public string FromName { get; set; }
+        public string ToId { get; set; }
+        public string ToName { get; set; }
+        public string TransferDate { get; set; }
     }
     public class Request
     {
@@ -562,7 +541,7 @@ namespace BrainStew.Models
     public class ProfileAPI
     {
         public string Status { get; set; }
-        public string Message { get;  set; }
+        public string Message { get; set; }
         public string FK_UserId { get; set; }
         public string LoginId { get; set; }
         public string SponsorId { get; set; }
@@ -613,7 +592,7 @@ namespace BrainStew.Models
 
     public class BankDetailsUpdateAPIResponse
     {
-        
+
         public string Status { get; set; }
         public string Message { get; set; }
         public string Fk_UserId { get; set; }
@@ -647,38 +626,6 @@ namespace BrainStew.Models
         }
     }
 
-
-    public class AddWalletRequest
-    {
-        public string Status { get; set; }
-        public string Message { get; set; }
-        public string LoginId { get; set; }
-        public string PaymentMode { get; set; }
-        public string Amount { get; set; }
-        public string DDChequeNo { get; set; }
-        public string DDChequeDate { get; set; }
-        public string BankBranch { get; set; }
-        public string BankName { get; set; }
-        public string AddedBy { get; set; }
-        public DataSet AddWallet()
-        {
-            SqlParameter[] para = {
-                                     new SqlParameter("@LoginId", LoginId),
-                                      new SqlParameter("@Amount", Amount),
-                                      new SqlParameter("@PaymentMode", PaymentMode) ,
-                                      new SqlParameter("@DDChequeNo", DDChequeNo) ,
-                                      new SqlParameter("@DDChequeDate", DDChequeDate) ,
-                                      new SqlParameter("@BankBranch", BankBranch) ,
-                                          new SqlParameter("@BankName", BankName),
-                                            new SqlParameter("@AddedBy", AddedBy)
-                                  };
-            DataSet ds = DBHelper.ExecuteQuery("EwalletRequest", para);
-            return ds;
-        }
-    }
-    
-
-
     public class Password
     {
         public string FK_UserId { get; set; }
@@ -687,7 +634,7 @@ namespace BrainStew.Models
         public DataSet ChangePassword()
         {
             SqlParameter[] para = {
-                                     
+
                                       new SqlParameter("@OldPassword", OldPassword),
                                       new SqlParameter("@NewPassword", NewPassword),
                                        new SqlParameter("@UpdatedBy", FK_UserId)
@@ -713,4 +660,439 @@ namespace BrainStew.Models
             return ds;
         }
     }
+
+
+    public class SponsorRequest
+    {
+        public string LoginId { get; set; }
+        public DataSet GetSponsor()
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@LoginId", LoginId)
+                                  };
+            DataSet ds = DBHelper.ExecuteQuery("GetMemberName", para);
+            return ds;
+        }
+    }
+    public class SponsorResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public string SponsorName { get; set; }
+
+    }
+
+    public class NewsRequest
+    {
+        public string NewsID { get; set; }
+        public DataSet GetNewsDetails()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@NewsID",NewsID)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("NewsList", para);
+            return ds;
+        }
+    }
+    public class NewsListResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<NewsResponse> lstnew { get; set; }
+    }
+    public class NewsResponse
+    {
+        public string NewsHeading { get; set; }
+        public string NewsBody { get; set; }
+    }
+
+    public class Response
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+    }
+
+    public class AddWalletRequest
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public string LoginId { get; set; }
+        public string PaymentMode { get; set; }
+        public string Amount { get; set; }
+        public string DDChequeNo { get; set; }
+        public string DDChequeDate { get; set; }
+        public string BankBranch { get; set; }
+        public string BankName { get; set; }
+        public string Remark { get; set; }
+        public string PostedFile { get; set; }
+        public string AddedBy { get; set; }
+        public DataSet AddWallet()
+        {
+            SqlParameter[] para = {
+                                 new SqlParameter("@LoginId", LoginId),
+                                      new SqlParameter("@Amount", Amount),
+                                    //new SqlParameter("@PaymentMode", 10) ,
+                                      new SqlParameter("@DDChequeNo", DDChequeNo) ,
+                                      new SqlParameter("@DDChequeDate", DDChequeDate) ,
+                                      new SqlParameter("@BankBranch", BankBranch) ,
+                                      new SqlParameter("@BankName", BankName),
+                                      new SqlParameter("@Remarks", Remark),
+                                      new SqlParameter("@Document",PostedFile),
+                                      new SqlParameter("@AddedBy", AddedBy)
+                                  };
+            DataSet ds = DBHelper.ExecuteQuery("EwalletRequest", para);
+            return ds;
+        }
+    }
+
+
+    public class QRandWalletRequest
+    {
+        public string FK_UserId { get; set; }
+        public DataSet GetWalletBalance()
+        {
+            SqlParameter[] para = { new SqlParameter("@PK_USerID", FK_UserId)
+
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetWalletBalance", para);
+
+            return ds;
+
+        }
+    }
+
+
+    public class lstQRandWalletResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<QRandWalletResponse> lstwallet { get; set; }
+
+    }
+    public class QRandWalletResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public string WalletBalance { get; set; }
+        public string QRLink { get; set; }
+
+    }
+
+
+    public class EwalletRequestDetails
+    {
+        public string Fk_UserId { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+        public DataSet GetEwalletRequestDetails()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@Fk_UserId",Fk_UserId),
+                                   new SqlParameter("@FromDate",FromDate),
+                                   new SqlParameter("@ToDate",ToDate)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetEwalletRequestDetails", para);
+
+            return ds;
+        }
+    }
+
+
+    public class EwalletResponsDetails
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<EwalletRespons> lstWalletDetails { get; set; }
+    }
+
+    public class EwalletRespons
+    {
+        public string RequestID { get; set; }
+        public string Amount { get; set; }
+        public string PaymentMode { get; set; }
+        public string TransactionDate { get; set; }
+        public string Status { get; set; }
+
+    }
+
+
+    public class DeleteWalletRequest
+    {
+        public string PK_RequestID { get; set; }
+        public string AddedBy { get; set; }
+        public DataSet DeleteWallet()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@PK_RequestID", PK_RequestID),
+                  new SqlParameter("@DeletedBy", AddedBy)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("DeleteWalletRequest", para);
+
+            return ds;
+
+        }
+    }
+    
+    public class EWalletDetailsRequest
+    {
+        public string FK_UserId { get; set; }
+        public string LoginId { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+        public DataSet GetEWalletDetails()
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@FK_UserId", FK_UserId),
+                                      new SqlParameter("@LoginId", LoginId),
+                                      new SqlParameter("@FromDate", FromDate),
+                                      new SqlParameter("@ToDate", ToDate)
+                                     };
+
+            DataSet ds = DBHelper.ExecuteQuery("GetEWalletDetails", para);
+            return ds;
+        }
+    }
+
+    public class EWalletDetailsResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<EWalletDetailsResp> lstWalletLedger { get; set; }
+    }
+
+    public class EWalletDetailsResp
+    {
+        public string Pk_EwalletId { get; set; }
+        public string CrAmount { get; set; }
+        public string DrAmount { get; set; }
+        public string Narration { get; set; }
+        public string TransactionDate { get; set; }
+    }
+
+    public class GetWalletBalanceRequest
+    {
+        public string Fk_UserId { get; set; }
+        public DataSet GetWalletBalance()
+        {
+            SqlParameter[] para = { new SqlParameter("@PK_USerID", Fk_UserId) };
+            DataSet ds = DBHelper.ExecuteQuery("GetWalletBalance", para);
+            return ds;
+        }
+    }
+    public class GetWalletBalanceResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public string BalanceAmount { get; set; }
+
+    }
+
+
+
+    public class TransferToOtherWalletRequest
+    {
+        public string Fk_UserId { get; set; }
+        public string LoginId { get; set; }
+        public string Amount { get; set; }
+        public string AddedBy { get; set; }
+        public DataSet TransfertoOther()
+        {
+            SqlParameter[] para = {
+                                  new SqlParameter("@LoginId",LoginId),
+                                   new SqlParameter("@Amount",Amount),
+                                    new SqlParameter("@AddedBy",Fk_UserId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("PayoutRequestOther", para);
+            return ds;
+        }
+    }
+
+    public class GetDonationAmountRequest
+    {
+        public string Fk_UserId { get; set; }
+        public DataSet GetDonationAmount()
+        {
+            SqlParameter[] para = { new SqlParameter("@PK_USerID", Fk_UserId) };
+            DataSet ds = DBHelper.ExecuteQuery("GetDonationAmount", para);
+
+            return ds;
+
+        }
+
+        public DataSet GetWalletBalance()
+        {
+            SqlParameter[] para = { new SqlParameter("@PK_USerID", Fk_UserId) };
+            DataSet ds = DBHelper.ExecuteQuery("GetWalletBalance", para);
+
+            return ds;
+
+        }
+    }
+    public class GetDonationAmountResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public string DonationAmount { get; set; }
+        public string DonationPlanId { get; set; }
+        public string UpdatedDonationPlanId { get; set; }
+        public string WalletBalance { get; set; }
+    }
+
+    public class DonationByWalletRequest
+    {
+        public string Fk_UserId { get; set; }
+        public string Amount { get; set; }
+        public string DonationPlanId { get; set; }
+        public DataSet DonationByWallet()
+        {
+            SqlParameter[] para =
+            {
+                     new SqlParameter("@Fk_UserId",Fk_UserId),
+                     new SqlParameter("@Amount",Amount),
+                     new SqlParameter("@DonationPlanId",DonationPlanId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("ActivateUserByWallet", para);
+            return ds;
+        }
+    }
+
+
+
+    public class BrainMatrixDonationRequest
+    {
+        public string Fk_UserId { get; set; }
+        public DataSet GetBrainMatrixPlanAmount()
+        {
+            SqlParameter[] para = { new SqlParameter("@PK_USerID", Fk_UserId) };
+            DataSet ds = DBHelper.ExecuteQuery("GetBrainMatrixPlanAmount", para);
+
+            return ds;
+
+        }
+        public DataSet GetWalletBalance()
+        {
+            SqlParameter[] para = { new SqlParameter("@PK_USerID", Fk_UserId) };
+            DataSet ds = DBHelper.ExecuteQuery("GetWalletBalance", para);
+
+            return ds;
+
+        }
+    }
+    public class BrainMatrixDonationResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public string DonationAmount { get; set; }
+        public string DonationPlanId { get; set; }
+        public string UpdatedDonationPlanId { get; set; }
+        public string WalletBalance { get; set; }
+    }
+
+    public class DonationBrainMatrixPlanRequest
+    {
+        public string Fk_UserId { get; set; }
+        public string Amount { get; set; }
+        public string DonationPlanId { get; set; }
+        public DataSet DonationBrainMatrixPlan()
+        {
+            SqlParameter[] para =
+            {
+                     new SqlParameter("@Fk_UserId",Fk_UserId),
+                     new SqlParameter("@Amount",Amount),
+                     new SqlParameter("@BrainMatrixPlanId",DonationPlanId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("SaveBrainMatrixPlanDetails", para);
+            return ds;
+        }
+    }
+
+    public class GetStewMatrixPlanAmountRequest
+    {
+        public string Fk_UserId { get; set; }
+        public DataSet GetStewMatrixPlanAmount()
+        {
+            SqlParameter[] para = { new SqlParameter("@PK_USerID", Fk_UserId) };
+            DataSet ds = DBHelper.ExecuteQuery("GetStewMatrixPlanAmount", para);
+            return ds;
+        }
+        public DataSet GetWalletBalance()
+        {
+            SqlParameter[] para = { new SqlParameter("@PK_USerID", Fk_UserId) };
+            DataSet ds = DBHelper.ExecuteQuery("GetWalletBalance", para);
+            return ds;
+        }
+    }
+
+    public class GetStewMatrixPlanAmountResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public string DonationAmount { get; set; }
+        public string DonationPlanId { get; set; }
+        public string UpdatedDonationPlanId { get; set; }
+        public string WalletBalance { get; set; }
+    }
+
+    public class DonationStewMatrixPlanRequest
+    {
+        public string Fk_UserId { get; set; }
+        public string Amount { get; set; }
+        public string DonationPlanId { get; set; }
+        public DataSet DonationStewMatrixPlan()
+        {
+            SqlParameter[] para =
+            {
+                     new SqlParameter("@Fk_UserId",Fk_UserId),
+                     new SqlParameter("@Amount",Amount),
+                     new SqlParameter("@StewMatrixPlanId",DonationPlanId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("SaveStewMatrixPlanDetails", para);
+            return ds;
+        }
+    }
+
+    public class TopUpListRequest
+    {
+        public string Fk_UserId { get; set; }
+        public string LoginId { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+        public DataSet GetTopUpDetails()
+        {
+            SqlParameter[] para = {
+                                       new SqlParameter("@FK_UserId", Fk_UserId),
+                                      new SqlParameter("@LoginId", LoginId),
+                                      new SqlParameter("@FromDate", FromDate),
+                                      new SqlParameter("@ToDate", ToDate)
+                                 };
+            DataSet ds = DBHelper.ExecuteQuery("GetTopUpDetails", para);
+            return ds;
+        }
+    }
+    public class TopUpListResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<TopUpListResp> lstTopUp { get; set; }
+   
+    }
+    public class TopUpListResp
+    {
+        public string Name { get; set; }
+        public string PinAmount { get; set; }
+        public string TopUpDate { get; set; }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

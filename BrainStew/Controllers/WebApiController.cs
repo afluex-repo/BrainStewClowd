@@ -96,12 +96,12 @@ namespace BrainStew.Controllers
             DataSet ds = sponsorname.GetMemberDetails();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-                
-                    obj.SponsorName = ds.Tables[0].Rows[0]["FullName"].ToString();
-                    obj.Status = "0";
-                    obj.Message = "Sponsor Name Fetched";
-                    return Json(obj, JsonRequestBehavior.AllowGet);
-                
+
+                obj.SponsorName = ds.Tables[0].Rows[0]["FullName"].ToString();
+                obj.Status = "0";
+                obj.Message = "Sponsor Name Fetched";
+                return Json(obj, JsonRequestBehavior.AllowGet);
+
 
             }
             else
@@ -150,7 +150,7 @@ namespace BrainStew.Controllers
             }
             try
             {
-               
+
                 DataSet dsResult = model.Login();
                 {
                     if (dsResult.Tables[0].Rows[0]["Msg"].ToString() == "1")
@@ -803,7 +803,7 @@ namespace BrainStew.Controllers
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
 
-        
+
 
         [HttpPost]
         public ActionResult UpdateProfile(ProfileAPI model)
@@ -826,7 +826,7 @@ namespace BrainStew.Controllers
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 obj.Status = "1";
                 obj.Message = ex.Message;
@@ -952,34 +952,34 @@ namespace BrainStew.Controllers
 
 
 
-        [HttpPost]
-        public ActionResult AddWallet(AddWalletRequest model)
-        {
-            Reponse obj = new Reponse();
-            try
-            {
-                DataSet ds = model.AddWallet();
-                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-                {
-                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
-                    {
-                        obj.Status = "0";
-                        obj.Message = "E-Wallet save successfully";
-                    }
-                    else
-                    {
-                        obj.Status = "1";
-                        obj.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                obj.Status = "1";
-                obj.Message = ex.Message;
-            }
-            return Json(obj, JsonRequestBehavior.AllowGet);
-        }
+        //[HttpPost]
+        //public ActionResult AddWallet(AddWalletRequest model)
+        //{
+        //    Reponse obj = new Reponse();
+        //    try
+        //    {
+        //        DataSet ds = model.AddWallet();
+        //        if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+        //        {
+        //            if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+        //            {
+        //                obj.Status = "0";
+        //                obj.Message = "E-Wallet save successfully";
+        //            }
+        //            else
+        //            {
+        //                obj.Status = "1";
+        //                obj.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        obj.Status = "1";
+        //        obj.Message = ex.Message;
+        //    }
+        //    return Json(obj, JsonRequestBehavior.AllowGet);
+        //}
 
 
         public ActionResult GetUserDashBoard(AssociateDashBoard model)
@@ -988,108 +988,638 @@ namespace BrainStew.Controllers
             DataSet ds = model.GetAssociateDashboard();
             if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
-
-                obj.Status ="0";
+                obj.Status = "0";
                 obj.Message = "Record Found";
-                obj.TotalDownline = ds.Tables[0].Rows[0]["TotalDownline"].ToString();
-                //obj.TotalBusiness = ds.Tables[0].Rows[0]["TotalBusiness"].ToString();
-                //obj.TeamBusiness = ds.Tables[0].Rows[0]["TeamBusiness"].ToString();
-                //obj.SelfBusiness = ds.Tables[0].Rows[0]["SelfBusiness"].ToString();
-                obj.TotalDirect = ds.Tables[0].Rows[0]["TotalDirect"].ToString();
-                obj.TotalActive = ds.Tables[0].Rows[0]["TotalActive"].ToString();
-                obj.TotalInActive = ds.Tables[0].Rows[0]["TotalInActive"].ToString();
-                obj.TPSId = ds.Tables[0].Rows[0]["TPSId"].ToString();
-                obj.TotalBlocked = ds.Tables[0].Rows[0]["TotalBlocked"].ToString();
-                obj.TotalROI = ds.Tables[0].Rows[0]["TotalROIWalletAmount"].ToString();
-                obj.TotalPayoutWallet = ds.Tables[0].Rows[0]["TotalPayoutWalletAmount"].ToString();
-                obj.TotalWalletAmount = ds.Tables[0].Rows[0]["TotalWalletAmount"].ToString();
-                //obj.TotalTeam = ds.Tables[0].Rows[0]["TotalTeam"].ToString();
-                //obj.TotalTeamActive = ds.Tables[0].Rows[0]["TotalTeamActive"].ToString();
-                //obj.TotalTeamInActive = ds.Tables[0].Rows[0]["TotalTeamInActive"].ToString();
-                //obj.TotalTeamTPSId = ds.Tables[0].Rows[0]["TotalTeamTPSId"].ToString();
-                //obj.TotalIncome = Convert.ToDecimal(ds.Tables[0].Rows[0]["TotalLevelIncomeTTP"]) + Convert.ToDecimal(ds.Tables[0].Rows[0]["TotalLevelIncomeTPS"]);
-                //obj.LevelIncomeTr1 = ds.Tables[0].Rows[0]["TotalLevelIncomeTTP"].ToString();
-                //obj.LevelIncomeTr2 = ds.Tables[0].Rows[0]["TotalLevelIncomeTPS"].ToString();
-                //obj.LevelIncomeTR1ForPayout = ds.Tables[0].Rows[0]["LevelIncomeTR1ForPayout"].ToString();
-                //obj.LevelIncomeTR2ForPayout = ds.Tables[0].Rows[0]["LevelIncomeTR2ForPayout"].ToString();
-                //obj.TotalPayout = ds.Tables[0].Rows[0]["TotalPayout"].ToString();
-                //obj.UsedPins = ds.Tables[0].Rows[0]["UsedPins"].ToString();
-                //obj.AvailablePins = ds.Tables[0].Rows[0]["AvailablePins"].ToString();
-                //obj.TotalPins = ds.Tables[0].Rows[0]["TotalPins"].ToString();
-                obj.Status = ds.Tables[2].Rows[0]["Status"].ToString();
-                //obj.TotalAmount = Convert.ToDecimal(ds.Tables[0].Rows[0]["TotalPayoutWalletAmount"]) + 0;
+                obj.ActiveStatus = ds.Tables[2].Rows[0]["Status"].ToString();
                 obj.TotalDonation = ds.Tables[0].Rows[0]["TotalDonation"].ToString();
+                obj.TotalDirect = ds.Tables[0].Rows[0]["TotalDirect"].ToString();
+                obj.ReferralIncentive = ds.Tables[6].Rows[0]["ReferralIncentive"].ToString();
                 obj.LevelIncome = ds.Tables[6].Rows[0]["LevelIncome"].ToString();
                 obj.LevelUpgradeIncome = ds.Tables[6].Rows[0]["LevelUpgradeIncome"].ToString();
                 obj.ReferralSponsorIncome = ds.Tables[6].Rows[0]["ReferralSponsorIncome"].ToString();
-                obj.MatrixIncomeLevel = ds.Tables[6].Rows[0]["MatrixIncomeLevel"].ToString();
                 obj.MatrixIncomeUpdateDate = ds.Tables[6].Rows[0]["MatrixIncomeUpdateDate"].ToString();
+                obj.MatrixIncomeLevel = ds.Tables[6].Rows[0]["MatrixIncomeLevel"].ToString();
                 obj.ForeverMatrixIncome = ds.Tables[6].Rows[0]["ForeverMatrixIncome"].ToString();
                 obj.ForeverLevelIncome = ds.Tables[6].Rows[0]["ForeverLevelIncome"].ToString();
                 obj.TotalIncome = ds.Tables[6].Rows[0]["TotalIncome"].ToString();
                 obj.TopupWallet = ds.Tables[6].Rows[0]["TopupWallet"].ToString();
-                obj.MyWallet = ds.Tables[6].Rows[0]["MyWallet"].ToString();
-                obj.MatrixWallet = ds.Tables[6].Rows[0]["MatrixWallet"].ToString();
+                obj.TotalWalletAmount = ds.Tables[0].Rows[0]["TotalWalletAmount"].ToString();
                 obj.WithdrawlAmount = ds.Tables[6].Rows[0]["WithdrawlAmount"].ToString();
+                obj.MatrixWallet = ds.Tables[6].Rows[0]["MatrixWallet"].ToString();
                 obj.CurrentLevel = ds.Tables[6].Rows[0]["CurrentLevel"].ToString();
                 obj.UpgradeMatrix = ds.Tables[6].Rows[0]["UpgradeMatrix"].ToString();
-                obj.ReferralIncentive = ds.Tables[6].Rows[0]["ReferralIncentive"].ToString();
                 obj.Stewmatrixincome = ds.Tables[6].Rows[0]["Stewmatrixincome"].ToString();
-                //if (ViewBag.Status == "InActive")
-                //{
-                //    return RedirectToAction("ActivateByPin", "User");
-                //}
+                if (obj.ActiveStatus == "Active")
+                {
+                    obj.ReferralLink = "http://brainstewfoundation.com/Home/Registration?Pid=" + model.Fk_UserId;
+                }
+                else
+                {
+                    obj.ReferralLink = "";
+                }
             }
-            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[1].Rows.Count > 0)
-            //{
-            //    ViewBag.Tr1Business = ds.Tables[1].Rows[0]["Tr1Business"].ToString();
-            //    if (ViewBag.Tr1Business == "")
-            //    {
-            //        ViewBag.Tr1Business = 0;
-            //    }
-            //    ViewBag.Tr2Business = ds.Tables[1].Rows[0]["Tr2Business"].ToString();
-            //}
-            //List<Dashboard> lst = new List<Dashboard>();
-            //obj.AddedBy = Session["Pk_userId"].ToString();
-            //DataSet ds1 = obj.GetRewarDetails();
-            //if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
-            //{
-            //    foreach (DataRow r in ds1.Tables[0].Rows)
-            //    {
-            //        Dashboard obj1 = new Dashboard();
-            //        obj1.PK_RewardId = r["PK_RewardId"].ToString();
-            //        obj1.Title = r["Title"].ToString();
-            //        obj1.Image = "/UploadReward/" + r["postedFile"].ToString();
-            //        lst.Add(obj1);
-            //    }
-            //    obj.lstReward = lst;
-            //}
-            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[3].Rows.Count > 0)
-            //{
-            //    ViewBag.TotalTPSAmountTobeReceived = double.Parse(ds.Tables[3].Compute("sum(TopUpAmount)", "").ToString()).ToString("n2");
-            //}
-            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[4].Rows.Count > 0)
-            //{
-            //    ViewBag.TotalTPSAmountReceived = double.Parse(ds.Tables[4].Compute("sum(TotalROI)", "").ToString()).ToString("n2");
-            //    ViewBag.TotalTPSBalanceAmount = Convert.ToDecimal(ViewBag.TotalTPSAmountTobeReceived) - Convert.ToDecimal(ViewBag.TotalTPSAmountReceived);
-            //}
-            //List<Dashboard> lstnews = new List<Dashboard>();
-            //DataSet dsnews = obj.GetNewsDetails();
-
-            //if (dsnews != null && dsnews.Tables.Count > 0 && dsnews.Tables[0].Rows.Count > 0)
-            //{
-            //    foreach (DataRow r in dsnews.Tables[0].Rows)
-            //    {
-            //        Dashboard obj12 = new Dashboard();
-            //        obj12.NewsID = r["PK_NewsID"].ToString();
-            //        obj12.Title = r["NewsHeading"].ToString();
-            //        obj12.News = r["NewsBody"].ToString();
-            //        lstnews.Add(obj12);
-            //    }
-            //    obj.lstnews = lstnews;
-            //}
+            else
+            {
+                obj.Status = "0";
+                obj.Message = "Record Not Found";
+            }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public ActionResult GetSponsorName(SponsorRequest model)
+        {
+            SponsorResponse obj = new SponsorResponse();
+            DataSet ds = model.GetSponsor();
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                obj.Status = "0";
+                obj.Message = "Record Found";
+                obj.SponsorName = ds.Tables[0].Rows[0]["FullName"].ToString();
+            }
+            else
+            {
+                obj.Status = "1";
+                obj.Message = "Record Not Found";
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult NewDetails(NewsRequest model)
+        {
+            NewsListResponse Response = new NewsListResponse();
+            List<NewsResponse> lst = new List<NewsResponse>();
+            DataSet ds = model.GetNewsDetails();
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                Response.Status = "0";
+                Response.Message = "Record Found";
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    NewsResponse obj = new NewsResponse();
+                    obj.NewsHeading = ds.Tables[0].Rows[0]["NewsHeading"].ToString();
+                    obj.NewsBody = ds.Tables[0].Rows[0]["NewsBody"].ToString();
+                    lst.Add(obj);
+                }
+                Response.lstnew = lst;
+            }
+            else
+            {
+                Response.Status = "1";
+                Response.Message = "Record Not Found";
+            }
+            return Json(Response, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult QRWalletDetails(QRandWalletRequest model)
+        {
+            lstQRandWalletResponse obj = new lstQRandWalletResponse();
+            List<QRandWalletResponse> lst = new List<QRandWalletResponse>();
+            DataSet ds = model.GetWalletBalance();
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                obj.Status = "0";
+                obj.Message = "Record Found";
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    QRandWalletResponse obj1 = new QRandWalletResponse();
+
+                    obj1.WalletBalance = Decimal.Parse(ds.Tables[0].Rows[0]["amount"].ToString()).ToString("0.00");
+                    obj1.QRLink = "http://localhost:53404/assets/img/QR.jpeg, + http://localhost:53404/assets/img/QR1.jpeg, + http://localhost:53404/assets/img/QR2.jpeg";
+
+                    lst.Add(obj1);
+                }
+                obj.lstwallet = lst;
+            }
+            else
+            {
+                obj.Status = "1";
+                obj.Message = "Record Not Found";
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult AddWallet(AddWalletRequest model, HttpPostedFileBase PostedFile)
+        {
+            Response response = new Response();
+            try
+            {
+                if (PostedFile != null)
+                {
+                    model.PostedFile = "/Documents/" + Guid.NewGuid() + Path.GetExtension(PostedFile.FileName);
+                    PostedFile.SaveAs(Path.Combine(Server.MapPath(model.PostedFile)));
+                }
+
+                model.DDChequeDate = string.IsNullOrEmpty(model.DDChequeDate) ? null : Common.ConvertToSystemDate(model.DDChequeDate, "dd/mm/yyyy");
+                if (model.PaymentMode == "1")
+                {
+                    model.BankName = null;
+                    model.BankBranch = null;
+                }
+                DataSet ds = model.AddWallet();
+                if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        response.Status = "0";
+                        response.Message = "Requested successfully";
+                    }
+                    else
+                    {
+                        response.Status = "1";
+                        response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+
+                    }
+                }
+                else { }
+            }
+            catch (Exception ex)
+            {
+                response.Status = "1";
+                response.Message = ex.Message;
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult WalletList(EwalletRequestDetails model)
+        {
+            EwalletResponsDetails Response = new EwalletResponsDetails();
+            List<EwalletRespons> lst = new List<EwalletRespons>();
+            DataSet ds = model.GetEwalletRequestDetails();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                Response.Status = "0";
+                Response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    EwalletRespons obj = new EwalletRespons();
+                    obj.RequestID = r["PK_RequestID"].ToString();
+                    //obj.UserId = r["FK_UserId"].ToString();
+                    //obj.RequestCode = r["RequestCode"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.PaymentMode = r["PaymentMode"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    //obj.BankName = r["BankName"].ToString();
+                    obj.TransactionDate = r["RequestedDate"].ToString();
+                    //obj.BankBranch = r["BankBranch"].ToString();
+                    //obj.ChequeDDNo = r["ChequeDDNo"].ToString();
+                    //obj.ChequeDDDate = r["ChequeDDDate"].ToString();
+                    //obj.WalletId = r["WalletId"].ToString();
+                    //obj.LoginId = r["LoginId"].ToString();
+                    //obj.DisplayName = r["Name"].ToString();
+                    //obj.Remark = r["Remark"].ToString();
+                    lst.Add(obj);
+                }
+                Response.lstWalletDetails = lst;
+            }
+            else
+            {
+                Response.Status = "0";
+                Response.Message = "Record Not Found";
+            }
+            return Json(Response, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult DeleteWallet(DeleteWalletRequest model)
+        {
+            Response response = new Response();
+            try
+            {
+                model.AddedBy = "1";
+                DataSet ds = model.DeleteWallet();
+                if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        response.Status = "0";
+                        response.Message = "Wallet requested deleted successfully";
+
+                    }
+                    else
+                    {
+                        response.Status = "1";
+                        response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+
+                    }
+                }
+                else
+                {
+                    response.Status = "1";
+                    response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = "1";
+                response.Message = ex.Message;
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpPost]
+        public ActionResult WalletLedgerList(EWalletDetailsRequest model)
+        {
+            EWalletDetailsResponse Response = new EWalletDetailsResponse();
+            List<EWalletDetailsResp> lst = new List<EWalletDetailsResp>();
+            model.FK_UserId = model.FK_UserId == "" ? null : model.FK_UserId;
+            model.LoginId = model.LoginId == "" ? null : model.LoginId;
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            DataSet ds = model.GetEWalletDetails();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                Response.Status = "0";
+                Response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    EWalletDetailsResp obj = new EWalletDetailsResp();
+                    obj.Pk_EwalletId = r["Pk_EwalletId"].ToString();
+                    obj.CrAmount = r["CrAmount"].ToString();
+                    obj.DrAmount = r["DrAmount"].ToString();
+                    obj.Narration = r["Narration"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    //obj.Balance = r["Balance"].ToString();
+                    lst.Add(obj);
+                }
+                Response.lstWalletLedger = lst;
+                ViewBag.TotalCrAmount = double.Parse(ds.Tables[0].Compute("sum(CrAmount)", "").ToString()).ToString("n2");
+                ViewBag.TotalDrAmount = double.Parse(ds.Tables[0].Compute("sum(DrAmount)", "").ToString()).ToString("n2");
+                ViewBag.Available = double.Parse(ds.Tables[0].Compute("sum(CrAmount)-sum(DrAmount)", "").ToString()).ToString("n2");
+            }
+            else
+            {
+                Response.Status = "0";
+                Response.Message = "Record Not Found";
+            }
+
+            //DataSet ds11 = model.GetWalletBalance();
+            //if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
+            //{
+            //    ViewBag.BalanceAmount = ds11.Tables[0].Rows[0]["amount"].ToString();
+            //}
+            return Json(Response, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult GetWalletBalanceForTransferToOtherWallet(GetWalletBalanceRequest model)
+        {
+            GetWalletBalanceResponse response = new GetWalletBalanceResponse();
+            DataSet ds11 = model.GetWalletBalance();
+            if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                response.BalanceAmount = ds11.Tables[0].Rows[0]["amount"].ToString();
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public ActionResult TransferWallet(TransferToOtherWalletRequest model)
+        {
+            Response response = new Response();
+            try
+            {
+                DataSet ds = model.TransfertoOther();
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                    {
+                        response.Status = "0";
+                        response.Message = "Transferred  successfully";
+                    }
+                    else
+                    {
+                        response.Status = "1";
+                        response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = "1";
+                response.Message = ex.Message;
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public ActionResult DonationByWallet(GetDonationAmountRequest model)
+        {
+            GetDonationAmountResponse response = new GetDonationAmountResponse();
+            #region GetDonationAmount
+            DataSet ds1 = model.GetDonationAmount();
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                response.DonationAmount = ds1.Tables[0].Rows[0]["Amount"].ToString();
+                response.DonationPlanId = ds1.Tables[0].Rows[0]["Pk_DonationPlanId"].ToString();
+            }
+            else
+            {
+
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[1].Rows.Count > 0)
+            {
+
+                response.Status = "0";
+                response.Message = "Record Found";
+                response.UpdatedDonationPlanId = ds1.Tables[1].Rows[0]["UpdatedDonationId"].ToString();
+            }
+            else
+            {
+
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            #endregion
+            #region Check Balance
+            DataSet ds = model.GetWalletBalance();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.WalletBalance = Decimal.Parse(ds.Tables[0].Rows[0]["amount"].ToString()).ToString("0.00"); ;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            #endregion
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult Donation(DonationByWalletRequest model)
+        {
+            Response response = new Response();
+            try
+            {
+                DataSet ds = model.DonationByWallet();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        response.Status = "0";
+                        response.Message = "Donate Amount Successfully !!";
+                    }
+                    else
+                    {
+
+                        response.Status = "1";
+                        response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+                else
+                {
+                    response.Status = "1";
+                    response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = "0";
+                response.Message = ex.Message;
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult BrainMatrixDonation(BrainMatrixDonationRequest model)
+        {
+
+            BrainMatrixDonationResponse response = new BrainMatrixDonationResponse();
+            #region GetDonationAmount
+            DataSet ds1 = model.GetBrainMatrixPlanAmount();
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                response.DonationAmount = ds1.Tables[0].Rows[0]["Amount"].ToString();
+                response.DonationPlanId = ds1.Tables[0].Rows[0]["Pk_BrainMatrixPlanId"].ToString();
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[1].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                response.UpdatedDonationPlanId = ds1.Tables[1].Rows[0]["UpdatedDonationId"].ToString();
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            #endregion
+            #region Check Balance
+            DataSet ds = model.GetWalletBalance();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                response.WalletBalance = Decimal.Parse(ds.Tables[0].Rows[0]["amount"].ToString()).ToString("0.00"); ;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            #endregion
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult BrainDonation(DonationBrainMatrixPlanRequest model)
+        {
+            Response response = new Response();
+            try
+            {
+                DataSet ds = model.DonationBrainMatrixPlan();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        response.Status = "0";
+                        response.Message = "Donate Amount Successfully !!";
+                    }
+                    else
+                    {
+                        response.Status = "1";
+                        response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+                else
+                {
+
+                    response.Status = "1";
+                    response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                response.Status = "1";
+                response.Message = ex.Message;
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult StewMatrixDonation(GetStewMatrixPlanAmountRequest model)
+        {
+            GetStewMatrixPlanAmountResponse response = new GetStewMatrixPlanAmountResponse();
+            #region GetDonationAmount
+            DataSet ds1 = model.GetStewMatrixPlanAmount();
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            {
+
+                response.Status = "0";
+                response.Message = "Record Found";
+                response.DonationAmount = ds1.Tables[0].Rows[0]["Amount"].ToString();
+                response.DonationPlanId = ds1.Tables[0].Rows[0]["Pk_StewMatrixPlanId"].ToString();
+            }
+            else
+            {
+
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[1].Rows.Count > 0)
+            {
+
+                response.Status = "0";
+                response.Message = "Record  Found";
+                response.UpdatedDonationPlanId = ds1.Tables[1].Rows[0]["UpdatedDonationId"].ToString();
+            }
+            else
+            {
+
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            #endregion
+            #region Check Balance
+            DataSet ds = model.GetWalletBalance();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                response.WalletBalance = Decimal.Parse(ds.Tables[0].Rows[0]["amount"].ToString()).ToString("0.00"); ;
+            }
+            else
+            {
+
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            #endregion
+            return Json(response, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpPost]
+        public ActionResult SaveStewMatrixDonation(DonationStewMatrixPlanRequest model)
+        {
+            Response response = new Response();
+            try
+            {
+                DataSet ds = model.DonationStewMatrixPlan();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        response.Status = "0";
+                        response.Message = "Donate Amount Successfully !!";
+                    }
+                    else
+                    {
+                        response.Status = "1";
+                        response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+                else
+                {
+
+                    response.Status = "1";
+                    response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                response.Status = "1";
+                response.Message = ex.Message;
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public ActionResult TopUpList(TopUpListRequest model)
+        {
+            TopUpListResponse response = new TopUpListResponse();
+            List<TopUpListResp> lst = new List<TopUpListResp>();
+            model.Fk_UserId = model.Fk_UserId == "" ? null : model.Fk_UserId;
+            model.LoginId = model.LoginId == "" ? null : model.LoginId;
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            DataSet ds1 = model.GetTopUpDetails();
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds1.Tables[0].Rows)
+                {
+                    TopUpListResp obj = new TopUpListResp();
+                    //obj.InvestmentId = r["Pk_InvestmentId"].ToString();
+                    obj.Name = r["Name"].ToString();
+                    obj.PinAmount = r["PinAmount"].ToString();
+                    //obj.UsedFor = r["UsedFor"].ToString();
+                    //obj.BV = r["BV"].ToString();
+                    //obj.IsCalculated = r["IsCalculated"].ToString();
+                    //obj.TransactionBy = r["TransactionBy"].ToString();
+                    //obj.Status = r["Status"].ToString();
+                    //obj.ROIPercentage = r["ROIPercentage"].ToString();
+                    obj.TopUpDate = r["TopUpDate"].ToString();
+                    //obj.ProductName = r["ProductName"].ToString();
+                    lst.Add(obj);
+                }
+                response.lstTopUp = lst;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+
 
 
 
