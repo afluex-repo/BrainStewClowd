@@ -425,6 +425,7 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("TransferToOtherWallet", "Wallet");
         }
+
         public ActionResult TransfertoPayoutWallet(UserWallet obj)
         {
             User model = new Models.User();
