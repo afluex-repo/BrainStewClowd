@@ -633,67 +633,67 @@ namespace BrainStew.Controllers
             }
             return Json(model, JsonRequestBehavior.AllowGet);
         }
-        [HttpPost]
-        public ActionResult LevelTree(LevelTreeReq req)
-        {
-            LevelTreeAPI model = new LevelTreeAPI();
-            List<LevelTreeResponse> lst = new List<LevelTreeResponse>();
-            DataSet ds = req.GetLevelTreeData();
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                model.Status = "0";
-                model.Message = "Record Found";
-                foreach (DataRow r in ds.Tables[0].Rows)
-                {
-                    LevelTreeResponse obj = new LevelTreeResponse();
-                    obj.FK_ParentId = r["Parentid"].ToString();
-                    obj.PK_UserId = r["PK_UserId"].ToString();
-                    obj.FK_SponsorId = r["FK_SponsorID"].ToString();
-                    obj.LoginId = r["LoginId"].ToString();
-                    obj.MemberName = r["MemberName"].ToString();
-                    obj.AssociateMemberName = r["AssociateMemberName"].ToString();
-                    obj.ProfilePic = r["ProfilePic"].ToString();
-                    lst.Add(obj);
-                }
-                model.lst = lst;
-            }
-            else
-            {
-                model.Status = "1";
-                model.Message = "No Record Found";
-            }
-            return Json(model, JsonRequestBehavior.AllowGet);
-        }
-        [HttpPost]
-        public ActionResult AssociateTree(AssociateBookingRequest req)
-        {
-            AssociateBookingAPI model = new AssociateBookingAPI();
-            List<AssciateBookingResponse> lst = new List<AssciateBookingResponse>();
-            DataSet ds = req.GetDownlineTree();
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                model.Status = "0";
-                model.Message = "Record Found";
-                foreach (DataRow r in ds.Tables[0].Rows)
-                {
-                    AssciateBookingResponse obj = new AssciateBookingResponse();
-                    obj.Fk_UserId = r["Pk_UserId"].ToString();
-                    obj.Fk_SponsorId = r["Fk_SponsorId"].ToString();
-                    obj.LoginId = r["LoginId"].ToString();
-                    obj.FirstName = r["FirstName"].ToString();
-                    obj.Status = r["Status"].ToString();
-                    obj.ActiveStatus = r["ActiveStatus"].ToString();
-                    lst.Add(obj);
-                }
-                model.lst = lst;
-            }
-            else
-            {
-                model.Status = "1";
-                model.Message = "No Record Found";
-            }
-            return Json(model, JsonRequestBehavior.AllowGet);
-        }
+        //[HttpPost]
+        //public ActionResult LevelTree(LevelTreeReq req)
+        //{
+        //    LevelTreeAPI model = new LevelTreeAPI();
+        //    List<LevelTreeResponse> lst = new List<LevelTreeResponse>();
+        //    DataSet ds = req.GetLevelTreeData();
+        //    if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+        //    {
+        //        model.Status = "0";
+        //        model.Message = "Record Found";
+        //        foreach (DataRow r in ds.Tables[0].Rows)
+        //        {
+        //            LevelTreeResponse obj = new LevelTreeResponse();
+        //            obj.FK_ParentId = r["Parentid"].ToString();
+        //            obj.PK_UserId = r["PK_UserId"].ToString();
+        //            obj.FK_SponsorId = r["FK_SponsorID"].ToString();
+        //            obj.LoginId = r["LoginId"].ToString();
+        //            obj.MemberName = r["MemberName"].ToString();
+        //            obj.AssociateMemberName = r["AssociateMemberName"].ToString();
+        //            obj.ProfilePic = r["ProfilePic"].ToString();
+        //            lst.Add(obj);
+        //        }
+        //        model.lst = lst;
+        //    }
+        //    else
+        //    {
+        //        model.Status = "1";
+        //        model.Message = "No Record Found";
+        //    }
+        //    return Json(model, JsonRequestBehavior.AllowGet);
+        //}
+        //[HttpPost]
+        //public ActionResult AssociateTree(AssociateBookingRequest req)
+        //{
+        //    AssociateBookingAPI model = new AssociateBookingAPI();
+        //    List<AssciateBookingResponse> lst = new List<AssciateBookingResponse>();
+        //    DataSet ds = req.GetDownlineTree();
+        //    if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+        //    {
+        //        model.Status = "0";
+        //        model.Message = "Record Found";
+        //        foreach (DataRow r in ds.Tables[0].Rows)
+        //        {
+        //            AssciateBookingResponse obj = new AssciateBookingResponse();
+        //            obj.Fk_UserId = r["Pk_UserId"].ToString();
+        //            obj.Fk_SponsorId = r["Fk_SponsorId"].ToString();
+        //            obj.LoginId = r["LoginId"].ToString();
+        //            obj.FirstName = r["FirstName"].ToString();
+        //            obj.Status = r["Status"].ToString();
+        //            obj.ActiveStatus = r["ActiveStatus"].ToString();
+        //            lst.Add(obj);
+        //        }
+        //        model.lst = lst;
+        //    }
+        //    else
+        //    {
+        //        model.Status = "1";
+        //        model.Message = "No Record Found";
+        //    }
+        //    return Json(model, JsonRequestBehavior.AllowGet);
+        //}
         [HttpPost]
         public ActionResult WalletBalance(Wallet model)
         {
@@ -1254,9 +1254,9 @@ namespace BrainStew.Controllers
                     lst.Add(obj);
                 }
                 Response.lstWalletLedger = lst;
-                ViewBag.TotalCrAmount = double.Parse(ds.Tables[0].Compute("sum(CrAmount)", "").ToString()).ToString("n2");
-                ViewBag.TotalDrAmount = double.Parse(ds.Tables[0].Compute("sum(DrAmount)", "").ToString()).ToString("n2");
-                ViewBag.Available = double.Parse(ds.Tables[0].Compute("sum(CrAmount)-sum(DrAmount)", "").ToString()).ToString("n2");
+                Response.TotalCrAmount = double.Parse(ds.Tables[0].Compute("sum(CrAmount)", "").ToString()).ToString("n2");
+                Response.TotalDrAmount = double.Parse(ds.Tables[0].Compute("sum(DrAmount)", "").ToString()).ToString("n2");
+                Response.Available = double.Parse(ds.Tables[0].Compute("sum(CrAmount)-sum(DrAmount)", "").ToString()).ToString("n2");
             }
             else
             {
@@ -1618,12 +1618,516 @@ namespace BrainStew.Controllers
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public ActionResult BrainMatrixDonationList(BrainMatrixDonationListRequest model)
+        {
+            BrainMatrixDonationListResponse response = new BrainMatrixDonationListResponse();
+            List<BrainMatrixDonationListResp> lst = new List<BrainMatrixDonationListResp>();
+            
+            model.LoginId = model.LoginId == "" ? null : model.LoginId;
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            DataSet ds = model.GetBrainMatrixDonation();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    BrainMatrixDonationListResp obj = new BrainMatrixDonationListResp();
+                    obj.FromName = r["Name"].ToString();
+                    //obj.FromLoginId = r["LoginId"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    //obj.Level = r["BrainMatrixLevel"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                response.lst = lst;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult StewMatrixDonationList(StewMatrixDonationListRequest model)
+        {
+            StewMatrixDonationListResponse response = new StewMatrixDonationListResponse();
+            List<StewMatrixDonationListResp> lst = new List<StewMatrixDonationListResp>();
+            model.LoginId = model.LoginId == "" ? null : model.LoginId;
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            
+            DataSet ds = model.GetStewMatrixDonation();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    StewMatrixDonationListResp obj = new StewMatrixDonationListResp();
+                    obj.FromName = r["Name"].ToString();
+                    //obj.FromLoginId = r["LoginId"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    //obj.Level = r["stewMatrixLevel"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                response.lst = lst;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public ActionResult DirectListBy(DirectListRequest model)
+        {
+
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            DirectListResponse response = new DirectListResponse();
+            List<DirectListResp> lst = new List<DirectListResp>();
+
+            if (model.Ids == null || model.Ids == "")
+            {
+                model.Ids = model.Fk_UserId;
+
+            }
+            DataSet ds = model.GetDirectList();
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                string Ids = "";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+
+                    DirectListResp obj = new DirectListResp();
+                    obj.Mobile = r["Mobile"].ToString();
+                    //obj.Email = r["Email"].ToString();
+                    obj.SponsorId = r["SponsorId"].ToString();
+                    //obj.SponsorName = r["SponsorName"].ToString();
+                    //obj.JoiningDate = r["JoiningDate"].ToString();
+                    //obj.Leg = r["Leg"].ToString();
+                    obj.PermanentDate = (r["PermanentDate"].ToString());
+                    obj.Status = (r["Status"].ToString());
+                    obj.LoginId = (r["LoginId"].ToString());
+                    obj.Name = (r["Name"].ToString());
+                    obj.Level = (r["Lvl"].ToString());
+                    obj.Package = (r["ProductName"].ToString());
+                    Ids = Ids + r["PK_UserId"].ToString() + ",";
+                    lst.Add(obj);
+                }
+                response.lstassociate = lst;
+                model.Ids = Ids;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            //List<SelectListItem> AssociateStatus = Common.AssociateStatus();
+            //ViewBag.ddlStatus = AssociateStatus;
+            //List<SelectListItem> Leg = Common.LegType();
+            //ViewBag.ddlleg = Leg;
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+        
+        [HttpPost]
+        public ActionResult GetTTPMembersCountLevelWise(LevelTreeReq req)
+        {
+            LevelTreeAPI res = new LevelTreeAPI();
+            try
+            {
+                List<LevelTreeMembers> lst = new List<LevelTreeMembers>();
+                List<LevelTreeMemberDetails> lstMember = new List<LevelTreeMemberDetails>();
+                DataSet ds = req.GetLevelMembersCountTR1();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0][0].ToString() == "0")
+                    {
+                        res.Status1 = "1";
+                        res.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                    else
+                    {
+                        res.Status1 = "0";
+                        res.Message = "Record Found";
+                        foreach (DataRow r in ds.Tables[0].Rows)
+                        {
+                            LevelTreeMembers obj = new LevelTreeMembers();
+                            obj.LevelName = r["LevelNo"].ToString();
+                            obj.TargetMember = r["TargetMember"].ToString();
+                            obj.NumberOfMembers = r["TotalAssociate"].ToString();
+                            lst.Add(obj);
+                        }
+                        res.lst = lst;
+                        if (ds != null && ds.Tables.Count > 0 && ds.Tables[1].Rows.Count > 0)
+                        {
+                            if (ds.Tables[1].Rows[0]["Lvl"].ToString() == "10")
+                            {
+
+                            }
+                            res.Level = ds.Tables[1].Rows[0]["Lvl"].ToString();
+                            res.Status = ds.Tables[1].Rows[0]["Status"].ToString();
+                            res.Color = ds.Tables[1].Rows[0]["Color"].ToString();
+                            res.DisplayName = ds.Tables[1].Rows[0]["Name"].ToString();
+                            res.PK_UserId = ds.Tables[1].Rows[0]["PK_UserId"].ToString();
+                            res.ProfilePic = ds.Tables[1].Rows[0]["ProfilePic"].ToString();
+                            res.TotalDirect = ds.Tables[1].Rows[0]["TotalDirect"].ToString();
+                            res.TotalActive = ds.Tables[1].Rows[0]["TotalActive"].ToString();
+                            res.TotalInactive = ds.Tables[1].Rows[0]["TotalInActive"].ToString();
+                            res.TotalTeam = ds.Tables[1].Rows[0]["TotalTeam"].ToString();
+                            res.TotalActiveTeam = ds.Tables[1].Rows[0]["TotalActiveTeam"].ToString();
+                            res.TotalInActiveTeam = ds.Tables[1].Rows[0]["TotalInActiveTeam"].ToString();
+                            res.SponsorName = ds.Tables[1].Rows[0]["SponsorName"].ToString();
+                        }
+                        DataSet ds1 = req.GetLevelMembers("1", res.PK_UserId);
+                        if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+                        {
+                            foreach (DataRow r in ds1.Tables[0].Rows)
+                            {
+                                LevelTreeMemberDetails obj = new LevelTreeMemberDetails();
+                                obj.PK_UserId = r["PK_UserId"].ToString();
+                                obj.MemberName = r["MemberName"].ToString();
+                                obj.LoginId = r["LoginId"].ToString();
+                                obj.Level = r["Lvl"].ToString();
+                                obj.ProfilePic = r["ProfilePic"].ToString();
+                                obj.Status = r["Status"].ToString();
+                                obj.SelfBV = r["SelfBV"].ToString();
+                                obj.TeamBV = r["TeamBV"].ToString();
+                                obj.SponsorName = r["SponsorName"].ToString();
+                                obj.Color = r["Color"].ToString();
+                                lstMember.Add(obj);
+                            }
+                            res.lstDetails = lstMember;
+                        }
+                        else
+                        {
+                            res.Status1 = "1";
+                            res.Message = "No Record Found";
+                            res.lstDetails = lstMember;
+                        }
+                    }
+                }
+                else
+                {
+                    res.Status = "1";
+                    res.Message = "No Record Found";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                res.Status = "1";
+                res.Message = ex.Message;
+            }
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult AssociateTree(AssociateTreeRequest model)
+        {
+            AssociateTreeResponse response = new AssociateTreeResponse();
+            List<AssociateTreeRespo> lst = new List<AssociateTreeRespo>();
+            DataSet ds = model.GetDownlineTree();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AssociateTreeRespo obj = new AssociateTreeRespo();
+                    //obj.Fk_UserId = r["Pk_UserId"].ToString();
+                    //obj.Fk_SponsorId = r["Fk_SponsorId"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
+                    obj.FirstName = r["FirstName"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    //obj.ActiveStatus = r["ActiveStatus"].ToString();
+                    obj.SponsorID = r["SponsorId"].ToString();
+                    //obj.SponsorName = r["SponsorName"].ToString();
+                    obj.ActivationDate = r["PermanentDate"].ToString();
+                    obj.Mobile = r["Mobile"].ToString();
+                    //obj.Lvl = r["Level"].ToString();
+                    lst.Add(obj);
+                }
+                response.lstPlot = lst;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "No Record Found";
+            }
+
+          return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public ActionResult BusinessReports(BusinessReportsRequest model)
+        {
+            BusinessReportsResponse response = new BusinessReportsResponse();
+            List<BusinessReportsResp> lst = new List<BusinessReportsResp>();
+            model.LoginId = model.LoginId == "" ? null : model.LoginId;
+            if (model.IsDownline == "on")
+            {
+                model.IsDownline = "1";
+            }
+            else
+            {
+                model.IsDownline = "0";
+            }
+            model.Level = model.Level == "0" ? null : model.Level;
+            model.IsDownline = model.IsDownline == "0" ? null : model.IsDownline;
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");      
+            DataSet ds = model.GetBusinessReports();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    BusinessReportsResp obj = new BusinessReportsResp();
+                    obj.LoginId = r["LoginId"].ToString();
+                    obj.Name = r["FirstName"].ToString();
+                    obj.Amount = Convert.ToDecimal(r["Amount"].ToString());
+                    obj.Date = r["Date"].ToString();
+                    obj.Level = r["Lvl"].ToString();
+                    obj.PackageType = r["PackageType"].ToString();
+                    lst.Add(obj);
+                }
+                response.lstBReports = lst;
+                response.TotalAmount = double.Parse(ds.Tables[0].Compute("sum(Amount)", "").ToString()).ToString("n2");
+                response.TotalBV = double.Parse(ds.Tables[0].Compute("sum(BV)", "").ToString()).ToString("n2");
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+
+            //#region ddlPlotSize
+            //int count = 0;
+            //List<SelectListItem> ddlProductName = new List<SelectListItem>();
+            //DataSet dss = model.GetProductName();
+            //if (dss != null && dss.Tables.Count > 0 && dss.Tables[0].Rows.Count > 0)
+            //{
+            //    foreach (DataRow r in dss.Tables[0].Rows)
+            //    {
+            //        if (count == 0)
+            //        {
+            //            ddlProductName.Add(new SelectListItem { Text = "-Select-", Value = "" });
+            //        }
+            //        ddlProductName.Add(new SelectListItem { Text = r["ProductName"].ToString(), Value = r["PK_ProductID"].ToString() });
+            //        count = count + 1;
+            //    }
+            //}
+
+            //ViewBag.ddlProductName = ddlProductName;
+            //#endregion
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult LevelIncomeTr2(LevelIncomeTr2Request model)
+        {
+            LevelIncomeTr2Response response = new LevelIncomeTr2Response();
+            List<LevelIncomeTr2Resp> lst = new List<LevelIncomeTr2Resp>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");       
+            DataSet ds = model.LevelIncomeTr2();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    LevelIncomeTr2Resp obj = new LevelIncomeTr2Resp();
+                    obj.FromName = r["FromName"].ToString();
+                    //obj.FromLoginId = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["BusinessAmount"].ToString();
+                    //obj.Percentage = r["CommissionPercentage"].ToString();
+                    //obj.PayoutNo = r["PayoutNo"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    //obj.Amount = r["Amount"].ToString();
+                    //obj.Level = r["Lvl"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                response.lst = lst;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
 
 
 
 
 
 
+
+        [HttpPost]
+        public ActionResult LevelIncomeTr1(LevelIncomeTr1Request model)
+        {
+            LevelIncomeTr1Response response = new LevelIncomeTr1Response();
+            List<LevelIncomeTr1Resp> lst = new List<LevelIncomeTr1Resp>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            DataSet ds = model.LevelIncomeTr1();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    LevelIncomeTr1Resp obj = new LevelIncomeTr1Resp();
+                    obj.FromName = r["FromName"].ToString();
+                    //obj.FromLoginId = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["BusinessAmount"].ToString();
+                    //obj.Percentage = r["CommissionPercentage"].ToString();
+                    //obj.PayoutNo = r["PayoutNo"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    //obj.Amount = r["Amount"].ToString();
+                    //obj.Level = r["Lvl"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                response.lst = lst;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+        
+        [HttpPost]
+        public ActionResult PlacementBenefits(PlacementBenefitsRequest model)
+        {
+            PlacementBenefitsResponse response = new PlacementBenefitsResponse();
+            List<PlacementBenefitsResp> lst = new List<PlacementBenefitsResp>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            DataSet ds = model.PlacementBenefits();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    PlacementBenefitsResp obj = new PlacementBenefitsResp();
+                    obj.FromName = r["FromName"].ToString();
+                    //obj.FromLoginId = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["BusinessAmount"].ToString();
+                    //obj.Percentage = r["CommissionPercentage"].ToString();
+                    //obj.PayoutNo = r["PayoutNo"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    //obj.Amount = r["Amount"].ToString();
+                    //obj.Level = r["Lvl"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                response.lst = lst;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult UpgradeBenefits(UpgradeBenefitsRequest model)
+        {
+            UpgradeBenefitsResponse response = new UpgradeBenefitsResponse();
+            List<UpgradeBenefitsResp> lst = new List<UpgradeBenefitsResp>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            DataSet ds = model.GetbenefitsReport();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    UpgradeBenefitsResp obj = new UpgradeBenefitsResp();
+                    obj.FromName = r["FromName"].ToString();
+                    //obj.FromLoginId = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["BusinessAmount"].ToString();
+                    //obj.Percentage = r["CommissionPercentage"].ToString();
+                    //obj.PayoutNo = r["PayoutNo"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    //obj.Amount = r["Amount"].ToString();
+                    //obj.Level = r["Lvl"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                response.lst = lst;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public ActionResult BrainMatrixBenefits(BrainMatrixBenefitsRequest model)
+        {
+            BrainMatrixBenefitsResponse response = new BrainMatrixBenefitsResponse();
+            List<BrainMatrixBenefitsResp> lst = new List<BrainMatrixBenefitsResp>();
+            DataSet ds = model.GetbenefitReportNew();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    BrainMatrixBenefitsResp obj = new BrainMatrixBenefitsResp();
+                    //obj.FromName = r["FromName"].ToString();
+                    //obj.FromLoginId = r["LoginId"].ToString();
+                    //obj.BusinessAmount = r["BusinessAmount"].ToString();
+                    //obj.Percentage = r["CommissionPercentage"].ToString();
+                    //obj.PayoutNo = r["PayoutNo"].ToString();
+                    //obj.Status = r["Status"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.Level = r["Lvl"].ToString();
+                    //obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                response.lst = lst;
+                response.TotalBenefits = double.Parse(ds.Tables[0].Compute("sum(Amount)", "").ToString()).ToString("n2");
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+        
 
 
     }
