@@ -392,29 +392,29 @@ namespace BrainStew.Models
         public string RegisteredTo { get; set; }
         public string ProductName { get; set; }
     }
-    public class LevelTreeReq
-    {
-        public string LoginId { get; set; }
-        public string RootAgentCode { get; set; }
+    //public class LevelTreeReq
+    //{
+    //    public string LoginId { get; set; }
+    //    public string RootAgentCode { get; set; }
 
-        public DataSet GetLevelTreeData()
-        {
-            SqlParameter[] para = {
-                                      new SqlParameter("@AgentCode", LoginId),
-                                      new SqlParameter("@RootAgentCode", RootAgentCode),
+    //    public DataSet GetLevelTreeData()
+    //    {
+    //        SqlParameter[] para = {
+    //                                  new SqlParameter("@AgentCode", LoginId),
+    //                                  new SqlParameter("@RootAgentCode", RootAgentCode),
 
-            };
+    //        };
 
-            DataSet ds = DBHelper.ExecuteQuery("LevelTree", para);
-            return ds;
-        }
-    }
-    public class LevelTreeAPI
-    {
-        public string Status { get; set; }
-        public string Message { get; set; }
-        public List<LevelTreeResponse> lst { get; set; }
-    }
+    //        DataSet ds = DBHelper.ExecuteQuery("LevelTree", para);
+    //        return ds;
+    //    }
+    //}
+    //public class LevelTreeAPI
+    //{
+    //    public string Status { get; set; }
+    //    public string Message { get; set; }
+    //    public List<LevelTreeResponse> lst { get; set; }
+    //}
     public class LevelTreeResponse
     {
         public string FK_ParentId { get; set; }
@@ -832,7 +832,7 @@ namespace BrainStew.Models
 
         }
     }
-    
+
     public class EWalletDetailsRequest
     {
         public string FK_UserId { get; set; }
@@ -857,6 +857,9 @@ namespace BrainStew.Models
     {
         public string Status { get; set; }
         public string Message { get; set; }
+        public string TotalCrAmount { get; set; }
+        public string TotalDrAmount { get; set; }
+        public string Available { get; set; }
         public List<EWalletDetailsResp> lstWalletLedger { get; set; }
     }
 
@@ -886,9 +889,7 @@ namespace BrainStew.Models
         public string BalanceAmount { get; set; }
 
     }
-
-
-
+    
     public class TransferToOtherWalletRequest
     {
         public string Fk_UserId { get; set; }
@@ -1074,7 +1075,7 @@ namespace BrainStew.Models
         public string Status { get; set; }
         public string Message { get; set; }
         public List<TopUpListResp> lstTopUp { get; set; }
-   
+
     }
     public class TopUpListResp
     {
@@ -1082,6 +1083,507 @@ namespace BrainStew.Models
         public string PinAmount { get; set; }
         public string TopUpDate { get; set; }
     }
+
+
+    public class BrainMatrixDonationListRequest
+    {
+        public string LoginId { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+        public DataSet GetBrainMatrixDonation()
+        {
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetBrainMatrixReport", para);
+            return ds;
+        }
+    }
+    public class BrainMatrixDonationListResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<BrainMatrixDonationListResp> lst { get; set; }
+
+    }
+    public class BrainMatrixDonationListResp
+    {
+        public string FromName { get; set; }
+        public string Amount { get; set; }
+        public string TransactionDate { get; set; }
+    }
+
+
+    public class StewMatrixDonationListRequest
+    {
+        public string LoginId { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+
+        public DataSet GetStewMatrixDonation()
+        {
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetStewMatrixReport", para);
+            return ds;
+        }
+    }
+    public class StewMatrixDonationListResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<StewMatrixDonationListResp> lst { get; set; }
+
+    }
+    public class StewMatrixDonationListResp
+    {
+        public string FromName { get; set; }
+        public string Amount { get; set; }
+        public string TransactionDate { get; set; }
+    }
+
+    public class DirectListRequest
+    {
+        public string Ids { get; set; }
+        public string Fk_UserId { get; set; }
+        public string LoginId { get; set; }
+        public string Name { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+        public string FromActivationDate { get; set; }
+        public string ToActivationDate { get; set; }
+        public string Leg { get; set; }
+        public string Status { get; set; }
+        public string DirectStatus { get; set; }
+        public DataSet GetDirectList()
+        {
+            SqlParameter[] para = {
+                                    new SqlParameter("@PK_UserIds", Ids),
+                                    new SqlParameter("@FK_UserId", Fk_UserId),
+                                    new SqlParameter("@LoginId", LoginId),
+                                    new SqlParameter("@Name", Name),
+                                    new SqlParameter("@FromDate", FromDate),
+                                    new SqlParameter("@ToDate", ToDate),
+                                    new SqlParameter("@FromActivationDate", FromActivationDate),
+                                    new SqlParameter("@ToActivationDate", ToActivationDate),
+                                    new SqlParameter("@Leg", Leg),
+                                    new SqlParameter("@Status", Status),
+                                       new SqlParameter("@DirectStatus", DirectStatus),
+                                  };
+            DataSet ds = DBHelper.ExecuteQuery("GetDirectList", para);
+            return ds;
+        }
+    }
+    public class DirectListResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<DirectListResp> lstassociate { get; set; }
+    }
+    public class DirectListResp
+    {
+        public string LoginId { get; set; }
+        public string Name { get; set; }
+        public string SponsorId { get; set; }
+        public string Mobile { get; set; }
+        public string Package { get; set; }
+        public string PermanentDate { get; set; }
+        public string Level { get; set; }
+        public string Status { get; set; }
+    }
+    
+    
+    ////////////////////////////////////
+  
+    public class TreeTTPRequest
+    {
+        public string PK_UserId { get; set; }
+        public string Id { get; set; }
+        public string LoginId { get; set; }
+        public string RootAgentCode { get; set; }
+        public DataSet GetLevelMembersCountTR1()
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@AgentCode", LoginId),
+                                      new SqlParameter("@RootAgentCode", RootAgentCode)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetLevelMembersCountTR1", para);
+            return ds;
+        }
+    }
+    public class TreeTTPResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<TreeTTPResp> lst { get; set; }
+        public List<TreeTTPResponselstMembers> lstMember { get; set; }
+    }
+    public class TreeTTPResp
+    {
+        public string LevelName { get; set; }
+        public string TargetMember { get; set; }
+        public string NumberOfMembers { get; set; }
+        
+    }
+
+    public class TreeTTPResponselstMember
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<TreeTTPResponselstMembers> lst { get; set; }
+    }
+    public class TreeTTPResponselstMembers
+    {
+        public string LevelName { get; set; }
+        public string TargetMember { get; set; }
+        public string NumberOfMembers { get; set; }
+
+    }
+
+
+
+    /////////////////////////////////////
+
+
+    public class LevelTreeReq
+    {
+        public string LoginId { get; set; }
+        public string RootAgentCode { get; set; }
+        public DataSet GetLevelMembersCountTR1()
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@AgentCode", LoginId),
+                                      new SqlParameter("@RootAgentCode", RootAgentCode),
+
+            };
+
+            DataSet ds = DBHelper.ExecuteQuery("GetLevelMembersCountTR1", para);
+            return ds;
+        }
+        public DataSet GetLevelMembersCount()
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@AgentCode", LoginId),
+                                      new SqlParameter("@RootAgentCode", RootAgentCode),
+
+            };
+
+            DataSet ds = DBHelper.ExecuteQuery("GetLevelMembersCount", para);
+            return ds;
+        }
+        public DataSet GetLevelMembers(string Level, string PK_UserId)
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@MemId", PK_UserId),
+                                      new SqlParameter("@Level", Level),
+            };
+
+            DataSet ds = DBHelper.ExecuteQuery("GetLevelMembers", para);
+            return ds;
+        }
+    }
+
+
+    public class LevelTreeAPI
+    {
+        public string Status1 { get; set; }
+        public string Message { get; set; }
+        public string Status { get; set; }
+        public string DisplayName { get; set; }
+        public string PK_UserId { get; set; }
+        public string Level { get; set; }
+        public string Color { get; set; }
+        //public string ActiveStatus { get; set; }
+        public string ProfilePic { get; set; }
+        public string TotalDirect { get; set; }
+        public string TotalActive { get; set; }
+        public string TotalInactive { get; set; }
+        public string TotalTeam { get; set; }
+        public string TotalActiveTeam { get; set; }
+        public string TotalInActiveTeam { get; set; }
+        public string SponsorName { get; set; }
+        //public string SelfBV { get; set; }
+        //public string TeamBV { get; set; }
+        public List<LevelTreeMembers> lst { get; set; }
+        public List<LevelTreeMemberDetails> lstDetails { get; set; }
+
+    }
+    public class LevelTreeMembers
+    {
+        public string LevelName { get; set; }
+        public string TargetMember { get; set; }
+        public string NumberOfMembers { get; set; }
+    }
+    public class LevelMembers
+    {
+        public string Status1 { get; set; }
+        public string Message { get; set; }
+        public List<LevelTreeMemberDetails> lst { get; set; }
+    }
+    public class LevelTreeMemberDetails
+    {
+        public string PK_UserId { get; set; }
+        public string LoginId { get; set; }
+        public string MemberName { get; set; }
+        public string SponsorName { get; set; }
+        public string ProfilePic { get; set; }
+        public string Level { get; set; }
+        public string Status { get; set; }
+        public string SelfBV { get; set; }
+        public string TeamBV { get; set; }
+        public string Color { get; set; }
+    }
+
+
+    public class AssociateTreeRequest
+    {
+        public string Fk_UserId { get; set; }
+        public string LoginId { get; set; }
+        public string FK_RootId { get; set; }
+        public DataSet GetDownlineTree()
+        {
+            SqlParameter[] para = {
+                                        new SqlParameter("@Pk_UserId", Fk_UserId),
+                                          new SqlParameter("@LoginId", LoginId),
+                                            new SqlParameter("@Fk_RootId", FK_RootId),
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetAssociateDownlineTree", para);
+            return ds;
+        }
+    }
+
+    public class AssociateTreeResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<AssociateTreeRespo> lstPlot { get; set; }
+    }
+    public class AssociateTreeRespo
+    {
+        public string LoginId { get; set; }
+        public string FirstName { get; set; }
+        public string Mobile { get; set; }
+        public string SponsorID { get; set; }
+        public string Status { get; set; }
+        public string ActivationDate { get; set; }
+    }
+
+    public class BusinessReportsRequest
+    {
+        public string LoginId { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+        public string IsDownline { get; set; }
+        public string Level { get; set; }
+        public DataSet GetBusinessReports()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                 new SqlParameter("@IsDownline", IsDownline),
+                       new SqlParameter("@Lvl", Level)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetBusiness", para);
+            return ds;
+        }
+    }
+    public class BusinessReportsResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public string TotalBV { get; set;}
+        public string TotalAmount { get; set; }
+        public List<BusinessReportsResp> lstBReports { get; set; }
+    }
+    public class BusinessReportsResp
+    {
+        public string LoginId { get; set; }
+        public string Name { get; set; }
+        public decimal Amount { get; set; }
+        public string Level { get; set; }
+        public string Date { get; set; }
+        public string PackageType { get; set; }
+    }
+
+    public class LevelIncomeTr2Request
+    {
+        public string LoginId { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+        public string Status { get; set; }
+        public DataSet LevelIncomeTr2()
+        {
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                   new SqlParameter("@Status", Status)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetLevelIncomeTr2", para);
+            return ds;
+        }
+    }
+
+    public class LevelIncomeTr2Response
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<LevelIncomeTr2Resp> lst { get; set; }
+    }
+    public class LevelIncomeTr2Resp
+    {
+        public string FromName { get; set; }
+        public string BusinessAmount { get; set; }
+        public decimal Amount { get; set; }
+        public string Status { get; set; }
+        public string TransactionDate { get; set; }
+    }
+
+    
+    public class LevelIncomeTr1Request
+    {
+        public string LoginId { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+        public string Status { get; set; }
+        public DataSet LevelIncomeTr1()
+        {
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                  new SqlParameter("@Status", Status)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetLevelIncomeTr1", para);
+            return ds;
+        }
+    }
+
+    public class LevelIncomeTr1Response
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<LevelIncomeTr1Resp> lst { get; set; }
+    }
+    public class LevelIncomeTr1Resp
+    {
+        public string FromName { get; set; }
+        public string BusinessAmount { get; set; }
+        public decimal Amount { get; set; }
+        public string Status { get; set; }
+        public string TransactionDate { get; set; }
+    }
+
+
+    public class PlacementBenefitsRequest
+    {
+        public string LoginId { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+        public string Status { get; set; }
+        public DataSet PlacementBenefits()
+        {
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                  new SqlParameter("@Status", Status)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetPlacementBenefitsReport", para);
+            return ds;
+        }
+    }
+
+    public class PlacementBenefitsResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<PlacementBenefitsResp> lst { get; set; }
+    }
+    public class PlacementBenefitsResp
+    {
+        public string FromName { get; set; }
+        public string BusinessAmount { get; set; }
+        public decimal Amount { get; set; }
+        public string Status { get; set; }
+        public string TransactionDate { get; set; }
+    }
+
+
+
+    public class UpgradeBenefitsRequest
+    {
+        public string LoginId { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+        public string Status { get; set; }
+        public string Fk_IncomeTypeId { get; set; }
+        public DataSet GetbenefitsReport()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                new SqlParameter("@FromDate", FromDate),
+                new SqlParameter("@ToDate", ToDate),
+                  new SqlParameter("@Status", Status),
+                  new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetBenefitsReports", para);
+            return ds;
+        }
+    }
+
+    public class UpgradeBenefitsResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<UpgradeBenefitsResp> lst { get; set; }
+    }
+    public class UpgradeBenefitsResp
+    {
+        public string FromName { get; set; }
+        public string BusinessAmount { get; set; }
+        public decimal Amount { get; set; }
+        public string Status { get; set; }
+        public string TransactionDate { get; set; }
+    }
+
+
+
+
+    public class BrainMatrixBenefitsRequest
+    {
+        public string LoginId { get; set; }
+        public string Fk_IncomeTypeId { get; set; }
+        public DataSet GetbenefitReportNew()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                  new SqlParameter("@Fk_IncomeTypeId",Fk_IncomeTypeId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetbrainmatrixReportNew", para);
+            return ds;
+        }
+    }
+
+    public class BrainMatrixBenefitsResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public string TotalBenefits { get; set; }
+        public List<BrainMatrixBenefitsResp> lst { get; set; }
+    }
+    public class BrainMatrixBenefitsResp
+    {
+        public string Amount { get; set; }
+        public string Level { get; set; }
+    
+    }
+
+
+
+  
+
 
 
 
