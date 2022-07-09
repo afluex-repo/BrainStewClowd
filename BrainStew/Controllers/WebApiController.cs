@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using BrainStew.Models;
 using System.Data;
 using System.IO;
+using System.Net.Mail;
+using System.Net;
+
 namespace BrainStew.Controllers
 {
     public class WebApiController : Controller
@@ -833,36 +836,36 @@ namespace BrainStew.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-        [HttpPost]
-        public ActionResult ChangePassword(Password model)
-        {
-            Reponse obj = new Reponse();
-            try
-            {
-                model.OldPassword = Crypto.Encrypt(model.OldPassword);
-                model.NewPassword = Crypto.Encrypt(model.NewPassword);
-                DataSet ds = model.ChangePassword();
-                if (ds != null && ds.Tables.Count > 0)
-                {
-                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
-                    {
-                        obj.Status = "0";
-                        obj.Message = "Password Changed  Successfully";
-                    }
-                    else
-                    {
-                        obj.Status = "1";
-                        obj.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                obj.Status = "1";
-                obj.Message = ex.Message;
-            }
-            return Json(obj, JsonRequestBehavior.AllowGet);
-        }
+        //[HttpPost]
+        //public ActionResult ChangePassword(Password model)
+        //{
+        //    Reponse obj = new Reponse();
+        //    try
+        //    {
+        //        model.OldPassword = Crypto.Encrypt(model.OldPassword);
+        //        model.NewPassword = Crypto.Encrypt(model.NewPassword);
+        //        DataSet ds = model.ChangePassword();
+        //        if (ds != null && ds.Tables.Count > 0)
+        //        {
+        //            if (ds.Tables[0].Rows[0][0].ToString() == "1")
+        //            {
+        //                obj.Status = "0";
+        //                obj.Message = "Password Changed  Successfully";
+        //            }
+        //            else
+        //            {
+        //                obj.Status = "1";
+        //                obj.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        obj.Status = "1";
+        //        obj.Message = ex.Message;
+        //    }
+        //    return Json(obj, JsonRequestBehavior.AllowGet);
+        //}
         [HttpPost]
         public ActionResult ActivateUserByPin(ActivateUser model)
         {
@@ -893,62 +896,62 @@ namespace BrainStew.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult GetBankDetails(BankDetailsUpdateRequest model)
-        {
-            BankDetailsUpdateAPIResponse obj = new BankDetailsUpdateAPIResponse();
-            DataSet ds = model.BankDetailsEdit();
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                obj.Status = "0";
-                obj.Message = "Record Found";
-                obj.AdharNo = ds.Tables[0].Rows[0]["AdharNumber"].ToString();
-                obj.PanNumber = ds.Tables[0].Rows[0]["PanNumber"].ToString();
-                obj.BankName = ds.Tables[0].Rows[0]["MemberBankName"].ToString();
-                obj.AccountNo = ds.Tables[0].Rows[0]["MemberAccNo"].ToString();
-                obj.BranchName = ds.Tables[0].Rows[0]["MemberBranch"].ToString();
-                obj.IFSCCode = ds.Tables[0].Rows[0]["IFSCCode"].ToString();
-                obj.NomineeName = ds.Tables[0].Rows[0]["NomineeName"].ToString();
-                obj.NomineeRelation = ds.Tables[0].Rows[0]["NomineeRelation"].ToString();
-                obj.NomineeAge = ds.Tables[0].Rows[0]["NomineeAge"].ToString();
-            }
-            else
-            {
-                obj.Status = "1";
-                obj.Message = "No Record Found";
-            }
-            return Json(obj, JsonRequestBehavior.AllowGet);
-        }
+        //[HttpPost]
+        //public ActionResult GetBankDetails(BankDetailsUpdateRequest model)
+        //{
+        //    BankDetailsUpdateAPIResponse obj = new BankDetailsUpdateAPIResponse();
+        //    DataSet ds = model.BankDetailsEdit();
+        //    if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+        //    {
+        //        obj.Status = "0";
+        //        obj.Message = "Record Found";
+        //        obj.AdharNo = ds.Tables[0].Rows[0]["AdharNumber"].ToString();
+        //        obj.PanNumber = ds.Tables[0].Rows[0]["PanNumber"].ToString();
+        //        obj.BankName = ds.Tables[0].Rows[0]["MemberBankName"].ToString();
+        //        obj.AccountNo = ds.Tables[0].Rows[0]["MemberAccNo"].ToString();
+        //        obj.BranchName = ds.Tables[0].Rows[0]["MemberBranch"].ToString();
+        //        obj.IFSCCode = ds.Tables[0].Rows[0]["IFSCCode"].ToString();
+        //        obj.NomineeName = ds.Tables[0].Rows[0]["NomineeName"].ToString();
+        //        obj.NomineeRelation = ds.Tables[0].Rows[0]["NomineeRelation"].ToString();
+        //        obj.NomineeAge = ds.Tables[0].Rows[0]["NomineeAge"].ToString();
+        //    }
+        //    else
+        //    {
+        //        obj.Status = "1";
+        //        obj.Message = "No Record Found";
+        //    }
+        //    return Json(obj, JsonRequestBehavior.AllowGet);
+        //}
 
 
-        [HttpPost]
-        public ActionResult UpdateBankDetails(BankDetailsUpdateAPIResponse model)
-        {
-            Reponse obj = new Reponse();
-            try
-            {
-                DataSet ds = model.BankUpdate();
-                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-                {
-                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
-                    {
-                        obj.Status = "0";
-                        obj.Message = "Bank Details Updated Successfully";
-                    }
-                    else
-                    {
-                        obj.Status = "1";
-                        obj.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                obj.Status = "1";
-                obj.Message = ex.Message;
-            }
-            return Json(obj, JsonRequestBehavior.AllowGet);
-        }
+        //[HttpPost]
+        //public ActionResult UpdateBankDetails(BankDetailsUpdateAPIResponse model)
+        //{
+        //    Reponse obj = new Reponse();
+        //    try
+        //    {
+        //        DataSet ds = model.BankUpdate();
+        //        if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+        //        {
+        //            if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+        //            {
+        //                obj.Status = "0";
+        //                obj.Message = "Bank Details Updated Successfully";
+        //            }
+        //            else
+        //            {
+        //                obj.Status = "1";
+        //                obj.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        obj.Status = "1";
+        //        obj.Message = ex.Message;
+        //    }
+        //    return Json(obj, JsonRequestBehavior.AllowGet);
+        //}
 
 
 
@@ -988,39 +991,39 @@ namespace BrainStew.Controllers
             DataSet ds = model.GetAssociateDashboard();
             if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
-                obj.Status = "0";
+                obj.Status1 = "0";
                 obj.Message = "Record Found";
-                obj.ActiveStatus = ds.Tables[2].Rows[0]["Status"].ToString();
-                obj.TotalDonation = ds.Tables[0].Rows[0]["TotalDonation"].ToString();
-                obj.TotalDirect = ds.Tables[0].Rows[0]["TotalDirect"].ToString();
-                obj.ReferralIncentive = ds.Tables[6].Rows[0]["ReferralIncentive"].ToString();
-                obj.LevelIncome = ds.Tables[6].Rows[0]["LevelIncome"].ToString();
-                obj.LevelUpgradeIncome = ds.Tables[6].Rows[0]["LevelUpgradeIncome"].ToString();
-                obj.ReferralSponsorIncome = ds.Tables[6].Rows[0]["ReferralSponsorIncome"].ToString();
+                obj.Status = ds.Tables[2].Rows[0]["Status"].ToString();
+                obj.MyDonation = ds.Tables[0].Rows[0]["TotalDonation"].ToString();
+                obj.DirectMember = ds.Tables[0].Rows[0]["TotalDirect"].ToString();
+                obj.ReferralBenefits = ds.Tables[6].Rows[0]["ReferralIncentive"].ToString();
+                obj.LevelBenefits = ds.Tables[6].Rows[0]["LevelIncome"].ToString();
+                obj.PlacementBenefits = ds.Tables[6].Rows[0]["LevelUpgradeIncome"].ToString();
+                obj.UpgradeSponsorBenefits = ds.Tables[6].Rows[0]["ReferralSponsorIncome"].ToString();
                 obj.MatrixIncomeUpdateDate = ds.Tables[6].Rows[0]["MatrixIncomeUpdateDate"].ToString();
-                obj.MatrixIncomeLevel = ds.Tables[6].Rows[0]["MatrixIncomeLevel"].ToString();
-                obj.ForeverMatrixIncome = ds.Tables[6].Rows[0]["ForeverMatrixIncome"].ToString();
-                obj.ForeverLevelIncome = ds.Tables[6].Rows[0]["ForeverLevelIncome"].ToString();
-                obj.TotalIncome = ds.Tables[6].Rows[0]["TotalIncome"].ToString();
+                obj.BRAINLEVELACTIVE = ds.Tables[6].Rows[0]["MatrixIncomeLevel"].ToString();
+                obj.BrainMatrixBenefits = ds.Tables[6].Rows[0]["ForeverMatrixIncome"].ToString();
+                obj.BrainMatrixLevelBenefits = ds.Tables[6].Rows[0]["ForeverLevelIncome"].ToString();
+                obj.TotalBenefits = ds.Tables[6].Rows[0]["TotalIncome"].ToString();
                 obj.TopupWallet = ds.Tables[6].Rows[0]["TopupWallet"].ToString();
-                obj.TotalWalletAmount = ds.Tables[0].Rows[0]["TotalWalletAmount"].ToString();
+                obj.MyWallet = ds.Tables[0].Rows[0]["TotalWalletAmount"].ToString();
                 obj.WithdrawlAmount = ds.Tables[6].Rows[0]["WithdrawlAmount"].ToString();
-                obj.MatrixWallet = ds.Tables[6].Rows[0]["MatrixWallet"].ToString();
+                obj.StewMatrixLevelBenefits = ds.Tables[6].Rows[0]["MatrixWallet"].ToString();
                 obj.CurrentLevel = ds.Tables[6].Rows[0]["CurrentLevel"].ToString();
-                obj.UpgradeMatrix = ds.Tables[6].Rows[0]["UpgradeMatrix"].ToString();
-                obj.Stewmatrixincome = ds.Tables[6].Rows[0]["Stewmatrixincome"].ToString();
-                if (obj.ActiveStatus == "Active")
+                obj.STEWMATRIXACTIVE = ds.Tables[6].Rows[0]["UpgradeMatrix"].ToString();
+                obj.StewMatrixBenefits = ds.Tables[6].Rows[0]["Stewmatrixincome"].ToString();
+                if (obj.Status == "Active")
                 {
-                    obj.ReferralLink = "http://brainstewfoundation.com/Home/Registration?Pid=" + model.Fk_UserId;
+                    obj.CopyReferralLink = "http://brainstewfoundation.com/Home/Registration?Pid=" + model.Fk_UserId;
                 }
                 else
                 {
-                    obj.ReferralLink = "";
+                    obj.CopyReferralLink = "";
                 }
             }
             else
             {
-                obj.Status = "0";
+                obj.Status1 = "0";
                 obj.Message = "Record Not Found";
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
@@ -1271,7 +1274,6 @@ namespace BrainStew.Controllers
             //}
             return Json(Response, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public ActionResult GetWalletBalanceForTransferToOtherWallet(GetWalletBalanceRequest model)
         {
@@ -1290,8 +1292,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
         [HttpPost]
         public ActionResult TransferWallet(TransferToOtherWalletRequest model)
         {
@@ -1320,8 +1320,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
         [HttpPost]
         public ActionResult DonationByWallet(GetDonationAmountRequest model)
         {
@@ -1369,7 +1367,6 @@ namespace BrainStew.Controllers
             #endregion
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public ActionResult Donation(DonationByWalletRequest model)
         {
@@ -1404,7 +1401,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public ActionResult BrainMatrixDonation(BrainMatrixDonationRequest model)
         {
@@ -1487,7 +1483,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public ActionResult StewMatrixDonation(GetStewMatrixPlanAmountRequest model)
         {
@@ -1540,7 +1535,6 @@ namespace BrainStew.Controllers
             return Json(response, JsonRequestBehavior.AllowGet);
 
         }
-
         [HttpPost]
         public ActionResult SaveStewMatrixDonation(DonationStewMatrixPlanRequest model)
         {
@@ -1567,7 +1561,6 @@ namespace BrainStew.Controllers
                     response.Status = "1";
                     response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                 }
-
             }
             catch (Exception ex)
             {
@@ -1576,8 +1569,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
         [HttpPost]
         public ActionResult TopUpList(TopUpListRequest model)
         {
@@ -1617,13 +1608,12 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public ActionResult BrainMatrixDonationList(BrainMatrixDonationListRequest model)
         {
             BrainMatrixDonationListResponse response = new BrainMatrixDonationListResponse();
             List<BrainMatrixDonationListResp> lst = new List<BrainMatrixDonationListResp>();
-            
+
             model.LoginId = model.LoginId == "" ? null : model.LoginId;
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
@@ -1651,7 +1641,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public ActionResult StewMatrixDonationList(StewMatrixDonationListRequest model)
         {
@@ -1660,7 +1649,7 @@ namespace BrainStew.Controllers
             model.LoginId = model.LoginId == "" ? null : model.LoginId;
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-            
+
             DataSet ds = model.GetStewMatrixDonation();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
@@ -1685,8 +1674,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
         [HttpPost]
         public ActionResult DirectListBy(DirectListRequest model)
         {
@@ -1741,7 +1728,6 @@ namespace BrainStew.Controllers
             //ViewBag.ddlleg = Leg;
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-        
         [HttpPost]
         public ActionResult GetTTPMembersCountLevelWise(LevelTreeReq req)
         {
@@ -1833,9 +1819,6 @@ namespace BrainStew.Controllers
             }
             return Json(res, JsonRequestBehavior.AllowGet);
         }
-
-
-
         [HttpPost]
         public ActionResult AssociateTree(AssociateTreeRequest model)
         {
@@ -1870,10 +1853,8 @@ namespace BrainStew.Controllers
                 response.Message = "No Record Found";
             }
 
-          return Json(response, JsonRequestBehavior.AllowGet);
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
         [HttpPost]
         public ActionResult BusinessReports(BusinessReportsRequest model)
         {
@@ -1891,7 +1872,7 @@ namespace BrainStew.Controllers
             model.Level = model.Level == "0" ? null : model.Level;
             model.IsDownline = model.IsDownline == "0" ? null : model.IsDownline;
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
-            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");      
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
             DataSet ds = model.GetBusinessReports();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
@@ -1917,7 +1898,6 @@ namespace BrainStew.Controllers
                 response.Status = "1";
                 response.Message = "Record Not Found";
             }
-
             //#region ddlPlotSize
             //int count = 0;
             //List<SelectListItem> ddlProductName = new List<SelectListItem>();
@@ -1939,14 +1919,13 @@ namespace BrainStew.Controllers
             //#endregion
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public ActionResult LevelIncomeTr2(LevelIncomeTr2Request model)
         {
             LevelIncomeTr2Response response = new LevelIncomeTr2Response();
             List<LevelIncomeTr2Resp> lst = new List<LevelIncomeTr2Resp>();
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
-            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");       
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
             DataSet ds = model.LevelIncomeTr2();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
@@ -1975,13 +1954,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
-
-
-
-
-
         [HttpPost]
         public ActionResult LevelIncomeTr1(LevelIncomeTr1Request model)
         {
@@ -2017,7 +1989,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-        
         [HttpPost]
         public ActionResult PlacementBenefits(PlacementBenefitsRequest model)
         {
@@ -2053,7 +2024,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public ActionResult UpgradeBenefits(UpgradeBenefitsRequest model)
         {
@@ -2075,7 +2045,7 @@ namespace BrainStew.Controllers
                     //obj.Percentage = r["CommissionPercentage"].ToString();
                     //obj.PayoutNo = r["PayoutNo"].ToString();
                     obj.Status = r["Status"].ToString();
-                    //obj.Amount = r["Amount"].ToString();
+                    obj.Amount = r["Amount"].ToString();
                     //obj.Level = r["Lvl"].ToString();
                     obj.TransactionDate = r["TransactionDate"].ToString();
                     lst.Add(obj);
@@ -2089,8 +2059,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
         [HttpPost]
         public ActionResult BrainMatrixBenefits(BrainMatrixBenefitsRequest model)
         {
@@ -2125,10 +2093,497 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public ActionResult BrainLevelBenefits(BrainLevelBenefitsRequest model)
+        {
+            BrainLevelBenefitsResponse response = new BrainLevelBenefitsResponse();
+            List<BrainLevelBenefitsResp> lst = new List<BrainLevelBenefitsResp>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            DataSet ds = model.GetBrainMatixLevelBenefits();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    BrainLevelBenefitsResp obj = new BrainLevelBenefitsResp();
+                    obj.FromName = r["FromName"].ToString();
+                    //obj.FromLoginId = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["BusinessAmount"].ToString();
+                    //obj.Percentage = r["CommissionPercentage"].ToString();
+                    //obj.PayoutNo = r["PayoutNo"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    //obj.Level = r["Lvl"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                response.lst = lst;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult StewMatrixBenefits(StewMatrixBenefitsRequest model)
+        {
+            StewMatrixBenefitsResponse response = new StewMatrixBenefitsResponse();
+            List<StewMatrixBenefitsResp> lst = new List<StewMatrixBenefitsResp>();
+            DataSet ds = model.getStewbenefitsReport();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    StewMatrixBenefitsResp obj = new StewMatrixBenefitsResp();
+                    //obj.FromName = r["FromName"].ToString();
+                    //obj.FromLoginId = r["LoginId"].ToString();
+                    //obj.BusinessAmount = r["BusinessAmount"].ToString();
+                    //obj.Percentage = r["CommissionPercentage"].ToString();
+                    //obj.PayoutNo = r["PayoutNo"].ToString();
+                    //obj.Status = r["Status"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.Level = r["Lvl"].ToString();
+                    //obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                response.lst = lst;
+                response.TotalBenefits = double.Parse(ds.Tables[0].Compute("sum(Amount)", "").ToString()).ToString("n2");
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult StewMatrixLevelBenefits(StewMatrixLevelBenefitsRequest model)
+        {
+            StewMatrixLevelBenefitsResponse response = new StewMatrixLevelBenefitsResponse();
+            List<StewMatrixLevelBenefitsResp> lst = new List<StewMatrixLevelBenefitsResp>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            DataSet ds = model.GetStewMatrixLevelBenefits();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    StewMatrixLevelBenefitsResp obj = new StewMatrixLevelBenefitsResp();
+                    obj.FromName = r["FromName"].ToString();
+                    //obj.FromLoginId = r["LoginId"].ToString();
+                    obj.BusinessAmount = r["BusinessAmount"].ToString();
+                    //obj.Percentage = r["CommissionPercentage"].ToString();
+                    //obj.PayoutNo = r["PayoutNo"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    //obj.Level = r["Lvl"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                response.lst = lst;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult PayoutWalletLedger(PayoutWalletLedgerRequest model)
+        {
+            PayoutWalletLedgerResponse response = new PayoutWalletLedgerResponse();
+            List<PayoutWalletLedgerResp> lst = new List<PayoutWalletLedgerResp>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            DataSet ds = model.PayoutWalletLedger();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    PayoutWalletLedgerResp obj = new PayoutWalletLedgerResp();
+                    obj.CrAmount = r["CrAmount"].ToString();
+                    obj.DrAmount = r["DrAmount"].ToString();
+                    obj.Narration = r["Narration"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
+                    lst.Add(obj);
+                }
+                response.lst = lst;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
 
+
+
+        [HttpPost]
+        public ActionResult GetPayoutRequestBalance(GetPayoutBalanceReq model)
+        {
+            GetPayoutBalanceResp response = new GetPayoutBalanceResp();
+            try
+            {
+                DataSet ds = model.GetPayoutBalance();
+                if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    response.Status = "0";
+                    response.Message = "Record Found";
+                    response.PayoutBalance = ds.Tables[0].Rows[0]["Balance"].ToString();
+                }
+                else
+                {
+                    response.Status = "1";
+                    response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = "1";
+                response.Message = ex.Message;
+
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+
+        [HttpPost]
+        public ActionResult GetPayoutRequestList(GetPayoutRequestListRequ model)
+        {
+            GetPayoutRequestListResponse response = new GetPayoutRequestListResponse();
+            List<GetPayoutRequestListRespon> lst = new List<GetPayoutRequestListRespon>();
+            DataSet ds = model.GetPayoutRequest();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    GetPayoutRequestListRespon obj = new GetPayoutRequestListRespon();
+                    obj.WithdrawlAmount = Convert.ToDecimal(r["AMount"].ToString());
+                    obj.Date = r["RequestedDate"].ToString();
+                    obj.IFSCCode = r["IFSCCode"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
+                    obj.Name = r["Name"].ToString();
+                    obj.AccountNo = r["MemberAccNo"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    obj.TransactionNo = r["TransactionNo"].ToString();
+                    obj.GrossAmount = r["GrossAmount"].ToString();
+                    obj.ProcessingFee = r["DeductionCharges"].ToString();
+                    lst.Add(obj);
+                }
+                response.lstPayoutRequest = lst;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public ActionResult PayoutRequest(PayoutRequestrequest model)
+        {
+            Response response = new Response();
+            try
+            {
+                DataSet ds = model.PayoutRequest();
+                if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        response.Status = "0";
+                        response.Message = "Transfer To Account with in 24 hour.";
+
+                    }
+                    else
+                    {
+                        response.Status = "1";
+                        response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+
+                    }
+                }
+                else
+                {
+                    response.Status = "1";
+                    response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = "1";
+                response.Message = ex.Message;
+
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public ActionResult GetTransfertoPayoutWallet(GetTransfertoPayoutWalletRequest model)
+        {
+            GetTransfertoPayoutWalletResponse response = new GetTransfertoPayoutWalletResponse();
+            try
+            {
+                DataSet ds = model.GetPayoutBalance();
+                if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    response.Status = "0";
+                    response.Message = "Record Found";
+                    response.Balance = ds.Tables[0].Rows[0]["Balance"].ToString();
+                }
+                else
+                {
+                    response.Status = "1";
+                    response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = "1";
+                response.Message = ex.Message;
+
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+        
+        [HttpPost]
+        public ActionResult TransfertoPayoutWallet(TransfertoPayoutWalletRequest model)
+        {
+            Response response = new Response();
+            try
+            {
+                DataSet ds = model.TransfertoTopupWallet();
+                if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        response.Status = "0";
+                        response.Message = "Transferred  successfully";
+                    }
+                    else
+                    {
+                        response.Status = "1";
+                        response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+                else
+                {
+                    response.Status = "1";
+                    response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = "1";
+                response.Message = ex.Message;
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult ChangePassword(ChangePasswordRequest model)
+        {
+            Response response = new Response();
+            try
+            {
+                model.Password = Crypto.Encrypt(model.Password);
+                model.NewPassword = Crypto.Encrypt(model.NewPassword);
+                DataSet ds = model.ChangePassword();
+                if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        response.Status = "0";
+                        response.Message = "Password Changed  Successfully";
+                    }
+                    else
+                    {
+                        response.Status = "1";
+                        response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+                else
+                {
+                    response.Status = "1";
+                    response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = "1";
+                response.Message = ex.Message;
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
 
         
+        [HttpPost]
+        public ActionResult ForgetPassword(ForgetPasswordRequest model)
+        {
+            ForgetPasswordResponse response = new ForgetPasswordResponse();
+            SmtpClient smtpClient = new SmtpClient();
+            MailMessage message = new MailMessage();
+            try
+            {
+                DataSet ds = model.ForgetPassword();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                    {
 
+                        //response.Email = ds.Tables[0].Rows[0]["Email"].ToString();
+                        response.Name = ds.Tables[0].Rows[0]["Name"].ToString();
+                        response.Password = Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString());
+
+                        string signature = " &nbsp;&nbsp;&nbsp; Dear  " + response.Name + ",<br/>&nbsp;&nbsp;&nbsp; Your Password Is : " + response.Password;
+
+                        using (MailMessage mail = new MailMessage())
+                        {
+                            mail.From = new MailAddress("email@gmail.com");
+                            mail.To.Add(model.Email);
+                            mail.Subject = "Forget Password";
+                            mail.Body = signature;
+                            mail.IsBodyHtml = true;
+                            using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                            {
+                                smtp.Credentials = new NetworkCredential("coustomer.BrainStew@gmail.com", "BrainStew@2022");
+                                smtp.EnableSsl = true;
+                                smtp.Send(mail);
+                            }
+                        }
+                        response.Status = "0";
+                        response.Message = "password sent your email-id successfully.";
+                    }
+
+                    else if (ds.Tables[0].Rows[0][0].ToString() == "0")
+                    {
+                        response.Status = "1";
+                        response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+                else
+                {
+                    response.Status = "1";
+                    response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = "1";
+                response.Message = ex.Message;
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+
+
+        [HttpPost]
+        public ActionResult BankDetailsEdit(BankDetailsUpdateRequest model)
+        {
+            BankDetailsUpdateResponse response = new BankDetailsUpdateResponse();
+            try
+            {
+                DataSet ds = model.BankDetailsEdit();
+                if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        response.Status = "0";
+                        response.Message = "Record Found";
+                        response.IsVerified = ds.Tables[0].Rows[0]["IsVerified"].ToString();
+                        response.AdharNo = ds.Tables[0].Rows[0]["AdharNumber"].ToString();
+                        response.PanNumber = ds.Tables[0].Rows[0]["PanNumber"].ToString();
+                        response.BankName = ds.Tables[0].Rows[0]["MemberBankName"].ToString();
+                        response.AccountNo = ds.Tables[0].Rows[0]["MemberAccNo"].ToString();
+                        response.BranchName = ds.Tables[0].Rows[0]["MemberBranch"].ToString();
+                        response.IFSCCode = ds.Tables[0].Rows[0]["IFSCCode"].ToString();
+                        response.NomineeName = ds.Tables[0].Rows[0]["NomineeName"].ToString();
+                        response.NomineeRelation = ds.Tables[0].Rows[0]["NomineeRelation"].ToString();
+                        response.NomineeAge = ds.Tables[0].Rows[0]["NomineeAge"].ToString();
+                        response.Image = ds.Tables[0].Rows[0]["PanImage"].ToString();
+                    }
+                    else
+                    {
+                        response.Status = "1";
+                        response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+                else
+                {
+                    response.Status = "1";
+                    response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = "1";
+                response.Message = ex.Message;
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult UpdateBankDetails(BankDetailsUpdateRequested model, HttpPostedFileBase Image)
+        {
+            Reponse obj = new Reponse();
+            try
+            {
+
+                if (Image != null)
+                {
+                    model.Image = "/PanUpload/" + Guid.NewGuid() + Path.GetExtension(Image.FileName);
+                    Image.SaveAs(Path.Combine(Server.MapPath(model.Image)));
+                }
+                DataSet ds = model.BankDetailsUpdate();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        obj.Status = "0";
+                        obj.Message = "Bank Details Updated Successfully";
+                    }
+                    else
+                    {
+                        obj.Status = "1";
+                        obj.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                obj.Status = "1";
+                obj.Message = ex.Message;
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        
 
     }
 }
