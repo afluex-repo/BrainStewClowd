@@ -180,9 +180,7 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("GetDashBoardDetailsForAssociate", para);
             return ds;
         }
-
     }
-
     public class DashboardResponse
     {
         public string Status1 { get; set; }
@@ -461,9 +459,7 @@ namespace BrainStew.Models
         {
             SqlParameter[] para = { new SqlParameter("@PK_USerID", PK_UserId) };
             DataSet ds = DBHelper.ExecuteQuery("GetWalletBalance", para);
-
             return ds;
-
         }
     }
     public class WalletBalanceAPI
@@ -536,7 +532,6 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("UserProfile", para);
             return ds;
         }
-
     }
     public class ProfileAPI
     {
@@ -567,13 +562,9 @@ namespace BrainStew.Models
                                       new SqlParameter("@Address", Address),
                                   };
             DataSet ds = DBHelper.ExecuteQuery("UpdateProfile", para);
-
             return ds;
         }
     }
-
-
-
     //public class BankDetailsUpdateRequest
     //{
     //    public string FK_UserId { get; set; }
@@ -778,7 +769,6 @@ namespace BrainStew.Models
                                    new SqlParameter("@ToDate",ToDate)
             };
             DataSet ds = DBHelper.ExecuteQuery("GetEwalletRequestDetails", para);
-
             return ds;
         }
     }
@@ -808,9 +798,7 @@ namespace BrainStew.Models
                   new SqlParameter("@DeletedBy", AddedBy)
             };
             DataSet ds = DBHelper.ExecuteQuery("DeleteWalletRequest", para);
-
             return ds;
-
         }
     }
     public class EWalletDetailsRequest
@@ -1032,7 +1020,6 @@ namespace BrainStew.Models
         public string Status { get; set; }
         public string Message { get; set; }
         public List<TopUpListResp> lstTopUp { get; set; }
-
     }
     public class TopUpListResp
     {
@@ -1060,7 +1047,6 @@ namespace BrainStew.Models
         public string Status { get; set; }
         public string Message { get; set; }
         public List<BrainMatrixDonationListResp> lst { get; set; }
-
     }
     public class BrainMatrixDonationListResp
     {
@@ -1073,7 +1059,6 @@ namespace BrainStew.Models
         public string LoginId { get; set; }
         public string FromDate { get; set; }
         public string ToDate { get; set; }
-
         public DataSet GetStewMatrixDonation()
         {
             SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
@@ -1089,7 +1074,6 @@ namespace BrainStew.Models
         public string Status { get; set; }
         public string Message { get; set; }
         public List<StewMatrixDonationListResp> lst { get; set; }
-
     }
     public class StewMatrixDonationListResp
     {
@@ -1211,7 +1195,6 @@ namespace BrainStew.Models
                                       new SqlParameter("@RootAgentCode", RootAgentCode),
 
             };
-
             DataSet ds = DBHelper.ExecuteQuery("GetLevelMembersCount", para);
             return ds;
         }
@@ -1248,7 +1231,6 @@ namespace BrainStew.Models
         //public string TeamBV { get; set; }
         public List<LevelTreeMembers> lst { get; set; }
         public List<LevelTreeMemberDetails> lstDetails { get; set; }
-
     }
     public class LevelTreeMembers
     {
@@ -1275,8 +1257,6 @@ namespace BrainStew.Models
         public string TeamBV { get; set; }
         public string Color { get; set; }
     }
-
-
     public class AssociateTreeRequest
     {
         public string Fk_UserId { get; set; }
@@ -1497,7 +1477,6 @@ namespace BrainStew.Models
     {
         public string Amount { get; set; }
         public string Level { get; set; }
-
     }
     public class BrainLevelBenefitsRequest
     {
@@ -1558,7 +1537,6 @@ namespace BrainStew.Models
     {
         public string Amount { get; set; }
         public string Level { get; set; }
-
     }
     public class StewMatrixLevelBenefitsRequest
     {
@@ -1623,7 +1601,6 @@ namespace BrainStew.Models
         public string DrAmount { get; set; }
         public string TransactionDate { get; set; }
     }
-
     public class GetPayoutBalanceReq
     {
         public string Fk_UserId { get; set; }
@@ -1642,7 +1619,6 @@ namespace BrainStew.Models
         public string Message { get; set; }
         public string PayoutBalance { get; set; }
     }
-  
     public class GetPayoutRequestListRequ
     {
         public string LoginId { get; set; }
@@ -1674,8 +1650,6 @@ namespace BrainStew.Models
         public string AccountNo { get; set; }
         public string Status { get; set; }
     }
-
-
     public class PayoutRequestrequest
     {
         public string LoginId { get; set; }
@@ -1694,7 +1668,6 @@ namespace BrainStew.Models
             return ds;
         }
     }
-    
     public class GetTransfertoPayoutWalletRequest
     {
         public string Fk_UserId { get; set; }
@@ -1714,9 +1687,6 @@ namespace BrainStew.Models
         public string Balance { get; set; }
 
     }
-
-
-
     public class TransfertoPayoutWalletRequest
     {
         public string LoginId { get; set; }
@@ -1733,9 +1703,6 @@ namespace BrainStew.Models
             return ds;
         }
     }
-
-
-
     public class ChangePasswordRequest
     {
         public string Password { get; set; }
@@ -1751,8 +1718,6 @@ namespace BrainStew.Models
             return ds;
         }
     }
-
-
     public class ForgetPasswordRequest
     {
         public string Email { get; set; }
@@ -1766,7 +1731,6 @@ namespace BrainStew.Models
             return ds;
         }
     }
-
     public class ForgetPasswordResponse
     {
         public string Status { get; set; }
@@ -1775,8 +1739,6 @@ namespace BrainStew.Models
         public string Password { get; set; }
 
     }
-
-
     public class BankDetailsUpdateRequest
     {
         public string FK_UserId { get; set; }
@@ -1789,7 +1751,6 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("UserProfile", para);
             return ds;
         }
-
     }
     public class BankDetailsUpdateResponse
     {
@@ -1807,10 +1768,8 @@ namespace BrainStew.Models
         public string NomineeAge { get; set; }
         public string Image { get; set; }
     }
-    
     public class BankDetailsUpdateRequested
     {
-
         public string Status { get; set; }
         public string Message { get; set; }
         public string Fk_UserId { get; set; }
@@ -1839,18 +1798,14 @@ namespace BrainStew.Models
                                      new SqlParameter("@NomineeAge",NomineeAge),
                                          new SqlParameter("@PanImage",Image),
                                            //new SqlParameter("@UPIID",UPIID),
-
                                       new SqlParameter("@UpdatedBy",Fk_UserId)
             };
             DataSet ds = DBHelper.ExecuteQuery("UpdateBankDetails", para);
             return ds;
         }
     }
-
-
     public class ViewProfileEditRequest
     {
-
         public string Fk_UserId { get; set; }
         public DataSet UserProfile()
         {
@@ -1858,11 +1813,9 @@ namespace BrainStew.Models
                                       new SqlParameter("@FK_UserId", Fk_UserId),
                                   };
             DataSet ds = DBHelper.ExecuteQuery("UserProfile", para);
-
             return ds;
         }
     }
-
     public class ViewProfileEditResponse
     {
         public string Status { get; set; }
@@ -1880,8 +1833,6 @@ namespace BrainStew.Models
         public string City { get; set; }
         public string Address { get; set; }
     }
-
-
     public class ViewProfileUpdateRequest
     {
         public string Status { get; set; }
@@ -1897,11 +1848,9 @@ namespace BrainStew.Models
                                       new SqlParameter("@Address", Address)
                                   };
             DataSet ds = DBHelper.ExecuteQuery("UpdateProfile", para);
-
             return ds;
         }
     }
-    
     public class GetTreeMembersRequest
     {
         public string PK_UserId { get; set; }
@@ -1912,12 +1861,10 @@ namespace BrainStew.Models
                                       new SqlParameter("@MemId", PK_UserId),
                                       new SqlParameter("@Level", Level),
             };
-
             DataSet ds = DBHelper.ExecuteQuery("GetLevelMembers", para);
             return ds;
         }
     }
-
     public class GetTreeMembersResponse
     {
         public string Status { get; set; }
@@ -1938,13 +1885,10 @@ namespace BrainStew.Models
         public string SponsorName { get; set; }
         public string Color { get; set; }
     }
-    
-
     public class TreeTTPReques
     {
         public string LoginId { get; set; }
         public string RootAgentCode { get; set; }
-
         public DataSet GetLevelMembersCountTR1()
         {
             SqlParameter[] para = {
@@ -1960,14 +1904,10 @@ namespace BrainStew.Models
                                       new SqlParameter("@MemId", PK_UserId),
                                       new SqlParameter("@Level", Level),
             };
-
             DataSet ds = DBHelper.ExecuteQuery("GetLevelMembers", para);
             return ds;
         }
-
-
     }
-
     public class GetTreeMembersRespon
     {
         public string Status { get; set; }
@@ -1987,7 +1927,6 @@ namespace BrainStew.Models
         public string SponsorName { get; set; }
         public List<TreeMembersRes> lst { get; set; }
         public List<MemberDetailsRes> lstMember { get; set; }
-        
     }
     public class TreeMembersRes
     {
@@ -1995,7 +1934,6 @@ namespace BrainStew.Models
         public string TargetMember { get; set; }
         public string NumberOfMembers { get; set; }
     }
-
     public class MemberDetailsRes
     {
         public string PK_UserId { get; set; }
@@ -2009,7 +1947,4 @@ namespace BrainStew.Models
         public string SponsorName { get; set; }
         public string Color { get; set; }
     }
-
-  
-
 }
