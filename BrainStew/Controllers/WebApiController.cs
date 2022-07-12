@@ -540,39 +540,39 @@ namespace BrainStew.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-        [HttpPost]
-        public ActionResult DirectList(DirectRequest req)
-        {
-            DirectReponse model = new DirectReponse();
-            List<DirectList> lst = new List<DirectList>();
-            DataSet ds = req.GetDirectList();
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                model.Status = "0";
-                model.Message = "Record Found";
-                foreach (DataRow r in ds.Tables[0].Rows)
-                {
-                    DirectList obj = new DirectList();
-                    obj.Mobile = r["Mobile"].ToString();
-                    obj.Email = r["Email"].ToString();
-                    obj.JoiningDate = r["JoiningDate"].ToString();
-                    obj.Leg = r["Leg"].ToString();
-                    obj.PermanentDate = (r["PermanentDate"].ToString());
-                    obj.Status = (r["Status"].ToString());
-                    obj.LoginId = (r["LoginId"].ToString());
-                    obj.Name = (r["Name"].ToString());
-                    obj.Package = (r["ProductName"].ToString());
-                    lst.Add(obj);
-                }
-                model.lst = lst;
-            }
-            else
-            {
-                model.Status = "1";
-                model.Message = "No Record Found";
-            }
-            return Json(model, JsonRequestBehavior.AllowGet);
-        }
+        //[HttpPost]
+        //public ActionResult DirectList(DirectRequest req)
+        //{
+        //    DirectReponse model = new DirectReponse();
+        //    List<DirectList> lst = new List<DirectList>();
+        //    DataSet ds = req.GetDirectList();
+        //    if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+        //    {
+        //        model.Status = "0";
+        //        model.Message = "Record Found";
+        //        foreach (DataRow r in ds.Tables[0].Rows)
+        //        {
+        //            DirectList obj = new DirectList();
+        //            obj.Mobile = r["Mobile"].ToString();
+        //            obj.Email = r["Email"].ToString();
+        //            obj.JoiningDate = r["JoiningDate"].ToString();
+        //            obj.Leg = r["Leg"].ToString();
+        //            obj.PermanentDate = (r["PermanentDate"].ToString());
+        //            obj.Status = (r["Status"].ToString());
+        //            obj.LoginId = (r["LoginId"].ToString());
+        //            obj.Name = (r["Name"].ToString());
+        //            obj.Package = (r["ProductName"].ToString());
+        //            lst.Add(obj);
+        //        }
+        //        model.lst = lst;
+        //    }
+        //    else
+        //    {
+        //        model.Status = "1";
+        //        model.Message = "No Record Found";
+        //    }
+        //    return Json(model, JsonRequestBehavior.AllowGet);
+        //}
         [HttpPost]
         public ActionResult DownlineList(DirectRequest req)
         {
@@ -1674,6 +1674,67 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
+        
+        [HttpPost]
+        public ActionResult DirectList(DirectListRequest model)
+        {
+          
+            DirectListResponse response = new DirectListResponse();
+            List<DirectListResp> lst = new List<DirectListResp>();
+            
+
+            if (model.Ids == null || model.Ids == "")
+            {
+                model.Ids = model.Fk_UserId;
+
+            }
+            else
+            {
+                model.Ids = model.Ids;
+
+            }
+            model.DirectStatus = "Self";
+            DataSet ds = model.GetDirectList();
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                string Ids = "";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+
+                    DirectListResp obj = new DirectListResp();
+                    obj.Mobile = r["Mobile"].ToString();
+                    //obj.Email = r["Email"].ToString();
+                    obj.SponsorId = r["SponsorId"].ToString();
+                    //obj.SponsorName = r["SponsorName"].ToString();
+                    //obj.JoiningDate = r["JoiningDate"].ToString();
+                    //obj.Leg = r["Leg"].ToString();
+                    obj.PermanentDate = (r["PermanentDate"].ToString());
+                    obj.Status = (r["Status"].ToString());
+                    obj.LoginId = (r["LoginId"].ToString());
+                    obj.Name = (r["Name"].ToString());
+                    obj.Level = (r["Lvl"].ToString());
+                    obj.Package = (r["ProductName"].ToString());
+                    Ids = Ids + r["PK_UserId"].ToString() + ",";
+                    lst.Add(obj);
+                }
+                response.lstassociate = lst;
+                response.Ids = Ids;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            //List<SelectListItem> AssociateStatus = Common.AssociateStatus();
+            //ViewBag.ddlStatus = AssociateStatus;
+            //List<SelectListItem> Leg = Common.LegType();
+            //ViewBag.ddlleg = Leg;
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+        
         [HttpPost]
         public ActionResult DirectListBy(DirectListRequest model)
         {
@@ -1715,7 +1776,7 @@ namespace BrainStew.Controllers
                     lst.Add(obj);
                 }
                 response.lstassociate = lst;
-                model.Ids = Ids;
+                response.Ids = Ids;
             }
             else
             {
@@ -2228,9 +2289,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
-
         [HttpPost]
         public ActionResult GetPayoutRequestBalance(GetPayoutBalanceReq model)
         {
@@ -2258,11 +2316,7 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
-
-
-
+        
         [HttpPost]
         public ActionResult GetPayoutRequestList(GetPayoutRequestListRequ model)
         {
@@ -2297,8 +2351,7 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
+        
         [HttpPost]
         public ActionResult PayoutRequest(PayoutRequestrequest model)
         {
@@ -2335,8 +2388,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
         [HttpPost]
         public ActionResult GetTransfertoPayoutWallet(GetTransfertoPayoutWalletRequest model)
         {
@@ -2364,7 +2415,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-        
         [HttpPost]
         public ActionResult TransfertoPayoutWallet(TransfertoPayoutWalletRequest model)
         {
@@ -2398,9 +2448,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
-
         [HttpPost]
         public ActionResult ChangePassword(ChangePasswordRequest model)
         {
@@ -2436,8 +2483,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-        
         [HttpPost]
         public ActionResult ForgetPassword(ForgetPasswordRequest model)
         {
@@ -2467,7 +2512,8 @@ namespace BrainStew.Controllers
                             mail.IsBodyHtml = true;
                             using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
                             {
-                                smtp.Credentials = new NetworkCredential("coustomer.BrainStew@gmail.com", "BrainStew@2022");
+                                //smtp.Credentials = new NetworkCredential("coustomer.BrainStew@gmail.com", "BrainStew@2022");
+                                smtp.Credentials = new NetworkCredential("developer2.afluex@gmail.com", "devel@#123");
                                 smtp.EnableSsl = true;
                                 smtp.Send(mail);
                             }
@@ -2479,13 +2525,13 @@ namespace BrainStew.Controllers
                     else if (ds.Tables[0].Rows[0][0].ToString() == "0")
                     {
                         response.Status = "1";
-                        response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                        response.Message = "Please contact to admin";
                     }
                 }
                 else
                 {
                     response.Status = "1";
-                    response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    response.Message = "Please contact to admin";
                 }
             }
             catch (Exception ex)
@@ -2495,12 +2541,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
-
-
-
-
         [HttpPost]
         public ActionResult BankDetailsEdit(BankDetailsUpdateRequest model)
         {
@@ -2545,9 +2585,7 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
-
+        
         [HttpPost]
         public ActionResult UpdateBankDetails(BankDetailsUpdateRequested model, HttpPostedFileBase Image)
         {
@@ -2582,8 +2620,207 @@ namespace BrainStew.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
+       
+        [HttpPost]
+        public ActionResult ViewProfileEdit(ViewProfileEditRequest model)
+        {
+            ViewProfileEditResponse response = new ViewProfileEditResponse();
+            try
+            {
+                List<SelectListItem> Gender = Common.BindGender();
+                ViewBag.Gender = Gender;
+                DataSet ds = model.UserProfile();
+                if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        response.Status = "0";
+                        response.Message = "Record Found";
+                        response.FirstName = ds.Tables[0].Rows[0]["FirstName"].ToString();
+                        response.LastName = ds.Tables[0].Rows[0]["LastName"].ToString();
+                        response.SponsorId = ds.Tables[0].Rows[0]["SponsorId"].ToString();
+                        response.SponsorName = ds.Tables[0].Rows[0]["SponsorName"].ToString();
+                        response.Email = ds.Tables[0].Rows[0]["Email"].ToString();
+                        response.MobileNo = ds.Tables[0].Rows[0]["Mobile"].ToString();
+                        response.PinCode = ds.Tables[0].Rows[0]["PinCode"].ToString();
+                        response.Gender = ds.Tables[0].Rows[0]["Sex"].ToString();
+                        response.State = ds.Tables[0].Rows[0]["State"].ToString();
+                        response.City = ds.Tables[0].Rows[0]["City"].ToString();
+                        response.Address = ds.Tables[0].Rows[0]["Address"].ToString();
+                        response.ProfilePic = ds.Tables[0].Rows[0]["ProfilePic"].ToString();
+                    }
+                    else
+                    {
+                        response.Status = "1";
+                        response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+                else
+                {
+                    response.Status = "1";
+                    response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = "1";
+                response.Message = ex.Message;
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
         
+        [HttpPost]
+        public ActionResult ViewProfileUpdate(ViewProfileUpdateRequest model, HttpPostedFileBase ProfilePic)
+        {
+            Reponse obj = new Reponse();
+            try
+            {
+
+                List<SelectListItem> Gender = Common.BindGender();
+                ViewBag.Gender = Gender;
+                if (ProfilePic != null)
+                {
+                    model.ProfilePic = "/ProfilePicture/" + Guid.NewGuid() + Path.GetExtension(ProfilePic.FileName);
+                    ProfilePic.SaveAs(Path.Combine(Server.MapPath(model.ProfilePic)));
+                }
+                DataSet ds = model.UpdateProfile();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        obj.Status = "0";
+                        obj.Message = "Profile Updated Successfully";
+                    }
+                    else
+                    {
+                        obj.Status = "1";
+                        obj.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                obj.Status = "1";
+                obj.Message = ex.Message;
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+        
+        [HttpPost]
+        public ActionResult GetTreeMembers(GetTreeMembersRequest model)
+        {
+            GetTreeMembersResponse response = new GetTreeMembersResponse();
+            List<GetTreeMembersResp> lst = new List<GetTreeMembersResp>();
+            DataSet ds = model.GetLevelMembers();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    GetTreeMembersResp obj = new GetTreeMembersResp();
+                    obj.PK_UserId = r["PK_UserId"].ToString();
+                    obj.MemberName = r["MemberName"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
+                    obj.Level = r["Lvl"].ToString();
+                    obj.ProfilePic = r["ProfilePic"].ToString();
+                    obj.SelfBV = r["SelfBV"].ToString();
+                    obj.TeamBV = r["TeamBV"].ToString();
+                    obj.SelfBVDollar = (Convert.ToDouble(r["SelfBV"]) / 76.805).ToString();
+                    obj.TeamBVDollar = (Convert.ToDouble(r["TeamBV"]) / 76.805).ToString();
+                    obj.SponsorName = r["SponsorName"].ToString();
+                    obj.Color = r["Color"].ToString();
+                    lst.Add(obj);
+                }
+                response.lstMember = lst;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public ActionResult TreeTTP(TreeTTPReques model)
+        {
+            GetTreeMembersRespon response = new GetTreeMembersRespon();
+            List<TreeMembersRes> lst = new List<TreeMembersRes>();
+            List<MemberDetailsRes> lstMember = new List<MemberDetailsRes>();
+            DataSet ds = model.GetLevelMembersCountTR1();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    TreeMembersRes obj = new TreeMembersRes();
+                    obj.LevelName = r["LevelNo"].ToString();
+                    obj.TargetMember = r["TargetMember"].ToString();
+                    obj.NumberOfMembers = r["TotalAssociate"].ToString();
+                    lst.Add(obj);
+                }
+                response.lst = lst;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[1].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                response.Level = ds.Tables[1].Rows[0]["Lvl"].ToString();
+                response.StatusCheck = ds.Tables[1].Rows[0]["Status"].ToString();
+                response.Color = ds.Tables[1].Rows[0]["Color"].ToString();
+                response.DisplayName = ds.Tables[1].Rows[0]["Name"].ToString();
+                response.PK_UserId = ds.Tables[1].Rows[0]["PK_UserId"].ToString();
+                response.ProfilePic = ds.Tables[1].Rows[0]["ProfilePic"].ToString();
+                response.TotalDirect = ds.Tables[1].Rows[0]["TotalDirect"].ToString();
+                response.TotalActive = ds.Tables[1].Rows[0]["TotalActive"].ToString();
+                response.TotalInactive = ds.Tables[1].Rows[0]["TotalInActive"].ToString();
+                response.TotalTeam = ds.Tables[1].Rows[0]["TotalTeam"].ToString();
+                response.TotalActiveTeam = ds.Tables[1].Rows[0]["TotalActiveTeam"].ToString();
+                response.TotalInActiveTeam = ds.Tables[1].Rows[0]["TotalInActiveTeam"].ToString();
+                response.SponsorName = ds.Tables[1].Rows[0]["SponsorName"].ToString();
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            DataSet ds1 = model.GetLevelMembers("1", response.PK_UserId);
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds1.Tables[0].Rows)
+                {
+                    MemberDetailsRes obj = new MemberDetailsRes();
+                    obj.PK_UserId = r["PK_UserId"].ToString();
+                    obj.MemberName = r["MemberName"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
+                    obj.Level = r["Lvl"].ToString();
+                    obj.ProfilePic = r["ProfilePic"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    obj.SelfBV = r["SelfBV"].ToString();
+                    obj.TeamBV = r["TeamBV"].ToString();
+                    obj.SponsorName = r["SponsorName"].ToString();
+                    obj.Color = r["Color"].ToString();
+                    lstMember.Add(obj);
+                }
+                response.lstMember = lstMember;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
 
     }
 }
