@@ -281,7 +281,6 @@ namespace BrainStew.Controllers
             }
         }
         #endregion
-
         #region Dashboard
         //public ActionResult GetDashboard(AssociateDashBoard associate)
         //{
@@ -805,9 +804,6 @@ namespace BrainStew.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
-
-
         [HttpPost]
         public ActionResult UpdateProfile(ProfileAPI model)
         {
@@ -894,8 +890,6 @@ namespace BrainStew.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
-
         //[HttpPost]
         //public ActionResult GetBankDetails(BankDetailsUpdateRequest model)
         //{
@@ -922,8 +916,6 @@ namespace BrainStew.Controllers
         //    }
         //    return Json(obj, JsonRequestBehavior.AllowGet);
         //}
-
-
         //[HttpPost]
         //public ActionResult UpdateBankDetails(BankDetailsUpdateAPIResponse model)
         //{
@@ -952,9 +944,6 @@ namespace BrainStew.Controllers
         //    }
         //    return Json(obj, JsonRequestBehavior.AllowGet);
         //}
-
-
-
         //[HttpPost]
         //public ActionResult AddWallet(AddWalletRequest model)
         //{
@@ -983,8 +972,6 @@ namespace BrainStew.Controllers
         //    }
         //    return Json(obj, JsonRequestBehavior.AllowGet);
         //}
-
-
         public ActionResult GetUserDashBoard(AssociateDashBoard model)
         {
             DashboardResponse obj = new DashboardResponse();
@@ -1028,7 +1015,6 @@ namespace BrainStew.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public ActionResult GetSponsorName(SponsorRequest model)
         {
@@ -1047,9 +1033,6 @@ namespace BrainStew.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
-
-
         [HttpPost]
         public ActionResult NewDetails(NewsRequest model)
         {
@@ -1076,9 +1059,6 @@ namespace BrainStew.Controllers
             }
             return Json(Response, JsonRequestBehavior.AllowGet);
         }
-
-
-
         [HttpPost]
         public ActionResult QRWalletDetails(QRandWalletRequest model)
         {
@@ -1107,7 +1087,6 @@ namespace BrainStew.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public ActionResult AddWallet(AddWalletRequest model, HttpPostedFileBase PostedFile)
         {
@@ -1119,7 +1098,6 @@ namespace BrainStew.Controllers
                     model.PostedFile = "/Documents/" + Guid.NewGuid() + Path.GetExtension(PostedFile.FileName);
                     PostedFile.SaveAs(Path.Combine(Server.MapPath(model.PostedFile)));
                 }
-
                 model.DDChequeDate = string.IsNullOrEmpty(model.DDChequeDate) ? null : Common.ConvertToSystemDate(model.DDChequeDate, "dd/mm/yyyy");
                 if (model.PaymentMode == "1")
                 {
@@ -1138,7 +1116,6 @@ namespace BrainStew.Controllers
                     {
                         response.Status = "1";
                         response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
-
                     }
                 }
                 else { }
@@ -1150,9 +1127,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
-
         [HttpPost]
         public ActionResult WalletList(EwalletRequestDetails model)
         {
@@ -1192,8 +1166,6 @@ namespace BrainStew.Controllers
             }
             return Json(Response, JsonRequestBehavior.AllowGet);
         }
-
-
         public ActionResult DeleteWallet(DeleteWalletRequest model)
         {
             Response response = new Response();
@@ -1207,13 +1179,11 @@ namespace BrainStew.Controllers
                     {
                         response.Status = "0";
                         response.Message = "Wallet requested deleted successfully";
-
                     }
                     else
                     {
                         response.Status = "1";
                         response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
-
                     }
                 }
                 else
@@ -1228,9 +1198,7 @@ namespace BrainStew.Controllers
                 response.Message = ex.Message;
             }
             return Json(response, JsonRequestBehavior.AllowGet);
-
         }
-
         [HttpPost]
         public ActionResult WalletLedgerList(EWalletDetailsRequest model)
         {
@@ -1674,28 +1642,21 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-        
         [HttpPost]
         public ActionResult DirectList(DirectListRequest model)
         {
-          
             DirectListResponse response = new DirectListResponse();
             List<DirectListResp> lst = new List<DirectListResp>();
-            
-
             if (model.Ids == null || model.Ids == "")
             {
                 model.Ids = model.Fk_UserId;
-
             }
             else
             {
                 model.Ids = model.Ids;
-
             }
             model.DirectStatus = "Self";
             DataSet ds = model.GetDirectList();
-
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 response.Status = "0";
@@ -1703,7 +1664,6 @@ namespace BrainStew.Controllers
                 string Ids = "";
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
-
                     DirectListResp obj = new DirectListResp();
                     obj.Mobile = r["Mobile"].ToString();
                     //obj.Email = r["Email"].ToString();
@@ -1734,11 +1694,9 @@ namespace BrainStew.Controllers
             //ViewBag.ddlleg = Leg;
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-        
         [HttpPost]
         public ActionResult DirectListBy(DirectListRequest model)
         {
-
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
             DirectListResponse response = new DirectListResponse();
@@ -2312,11 +2270,9 @@ namespace BrainStew.Controllers
             {
                 response.Status = "1";
                 response.Message = ex.Message;
-
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-        
         [HttpPost]
         public ActionResult GetPayoutRequestList(GetPayoutRequestListRequ model)
         {
@@ -2351,7 +2307,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-        
         [HttpPost]
         public ActionResult PayoutRequest(PayoutRequestrequest model)
         {
@@ -2365,13 +2320,11 @@ namespace BrainStew.Controllers
                     {
                         response.Status = "0";
                         response.Message = "Transfer To Account with in 24 hour.";
-
                     }
                     else
                     {
                         response.Status = "1";
                         response.Message = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
-
                     }
                 }
                 else
@@ -2384,7 +2337,6 @@ namespace BrainStew.Controllers
             {
                 response.Status = "1";
                 response.Message = ex.Message;
-
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
@@ -2585,14 +2537,12 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-        
         [HttpPost]
         public ActionResult UpdateBankDetails(BankDetailsUpdateRequested model, HttpPostedFileBase Image)
         {
             Reponse obj = new Reponse();
             try
             {
-
                 if (Image != null)
                 {
                     model.Image = "/PanUpload/" + Guid.NewGuid() + Path.GetExtension(Image.FileName);
@@ -2620,7 +2570,6 @@ namespace BrainStew.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-       
         [HttpPost]
         public ActionResult ViewProfileEdit(ViewProfileEditRequest model)
         {
@@ -2668,14 +2617,12 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-        
         [HttpPost]
         public ActionResult ViewProfileUpdate(ViewProfileUpdateRequest model, HttpPostedFileBase ProfilePic)
         {
             Reponse obj = new Reponse();
             try
             {
-
                 List<SelectListItem> Gender = Common.BindGender();
                 ViewBag.Gender = Gender;
                 if (ProfilePic != null)
@@ -2705,7 +2652,6 @@ namespace BrainStew.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-        
         [HttpPost]
         public ActionResult GetTreeMembers(GetTreeMembersRequest model)
         {
@@ -2741,8 +2687,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
         [HttpPost]
         public ActionResult TreeTTP(TreeTTPReques model)
         {
