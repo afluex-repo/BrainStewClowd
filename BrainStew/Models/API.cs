@@ -1131,6 +1131,7 @@ namespace BrainStew.Models
     }
     public class DirectListResponse
     {
+        public string Ids { get; set; }
         public string Status { get; set; }
         public string Message { get; set; }
         public List<DirectListResp> lstassociate { get; set; }
@@ -1274,6 +1275,8 @@ namespace BrainStew.Models
         public string TeamBV { get; set; }
         public string Color { get; set; }
     }
+
+
     public class AssociateTreeRequest
     {
         public string Fk_UserId { get; set; }
@@ -1845,33 +1848,168 @@ namespace BrainStew.Models
     }
 
 
+    public class ViewProfileEditRequest
+    {
+
+        public string Fk_UserId { get; set; }
+        public DataSet UserProfile()
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@FK_UserId", Fk_UserId),
+                                  };
+            DataSet ds = DBHelper.ExecuteQuery("UserProfile", para);
+
+            return ds;
+        }
+    }
+
+    public class ViewProfileEditResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public string ProfilePic { get; set; }
+        public string SponsorId { get; set; }
+        public string SponsorName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Gender { get; set; }
+        public string MobileNo { get; set; }
+        public string Email { get; set; }
+        public string PinCode { get; set; }
+        public string State { get; set; }
+        public string City { get; set; }
+        public string Address { get; set; }
+    }
 
 
+    public class ViewProfileUpdateRequest
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public string Fk_UserId { get; set; }
+        public string ProfilePic { get; set; }
+        public string Address { get; set; }
+        public DataSet UpdateProfile()
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@FK_UserId", Fk_UserId),
+                                      new SqlParameter("@ProfilePic", ProfilePic),
+                                      new SqlParameter("@Address", Address)
+                                  };
+            DataSet ds = DBHelper.ExecuteQuery("UpdateProfile", para);
+
+            return ds;
+        }
+    }
+    
+    public class GetTreeMembersRequest
+    {
+        public string PK_UserId { get; set; }
+        public string Level { get; set; }
+        public DataSet GetLevelMembers()
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@MemId", PK_UserId),
+                                      new SqlParameter("@Level", Level),
+            };
+
+            DataSet ds = DBHelper.ExecuteQuery("GetLevelMembers", para);
+            return ds;
+        }
+    }
+
+    public class GetTreeMembersResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<GetTreeMembersResp> lstMember { get; set; }
+    }
+    public class GetTreeMembersResp
+    {
+        public string PK_UserId { get; set; }
+        public string MemberName { get; set; }
+        public string LoginId { get; set; }
+        public string Level { get; set; }
+        public string ProfilePic { get; set; }
+        public string SelfBV { get; set; }
+        public string TeamBV { get; set; }
+        public string SelfBVDollar { get; set; }
+        public string TeamBVDollar { get; set; }
+        public string SponsorName { get; set; }
+        public string Color { get; set; }
+    }
+    
+
+    public class TreeTTPReques
+    {
+        public string LoginId { get; set; }
+        public string RootAgentCode { get; set; }
+
+        public DataSet GetLevelMembersCountTR1()
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@AgentCode", LoginId),
+                                      new SqlParameter("@RootAgentCode", RootAgentCode)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetLevelMembersCountTR1", para);
+            return ds;
+        }
+        public DataSet GetLevelMembers(string Level,string PK_UserId)
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@MemId", PK_UserId),
+                                      new SqlParameter("@Level", Level),
+            };
+
+            DataSet ds = DBHelper.ExecuteQuery("GetLevelMembers", para);
+            return ds;
+        }
 
 
+    }
 
+    public class GetTreeMembersRespon
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public string Level { get; set; }
+        public string StatusCheck { get; set; }
+        public string Color { get; set; }
+        public string DisplayName { get; set; }
+        public string PK_UserId { get; set; }
+        public string ProfilePic { get; set; }
+        public string TotalDirect { get; set; }
+        public string TotalActive { get; set; }
+        public string TotalInactive { get; set; }
+        public string TotalTeam { get; set; }
+        public string TotalActiveTeam { get; set; }
+        public string TotalInActiveTeam { get; set; }
+        public string SponsorName { get; set; }
+        public List<TreeMembersRes> lst { get; set; }
+        public List<MemberDetailsRes> lstMember { get; set; }
+        
+    }
+    public class TreeMembersRes
+    {
+        public string LevelName { get; set; }
+        public string TargetMember { get; set; }
+        public string NumberOfMembers { get; set; }
+    }
 
+    public class MemberDetailsRes
+    {
+        public string PK_UserId { get; set; }
+        public string MemberName { get; set; }
+        public string LoginId { get; set; }
+        public string Level { get; set; }
+        public string ProfilePic { get; set; }
+        public string Status { get; set; }
+        public string SelfBV { get; set; }
+        public string TeamBV { get; set; }
+        public string SponsorName { get; set; }
+        public string Color { get; set; }
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 
 }
