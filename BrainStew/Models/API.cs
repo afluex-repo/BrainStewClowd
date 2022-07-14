@@ -1947,4 +1947,24 @@ namespace BrainStew.Models
         public string SponsorName { get; set; }
         public string Color { get; set; }
     }
+    
+    public class QRCodeRequest
+    {
+        public DataSet GetQRCodeList()
+        {
+            DataSet ds = DBHelper.ExecuteQuery("getQrList");
+            return ds;
+        }
+    }
+    public class QRCodeResponse
+    {
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public List<QRCodeResp> lstqr { get; set; }
+    }
+    public class QRCodeResp
+    {
+        public string ImageLocation { get; set; }
+    }
+    
 }

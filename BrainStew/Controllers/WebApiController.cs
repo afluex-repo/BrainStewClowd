@@ -2766,5 +2766,39 @@ namespace BrainStew.Controllers
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 
+        
+        [HttpPost]
+        public ActionResult GetQRCodeList(QRCodeRequest model)
+        {
+            QRCodeResponse response = new QRCodeResponse();
+            List<QRCodeResp> lst = new List<QRCodeResp>();
+            DataSet ds = model.GetQRCodeList();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                response.Status = "0";
+                response.Message = "Record Found";
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    QRCodeResp obj = new QRCodeResp();
+                    obj.ImageLocation = r["ImageLocation"].ToString();
+                    lst.Add(obj);
+                }
+                response.lstqr = lst;
+            }
+            else
+            {
+                response.Status = "1";
+                response.Message = "Record Not Found";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+
+
+
+
     }
 }
