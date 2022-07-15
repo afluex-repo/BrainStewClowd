@@ -26,6 +26,15 @@
                             <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
                                     <label>
+                                      Login id
+                                    </label>
+                                    @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control", @Placeholder = "Login Id" })
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="form-group">
+                                    <label>
                                         From Date
                                     </label>
                                     @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @Placeholder = "From Date" })
@@ -39,26 +48,25 @@
 
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-4" style="margin-top:28px">
+                            <div class="col-lg-3 col-md-3" style="margin-top:28px">
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-success pull-left" value="Search" name="btnSearch" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <table id="html5-extension" class="table table-hover non-hover" data-page-length='20'>
+                            <table id="html5-extension" class="table table-hover non-hover" data-page-length='50'>
                                 <thead>
                                     <tr>
                                         <th>Sr.No.</th>
                                         <th>Name</th>
-                                        <th>Id Number</th>
-                                        <th>Total Wallet</th>
-                                        <th>My Wallet</th>
-                                        <th>TopUp Wallet</th>
+                                        <th>Naration</th>
+                                        <th>Amount</th>
+                                        <th>Transaction Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @*@if (Model != null)
+                                    @if (Model != null)
                                         {
                                             if (Model.lst != null)
                                             {
@@ -68,16 +76,24 @@
                                                     <tr class="text-left">
                                                         <td>@i</td>
                                                         <td>@Item.Name</td>
-                                                        <td>@Item.IdNumber</td>
-                                                        <td>@Item.Total Wallet</td>
-                                                        <td>@Item.My Wallet</td>
-                                                        <td>@Item.TopUp Wallet</td>
+                                                        <td>@Item.Narration</td>
+                                                        <td>@Item.Amount</td>
+                                                        <td>@Item.TransactionDate</td>
                                                     </tr>
                                                     i++;
                                                 }
                                             }
-                                        }*@
+                                        }
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th>Total</th>
+                                        <th>@ViewBag.TotalAmount</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

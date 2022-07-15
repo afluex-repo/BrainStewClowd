@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="widget-content widget-content-area">
-                        <div class="row">
+                        @*<div class="row">
                             <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
                                     <label>
@@ -55,20 +55,21 @@
                                     <input type="submit" class="btn btn-success" value="Search" name="btnSearch" />
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                         <div class="row">
                             <table id="html5-extension" class="table table-hover non-hover" data-page-length='20'>
                                 <thead>
                                     <tr>
                                         <th>Sr No.</th>
                                         @*<th>Payout No</th>*@
-                                        <th>From Member</th>
-                                        <th>Donation Amount</th>
+                                        @*<th>From Member</th>
+                                        <th>Donation Amount</th>*@
                                         @*<th>Percentage</th>*@
+                                        <th>Level</th>
                                         <th>Benefits</th>
                                         @*<th>Level</th>*@
-                                        <th>Status</th>
-                                        <th>Transaction Date</th>
+                                        @*<th>Status</th>
+                                        <th>Transaction Date</th>*@
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -82,19 +83,27 @@
                                                 <tr class="text-left">
                                                     <td>@i</td>
                                                     @*<td>@Item.PayoutNo</td>*@
-                                                    <td>@Item.FromName (@Item.FromLoginId)</td>
-                                                    <td>@Item.BusinessAmount</td>
+                                                    @*<td>@Item.FromName (@Item.FromLoginId)</td>
+                                                    <td>@Item.BusinessAmount</td>*@
                                                     @*<td>@Item.Percentage %</td>*@
+                                                    <td>@Item.Level</td>
                                                     <td>@Item.Amount</td>
                                                     @*<td>@Item.Level</td>*@
-                                                    <td>@Item.Status</td>
-                                                    <td>@Item.TransactionDate</td>
+                                                    @*<td>@Item.Status</td>
+                                                    <td>@Item.TransactionDate</td>*@
                                                 </tr>
                                                 i++;
                                             }
                                         }
                                     }
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th></th>
+                                        <th>Total</th>
+                                        <th>@ViewBag.Total</th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

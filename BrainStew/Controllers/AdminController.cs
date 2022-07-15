@@ -1515,51 +1515,111 @@ namespace BrainStew.Controllers
 
         public ActionResult CommissionReport()
         {
-            //List<Admin> lst = new List<Admin>();
-            //Admin model = new Admin();
-            //DataSet ds = model.GetCommissionReport();
-            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            //{
-            //    foreach (DataRow r in ds.Tables[0].Rows)
-            //    {
-            //        Admin obj = new Admin();
-            //        //obj.PK_CommissionId = r["PK_CommissionId"].ToString();
-            //        obj.Name = r["Name"].ToString();
-            //        obj.IdNumber = r["IdNumber"].ToString();
-            //        obj.TotalWallet = r["TotalWallet"].ToString();
-            //        obj.MyWallet = r["MyWallet"].ToString();
-            //        obj.TopUpWallet = r["TopUpWallet"].ToString();
-            //        lst.Add(obj);
-            //    }
-            //    model.lst = lst;
-            //}
-            //return View(model);
-            return View();
+            List<Admin> lst = new List<Admin>();
+            Admin model = new Admin();
+            DataSet ds = model.GetCommissionReport();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Admin obj = new Admin();
+                    //obj.PK_CommissionId = r["PK_CommissionId"].ToString();
+                    obj.Name = r["userDetails"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    obj.Narration = r["Narration"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+                ViewBag.TotalAmount = double.Parse(ds.Tables[0].Compute("sum(Amount)", "").ToString()).ToString("n2");
+            }
+            return View(model);
         }
 
         [HttpPost]
         public ActionResult CommissionReport(Admin model)
         {
-            //List<Admin> lst = new List<Admin>();
-            //model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
-            //model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-            //DataSet ds = model.CommissionReport();
-            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            //{
-            //    foreach (DataRow r in ds.Tables[0].Rows)
-            //    {
-            //        Admin obj = new Admin();
-            //        //obj.PK_CommissionId = r["PK_CommissionId"].ToString();
-            //        obj.Name = r["Name"].ToString();
-            //        obj.IdNumber = r["IdNumber"].ToString();
-            //        obj.TotalWallet = r["TotalWallet"].ToString();
-            //        obj.MyWallet = r["MyWallet"].ToString();
-            //        obj.TopUpWallet = r["TopUpWallet"].ToString();
-            //        lst.Add(obj);
-            //    }
-            //    model.lst = lst;
-            //}
+            List<Admin> lst = new List<Admin>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            DataSet ds = model.CommissionReport();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Admin obj = new Admin();
+                    //obj.PK_CommissionId = r["PK_CommissionId"].ToString();
+                    obj.Name = r["userDetails"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
+                    obj.Amount = r["Amount"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    obj.Narration = r["Narration"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+                ViewBag.TotalAmount = double.Parse(ds.Tables[0].Compute("sum(Amount)", "").ToString()).ToString("n2");
+            }
             return View(model);
         }
+
+
+        public ActionResult TopUpWalletLedgerForAdmin(string loginid)
+        {
+            List<Admin> lst = new List<Admin>();
+            Admin model = new Admin();
+            model.LoginId = loginid;
+            DataSet ds = model.TopUpWalletLedger();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                ViewBag.LoginId = ds.Tables[0].Rows[0]["LoginId"].ToString();
+                ViewBag.Name = ds.Tables[0].Rows[0]["Name"].ToString();
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+
+                    Admin obj = new Admin();
+                    obj.WalletId = r["Pk_EwalletId"].ToString();
+                    obj.Fk_UserId = r["FK_UserId"].ToString();
+                    obj.CrAmount = r["CrAmount"].ToString();
+                    obj.DrAmount = r["DrAmount"].ToString();
+                    obj.Narration = r["Narration"].ToString();
+                    obj.Balance = r["Balance"].ToString();
+                    obj.TransactionBy = r["TransactionBy"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public ActionResult TopUpWalletLedgerForAdmin(Admin model, string loginId)
+        {
+            List<Admin> lst = new List<Admin>();
+            model.LoginId = loginId;
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            DataSet ds = model.TopUpWalletLedger();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Admin obj = new Admin();
+                    obj.WalletId = r["Pk_EwalletId"].ToString();
+                    obj.Fk_UserId = r["FK_UserId"].ToString();
+                    obj.CrAmount = r["CrAmount"].ToString();
+                    obj.DrAmount = r["DrAmount"].ToString();
+                    obj.Narration = r["Narration"].ToString();
+                    obj.TransactionDate = r["TransactionDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+
+
     }
 }

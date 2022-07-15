@@ -65,6 +65,7 @@ namespace BrainStew.Controllers
                 ViewBag.CurrentLevel = ds.Tables[6].Rows[0]["CurrentLevel"].ToString();
                 ViewBag.UpgradeMatrix = ds.Tables[6].Rows[0]["UpgradeMatrix"].ToString(); 
                 ViewBag.ReferralIncentive = ds.Tables[6].Rows[0]["ReferralIncentive"].ToString();
+                ViewBag.Stewmatrixincome = ds.Tables[6].Rows[0]["Stewmatrixincome"].ToString();
                 //if (ViewBag.Status == "InActive")
                 //{
                 //    return RedirectToAction("ActivateByPin", "User");
@@ -1576,10 +1577,23 @@ namespace BrainStew.Controllers
                 return Json(model, JsonRequestBehavior.AllowGet);
             }
         }
+     
         public ActionResult StewMatrixDonation(Account model)
         {
             model.LoginId = Session["LoginId"].ToString();
-            
+            #region GetDonationAmount
+            model.Fk_UserId = Session["Pk_UserId"].ToString();
+            DataSet ds1 = model.GetStewMatrixPlanAmount();
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            {
+                model.DonationAmount = ds1.Tables[0].Rows[0]["Amount"].ToString();
+                model.DonationPlanId = ds1.Tables[0].Rows[0]["Pk_StewMatrixPlanId"].ToString();
+            }
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[1].Rows.Count > 0)
+            {
+                model.UpdatedDonationPlanId = ds1.Tables[1].Rows[0]["UpdatedDonationId"].ToString();
+            }
+            #endregion
             #region Check Balance
             Common objcomm = new Common();
             objcomm.Fk_UserId = Session["Pk_UserId"].ToString();
@@ -1590,6 +1604,42 @@ namespace BrainStew.Controllers
             }
             #endregion
             return View(model);
+        }
+        public ActionResult SaveStewMatrixDonation(string Amount, string donationplanid)
+        {
+            Account model = new Account();
+            try
+            {
+                model.Fk_UserId = Session["Pk_UserId"].ToString();
+                model.Amount = Amount;
+                model.DonationPlanId = donationplanid;
+                DataSet ds = model.DonationStewMatrixPlan();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        model.Result = "1";
+                        return Json(model, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                        return Json(model, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+
+                    return Json(model, JsonRequestBehavior.AllowGet);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                model.Result = "0";
+                TempData["error"] = ex.Message;
+                return Json(model, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

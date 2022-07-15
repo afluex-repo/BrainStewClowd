@@ -39,7 +39,8 @@ namespace BrainStew.Controllers
                     {
                         if ((ds.Tables[0].Rows[0]["UserType"].ToString() == "Associate"))
                         {
-                           
+
+                            string pass = Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString());
                             if (obj.Password == Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString()))
                             {
                                 Session["BenefitsLevel"] = ds.Tables[0].Rows[0]["BenefitsLevel"].ToString();
@@ -376,6 +377,13 @@ namespace BrainStew.Controllers
         {
             return View();
         }
+
+        public ActionResult Maintenance()
+        {
+            return View();
+        }
+
+
         public ActionResult CalculateLevelIncomeTr2()
         {
             Home model = new Home();

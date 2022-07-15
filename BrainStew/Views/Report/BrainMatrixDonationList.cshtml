@@ -1,12 +1,12 @@
 ﻿@model BrainStew.Models.UserReports
 
 @{
-    ViewBag.Title = "BrainMatrixBenefits";
+    ViewBag.Title = "BrainMatrixDonationList";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 <link href="~/plugins/flatpickr/flatpickr.css" rel="stylesheet" type="text/css">
 <link href="~/plugins/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
-@using (Html.BeginForm("UpgradeBenefits", "Report", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("BrainMatrixDonationList", "Report", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
 {
     <div class="container">
         <div class="row layout-top-spacing">

@@ -100,7 +100,7 @@
                             <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
                                     Amount<span style="color: red">*</span>
-                                    @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", @Placeholder = "Amount", @onkeypress = "return isNumberKey(event);", @onchange = "return GetFinalAmount();" })
+                                    @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", @Placeholder = "Amount", @onkeypress = "return GetFinalAmount();" }) @*@onkeypress = "return isNumberKey(event);"*@
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-3" style="margin-top:28px">
