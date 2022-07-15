@@ -349,7 +349,9 @@ namespace BrainStew.Controllers
                             mail.IsBodyHtml = true;
                             using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
                             {
-                                smtp.Credentials = new NetworkCredential("coustomer.BrainStew@gmail.com", "BrainStew@2022");
+
+                                //smtp.Credentials = new NetworkCredential("developer2.afluex@gmail.com", "devel@#123");
+                               smtp.Credentials = new NetworkCredential("coustomer.BrainStew@gmail.com", "BrainStew@2022");
                                 smtp.EnableSsl = true;
                                 smtp.Send(mail);
                             }
@@ -359,7 +361,8 @@ namespace BrainStew.Controllers
 
                     else if (ds.Tables[0].Rows[0][0].ToString() == "0")
                     {
-                        TempData["Login"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                        //TempData["Login"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                        TempData["Login"] = "Please contact to admin";
                     }
                 }
                 else
