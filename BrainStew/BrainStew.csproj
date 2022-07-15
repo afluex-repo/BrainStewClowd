@@ -317,7 +317,6 @@
     <Content Include="BrainStewWebsite\assets\img\contact.jpeg" />
     <Content Include="BrainStewWebsite\assets\img\contact.jpg" />
     <Content Include="BrainStewWebsite\assets\img\faq.png" />
-    <Content Include="BrainStewWebsite\assets\img\favicon.png" />
     <Content Include="BrainStewWebsite\assets\img\fb.png" />
     <Content Include="BrainStewWebsite\assets\img\global-img.png" />
     <Content Include="BrainStewWebsite\assets\img\how-it-works-image\1.png" />
@@ -960,6 +959,7 @@
     <Content Include="Views\Report\BrainLevelBenefits.cshtml" />
     <Content Include="Views\Report\StewMatrixBenefits.cshtml" />
     <Content Include="Views\Report\StewMatrixDonationList.cshtml" />
+    <Content Include="Views\Home\Maintenance.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
