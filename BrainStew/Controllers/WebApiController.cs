@@ -2765,8 +2765,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-        
         [HttpPost]
         public ActionResult GetQRCodeList(QRCodeRequest model)
         {
@@ -2792,13 +2790,5 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
-
-
-
-
-
-
     }
 }
