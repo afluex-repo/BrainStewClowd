@@ -1,7 +1,11 @@
   <script src="assets/js/header.js"></script>
-
-    <main>
-
+  <style>
+      .font-25
+      {
+          font-size:20px;
+          color:#000
+      }
+  </style>
         <!--page-title-area start-->
         <section class="page-title-area" style="background-image: url(assets/img/bg/breadcrumb.jpg);">
             <div class="container">
@@ -25,103 +29,114 @@
         <section class="donation-form-area-02 grey-bg2 pt-125 pb-100">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-8 col-lg-8 col-md-12">
+                    <div class="col-xl-12 col-lg-12 col-md-12">
                         <div class="donation-form-left">
                             <div class="donar-information donation-form white-bg mb-30 wow fadeInUp2 animated" data-wow-delay='.1s'>
                                 <div class="section-title text-left mb-50">
-                                    <h6><span><i class="fas fa-heart"></i></span> Donation Now</h6>
-                                    <h2>Personal Information</h2>
+                                    <h6><span><i class="fas fa-heart"></i></span> Brain Stew</h6>
+                                    <h1>Donation Form</h1>
                                 </div>
-                                <form action="#">
-                                    <div class="row">
-                                        <div class="col-xl-6">
-                                            <div class="input-area mb-10">
-                                                <input type="text" class="form-control" placeholder="Your Name">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <div class="input-area mb-10">
-                                                <input type="text" class="form-control" placeholder="Your Phone">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <div class="input-area mb-10">
-                                                <input type="text" class="form-control" placeholder="Email Address">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <div class="input-area mb-10">
-                                                <input type="text" class="form-control" placeholder="Country">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <div class="input-area mb-10">
-                                                <input type="text" class="form-control" placeholder="Your Location/ City">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <div class="input-area mb-10">
-                                                <input type="text" class="form-control" placeholder="Zip Code">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <div class="input-area mb-10">
-                                                <input type="text" class="form-control" placeholder="State">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <div class="input-area mb-10">
-                                                <input type="text" class="form-control" placeholder="Profession">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="donar-information donation-form white-bg mb-30 wow fadeInUp2 animated" data-wow-delay='.1s'>
-                                <div class="section-title text-left mb-50">
-                                    <h6><span><i class="fas fa-heart"></i></span> Donation Now</h6>
-                                    <h2>Payment Type</h2>
-                                </div>
-                                <ul class="nav nav-tabs mb-15" id="myTab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                            aria-controls="home" aria-selected="true">Online Donation</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                            aria-controls="profile" aria-selected="false">Offline Donation</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="home" role="tabpanel"
-                                        aria-labelledby="home-tab">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active">
                                         <div class="row payment-inner">
                                             <form action="#">
                                                 <div class="row">
-                                                    <div class="col-xl-6">
+                                                    <div class="col-xl-4">
                                                         <div class="input-area mb-30">
-                                                            <input type="text" class="form-control" placeholder="Your Name">
+                                                            <label class="font-25">Member No.</label>
+                                                            <input type="text" class="form-control" placeholder="Enter member no.">
                                                         </div>
                                                     </div>
-                                                    <div class="col-xl-6">
+                                                    <div class="col-xl-4">
                                                         <div class="input-area mb-30">
-                                                            <input type="text" class="form-control" placeholder="Your Phone">
+                                                            <label class="font-25">Child Name</label>
+                                                            <input type="text" class="form-control" placeholder="Enter child name">
                                                         </div>
                                                     </div>
-                                                    <div class="col-xl-6">
+                                                    <div class="col-xl-4">
                                                         <div class="input-area mb-30">
-                                                            <input type="text" class="form-control" placeholder="Email Address">
+                                                            <label class="font-25">Gender</label>
+                                                            <select class="form-control">
+                                                                <option>-- Select --</option>
+                                                                <option>Male</option>
+                                                                <option>Gemale</option>
+                                                            </select>
+                                                            <!--<input type="text" class="form-control" placeholder="Email Address">-->
                                                         </div>
                                                     </div>
-                                                    <div class="col-xl-6">
+                                                    <div class="col-xl-4">
                                                         <div class="input-area mb-30">
-                                                            <input type="text" class="form-control" placeholder="Country">
+                                                            <label class="font-25">Date of Birth</label>
+                                                            <input type="date" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="input-area mb-30">
+                                                            <label class="font-25">Father Name</label>
+                                                            <input type="text" class="form-control" placeholder="Enter father name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="input-area mb-30">
+                                                            <label class="font-25">Mother Name</label>
+                                                            <input type="text" class="form-control" placeholder="Enter mother name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="input-area mb-30">
+                                                            <label class="font-25">Sister's Name</label>
+                                                            <input type="text" class="form-control" placeholder="Enter sister name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="input-area mb-30">
+                                                            <label class="font-25">Sister's Age</label>
+                                                            <input type="text" class="form-control" placeholder="Enter sister name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="input-area mb-30">
+                                                            <label class="font-25">Brother's Name</label>
+                                                            <input type="text" class="form-control" placeholder="Enter brother name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="input-area mb-30">
+                                                            <label class="font-25">Brother's Age</label>
+                                                            <input type="text" class="form-control" placeholder="Enter brother name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="input-area mb-30">
+                                                            <label class="font-25">Family Work</label>
+                                                            <input type="text" class="form-control" placeholder="Family work">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="input-area mb-30">
+                                                            <label class="font-25">Need</label>
+                                                            <select class="form-control">
+                                                                <option>-- Select --</option>
+                                                                <option>Medicine</option>
+                                                                <option>Cloth</option>
+                                                                <option>Food</option>
+                                                                <option>Education</option>
+                                                                <option>Others</option>
+                                                            </select>
+                                                            <!--<input type="text" class="form-control" placeholder="Country">-->
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-12">
-                                                        <button class="theme_btn theme_btn_bg">Donate now</button>
+                                                        <div class="input-area mb-30">
+                                                            <label class="font-25">Need Amount</label>
+                                                            <input type="number" class="form-control" placeholder="Enter amount">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-3">
+                                                        <button class="theme_btn theme_btn_bg">Donate now <span><i class="fas fa-heart"></i></span></button>
                                                     </div>
                                                 </div>
+                                               
                                             </form>
                                         </div>
                                     </div>
@@ -160,7 +175,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-12">
+                    <!--<div class="col-xl-4 col-lg-4 col-md-12">
                         <div class="details-right-area">
                             <div class="widget white-bg mb-30">
                                 <div class="widget-post">
@@ -225,7 +240,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </section>
