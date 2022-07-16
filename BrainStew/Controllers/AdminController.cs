@@ -1619,7 +1619,39 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
+        
+        public ActionResult DeleteDonation(string Id)
+        {
+            Admin model = new Admin();
+            try
+            {
+                model.DonationId = Id;
+                model.AddedBy = Session["Pk_AdminId"].ToString();
+                DataSet ds = model.DeleteDonation();
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                    {
+                       TempData["Donation"]= "Record deleted successfully !";
+                    }
+                    else if (ds.Tables[0].Rows[0][0].ToString() == "0")
+                    {
+                        TempData["Donation"] = ds.Tables[0].Rows[0][0].ToString();
+                    }
+                }
+                else
+                {
+                    model.Result = ds.Tables[0].Rows[0][0].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                model.Result = ex.Message;
+            }
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
 
+       
 
     }
 }

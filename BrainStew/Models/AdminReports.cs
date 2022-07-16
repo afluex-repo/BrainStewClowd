@@ -14,6 +14,9 @@ namespace BrainStew.Models
         public List<AdminReports> lsttopupreport { get; set; }
         public List<AdminReports> lst { get; set; }
 
+        public List<AdminReports> lstdonation { get; set; }
+
+
         public string isBlocked { get; set; }
 
         public string Email { get; set; }
@@ -79,6 +82,22 @@ namespace BrainStew.Models
         public List<AdminReports> lstWalletLedger { get; set; }
         public string CrAmount { get; set; }
         public string DrAmount { get; set; }
+
+        public string DonationId { get; set; }
+        public string MemberNo { get; set; }
+        public string ChildName { get; set; }
+        public string DOB { get; set; }
+        public string FatherName { get; set; }
+        public string MotherName { get; set; }
+        public string SisterName { get; set; }
+        public string SisterAge { get; set; }
+        public string BrotherName { get; set; }
+        public string BrotherAge { get; set; }
+        public string FamilyWork { get; set; }
+        public string Need { get; set; }
+        public string NeedAmount { get; set; }
+
+
         #region associatelist
         public DataSet WalletLedger()
         {
@@ -155,7 +174,7 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("GetAdminProfileDetails", para);
             return ds;
         }
-        
+
         public DataSet UpdateAdminProfile()
         {
             SqlParameter[] para = {
@@ -188,7 +207,7 @@ namespace BrainStew.Models
         }
 
 
-        
+
 
         public DataSet DeleteUerDetails()
         {
@@ -347,7 +366,7 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("GetStewMatrixLevelBenefits", para);
             return ds;
         }
-        
+
 
         public DataSet GetStewMatrixBenefitsList()
         {
@@ -374,5 +393,18 @@ namespace BrainStew.Models
         }
 
 
+        public DataSet GetDonationList()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@FatherName", FatherName),
+                new SqlParameter("@MotherName", MotherName),
+                new SqlParameter("@FromDate", FromDate),
+                  new SqlParameter("@ToDate", ToDate)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetDonationList", para);
+            return ds;
+        }
+
+       
     }
 }
