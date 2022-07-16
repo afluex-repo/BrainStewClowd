@@ -18,7 +18,7 @@ namespace BrainStew.Controllers
         {
             //return Redirect("/Home/Login");
             //return View();
-           return Redirect("~/BrainStew/index.html");
+            return Redirect("~/BrainStew/index.html");
         }
         public ActionResult Login()
         {
@@ -137,7 +137,7 @@ namespace BrainStew.Controllers
         {
             //Home obj = new Home();
             List<SelectListItem> Gender = Common.BindGender();
-           // obj.SponsorId = Crypto.Decrypt(PId);
+            // obj.SponsorId = Crypto.Decrypt(PId);
             ViewBag.Gender = Gender;
             if (!string.IsNullOrEmpty(PId))
             {
@@ -220,10 +220,10 @@ namespace BrainStew.Controllers
             }
             #region Product Bind
             Common objcomm = new Common();
-           
+
             objcomm.Fk_UserId = Session["Pk_userId"].ToString();
             DataSet dsbalance = objcomm.GetWalletBalance();
-           if(dsbalance !=null && dsbalance.Tables.Count>0 &&dsbalance.Tables[0].Rows.Count>0)
+            if (dsbalance != null && dsbalance.Tables.Count > 0 && dsbalance.Tables[0].Rows.Count > 0)
             {
                 model.WalletBalance = dsbalance.Tables[0].Rows[0]["amount"].ToString();
             }
@@ -258,7 +258,7 @@ namespace BrainStew.Controllers
             else { }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-   
+
         public ActionResult emailtemplate()
         {
             return View();
@@ -270,11 +270,11 @@ namespace BrainStew.Controllers
             DataSet ds = obj.GetMemberDetails();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-               
-                    obj.DisplayName = ds.Tables[0].Rows[0]["FullName"].ToString();
-                    obj.Result = "Yes";
-                
-               
+
+                obj.DisplayName = ds.Tables[0].Rows[0]["FullName"].ToString();
+                obj.Result = "Yes";
+
+
             }
             else { obj.Result = "Invalid SponsorId"; }
             return Json(obj, JsonRequestBehavior.AllowGet);
@@ -351,7 +351,7 @@ namespace BrainStew.Controllers
                             {
 
                                 //smtp.Credentials = new NetworkCredential("developer2.afluex@gmail.com", "devel@#123");
-                               smtp.Credentials = new NetworkCredential("coustomer.BrainStew@gmail.com", "BrainStew@2022");
+                                smtp.Credentials = new NetworkCredential("coustomer.BrainStew@gmail.com", "BrainStew@2022");
                                 smtp.EnableSsl = true;
                                 smtp.Send(mail);
                             }
@@ -396,7 +396,7 @@ namespace BrainStew.Controllers
         public ActionResult CalculateROI()
         {
             Home model = new Home();
-           DataSet ds = model.CalculateROI();
+            DataSet ds = model.CalculateROI();
             return View();
         }
         public ActionResult ActivateUser(string Amount)
@@ -439,5 +439,58 @@ namespace BrainStew.Controllers
             DataSet ds1 = model.TransferPlacementUpgradeIncome();
             return View();
         }
+
+
+
+        public ActionResult SaveDonation(string MemberNo, string ChildName, string Gender, string DOB, string FatherName,
+            string MotherName, string SisterName, string SisterAge, string BrotherName, string BrotherAge,
+            string FamilyWork, string Need, string NeedAmount)
+        {
+            Home model = new Home();
+            try
+            {
+                model.MemberNo = MemberNo;
+                model.ChildName = ChildName;
+                model.Gender = Gender;
+                model.DOB = DOB;
+                model.FatherName = FatherName;
+                model.MotherName = MotherName;
+                model.SisterName = SisterName;
+                model.SisterAge = SisterAge;
+                model.BrotherName = BrotherName;
+                model.BrotherAge = BrotherAge;
+                model.FamilyWork = FamilyWork;
+                model.Need = Need;
+                model.NeedAmount = NeedAmount;
+                DataSet ds = model.SaveDonation();
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                    {
+                       model.Result = "1";
+                    }
+                    else if (ds.Tables[0].Rows[0][0].ToString() == "0")
+                    {
+                        model.Result = ds.Tables[0].Rows[0][0].ToString();
+                    }
+                }
+                else
+                {
+                    model.Result = ds.Tables[0].Rows[0][0].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                model.Result = ex.Message;
+            }
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+
+
+
     }
 }

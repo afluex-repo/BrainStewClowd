@@ -1161,7 +1161,7 @@ namespace BrainStew.Controllers
             }
             else
             {
-                Response.Status = "0";
+                Response.Status = "1";
                 Response.Message = "Record Not Found";
             }
             return Json(Response, JsonRequestBehavior.AllowGet);

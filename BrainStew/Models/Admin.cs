@@ -106,9 +106,8 @@ namespace BrainStew.Models
         public string TotalWallet { get; set; }
         public string MyWallet { get; set; }
         public string TopUpWallet { get; set; }
-
-
-
+        public string DonationId { get; set; }
+        
         #endregion
         #region PinGenerated
         public DataSet CreatePin()
@@ -428,5 +427,15 @@ namespace BrainStew.Models
             return ds;
         }
 
+
+        public DataSet DeleteDonation()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@DonationId", DonationId),
+                new SqlParameter("@DeletedBy", AddedBy)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("DeleteDonation", para);
+            return ds;
+        }
     }
 }

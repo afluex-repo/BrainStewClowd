@@ -16,8 +16,8 @@ namespace BrainStew.Models
         {
             try
             {
-               connectionString = "Data Source=103.48.51.111,1232;Initial Catalog=brainstew;User Id=brainstewuser; Password=brain@*!)1$%&; Integrated Security=false;";
-               // connectionString = "Data Source=103.48.51.111,1232;Initial Catalog=brainstewdbtest;User Id=brainstewtestuser; Password=brain@*!)1$%&; Integrated Security=false;";
+               //connectionString = "Data Source=103.48.51.111,1232;Initial Catalog=brainstew;User Id=brainstewuser; Password=brain@*!)1$%&; Integrated Security=false;";
+               connectionString = "Data Source=103.48.51.111,1232;Initial Catalog=brainstewdbtest;User Id=brainstewtestuser; Password=brain@*!)1$%&; Integrated Security=false;";
             }
             catch (Exception)
             {
