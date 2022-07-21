@@ -1343,13 +1343,8 @@ namespace BrainStew.Controllers
             //    }
             //    model.lstSister = lst;
             //}
-
-
             return View(model);
         }
-
-
-
         [HttpPost]
         [ActionName("DonationList")]
         [OnAction(ButtonName = "Search")]
@@ -1382,7 +1377,6 @@ namespace BrainStew.Controllers
                 }
                 model.lstdonation = lst;
             }
-
             //List<AdminReports> lst1 = new List<AdminReports>();
             //DataSet ds1 = model.GetFamilyList();
             //if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
@@ -1401,7 +1395,6 @@ namespace BrainStew.Controllers
 
             return View(model);
         }
-
         public ActionResult SisterList(string Id)
         {
             AdminReports model = new AdminReports();
@@ -1423,8 +1416,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
         public ActionResult BrotherList(string Id)
         {
             AdminReports model = new AdminReports();
