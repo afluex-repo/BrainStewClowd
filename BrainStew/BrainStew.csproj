@@ -960,6 +960,7 @@
     <Content Include="Views\Report\BrainLevelBenefits.cshtml" />
     <Content Include="Views\Report\StewMatrixBenefits.cshtml" />
     <Content Include="Views\Report\StewMatrixDonationList.cshtml" />
+    <Content Include="Views\Admin\PushupPayment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

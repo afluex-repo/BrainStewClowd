@@ -32,6 +32,8 @@ namespace BrainStew.Models
         public string ProfilePic { get; set; }
         public string PinCode { get; set; }
         public string Gender { get; set; }
+        public string State { get; set; }
+        public string City { get; set; }
         public DataSet Registration()
         {
             SqlParameter[] para = {
@@ -44,6 +46,8 @@ namespace BrainStew.Models
                                    new SqlParameter("@LastName",LastName),
                                     new SqlParameter("@RegistrationBy",RegistrationBy),
                                      new SqlParameter("@PinCode",PinCode),
+                                         new SqlParameter("@State",State),
+                                      new SqlParameter("@City",City),
                                      new SqlParameter("@Leg",""),
                                      new SqlParameter("@Password",Password)
 
@@ -51,6 +55,7 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("Registration", para);
             return ds;
         }
+        
 
     }
     #endregion
@@ -177,6 +182,14 @@ namespace BrainStew.Models
         }
 
     }
+
+    //public class lstDashboardResponse
+    //{
+    //    public string TotalDownline { get; set; }
+    //    public string TotalDirect { get; set; }
+    //    public List<DashboardResponse> lst { get; set; }
+    //}
+    
     public class DashboardResponse
     {
         public string TotalDownline { get; set; }
@@ -187,6 +200,34 @@ namespace BrainStew.Models
         public string Status { get; set; }
         public string Message { get; set; }
         public string ReferralLink { get; set; }
+        
+        public string TPSId { get; set; }
+        public string TotalBlocked { get; set; }
+        public string TotalROI { get; set; }
+        public string TotalPayoutWallet { get; set; }
+        public string TotalWalletAmount { get; set; }
+ 
+        public string TotalAmount { get; set; }
+        public string TotalDonation { get; set; }
+        public string LevelIncome { get; set; }
+        public string LevelUpgradeIncome { get; set; }
+        public string ReferralSponsorIncome { get; set; }
+        public string MatrixIncomeLevel { get; set; }
+        public string MatrixIncomeUpdateDate { get; set; }
+        public string ForeverMatrixIncome { get; set; }
+
+        public string ForeverLevelIncome { get; set; }
+        public string TotalIncome { get; set; }
+        public string TopupWallet { get; set; }
+        public string MyWallet { get; set; }
+        public string MatrixWallet { get; set; }
+        public string WithdrawlAmount { get; set; }
+        public string CurrentLevel { get; set; }
+        public string UpgradeMatrix { get; set; }
+
+        public string ReferralIncentive { get; set; }
+        public string Stewmatrixincome { get; set; }
+        
     }
     public class UpdateProfile
     {
@@ -672,7 +713,4 @@ namespace BrainStew.Models
             return ds;
         }
     }
-
-
-    
 }

@@ -1620,6 +1620,76 @@ namespace BrainStew.Controllers
             return View(model);
         }
 
+        public ActionResult PushupPayment()
+        {
+            #region DonationPlan
+            List<SelectListItem> ddldonationPlan = Common.BindDonationPlan();
+            ViewBag.ddldonationplanType = ddldonationPlan;
+            List<SelectListItem> ddlLevel = new List<SelectListItem>();
+            ddlLevel.Add(new SelectListItem { Text = "Select Level", Value = "0" });
+            ViewBag.ddlLevel = ddlLevel;
+            #endregion
+            return View();
 
+        }
+        public ActionResult getLevel(string DonationId)
+        {
+            List<SelectListItem> lstDonation = new List<SelectListItem>();
+            AdminReports model = new AdminReports();
+            model.DonationPlanTypeId = DonationId;
+            DataSet ds = model.GetDonationPlanList();
+
+            #region ddlLevelDonation
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                model.Result = "Yes";
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    lstDonation.Add(new SelectListItem { Text = dr["Donation"].ToString(), Value = dr["DonationId"].ToString() });
+                }
+
+            }
+
+            model.lstLevelDonation = lstDonation;
+            #endregion
+
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        [ActionName("PushupPayment")]
+        [OnAction(ButtonName = "btn_Save")]
+        public ActionResult SavePushPlanDetails(AdminReports model)
+        {
+            try
+            {
+                #region DonationPlan
+                List<SelectListItem> ddldonationPlan = Common.BindDonationPlan();
+                ViewBag.ddldonationplanType = ddldonationPlan;
+                List<SelectListItem> ddlLevel = new List<SelectListItem>();
+                ddlLevel.Add(new SelectListItem { Text = "Select Level", Value = "0" });
+                ViewBag.ddlLevel = ddlLevel;
+                #endregion
+                model.TransactionDate = string.IsNullOrEmpty(model.TransactionDate) ? null : Common.ConvertToSystemDate(model.TransactionDate, "dd/MM/yyyy");
+                DataSet ds = model.SavePushupPayment();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        TempData["msg"] = "Payment Saved Successfully !!";
+                    }
+                    else if (ds.Tables[0].Rows[0]["Msg"].ToString() == "0")
+                    {
+                        TempData["msg"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return View(model);
+        }
     }
 }
