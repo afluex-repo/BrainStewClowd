@@ -28,39 +28,39 @@ document.write(`
                         <h5 class="semi-02-title mb-25">Photo Gallery</h5>
                         <div class="insta-feed">
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/1.png" alt="" class ="img-fluid">
+                                <img src="../assets/asset-web/img/instagram/1.png" alt="" class ="img-fluid">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                             <a class="insta" href="gallery.html">
-                                <img src="~/assets/asset-web/img/instagram/2.png" alt="">
+                                <img src="../assets/asset-web/img/instagram/2.png" alt="">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/3.png" alt="">
+                                <img src="../assets/asset-web/img/instagram/3.png" alt="">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/4.png" alt="">
+                                <img src="../assets/asset-web/img/instagram/4.png" alt="">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/5.png" alt="">
+                                <img src="../assets/asset-web/img/instagram/5.png" alt="">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/6.png" alt="">
+                                <img src="../assets/asset-web/img/instagram/6.png" alt="">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/7.png" alt="">
+                                <img src="../assets/asset-web/img/instagram/7.png" alt="">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/8.png" alt="">
+                                <img src="../assets/asset-web/img/instagram/8.png" alt="">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                             <a class="insta" href="gallery.html">
-                                <img src="assets/img/instagram/9.png" alt="">
+                                <img src="../assets/asset-web/img/instagram/9.png" alt="">
                                 <span><i class="far fa-plus"></i></span>
                             </a>
                         </div>
