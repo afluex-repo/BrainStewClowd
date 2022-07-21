@@ -63,19 +63,19 @@ document.write(`
                 <div class="row align-items-center justify-content-between">
                     <div class="col-xl-2 col-lg-2 col-md-6 col-6">
                         <div class="logo">
-                            <a class ="logo-img" href="index.html"><img src="../assets/asset-web/img/logo/final_logo.png" class ="logo_img" alt=""></a>
+                            <a class ="logo-img" href="/BrainStew/index.html"><img src="../assets/asset-web/img/logo/final_logo.png" class ="logo_img" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-7 col-lg-6 d-none d-lg-block text-lg-center text-xl-right">
                         <div class="main-menu main-menu-03 d-none d-lg-block">
                             <nav>
                                 <ul>
-                                    <li><a class="active" href="index.html">Home</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="projects.html">Our Projects</a></li>
-                                    <li><a href="what-we-do.html">What We Do</a></li>
-                                    <li><a href="gallery.html">Our Gallery</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a class="active" href="/BrainStew/index.html">Home</a></li>
+                                    <li><a href="/BrainStew/about.html">About Us</a></li>
+                                    <li><a href="/BrainStew/projects.html">Our Projects</a></li>
+                                    <li><a href="/BrainStew/what-we-do.html">What We Do</a></li>
+                                    <li><a href="/BrainStew/gallery.html">Our Gallery</a></li>
+                                    <li><a href="/BrainStew/contact.html">Contact Us</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -87,7 +87,7 @@ document.write(`
                             </a>
                         </div>
                         <div class="quote-btn d-none d-lg-block">
-                            <a href="donation.html" class="theme_btn theme_btn2 theme_btn_bg_02">donate Now <span><i class="fas fa-heart"></i></span></a>
+                            <a href="/Home/charitydonation" class="theme_btn theme_btn2 theme_btn_bg_02">donate Now <span><i class="fas fa-heart"></i></span></a>
                         </div>
                     </div>
                 </div>
@@ -135,15 +135,15 @@ document.write(`
         <nav class="side-mobile-menu">
             <ul id="mobile-menu-active">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="/BrainStew/index.html">Home</a>
                 </li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="projects.html">Our Projects</a>
+                <li><a href="/BrainStew/about.html">About Us</a></li>
+                <li><a href="/BrainStew/projects.html">Our Projects</a>
                 </li>
-                <li><a href="what-we-do.html">What We Do</a></li>
-                <li><a href="gallery.html">Our Gallery</a>
+                <li><a href="/BrainStew/what-we-do.html">What We Do</a></li>
+                <li><a href="/BrainStew/gallery.html">Our Gallery</a>
                 </li>
-                <li><a href="contact.html">Contacts Us</a></li>
+                <li><a href="/BrainStew/contact.html">Contacts Us</a></li>
             </ul>
         </nav>
         <!-- side-mobile-menu end -->
