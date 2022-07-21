@@ -212,6 +212,7 @@ E:\Repository\BrainStewClowd\BrainStew\bin\System.Web.Http.WebHost.xml
 E:\Repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.dll
 E:\Repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.pdb
 E:\Repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.csprojResolveAssemblyReference.cache
+E:\Repository-Projects\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.csprojResolveAssemblyReference.cache
 F:\SachinMishraProject\repository\BrainStewClowd\BrainStew\bin\ApplicationInsights.config
 F:\SachinMishraProject\repository\BrainStewClowd\BrainStew\bin\roslyn\csc.exe
 F:\SachinMishraProject\repository\BrainStewClowd\BrainStew\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -263,6 +264,6 @@ F:\SachinMishraProject\repository\BrainStewClowd\BrainStew\bin\Newtonsoft.Json.x
 F:\SachinMishraProject\repository\BrainStewClowd\BrainStew\bin\System.Net.Http.Formatting.xml
 F:\SachinMishraProject\repository\BrainStewClowd\BrainStew\bin\System.Web.Http.xml
 F:\SachinMishraProject\repository\BrainStewClowd\BrainStew\bin\System.Web.Http.WebHost.xml
+F:\SachinMishraProject\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.csprojResolveAssemblyReference.cache
 F:\SachinMishraProject\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.dll
 F:\SachinMishraProject\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.pdb
-E:\Repository-Projects\repository\BrainStewClowd\BrainStew\obj\Debug\BrainStew.csprojResolveAssemblyReference.cache

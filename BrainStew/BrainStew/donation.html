@@ -461,15 +461,16 @@
                 processData: false,
                 success: function (response) {
                     debugger
-                    if (response.Result = "1") {
-                        list = [];
-                        //window.location.reload(true);
-                        alert('Donated successfully');
-                        window.location.href = '/BrainStew/donation.html';
-                    }
-                    else {
+                    alert('Donated successfully');
+                    window.location.href = '/BrainStew/donation.html';
+                    //if (response.Result = "1") {
+                    //    list = [];
+                    //    //window.location.reload(true);
+                     
+                    //}
+                    //else {
 
-                    }
+                    //}
                 },
                 error: function (error) {
                     console.log(error);
