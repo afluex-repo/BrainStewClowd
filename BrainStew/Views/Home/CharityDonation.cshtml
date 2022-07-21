@@ -1,3 +1,8 @@
+﻿@*@model BrainStew.Models.Home*@
+
+@{
+    Layout = null;
+}
 <script src="assets/js/header.js"></script>
 <style>
     .font-25 {
@@ -33,7 +38,7 @@
                     <div class="donar-information donation-form white-bg mb-30 wow fadeInUp2 animated" data-wow-delay='.1s'>
                         <div class="section-title text-left mb-50">
                             <h6><span><i class="fas fa-heart"></i></span> Brain Stew</h6>
-                            <h1>Donation Form</h1>
+                            <h1>Donation Form</h1> <span>@TempData["Donation"]</span>
                         </div>
                         <div class="tab-content">
                             <div class="tab-pane fade show active">

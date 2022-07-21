@@ -440,7 +440,10 @@ namespace BrainStew.Controllers
             DataSet ds1 = model.TransferPlacementUpgradeIncome();
             return View();
         }
-        
+        public ActionResult CharityDonation()
+        {
+            return View();
+        }
         [HttpPost]
         public JsonResult SaveDonationDetails(Home model)
         {
@@ -467,19 +470,21 @@ namespace BrainStew.Controllers
                 if (ds.Tables[0].Rows[0][0].ToString() == "1")
                 {
                     TempData["Donation"] = "Donated successfully";
-                    status = true;
+                    model.Result = "1";
                 }
                 else if (ds.Tables[0].Rows[0][0].ToString() == "0")
                 {
+                    model.Result = "0";
                     TempData["Donation"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                 }
             }
             else
             {
+                model.Result = "0";
                 TempData["Donation"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
             }
-            return new JsonResult { Data = new { status = status } };
-           // return Json(model, JsonRequestBehavior.AllowGet);
+            //return new JsonResult { Data = new { status = status } };
+           return Json(model, JsonRequestBehavior.AllowGet);
         }
         
     }
