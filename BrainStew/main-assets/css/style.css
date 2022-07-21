@@ -224,7 +224,7 @@ body.loaded .fxt-template:after {
 .fxt-template .fxt-main-content .fxt-logo {
   margin-top: 8px;
   margin-bottom: 100px;
-  max-width: 40vw;
+  /*max-width: 40vw;*/
 }
 @media only screen and (max-width: 1199px) {
   .fxt-template .fxt-main-content .fxt-logo {
@@ -240,15 +240,30 @@ body.loaded .fxt-template:after {
   .fxt-template .fxt-main-content .fxt-logo {
     margin-bottom: 70px;
   }
+  .banner-img
+  {
+      height:320px !important;
+      width:100%;
+  }
 }
 @media only screen and (max-width: 575px) {
   .fxt-template .fxt-main-content .fxt-logo {
     margin-bottom: 60px;
   }
+   .banner-img
+  {
+      height:320px !important;
+      width:100%;
+  }
 }
 @media only screen and (max-width: 479px) {
   .fxt-template .fxt-main-content .fxt-logo {
     margin-bottom: 50px;
+  }
+   .banner-img
+  {
+      height:320px !important;
+      width:100%;
   }
 }
 .fxt-template .fxt-main-content .fxt-main-title {
@@ -261,7 +276,7 @@ body.loaded .fxt-template:after {
 .fxt-template .fxt-main-content .subscribe-form .input-group .input-group-addon {
   display: inline-block;
 }
-button {
+.button {
   cursor: pointer;
   display: inline-block;
   font-size: 16px;
@@ -293,10 +308,10 @@ button {
     min-width: 140px;
   }
 }
-button:focus {
+.button:focus {
   outline: none;
 }
-button:hover {
+.button:hover {
   background-color: transparent;
   color: #f15b43;
 }
