@@ -107,7 +107,9 @@ namespace BrainStew.Models
         public string MyWallet { get; set; }
         public string TopUpWallet { get; set; }
         public string DonationId { get; set; }
+        public string Pk_FamilydetailsId { get; set; }
         
+
         #endregion
         #region PinGenerated
         public DataSet CreatePin()
