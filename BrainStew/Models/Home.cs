@@ -7,7 +7,7 @@ using System.Web;
 using BrainStew.Models;
 namespace BrainStew.Models
 {
-    public class Home:Common
+    public class Home : Common
     {
         public List<Home> lstMenu { get; set; }
         public List<Home> lstsubmenu { get; set; }
@@ -23,23 +23,40 @@ namespace BrainStew.Models
         public string PanNo { get; set; }
         public string MobileNo { get; set; }
         public string Email { get; set; }
-        public string RegistrationBy { get;  set; }
-        public string Password { get;  set; }
-        public string Pk_AdminId { get;  set; }
-        public string MenuId { get;  set; }
-        public string MenuName { get;  set; }
-        public string Icon { get;  set; }
-        public string Url { get;  set; }
-        public string SubMenuId { get;  set; }
-        public string SubMenuName { get;  set; }
-        public string UserType { get;  set; }
+        public string RegistrationBy { get; set; }
+        public string Password { get; set; }
+        public string Pk_AdminId { get; set; }
+        public string MenuId { get; set; }
+        public string MenuName { get; set; }
+        public string Icon { get; set; }
+        public string Url { get; set; }
+        public string SubMenuId { get; set; }
+        public string SubMenuName { get; set; }
+        public string UserType { get; set; }
         public string ConfirmPassword { get; set; }
         public string Gender { get; set; }
         public string ProfilePic { get; set; }
         public HttpPostedFileBase postedFile { get; set; }
         public string Name { get; set; }
         public string ePinNo { get; set; }
-        
+        public string MemberNo { get; set; }
+        public string ChildName { get; set; }
+        public string DOB { get; set; }
+        public string FatherName { get; set; }
+        public string MotherName { get; set; }
+        public string SisterName { get; set; }
+        public string SisterAge { get; set; }
+        public string BrotherName { get; set; }
+        public string BrotherAge { get; set; }
+        public string FamilyWork { get; set; }
+        public string Need { get; set; }
+        public string NeedAmount { get; set; }
+
+        public DataTable dtSistersDetails { get; set; }
+        public DataTable dtBrothersDetails { get; set; }
+
+
+
         #endregion
         #region Sponsor
         public DataSet GetMemberDetails()
@@ -236,6 +253,30 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("ActivateUserByWallet", para);
             return ds;
         }
+
+        public DataSet SaveDonationDetails()
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@MemberNo", MemberNo),
+                                          new SqlParameter("@Gender", Gender),
+                                      new SqlParameter("@ChildName", ChildName),
+                                       new SqlParameter("@DOB",DOB) ,
+                                      new SqlParameter("@FatherName", FatherName) ,
+                                      new SqlParameter("@MotherName", MotherName),
+                                      new SqlParameter("@FamilyWork", FamilyWork) ,
+                                      new SqlParameter("@Need", Need),
+                                        new SqlParameter("@NeedAmount", NeedAmount),
+                                         new SqlParameter("@dtSistersDetails", dtSistersDetails),
+                                          new SqlParameter("@dtBrothersDetails", dtBrothersDetails)
+    };
+            DataSet ds = DBHelper.ExecuteQuery("SaveDonationDetails", para);
+            return ds;
+        }
+
+
+
+
+
 
     }
 }

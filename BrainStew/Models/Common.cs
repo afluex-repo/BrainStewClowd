@@ -134,7 +134,14 @@ namespace BrainStew.Models
             //PaymentType.Add(new SelectListItem { Text = "Online", Value = "Online" });
             return PaymentType;
         }
-
+        public static List<SelectListItem> BindDonationPlan()
+        {
+            List<SelectListItem> DonationPlanList = new List<SelectListItem>();
+            DonationPlanList.Add(new SelectListItem { Text = "Select Donation Plan", Value = "0" });
+            DonationPlanList.Add(new SelectListItem { Text = "Brain Stew Donation", Value = "1" });
+            DonationPlanList.Add(new SelectListItem { Text = "Stew Matrix Donation Plan", Value = "2" });
+            return DonationPlanList;
+        }
 
         public DataSet GetMemberDetails()
         {

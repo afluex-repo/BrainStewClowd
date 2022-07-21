@@ -1,5 +1,6 @@
 ﻿using BrainStew.Filter;
 using BrainStew.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace BrainStew.Controllers
 {
@@ -18,7 +20,7 @@ namespace BrainStew.Controllers
         {
             //return Redirect("/Home/Login");
             //return View();
-           return Redirect("~/BrainStew/index.html");
+            return Redirect("~/BrainStew/index.html");
         }
         public ActionResult Login()
         {
@@ -121,7 +123,6 @@ namespace BrainStew.Controllers
                     TempData["Login"] = "Incorrect LoginId Or Password";
                     FormName = "Login";
                     Controller = "Home";
-
                 }
             }
             catch (Exception ex)
@@ -137,7 +138,7 @@ namespace BrainStew.Controllers
         {
             //Home obj = new Home();
             List<SelectListItem> Gender = Common.BindGender();
-           // obj.SponsorId = Crypto.Decrypt(PId);
+            // obj.SponsorId = Crypto.Decrypt(PId);
             ViewBag.Gender = Gender;
             if (!string.IsNullOrEmpty(PId))
             {
@@ -220,10 +221,10 @@ namespace BrainStew.Controllers
             }
             #region Product Bind
             Common objcomm = new Common();
-           
+
             objcomm.Fk_UserId = Session["Pk_userId"].ToString();
             DataSet dsbalance = objcomm.GetWalletBalance();
-           if(dsbalance !=null && dsbalance.Tables.Count>0 &&dsbalance.Tables[0].Rows.Count>0)
+            if (dsbalance != null && dsbalance.Tables.Count > 0 && dsbalance.Tables[0].Rows.Count > 0)
             {
                 model.WalletBalance = dsbalance.Tables[0].Rows[0]["amount"].ToString();
             }
@@ -258,7 +259,7 @@ namespace BrainStew.Controllers
             else { }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-   
+
         public ActionResult emailtemplate()
         {
             return View();
@@ -270,11 +271,11 @@ namespace BrainStew.Controllers
             DataSet ds = obj.GetMemberDetails();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-               
-                    obj.DisplayName = ds.Tables[0].Rows[0]["FullName"].ToString();
-                    obj.Result = "Yes";
-                
-               
+
+                obj.DisplayName = ds.Tables[0].Rows[0]["FullName"].ToString();
+                obj.Result = "Yes";
+
+
             }
             else { obj.Result = "Invalid SponsorId"; }
             return Json(obj, JsonRequestBehavior.AllowGet);
@@ -351,7 +352,7 @@ namespace BrainStew.Controllers
                             {
 
                                 //smtp.Credentials = new NetworkCredential("developer2.afluex@gmail.com", "devel@#123");
-                               smtp.Credentials = new NetworkCredential("coustomer.BrainStew@gmail.com", "BrainStew@2022");
+                                smtp.Credentials = new NetworkCredential("coustomer.BrainStew@gmail.com", "BrainStew@2022");
                                 smtp.EnableSsl = true;
                                 smtp.Send(mail);
                             }
@@ -396,7 +397,7 @@ namespace BrainStew.Controllers
         public ActionResult CalculateROI()
         {
             Home model = new Home();
-           DataSet ds = model.CalculateROI();
+            DataSet ds = model.CalculateROI();
             return View();
         }
         public ActionResult ActivateUser(string Amount)
@@ -439,5 +440,52 @@ namespace BrainStew.Controllers
             DataSet ds1 = model.TransferPlacementUpgradeIncome();
             return View();
         }
+        public ActionResult CharityDonation()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult SaveDonationDetails(Home model)
+        {
+            var profile = Request.Files;
+            bool status = false;
+            var datavalue = Request["SistersdataValue"];
+            var jssss = new JavaScriptSerializer();
+            var jdvvv = jssss.Deserialize<dynamic>(Request["SistersdataValue"]);
+            DataTable dtSistersDetails = new DataTable();
+            dtSistersDetails = JsonConvert.DeserializeObject<DataTable>(jdvvv["SistersAddData"]);
+            model.dtSistersDetails = dtSistersDetails;
+            
+            var datavaluee = Request["BrothersdataValue"];
+            var jssss1 = new JavaScriptSerializer();
+            var jdvvv1 = jssss1.Deserialize<dynamic>(Request["BrothersdataValue"]);
+            DataTable dtBrothersDetails = new DataTable();
+            dtBrothersDetails = JsonConvert.DeserializeObject<DataTable>(jdvvv1["BrothersAddData"]);
+            model.dtBrothersDetails = dtBrothersDetails;
+            
+            DataSet ds = new DataSet();
+            ds = model.SaveDonationDetails();
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                {
+                    TempData["Donation"] = "Donated successfully";
+                    model.Result = "1";
+                }
+                else if (ds.Tables[0].Rows[0][0].ToString() == "0")
+                {
+                    model.Result = "0";
+                    TempData["Donation"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+            }
+            else
+            {
+                model.Result = "0";
+                TempData["Donation"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+            }
+            //return new JsonResult { Data = new { status = status } };
+           return Json(model, JsonRequestBehavior.AllowGet);
+        }
+        
     }
 }

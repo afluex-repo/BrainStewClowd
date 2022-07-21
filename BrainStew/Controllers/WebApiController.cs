@@ -1161,7 +1161,7 @@ namespace BrainStew.Controllers
             }
             else
             {
-                Response.Status = "0";
+                Response.Status = "1";
                 Response.Message = "Record Not Found";
             }
             return Json(Response, JsonRequestBehavior.AllowGet);
@@ -1880,7 +1880,7 @@ namespace BrainStew.Controllers
             BusinessReportsResponse response = new BusinessReportsResponse();
             List<BusinessReportsResp> lst = new List<BusinessReportsResp>();
             model.LoginId = model.LoginId == "" ? null : model.LoginId;
-            if (model.IsDownline == "on")
+            if (model.IsDownline == "1")
             {
                 model.IsDownline = "1";
             }
@@ -2765,8 +2765,6 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-        
         [HttpPost]
         public ActionResult GetQRCodeList(QRCodeRequest model)
         {
@@ -2792,13 +2790,5 @@ namespace BrainStew.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
-
-
-
-
-
-
     }
 }
