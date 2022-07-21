@@ -1316,17 +1316,35 @@ namespace BrainStew.Controllers
                     obj.DOB = r["DOB"].ToString();
                     obj.FatherName = r["FatherName"].ToString();
                     obj.MotherName = r["MotherName"].ToString();
-                    obj.SisterName = r["SisterName"].ToString();
-                    obj.SisterAge = r["SisterAge"].ToString();
-                    obj.BrotherName = r["BrotherName"].ToString();
-                    obj.BrotherAge = r["BrotherAge"].ToString();
+                    //obj.Name = r["Name"].ToString();
+                    //obj.Age = r["Age"].ToString();
+                    //obj.GenderType = r["GenderType"].ToString();
                     obj.FamilyWork = r["FamilyWork"].ToString();
                     obj.Need = r["Need"].ToString();
                     obj.NeedAmount = r["NeedAmount"].ToString();
+                    obj.ChildCharity = r["ChildCharity"].ToString();
                     lst.Add(obj);
                 }
                 model.lstdonation = lst;
             }
+
+            //List<AdminReports> lst1 = new List<AdminReports>();
+            //DataSet ds1 = model.GetFamilyList();
+            //if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            //{
+            //    foreach (DataRow r in ds1.Tables[0].Rows)
+            //    {
+            //        AdminReports obj = new AdminReports();
+            //        obj.FK_DonationId = r["FK_DonationId"].ToString();
+            //        obj.Name = r["Name"].ToString();
+            //        obj.Age = r["Age"].ToString();
+            //        obj.GenderType = r["Gender"].ToString();
+            //        lst.Add(obj);
+            //    }
+            //    model.lstSister = lst;
+            //}
+
+
             return View(model);
         }
 
@@ -1353,21 +1371,82 @@ namespace BrainStew.Controllers
                     obj.DOB = r["DOB"].ToString();
                     obj.FatherName = r["FatherName"].ToString();
                     obj.MotherName = r["MotherName"].ToString();
-                    obj.SisterName = r["SisterName"].ToString();
-                    obj.SisterAge = r["SisterAge"].ToString();
-                    obj.BrotherName = r["BrotherName"].ToString();
-                    obj.BrotherAge = r["BrotherAge"].ToString();
+                    //obj.Name = r["Name"].ToString();
+                    //obj.Age = r["Age"].ToString();
+                    //obj.GenderType = r["GenderType"].ToString();
                     obj.FamilyWork = r["FamilyWork"].ToString();
                     obj.Need = r["Need"].ToString();
                     obj.NeedAmount = r["NeedAmount"].ToString();
+                    obj.ChildCharity = r["ChildCharity"].ToString();
                     lst.Add(obj);
                 }
                 model.lstdonation = lst;
             }
+
+            //List<AdminReports> lst1 = new List<AdminReports>();
+            //DataSet ds1 = model.GetFamilyList();
+            //if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            //{
+            //    foreach (DataRow r in ds1.Tables[0].Rows)
+            //    {
+            //        AdminReports obj = new AdminReports();
+            //        obj.FK_DonationId = r["FK_DonationId"].ToString();
+            //        obj.Name = r["Name"].ToString();
+            //        obj.Age = r["Age"].ToString();
+            //        obj.GenderType = r["Gender"].ToString();
+            //        lst.Add(obj);
+            //    }
+            //    model.lstSister = lst;
+            //}
+
             return View(model);
         }
 
-        
+        public ActionResult SisterList(string Id)
+        {
+            AdminReports model = new AdminReports();
+            List<AdminReports> lst = new List<AdminReports>();
+            model.FK_DonationId = Id;
+            DataSet ds = model.GetFamilyList();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.FK_DonationId = r["FK_DonationId"].ToString();
+                    obj.Name = r["Name"].ToString();
+                    obj.Age = r["Age"].ToString();
+                    obj.Gender = r["Gender"].ToString();
+                    lst.Add(obj);
+                }
+                model.lstSister = lst;
+            }
+            return View(model);
+        }
+
+
+        public ActionResult BrotherList(string Id)
+        {
+            AdminReports model = new AdminReports();
+            List<AdminReports> lst = new List<AdminReports>();
+            model.FK_DonationId = Id;
+            DataSet ds = model.GetFamilyList();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.FK_DonationId = r["FK_DonationId"].ToString();
+                    obj.Name = r["Name"].ToString();
+                    obj.Age = r["Age"].ToString();
+                    obj.Gender = r["Gender"].ToString();
+                    lst.Add(obj);
+                }
+                model.lstBrother = lst;
+            }
+            return View(model);
+        }
+
 
     }
 }

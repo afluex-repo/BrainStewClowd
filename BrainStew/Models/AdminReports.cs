@@ -15,7 +15,8 @@ namespace BrainStew.Models
         public List<AdminReports> lst { get; set; }
 
         public List<AdminReports> lstdonation { get; set; }
-
+        public List<AdminReports> lstSister { get; set; }
+        public List<AdminReports> lstBrother { get; set; }
 
         public string isBlocked { get; set; }
 
@@ -96,7 +97,11 @@ namespace BrainStew.Models
         public string FamilyWork { get; set; }
         public string Need { get; set; }
         public string NeedAmount { get; set; }
-
+        public string Age { get; set; }
+        public string GenderType { get; set; }
+        public string ChildCharity { get; set; }
+        public string FK_DonationId { get; set; }
+        
 
         #region associatelist
         public DataSet WalletLedger()
@@ -405,6 +410,14 @@ namespace BrainStew.Models
             return ds;
         }
 
-       
+
+        public DataSet GetFamilyList()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@FK_DonationId", FK_DonationId),
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetFamilyList", para);
+            return ds;
+        }
     }
 }

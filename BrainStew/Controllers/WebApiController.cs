@@ -1880,7 +1880,7 @@ namespace BrainStew.Controllers
             BusinessReportsResponse response = new BusinessReportsResponse();
             List<BusinessReportsResp> lst = new List<BusinessReportsResp>();
             model.LoginId = model.LoginId == "" ? null : model.LoginId;
-            if (model.IsDownline == "on")
+            if (model.IsDownline == "1")
             {
                 model.IsDownline = "1";
             }

@@ -961,6 +961,8 @@
     <Content Include="Views\Report\StewMatrixDonationList.cshtml" />
     <Content Include="Views\Home\Maintenance.cshtml" />
     <Content Include="Views\AdminReports\DonationList.cshtml" />
+    <Content Include="Views\AdminReports\SisterList.cshtml" />
+    <Content Include="Views\AdminReports\BrotherList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

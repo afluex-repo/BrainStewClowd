@@ -82,6 +82,7 @@
         }
     }
 
+
     function GetFinalAmount() {
         debugger;
         var amount = $("#Amount").val();
@@ -99,4 +100,27 @@
             $("#lblf").text(parseFloat(finalAmount));
         }
     }
+
+
+
+
+    //function GetFinalAmount() {
+    //    debugger;
+    //    var amount = $("#Amount").val();
+    //    var balance = $("#Balance").val();
+    //    if (Number(amount) > Number(balance)) {
+    //        alert('you can not enter amount greater than balance amount');
+    //        $("#Amount").val('');
+    //        $("#lbld").text(parseFloat(0));
+    //        $("#lblf").text(parseFloat(0));
+    //    }
+    //    else {
+    //        var deductionAmount = (parseFloat($("#Amount").val()) * 0.10).toFixed(2);
+    //        $("#lbld").text(parseFloat(deductionAmount));
+    //        var finalAmount = parseFloat($("#Amount").val()) - parseFloat(deductionAmount);
+    //        $("#lblf").text(parseFloat(finalAmount));
+    //    }
+    //}
+
+
 </script>

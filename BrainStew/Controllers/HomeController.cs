@@ -1,5 +1,6 @@
 ﻿using BrainStew.Filter;
 using BrainStew.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace BrainStew.Controllers
 {
@@ -121,7 +123,6 @@ namespace BrainStew.Controllers
                     TempData["Login"] = "Incorrect LoginId Or Password";
                     FormName = "Login";
                     Controller = "Home";
-
                 }
             }
             catch (Exception ex)
@@ -439,58 +440,47 @@ namespace BrainStew.Controllers
             DataSet ds1 = model.TransferPlacementUpgradeIncome();
             return View();
         }
-
-
-
-        public ActionResult SaveDonation(string MemberNo, string ChildName, string Gender, string DOB, string FatherName,
-            string MotherName, string SisterName, string SisterAge, string BrotherName, string BrotherAge,
-            string FamilyWork, string Need, string NeedAmount)
+        
+        [HttpPost]
+        public JsonResult SaveDonationDetails(Home model)
         {
-            Home model = new Home();
-            try
+            var profile = Request.Files;
+            bool status = false;
+            var datavalue = Request["SistersdataValue"];
+            var jssss = new JavaScriptSerializer();
+            var jdvvv = jssss.Deserialize<dynamic>(Request["SistersdataValue"]);
+            DataTable dtSistersDetails = new DataTable();
+            dtSistersDetails = JsonConvert.DeserializeObject<DataTable>(jdvvv["SistersAddData"]);
+            model.dtSistersDetails = dtSistersDetails;
+            
+            var datavaluee = Request["BrothersdataValue"];
+            var jssss1 = new JavaScriptSerializer();
+            var jdvvv1 = jssss1.Deserialize<dynamic>(Request["BrothersdataValue"]);
+            DataTable dtBrothersDetails = new DataTable();
+            dtBrothersDetails = JsonConvert.DeserializeObject<DataTable>(jdvvv1["BrothersAddData"]);
+            model.dtBrothersDetails = dtBrothersDetails;
+            
+            DataSet ds = new DataSet();
+            ds = model.SaveDonationDetails();
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
-                model.MemberNo = MemberNo;
-                model.ChildName = ChildName;
-                model.Gender = Gender;
-                model.DOB = DOB;
-                model.FatherName = FatherName;
-                model.MotherName = MotherName;
-                model.SisterName = SisterName;
-                model.SisterAge = SisterAge;
-                model.BrotherName = BrotherName;
-                model.BrotherAge = BrotherAge;
-                model.FamilyWork = FamilyWork;
-                model.Need = Need;
-                model.NeedAmount = NeedAmount;
-                DataSet ds = model.SaveDonation();
-                if (ds != null && ds.Tables.Count > 0)
+                if (ds.Tables[0].Rows[0][0].ToString() == "1")
                 {
-                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
-                    {
-                       model.Result = "1";
-                    }
-                    else if (ds.Tables[0].Rows[0][0].ToString() == "0")
-                    {
-                        model.Result = ds.Tables[0].Rows[0][0].ToString();
-                    }
+                    TempData["Donation"] = "Donated successfully";
+                    status = true;
                 }
-                else
+                else if (ds.Tables[0].Rows[0][0].ToString() == "0")
                 {
-                    model.Result = ds.Tables[0].Rows[0][0].ToString();
+                    TempData["Donation"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                 }
             }
-            catch (Exception ex)
+            else
             {
-                model.Result = ex.Message;
+                TempData["Donation"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
             }
-            return Json(model, JsonRequestBehavior.AllowGet);
+            return new JsonResult { Data = new { status = status } };
+           // return Json(model, JsonRequestBehavior.AllowGet);
         }
-
-
-
-
-
-
-
+        
     }
 }
