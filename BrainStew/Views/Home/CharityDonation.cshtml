@@ -1,0 +1,524 @@
+﻿@*@model BrainStew.Models.Home*@
+
+@{
+    Layout = null;
+}
+<script src="assets/js/header.js"></script>
+<style>
+    .font-25 {
+        font-size: 20px;
+        color: #000;
+    }
+</style>
+<!--page-title-area start-->
+<section class="page-title-area" style="background-image: url(assets/img/bg/breadcrumb.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 offset-xl-4">
+                <div class="page-title-wrapper text-center pt-125">
+                    <div class="page-title-box">
+                        <h2 class="page-title">Donate Now</h2>
+                        <ul class="breadcrumb-list">
+                            <li><a href="index.html">Home <i class="far fa-chevron-right"></i></a></li>
+                            <li><a href="#">Donate Now</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--page-title-area end-->
+<!--donation-form-area start-->
+<section class="donation-form-area-02 grey-bg2 pt-125 pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="donation-form-left">
+                    <div class="donar-information donation-form white-bg mb-30 wow fadeInUp2 animated" data-wow-delay='.1s'>
+                        <div class="section-title text-left mb-50">
+                            <h6><span><i class="fas fa-heart"></i></span> Brain Stew</h6>
+                            <h1>Donation Form</h1> <span>@TempData["Donation"]</span>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active">
+                                <div class="row payment-inner">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-xl-4">
+                                                <div class="input-area mb-30">
+                                                    <label class="font-25">Member No. <span class="text-danger">*</span></label>
+                                                    <input type="text" name="MemberNo" id="MemberNo" class="form-control" placeholder="Enter member no.">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="input-area mb-30">
+                                                    <label class="font-25">Child Name <span class="text-danger">*</span></label>
+                                                    <input type="text" name="ChildName" id="ChildName" class="form-control" placeholder="Enter child name" onkeypress="return onlyAlphabets();">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="input-area mb-30">
+                                                    <label class="font-25">Gender <span class="text-danger">*</span></label>
+                                                    <select name="Gender" id="Gender" class="form-control">
+                                                        <option value="0">-- Select --</option>
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
+                                                    </select>
+                                                    <!--<input type="text" class="form-control" placeholder="Email Address">-->
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="input-area mb-30">
+                                                    <label class="font-25">Date of Birth <span class="text-danger">*</span></label>
+                                                    <input type="text" name="DOB" id="DOB" class="form-control" readonly="true" placeholder="dd/mm/yyyy">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="input-area mb-30">
+                                                    <label class="font-25">Father Name <span class="text-danger">*</span></label>
+                                                    <input type="text" name="FatherName" id="FatherName" class="form-control" placeholder="Enter father name" onkeypress="return onlyAlphabets();">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="input-area mb-30">
+                                                    <label class="font-25">Mother Name <span class="text-danger">*</span></label>
+                                                    <input type="text" name="MotherName" id="MotherName" class="form-control" placeholder="Enter mother name" onkeypress="return onlyAlphabets();">
+                                                </div>
+                                            </div>
+                                            <!--<div class="col-xl-4">
+                                                <div class="input-area mb-30">
+                                                    <label class="font-25">Sister's Name <span class="text-danger">*</span></label>
+                                                    <input type="text" name="SisterName" id="SisterName" class="form-control" placeholder="Enter sister name" onkeypress="return onlyAlphabetss();">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="input-area mb-30">
+                                                    <label class="font-25">Sister's Age <span class="text-danger">*</span></label>
+                                                    <input type="text" name="SisterAge" id="SisterAge" class="form-control" placeholder="Enter sister name" onkeypress="return isNumberKeys(event);">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="input-area mb-30">
+                                                    <label class="font-25">Brother's Name <span class="text-danger">*</span></label>
+                                                    <input type="text" name="BrotherName" id="BrotherName" class="form-control" placeholder="Enter brother name" onkeypress="return onlyAlphabetss();">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="input-area mb-30">
+                                                    <label class="font-25">Brother's Age <span class="text-danger">*</span></label>
+                                                    <input type="text" name="BrotherAge" id="BrotherAge" class="form-control" placeholder="Enter brother name" onkeypress="return isNumberKeys(event);">
+                                                </div>
+                                            </div>-->
+                                            <div class="col-xl-12">
+                                                <div class="table-responsive text-nowrap">
+                                                    <table class="table table-striped table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Sister's Name<span style="color: red">*</span> </th>
+                                                                <th>Sister's Age<span style="color: red">*</span> </th>
+                                                                <th>Action<span style="color: red">*</span> </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="TextBoxContainer">
+                                                            <tr class="Sisterscontainer" id="Sistersrow">
+                                                                <td>
+                                                                    <input type="text" name="SisterName" id="SisterName" class="form-control SisterName" placeholder="Enter sister name">
+
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" name="SisterAge" id="SisterAge" class="form-control SisterAge" placeholder="Enter sister age" onkeypress="return isNumberKey(event);">
+
+                                                                </td>
+                                                                <td>
+                                                                    <input type="button" id="addSisters" data-toggle="tooltip" data-original-title="Add" value="Add" style="width:80px" class="btn btn-primary" />
+                                                                </td>
+                                                            </tr>
+                                                    </table>
+                                                </div>
+                                                <div id="Sisterstable">
+                                                    <table class="table  table-striped table-bordered" id="SistersDetails"></table>
+                                                    <span id="SistersDetailsError" style="color:red"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-12">
+                                                <div class="table-responsive text-nowrap">
+                                                    <table class="table table-striped table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Brother's Name<span style="color: red">*</span> </th>
+                                                                <th>Brother's Age<span style="color: red">*</span> </th>
+                                                                <th>Action<span style="color: red">*</span> </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="TextBoxContainer">
+                                                            <tr class="Brotherscontainer" id="Brothersrow">
+                                                                <td>
+
+                                                                    <input type="text" name="BrotherName" id="BrotherName" class="form-control BrotherName" placeholder="Enter brother name">
+
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" name="BrotherAge" id="BrotherAge" class="form-control BrotherAge" placeholder="Enter brother age" onkeypress="return isNumberKey(event);">
+
+                                                                </td>
+                                                                <td>
+                                                                    <input type="button" id="addBrothers" data-toggle="tooltip" data-original-title="Add" value="Add" style="width:80px" class="btn btn-primary" />
+                                                                </td>
+                                                            </tr>
+                                                    </table>
+                                                </div>
+                                                <div id="Brotherstable">
+                                                    <table class="table  table-striped table-bordered" id="BrothersDetails"></table>
+                                                    <span id="BrothersDetailsError" style="color:red"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="input-area mb-30">
+                                                    <label class="font-25">Family Work <span class="text-danger">*</span></label>
+                                                    <input type="text" name="FamilyWork" id="FamilyWork" class="form-control" placeholder="Family work" onkeypress="return onlyAlphabets();">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="input-area mb-30">
+                                                    <label class="font-25">Need <span class="text-danger">*</span></label>
+                                                    <select name="Need" id="Need" class="form-control">
+                                                        <option value="">-- Select --</option>
+                                                        <option value="Medicine">Medicine</option>
+                                                        <option value="Cloth">Cloth</option>
+                                                        <option value="Food">Food</option>
+                                                        <option value="Education">Education</option>
+                                                        <option value="Others">Others</option>
+                                                    </select>
+                                                    <!--<input type="text" class="form-control" placeholder="Country">-->
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="input-area mb-30">
+                                                    <label class="font-25">Need Amount <span class="text-danger">*</span></label>
+                                                    <input type="text" name="NeedAmount" id="NeedAmount" class="form-control" placeholder="Enter amount" onkeypress="return isNumberKey(event);">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3">
+                                                <!--<button id="btnfinalsubmit" class="theme_btn theme_btn_bg">Donate now <span><i class="fas fa-heart"></i></span></button>-->
+
+                                                <input class="btn bg-orange btn-lg pull-left py-2" type="submit" value="Save" id="btnfinalsubmit" name="Save"  onclick="return SaveDonation();" />
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--donation-form-area end-->
+
+<script src="assets/js/footer.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />-->
+<script>
+
+    $(document).ready(function () {
+        ////////Sisters
+        $('#addSisters').click(function () {
+            debugger;
+            var isAllValid = true;
+            if (!($('#SisterName').val().trim() != '' && ($('#SisterName').val().trim()))) {
+                $("#SisterName").addClass('errortext');
+                $('#SisterName').focus();
+                isAllValid = false;
+            }
+            else if (!($('#SisterAge').val().trim() != '' && ($('#SisterAge').val().trim()))) {
+                $("#SisterAge").addClass('errortext');
+                $('#SisterAge').focus();
+                isAllValid = false;
+            }
+            debugger
+            if (isAllValid) {
+                var $newRow = $('#Sistersrow').clone().removeAttr('id');
+                $('.SisterName', $newRow).removeClass('errortext').prop('disabled', true).val($('#SisterName').val());
+                $('.SisterAge', $newRow).removeClass('errortext').prop('disabled', true).val($('#SisterAge').val());
+                //Replace add button with remove button
+                $('#addSisters', $newRow).addClass('remove').val('Remove').removeClass('btn-success').addClass('btn-success');
+                //remove id attribute from new clone row
+                $('#SisterName,#SisterAge,#addSisters', $newRow).removeAttr('id');
+                $('span.error', $newRow).remove();
+                //append clone row
+                $('#SistersDetails').append($newRow);
+                //clear select data
+                $('#SisterName,#SisterAge').val('');
+                $('#SistersDetailsError').empty();
+            }
+        })
+        //remove button click event
+        $('#SistersDetails').on('click', '.remove', function () {
+            $(this).parents('tr').remove();
+        });
+
+        ////////Brothers
+
+        $('#addBrothers').click(function () {
+            debugger;
+            var isAllValid = true;
+            if (!($('#BrotherName').val().trim() != '' && ($('#BrotherName').val().trim()))) {
+                $("#BrotherName").addClass('errortext');
+                $('#BrotherName').focus();
+                isAllValid = false;
+            }
+            else if (!($('#BrotherAge').val().trim() != '' && ($('#BrotherAge').val().trim()))) {
+                $("#BrotherAge").addClass('errortext');
+                $('#BrotherAge').focus();
+                isAllValid = false;
+            }
+            debugger
+            if (isAllValid) {
+                var $newRow = $('#Brothersrow').clone().removeAttr('id');
+                $('.BrotherName', $newRow).removeClass('errortext').prop('disabled', true).val($('#BrotherName').val());
+                $('.BrotherAge', $newRow).removeClass('errortext').prop('disabled', true).val($('#BrotherAge').val());
+                //Replace add button with remove button
+                $('#addBrothers', $newRow).addClass('remove').val('Remove').removeClass('btn-success').addClass('btn-success');
+                //remove id attribute from new clone row
+                $('#BrotherName,#BrotherAge,#addBrothers', $newRow).removeAttr('id');
+                $('span.error', $newRow).remove();
+                //append clone row
+                $('#BrothersDetails').append($newRow);
+                //clear select data
+                $('#BrotherName,#BrotherAge').val('');
+                $('#BrothersDetailsError').empty();
+            }
+        })
+        //remove button click event
+        $('#BrothersDetails').on('click', '.remove', function () {
+            $(this).parents('tr').remove();
+        });
+
+    });
+    $('#btnfinalsubmit').click(function () {
+        var isAllValid = true;
+        debugger;
+        if ($("#MemberNo").val() == "") {
+            $("#MemberNo").addClass('errortext');
+            $("#MemberNo").focus();
+            return false;
+        }
+       else if ($("#ChildName").val() == "") {
+            $("#ChildName").addClass('errortext');
+            $("#ChildName").focus();
+            return false;
+        }
+       else if ($("#Gender").val() == "0") {
+            $("#Gender").addClass('errortext');
+            $("#Gender").focus();
+            return false;
+        }
+       else if ($("#DOB").val() == "") {
+            $("#DOB").addClass('errortext');
+            $("#DOB").focus();
+            return false;
+        }
+       else if ($("#FatherName").val() == "") {
+            $("#FatherName").addClass('errortext');
+            $("#FatherName").focus();
+            return false;
+        }
+       else if ($("#MotherName").val() == "") {
+            $("#MotherName").addClass('errortext');
+            $("#MotherName").focus();
+            return false;
+        }
+       //else if ($("#SisterName").val() == "") {
+       //     $("#SisterName").addClass('errortext');
+       //     $("#SisterName").focus();
+       //     return false;
+       // }
+       //else if ($("#SisterAge").val() == "") {
+       //     $("#SisterAge").addClass('errortext');
+       //     $("#SisterAge").focus();
+       //     return false;
+       // }
+       //else if ($("#BrotherName").val() == "") {
+       //     $("#BrotherName").addClass('errortext');
+       //     $("#BrotherName").focus();
+       //     return false;
+       // }
+       //else if ($("#BrotherAge").val() == "") {
+       //     $("#BrotherAge").addClass('errortext');
+       //     $("#BrotherAge").focus();
+       //     return false;
+       // }
+       else if ($("#FamilyWork").val() == "") {
+            $("#FamilyWork").addClass('errortext');
+            $("#FamilyWork").focus();
+            return false;
+        }
+       else if ($("#Need").val() == "") {
+            $("#Need").addClass('errortext');
+            $("#Need").focus();
+            return false;
+        }
+       else if ($("#NeedAmount").val() == "") {
+            $("#NeedAmount").addClass('errortext');
+            $("#NeedAmount").focus();
+            return false;
+        }
+
+        $('#SistersDetailsError').text('');
+        var Sisterslist = [];
+        var SisterserrorItemCount = 0;
+        $('#SistersDetails tr').each(function (index, ele) {
+            if (
+                $('.SisterName', this).val() == "") {
+                SisterserrorItemCount++;
+                $(this).addClass('error');
+            } else {
+                var SistersItem = {
+                    SisterName: ($('.SisterName', this).val()),
+                    SisterAge: $('.SisterAge', this).val(),
+                    Type: 'F',
+                }
+                Sisterslist.push(SistersItem);
+            }
+        })
+        console.log(Sisterslist)
+        if (SisterserrorItemCount > 0) {
+            $('#SistersDetailsError').text(SisterserrorItemCount + " invalid entry in sister name list.");
+            isAllValid = false;
+        }
+
+        if (Sisterslist.length == 0) {
+            $('#SistersDetailsError').text('At least 1 row data required in sister details.');
+            isAllValid = false;
+            $("#divload").css({ 'display': 'none' });
+            return false;
+        }
+
+        //////////Brothers
+
+        $('#BrothersDetailsError').text('');
+        var Brotherslist = [];
+        var BrotherserrorItemCount = 0;
+        $('#BrothersDetails tr').each(function (index, ele) {
+            if (
+                $('.BrotherName', this).val() == "") {
+                BrotherserrorItemCount++;
+                $(this).addClass('error');
+            } else {
+                var BrothersItem = {
+                    BrotherName: ($('.BrotherName', this).val()),
+                    BrotherAge: $('.BrotherAge', this).val(),
+                    Type:'M',
+                }
+                Brotherslist.push(BrothersItem);
+            }
+        })
+        console.log(Brotherslist)
+        if (BrotherserrorItemCount > 0) {
+            $('#BrothersDetailsError').text(BrotherserrorItemCount + " invalid entry in brother name list.");
+            isAllValid = false;
+        }
+
+        if (Brotherslist.length == 0) {
+            $('#BrothersDetailsError').text('At least 1 row data required in brother details.');
+            isAllValid = false;
+            $("#divload").css({ 'display': 'none' });
+            return false;
+        }
+
+        if (isAllValid) {
+            debugger;
+            var Sistersdata = {
+                SistersAddData: JSON.stringify(Sisterslist),
+            }
+            var Brothersdata = {
+                BrothersAddData: JSON.stringify(Brotherslist),
+            }
+
+            debugger
+            var formData = new FormData();
+            formData.append("MemberNo", $('#MemberNo').val());
+            formData.append("ChildName", $('#ChildName').val());
+            formData.append("Gender", $('#Gender').val());
+            formData.append("DOB", $('#DOB').val());
+            formData.append("FatherName", $('#FatherName').val());
+            formData.append("MotherName", $('#MotherName').val());
+            formData.append("FamilyWork", $('#FamilyWork').val());
+            formData.append("Need", $('#Need').val());
+            formData.append("NeedAmount", $('#NeedAmount').val());
+            formData.append("SistersdataValue", JSON.stringify(Sistersdata));
+            formData.append("BrothersdataValue", JSON.stringify(Brothersdata));
+            $.ajax({
+                type: 'POST',
+                url: '/Home/SaveDonationDetails',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    debugger
+                    if (response.Result = "1") {
+                        list = [];
+                        //window.location.reload(true);
+                        alert('Donated successfully');
+                        window.location.href = '/BrainStew/donation.html';
+                    }
+                    else {
+
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+    });
+
+</script>
+<style>
+    .errortext {
+        border: 1px solid red !important;
+        background-color: #fff0f0 !important;
+    }
+</style>
+<script>
+    $('#DOB').datepicker({
+        dateFormat: 'dd/mm/yy',
+    });
+    function isNumberKey(evt) {
+
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode != 46 && charCode > 31
+          && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+    function onlyAlphabets(e, t) {
+        try {
+            if (window.event) {
+                var charCode = window.event.keyCode;
+            }
+            else if (e) {
+                var charCode = e.which;
+            }
+            else { return true; }
+            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || (charCode == 32))
+                return true;
+            else
+                return false;
+        }
+        catch (err) {
+            alert(err.Description);
+        }
+    }
+</script>

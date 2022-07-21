@@ -67,7 +67,6 @@
                                                 int i = 1;
                                                 foreach (var item in Model.lstpermission)
                                                 {
-
                                                     <tr>
                                                         <td>@i</td>
                                                         <td>
@@ -79,10 +78,8 @@
                                                             <input type="hidden" name="hdLoginid_ @i" id="hdLoginid_ @i" value="@item.Fk_UserId" />
                                                             <input type="checkbox" name="chkSelect_ @i" id="chkSelect_ @i" @item.SelectedValue />
                                                         </td>
-
                                                     </tr>
                                                     i++;
-
                                                 }
                                                 <input type="hidden" id="hdRows" name="hdRows" value="@i" />
                                             }
