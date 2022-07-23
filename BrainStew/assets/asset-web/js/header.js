@@ -107,7 +107,7 @@ document.write(`
         <!-- offset-sidebar start -->
         <div class="offset-sidebar">
             <div class="offset-widget offset-logo mb-30">
-                <a href="#">
+                <a href="/BrainStew/index.html">
                     <img src="../assets/asset-web/img/logo/header_logo_1.png" alt="logo">
                 </a>
             </div>
@@ -146,6 +146,7 @@ document.write(`
                 <li><a href="/BrainStew/gallery.html">Our Gallery</a>
                 </li>
                 <li><a href="/Home/CharityDonation">Child Registration</a></li>
+                <li><a href="/Home/ChildrenDonation">Children Donation</a></li>
                 <li><a href="/BrainStew/contact.html">Contacts Us</a></li>
             </ul>
         </nav>

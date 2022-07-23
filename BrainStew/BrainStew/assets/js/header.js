@@ -70,13 +70,14 @@ document.write(`
                         <div class="main-menu main-menu-03 d-none d-lg-block">
                             <nav>
                                 <ul>
-                                    <li><a class="active" href="index.html">Home</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="projects.html">Projects</a></li>
-                                    <li><a href="what-we-do.html">What We Do</a></li>
-                                    <li><a href="gallery.html">Gallery</a></li>
+                                    <li><a class ="active" href="/BrainStew/index.html">Home</a></li>
+                                    <li><a href="/BrainStew/about.html">About</a></li>
+                                    <li><a href="/BrainStew/projects.html">Projects</a></li>
+                                    <li><a href="/BrainStew/what-we-do.html">What We Do</a></li>
+                                    <li><a href="/BrainStew/gallery.html">Gallery</a></li>
                                     <li><a href="/Home/CharityDonation">Child Registration</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="/Home/ChildrenDonation">Children Donation</a></li>
+                                    <li><a href="/BrainStew/contact.html">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -136,16 +137,17 @@ document.write(`
         <nav class="side-mobile-menu">
             <ul id="mobile-menu-active">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="/BrainStew/index.html">Home</a>
                 </li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="projects.html">Our Projects</a>
+                <li><a href="/BrainStew/about.html">About Us</a></li>
+                <li><a href="/BrainStew/projects.html">Our Projects</a>
                 </li>
-                <li><a href="what-we-do.html">What We Do</a></li>
-                <li><a href="gallery.html">Our Gallery</a>
+                <li><a href="/BrainStew/what-we-do.html">What We Do</a></li>
+                <li><a href="/BrainStew/gallery.html">Our Gallery</a>
                 </li>
-                 <li><a href="/Home/CharityDonation">Child Registration</a></li>
-                <li><a href="contact.html">Contacts Us</a></li>
+                <li><a href="/Home/CharityDonation">Child Registration</a></li>
+                <li><a href="/Home/ChildrenDonation">Children Donation</a></li>
+                <li><a href="/BrainStew/contact.html">Contacts Us</a></li>
             </ul>
         </nav>
         <!-- side-mobile-menu end -->
