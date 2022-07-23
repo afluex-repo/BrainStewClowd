@@ -483,8 +483,8 @@ namespace BrainStew.Controllers
                 model.Result = "0";
                 TempData["Donation"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
             }
-            //return new JsonResult { Data = new { status = status } };
-           return Json(model, JsonRequestBehavior.AllowGet);
+            return new JsonResult { Data = new { status = status } };
+            //return Json(model, JsonRequestBehavior.AllowGet);
         }
         
     }

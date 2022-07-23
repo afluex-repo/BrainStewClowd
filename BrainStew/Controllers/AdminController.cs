@@ -1632,11 +1632,12 @@ namespace BrainStew.Controllers
             return View();
 
         }
-        public ActionResult getLevel(string DonationId)
+        public ActionResult getLevel(string DonationId ,string loginId)
         {
             List<SelectListItem> lstDonation = new List<SelectListItem>();
             AdminReports model = new AdminReports();
             model.DonationPlanTypeId = DonationId;
+            model.LoginId = loginId;
             DataSet ds = model.GetDonationPlanList();
 
             #region ddlLevelDonation
@@ -1690,6 +1691,26 @@ namespace BrainStew.Controllers
                 throw ex;
             }
             return View(model);
+        }
+        public ActionResult CheckLoginDetails(string Loginid)
+        {
+            Admin model = new Admin();
+            model.LoginId = Loginid;
+            DataSet ds = model.CheckActivateLogin();
+            if(ds !=null && ds.Tables.Count>0 && ds.Tables[0].Rows.Count>0)
+            {
+                if (ds.Tables[0].Rows[0]["Msg"].ToString()=="1")
+                {
+                    model.Result = "1";
+                    model.LoginId = ds.Tables[0].Rows[0]["Loginid"].ToString();
+                    model.Name = ds.Tables[0].Rows[0]["Name"].ToString();
+                }
+                else if (ds.Tables[0].Rows[0]["Msg"].ToString() == "0")
+                {
+                    model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+            }
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
     }
 }

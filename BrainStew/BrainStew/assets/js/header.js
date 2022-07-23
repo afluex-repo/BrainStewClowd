@@ -1,7 +1,7 @@
 ﻿/// <reference path="header.js" />
 document.write(`
 <!doctype html>
-<html lang="zxx">
+<html lang="en">
 <head>
     <title>Brain Stew</title>
     <!--Required meta tags-->
@@ -87,7 +87,7 @@ document.write(`
                             </a>
                         </div>
                         <div class="quote-btn d-none d-lg-block">
-                            <a href="/Home/charitydonation" class ="theme_btn theme_btn2 theme_btn_bg_02">donate Now <span><i class ="fas fa-heart"></i></span></a>
+                            <a href="donation.html" class="theme_btn theme_btn2 theme_btn_bg_02">donate Now <span><i class="fas fa-heart"></i></span></a>
                         </div>
                     </div>
                 </div>
