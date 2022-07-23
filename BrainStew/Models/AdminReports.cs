@@ -149,7 +149,9 @@ namespace BrainStew.Models
         #endregion
         public DataSet GetDonationPlanList()
         {
-            SqlParameter[] para ={ new SqlParameter("@Fk_DonationId",DonationPlanTypeId)
+            SqlParameter[] para ={
+                new SqlParameter("@Fk_DonationId",DonationPlanTypeId),
+                new SqlParameter("@LoginId",LoginId)
                                  };
             DataSet ds = DBHelper.ExecuteQuery("GetDonationPlan", para);
             return ds;

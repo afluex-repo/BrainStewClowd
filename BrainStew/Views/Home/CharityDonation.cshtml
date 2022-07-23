@@ -201,9 +201,9 @@
                                                 </div>
                                             </div>
                                             <div class="col-xl-3">
-                                                <!--<button id="btnfinalsubmit" class="theme_btn theme_btn_bg">Donate now <span><i class="fas fa-heart"></i></span></button>-->
+                                                <button id="btnfinalsubmit" class="theme_btn theme_btn_bg">Donate now <span><i class="fas fa-heart"></i></span></button>
 
-                                                <input class="btn bg-orange btn-lg pull-left py-2" type="submit" value="Save" id="btnfinalsubmit" name="Save"  onclick="return SaveDonation();" />
+                                                @*<input class="btn bg-orange btn-lg pull-left py-2" type="submit" value="Save" id="btnfinalsubmit" name="Save"  onclick="return SaveDonation();" />*@
 
                                             </div>
                                         </div>
@@ -461,21 +461,12 @@
                 type: 'POST',
                 url: '/Home/SaveDonationDetails',
                 data: formData,
-                cache: false,
-                contentType: false,
                 processData: false,
-                success: function (response) {
+                contentType: false,
+                success: function (data) {
                     debugger
                     alert('Donated successfully');
                     window.location.href = '/BrainStew/donation.html';
-                    //if (response.status = true) {
-                    //    list = [];
-                    //    //window.location.reload(true);
-                       
-                    //}
-                    //else {
-
-                    //}
                 },
                 error: function (error) {
                     console.log(error);

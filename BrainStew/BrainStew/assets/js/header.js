@@ -87,7 +87,7 @@ document.write(`
                             </a>
                         </div>
                         <div class="quote-btn d-none d-lg-block">
-                            <a href="donation.html" class="theme_btn theme_btn2 theme_btn_bg_02">donate Now <span><i class="fas fa-heart"></i></span></a>
+                            <a href="/Home/CharityDonation" class ="theme_btn theme_btn2 theme_btn_bg_02">donate Now <span><i class ="fas fa-heart"></i></span></a>
                         </div>
                     </div>
                 </div>

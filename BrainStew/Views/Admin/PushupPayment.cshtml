@@ -24,12 +24,13 @@
                    
                             <div class="row mb-4">
                                 <div class="col-md-3">
-                                    <label for="BankName" id="lblbank">Donation Plan</label>
-                                  @Html.DropDownListFor(m => m.DonationPlanTypeId, new SelectList(ViewBag.ddldonationplanType, "Value", "Text"), new { @class = "form-control",@onchange= "return onchangeDonation();" })
+                                    <label for="BranchName" id="lbltbranch">LoginId</label>
+                                    @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control", @placeholder = "LoginId", @onchange = "return CheckLoginId();" })
+                                    <span class="text-danger" id="Name"></span>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="BranchName" id="lbltbranch">Login Id</label>
-                                    @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control", @placeholder = "LoginId" })
+                                    <label for="BankName" id="lblbank">Donation Plan</label>
+                                  @Html.DropDownListFor(m => m.DonationPlanTypeId, new SelectList(ViewBag.ddldonationplanType, "Value", "Text"), new { @class = "form-control",@onchange= "return onchangeDonation();" })
                                 </div>
                                 <div class="col-md-3">
                                     <label for="Level" id="lbltno">Donation Level</label>
@@ -42,7 +43,7 @@
                                 </div>
                             </div>
                         <div class="col-md-4">
-                            <input class="btn btn-success" name="btn_Save" id="btn_Save" type="su" value="Submit" onclick="return ValidateForm();" />
+                            <input class="btn btn-success" name="btn_Save" id="btn_Save" type="submit" value="Submit" onclick="return ValidateForm();" />
                         </div>
 
                     </div>
@@ -79,9 +80,16 @@
     function onchangeDonation()
     {
         var DonationId = $("#DonationPlanTypeId").val();
+        var loginId = $("#LoginId").val();
         if (DonationId == "0") {
             $("#DonationPlanTypeId").addClass('errortext');
             $("#DonationPlanTypeId").focus();
+            return false;
+        }
+        if (loginId == "") {
+            $("#DonationPlanTypeId").val("0");
+            $("#LoginId").addClass('errortext');
+            $("#LoginId").focus();
             return false;
         }
         else {
@@ -90,7 +98,7 @@
                 url: "/Admin/getLevel",
                 Type: "Get",
                 DataType: "JSON",
-                data: { DonationId: DonationId },
+                data: { DonationId: DonationId, loginId: loginId },
                 success: function (data) {
                     $("#divload").css({ 'display': 'none' });
                     var j = 1;
@@ -139,11 +147,28 @@
           }
           return true;
     }
-    function SetAmountandPackage() {
-        debugger;
-        jQuery.noConflict();
-        $('#exampleModal').modal('show');
-        $("#lblAmount").text($("#Amount").val());
-        $("#lblTPS").text($("#PackageId :selected").text());
-    }
+    
+    function CheckLoginId()
+    {
+        var loginId = $("#LoginId").val();
+        $.ajax({
+            url: "/Admin/CheckLoginDetails",
+            Type: "Post",
+            DataType: "JSON",
+            data: { loginid: loginId },
+            success: function (data) {
+                $("#divload").css({ 'display': 'none' });
+                if (data.Result == "1") {
+                    $("#LoginId").val(data.LoginId);
+                    $("#Name").text(data.Name);
+                }
+                else {
+                    $("#LoginId").val('');
+                    $("#LoginId").focus();
+                    alert(data.Result);
+                }
+            }
+
+        })
+    } 
 </script>

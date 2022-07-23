@@ -394,7 +394,12 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("SaveDeduction", para);
             return ds;
         }
-
+        public DataSet CheckActivateLogin()
+        {
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId) };
+            DataSet ds = DBHelper.ExecuteQuery("CheckActivateLogin", para);
+            return ds;
+        }
         //Commission Report
         public DataSet CommissionReport()
         {
