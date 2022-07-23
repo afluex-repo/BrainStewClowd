@@ -964,6 +964,7 @@
     <Content Include="Views\AdminReports\BrotherList.cshtml" />
     <Content Include="Views\Home\CharityDonation.cshtml" />
     <Content Include="Views\Admin\PushupPayment.cshtml" />
+    <Content Include="Views\Home\ChildrenDonation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
