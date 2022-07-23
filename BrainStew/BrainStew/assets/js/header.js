@@ -66,28 +66,29 @@ document.write(`
                             <a class ="logo-img" href="index.html"><img src="assets/img/logo/final_logo.png" class ="logo_img" alt=""></a>
                         </div>
                     </div>
-                    <div class="col-xl-7 col-lg-6 d-none d-lg-block text-lg-center text-xl-right">
+                    <div class="col-xl-8 col-lg-6 d-none d-lg-block text-lg-center text-xl-right">
                         <div class="main-menu main-menu-03 d-none d-lg-block">
                             <nav>
                                 <ul>
                                     <li><a class="active" href="index.html">Home</a></li>
                                     <li><a href="about.html">About Us</a></li>
-                                    <li><a href="projects.html">Our Projects</a></li>
+                                    <li><a href="projects.html">Projects</a></li>
                                     <li><a href="what-we-do.html">What We Do</a></li>
-                                    <li><a href="gallery.html">Our Gallery</a></li>
+                                    <li><a href="gallery.html">Gallery</a></li>
+                                    <li><a href="/Home/CharityDonation">Child Registration</a></li>
                                     <li><a href="contact.html">Contact Us</a></li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-6 text-right">
+                    <div class="col-xl-2 col-lg-3 col-md-6 col-6 text-right">
                         <div class="hamburger-menu d-md-block d-lg-none">
                             <a href="javascript:void(0);">
                                 <i class="far fa-bars"></i>
                             </a>
                         </div>
                         <div class="quote-btn d-none d-lg-block">
-                            <a href="donation.html" class="theme_btn theme_btn2 theme_btn_bg_02">donate Now <span><i class="fas fa-heart"></i></span></a>
+                            <a href="/BrainStew/donation.html" class ="theme_btn theme_btn2 theme_btn_bg_02">donate Now <span><i class ="fas fa-heart"></i></span></a>
                         </div>
                     </div>
                 </div>
@@ -143,6 +144,7 @@ document.write(`
                 <li><a href="what-we-do.html">What We Do</a></li>
                 <li><a href="gallery.html">Our Gallery</a>
                 </li>
+                 <li><a href="/Home/CharityDonation">Child Registration</a></li>
                 <li><a href="contact.html">Contacts Us</a></li>
             </ul>
         </nav>
