@@ -594,7 +594,6 @@
     <Content Include="BrainStew\assets\js\waypoints.min.js" />
     <Content Include="BrainStew\assets\js\wow.min.js" />
     <Content Include="BrainStew\contact.html" />
-    <Content Include="BrainStew\donation.html" />
     <Content Include="BrainStew\gallery.html" />
     <Content Include="BrainStew\index.html" />
     <Content Include="BrainStew\projects.html" />
@@ -964,6 +963,7 @@
     <Content Include="Views\AdminReports\SisterList.cshtml" />
     <Content Include="Views\AdminReports\BrotherList.cshtml" />
     <Content Include="Views\Home\CharityDonation.cshtml" />
+    <Content Include="Views\Admin\PushupPayment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
