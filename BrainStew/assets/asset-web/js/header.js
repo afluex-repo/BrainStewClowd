@@ -66,17 +66,18 @@ document.write(`
                             <a class ="logo-img" href="/BrainStew/index.html"><img src="../assets/asset-web/img/logo/final_logo.png" class ="logo_img" alt=""></a>
                         </div>
                     </div>
-                    <div class="col-xl-8 col-lg-6 d-none d-lg-block text-lg-center text-xl-right">
+                    <div class="col-xl-8 col-lg-6 d-none d-lg-block">
                         <div class="main-menu main-menu-03 d-none d-lg-block">
                             <nav>
                                 <ul>
                                     <li><a class="active" href="/BrainStew/index.html">Home</a></li>
-                                    <li><a href="/BrainStew/about.html">About Us</a></li>
+                                    <li><a href="/BrainStew/about.html">About</a></li>
                                     <li><a href="/BrainStew/projects.html">Projects</a></li>
                                     <li><a href="/BrainStew/what-we-do.html">What We Do</a></li>
                                     <li><a href="/BrainStew/gallery.html">Gallery</a></li>
-                                     <li><a href="/Home/CharityDonation">Child Registration</a></li>
-                                    <li><a href="/BrainStew/contact.html">Contact Us</a></li>
+                                    <li><a href="/Home/CharityDonation">Child Registration</a></li>
+                                    <li><a href="/Home/ChildrenDonation">Children Donation</a></li>
+                                    <li><a href="/BrainStew/contact.html">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
