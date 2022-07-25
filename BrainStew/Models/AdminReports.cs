@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace BrainStew.Models
 {
@@ -103,6 +104,8 @@ namespace BrainStew.Models
         public string FK_DonationId { get; set; }
         
 
+        public string DonationPlanTypeId { get; set; }
+        public List<SelectListItem> lstLevelDonation { get; set; }
         #region associatelist
         public DataSet WalletLedger()
         {
@@ -144,7 +147,15 @@ namespace BrainStew.Models
             return ds;
         }
         #endregion
-
+        public DataSet GetDonationPlanList()
+        {
+            SqlParameter[] para ={
+                new SqlParameter("@Fk_DonationId",DonationPlanTypeId),
+                new SqlParameter("@LoginId",LoginId)
+                                 };
+            DataSet ds = DBHelper.ExecuteQuery("GetDonationPlan", para);
+            return ds;
+        }
         public DataSet GetTransferPinReport()
         {
             SqlParameter[] para =
@@ -349,7 +360,17 @@ namespace BrainStew.Models
             return ds;
         }
 
-
+        public DataSet SavePushupPayment()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                  new SqlParameter("@DonationPlanId",DonationPlanTypeId),
+                  new SqlParameter("@DonationlevelId",Level),
+                  new SqlParameter("@DonationDate",TransactionDate)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("SavePushupPayment", para);
+            return ds;
+        }
         public DataSet TopUpWallet()
         {
             SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),

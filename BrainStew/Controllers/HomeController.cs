@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -440,9 +441,12 @@ namespace BrainStew.Controllers
             DataSet ds1 = model.TransferPlacementUpgradeIncome();
             return View();
         }
-        
+        public ActionResult CharityDonation()
+        {
+            return View();
+        }
         [HttpPost]
-        public JsonResult SaveDonationDetails(Home model)
+        public JsonResult SaveDonationDetails(Home model, HttpPostedFileBase Image)
         {
             var profile = Request.Files;
             bool status = false;
@@ -460,26 +464,33 @@ namespace BrainStew.Controllers
             dtBrothersDetails = JsonConvert.DeserializeObject<DataTable>(jdvvv1["BrothersAddData"]);
             model.dtBrothersDetails = dtBrothersDetails;
             
+            if (Image != null)
+            {
+                model.Image = "/ChildImageUpload/" + Guid.NewGuid() + Path.GetExtension(Image.FileName);
+                Image.SaveAs(Path.Combine(Server.MapPath(model.Image)));
+            }
             DataSet ds = new DataSet();
             ds = model.SaveDonationDetails();
             if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
                 if (ds.Tables[0].Rows[0][0].ToString() == "1")
                 {
-                    TempData["Donation"] = "Donated successfully";
-                    status = true;
+                    //TempData["Donation"] = "Donated successfully";
+                    model.Result = "1";
                 }
                 else if (ds.Tables[0].Rows[0][0].ToString() == "0")
                 {
-                    TempData["Donation"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    model.Result = "0";
+                    model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                 }
             }
             else
             {
+                model.Result = "0";
                 TempData["Donation"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
             }
             return new JsonResult { Data = new { status = status } };
-           // return Json(model, JsonRequestBehavior.AllowGet);
+            //return Json(model, JsonRequestBehavior.AllowGet);
         }
         
     }

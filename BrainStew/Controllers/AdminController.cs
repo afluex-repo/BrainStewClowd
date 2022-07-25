@@ -1619,39 +1619,98 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-        
-        public ActionResult DeleteDonation(string Id)
+
+        public ActionResult PushupPayment()
         {
-            Admin model = new Admin();
+            #region DonationPlan
+            List<SelectListItem> ddldonationPlan = Common.BindDonationPlan();
+            ViewBag.ddldonationplanType = ddldonationPlan;
+            List<SelectListItem> ddlLevel = new List<SelectListItem>();
+            ddlLevel.Add(new SelectListItem { Text = "Select Level", Value = "0" });
+            ViewBag.ddlLevel = ddlLevel;
+            #endregion
+            return View();
+
+        }
+        public ActionResult getLevel(string DonationId ,string loginId)
+        {
+            List<SelectListItem> lstDonation = new List<SelectListItem>();
+            AdminReports model = new AdminReports();
+            model.DonationPlanTypeId = DonationId;
+            model.LoginId = loginId;
+            DataSet ds = model.GetDonationPlanList();
+
+            #region ddlLevelDonation
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                model.Result = "Yes";
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    lstDonation.Add(new SelectListItem { Text = dr["Donation"].ToString(), Value = dr["DonationId"].ToString() });
+                }
+
+            }
+
+            model.lstLevelDonation = lstDonation;
+            #endregion
+
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        [ActionName("PushupPayment")]
+        [OnAction(ButtonName = "btn_Save")]
+        public ActionResult SavePushPlanDetails(AdminReports model)
+        {
             try
             {
-                model.DonationId = Id;
-                model.AddedBy = Session["Pk_AdminId"].ToString();
-                DataSet ds = model.DeleteDonation();
-                if (ds != null && ds.Tables.Count > 0)
+                #region DonationPlan
+                List<SelectListItem> ddldonationPlan = Common.BindDonationPlan();
+                ViewBag.ddldonationplanType = ddldonationPlan;
+                List<SelectListItem> ddlLevel = new List<SelectListItem>();
+                ddlLevel.Add(new SelectListItem { Text = "Select Level", Value = "0" });
+                ViewBag.ddlLevel = ddlLevel;
+                #endregion
+                model.TransactionDate = string.IsNullOrEmpty(model.TransactionDate) ? null : Common.ConvertToSystemDate(model.TransactionDate, "dd/MM/yyyy");
+                DataSet ds = model.SavePushupPayment();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
-                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
                     {
-                       TempData["Donation"]= "Record deleted successfully !";
+                        TempData["msg"] = "Payment Saved Successfully !!";
                     }
-                    else if (ds.Tables[0].Rows[0][0].ToString() == "0")
+                    else if (ds.Tables[0].Rows[0]["Msg"].ToString() == "0")
                     {
-                        TempData["Donation"] = ds.Tables[0].Rows[0][0].ToString();
+                        TempData["msg"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                     }
                 }
-                else
-                {
-                    model.Result = ds.Tables[0].Rows[0][0].ToString();
-                }
+
             }
             catch (Exception ex)
             {
-                model.Result = ex.Message;
+
+                throw ex;
+            }
+            return View(model);
+        }
+        public ActionResult CheckLoginDetails(string Loginid)
+        {
+            Admin model = new Admin();
+            model.LoginId = Loginid;
+            DataSet ds = model.CheckActivateLogin();
+            if(ds !=null && ds.Tables.Count>0 && ds.Tables[0].Rows.Count>0)
+            {
+                if (ds.Tables[0].Rows[0]["Msg"].ToString()=="1")
+                {
+                    model.Result = "1";
+                    model.LoginId = ds.Tables[0].Rows[0]["Loginid"].ToString();
+                    model.Name = ds.Tables[0].Rows[0]["Name"].ToString();
+                }
+                else if (ds.Tables[0].Rows[0]["Msg"].ToString() == "0")
+                {
+                    model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
             }
             return Json(model, JsonRequestBehavior.AllowGet);
         }
-
-       
-
     }
 }

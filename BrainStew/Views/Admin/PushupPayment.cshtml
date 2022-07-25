@@ -1,0 +1,174 @@
+﻿@model BrainStew.Models.AdminReports
+
+@{
+    ViewBag.Title = "PushupPayment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("PushupPayment", "Admin", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+{
+    <div class="container">
+        <div class="row layout-top-spacing">
+            <div class="col-lg-12 col-12 layout-spacing">
+                <div class="statbox widget box box-shadow">
+                    <div class="widget-header">
+                        <div class="row">
+                            <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                <h4>Pushup Payment</h4>
+                                <span class="text-danger">
+                                    @TempData["msg"]
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-content widget-content-area">
+                   
+                            <div class="row mb-4">
+                                <div class="col-md-3">
+                                    <label for="BranchName" id="lbltbranch">LoginId</label>
+                                    @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control", @placeholder = "LoginId", @onchange = "return CheckLoginId();" })
+                                    <span class="text-danger" id="Name"></span>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="BankName" id="lblbank">Donation Plan</label>
+                                  @Html.DropDownListFor(m => m.DonationPlanTypeId, new SelectList(ViewBag.ddldonationplanType, "Value", "Text"), new { @class = "form-control",@onchange= "return onchangeDonation();" })
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="Level" id="lbltno">Donation Level</label>
+                                    @Html.DropDownListFor(m=>m.Level,new SelectList(ViewBag.ddlLevel, "Value","Text"), new { @class="form-control"})
+                                    
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="TransactionDate" id="lbltdate">Donation Date</label>
+                                    @Html.TextBoxFor(m => m.TransactionDate, new { @class = "form-control", @placeholder = "Donation Date" })
+                                </div>
+                            </div>
+                        <div class="col-md-4">
+                            <input class="btn btn-success" name="btn_Save" id="btn_Save" type="submit" value="Submit" onclick="return ValidateForm();" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script src="~/BrainStewWebsite/assets/js/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="~/plugins/flatpickr/flatpickr.js"></script>
+<script src="~/plugins/flatpickr/custom-flatpickr.js"></script>
+<script src="~/BrainStewWebsite/assets/js/jquery.min.js"></script>
+<script>
+    var f3 = flatpickr(document.getElementById('TransactionDate'), {
+        mode: "range"
+    });
+    //var f4 = flatpickr(document.getElementById('ToDate'), {
+    //    mode: "range"
+    //});
+    ////$("#Status").val($("#st").val()).attr("selected", "selected");
+</script>
+
+<script>
+    
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode != 46 && charCode > 31
+          && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+    function onchangeDonation()
+    {
+        var DonationId = $("#DonationPlanTypeId").val();
+        var loginId = $("#LoginId").val();
+        if (DonationId == "0") {
+            $("#DonationPlanTypeId").addClass('errortext');
+            $("#DonationPlanTypeId").focus();
+            return false;
+        }
+        if (loginId == "") {
+            $("#DonationPlanTypeId").val("0");
+            $("#LoginId").addClass('errortext');
+            $("#LoginId").focus();
+            return false;
+        }
+        else {
+            $(".errortext").removeClass("errortext");
+            $.ajax({
+                url: "/Admin/getLevel",
+                Type: "Get",
+                DataType: "JSON",
+                data: { DonationId: DonationId, loginId: loginId },
+                success: function (data) {
+                    $("#divload").css({ 'display': 'none' });
+                    var j = 1;
+                    if (data.Result == "Yes") {
+                        $("#Level").html(""); // clear before appending new list
+                        $("#Level").empty();
+                        $("#Level").append(
+                              $('<option></option>').val(0).html('Select Donation Level'));
+                        $.each(data.lstLevelDonation, function (index, Donationcount) {
+                            $("#Level").append(
+                                  $('<option></option>').val(Donationcount.Value).html(Donationcount.Text));
+
+                        });
+                    }
+                    else {
+                        $("#Level").empty();
+                    }
+                }
+
+            });
+        }
+    }
+    function ValidateForm() {
+        debugger;
+        jQuery.noConflict();
+        $(".errortext").removeClass("errortext");
+        if ($('#DonationPlanTypeId').val() == '0') {
+            $("#DonationPlanTypeId").addClass('errortext');
+            $('#DonationPlanTypeId').focus();
+            return false;
+        }
+         if ($('#LoginId').val() == '') {
+            $("#LoginId").addClass('errortext');
+            $('#LoginId').focus();
+            return false;
+        }
+        if ($('#Level').val() == '0') {
+            $("#Level").addClass('errortext');
+            $('#Level').focus();
+            return false;
+        }
+          if ($('#TransactionDate').val() == '') {
+            $("#TransactionDate").addClass('errortext');
+            $('#TransactionDate').focus();
+            return false;
+          }
+          return true;
+    }
+    
+    function CheckLoginId()
+    {
+        var loginId = $("#LoginId").val();
+        $.ajax({
+            url: "/Admin/CheckLoginDetails",
+            Type: "Post",
+            DataType: "JSON",
+            data: { loginid: loginId },
+            success: function (data) {
+                $("#divload").css({ 'display': 'none' });
+                if (data.Result == "1") {
+                    $("#LoginId").val(data.LoginId);
+                    $("#Name").text(data.Name);
+                }
+                else {
+                    $("#LoginId").val('');
+                    $("#LoginId").focus();
+                    alert(data.Result);
+                }
+            }
+
+        })
+    } 
+</script>
