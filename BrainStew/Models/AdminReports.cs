@@ -106,6 +106,9 @@ namespace BrainStew.Models
 
         public string DonationPlanTypeId { get; set; }
         public List<SelectListItem> lstLevelDonation { get; set; }
+
+        public string PK_RequestID { get; set; }
+
         #region associatelist
         public DataSet WalletLedger()
         {
@@ -425,7 +428,8 @@ namespace BrainStew.Models
                 new SqlParameter("@FatherName", FatherName),
                 new SqlParameter("@MotherName", MotherName),
                 new SqlParameter("@FromDate", FromDate),
-                  new SqlParameter("@ToDate", ToDate)
+                  new SqlParameter("@ToDate", ToDate),
+                    //new SqlParameter("@Status", Status)
             };
             DataSet ds = DBHelper.ExecuteQuery("GetDonationList", para);
             return ds;
@@ -438,6 +442,18 @@ namespace BrainStew.Models
                 new SqlParameter("@FK_DonationId", FK_DonationId),
             };
             DataSet ds = DBHelper.ExecuteQuery("GetFamilyList", para);
+            return ds;
+        }
+
+        public DataSet ApproveCharityDonation()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@Pk_RequestId",PK_RequestID),
+                new SqlParameter("@ApprovedBy",UpdatedBy),
+                new SqlParameter("@Description",Description),
+                new SqlParameter("@ApprovedAmount",Amount)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("ApproveCharityDonation", para);
             return ds;
         }
     }
