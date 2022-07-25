@@ -1303,6 +1303,7 @@ namespace BrainStew.Controllers
             List<AdminReports> lst = new List<AdminReports>();
             model.FatherName = model.FatherName == "" ? null : model.FatherName;
             model.MotherName = model.MotherName == "" ? null : model.MotherName;
+            //model.Status = (model.Status = "Approved");
             DataSet ds = model.GetDonationList();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
@@ -1323,6 +1324,7 @@ namespace BrainStew.Controllers
                     obj.Need = r["Need"].ToString();
                     obj.NeedAmount = r["NeedAmount"].ToString();
                     obj.ChildCharity = r["ChildCharity"].ToString();
+                    obj.Description = r["Description"].ToString();
                     lst.Add(obj);
                 }
                 model.lstdonation = lst;
@@ -1439,5 +1441,34 @@ namespace BrainStew.Controllers
         }
 
 
+        public ActionResult ApproveCharityDonation(string Description, string Amount, string requestid)
+        {
+            AdminReports model = new AdminReports();
+            try
+            {
+                model.PK_RequestID = requestid;
+                model.Description = Description;
+                model.Amount = Amount;
+                //model.Status = (model.Status = "Approved");
+                model.UpdatedBy = Session["Pk_AdminId"].ToString();
+                DataSet ds = model.ApproveCharityDonation();
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                    {
+                        model.Result = "1";
+                    }
+                    else
+                    {
+                        model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                model.Result = ex.Message;
+            }
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
     }
 }
