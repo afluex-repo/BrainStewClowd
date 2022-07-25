@@ -445,6 +445,12 @@ namespace BrainStew.Controllers
         {
             return View();
         }
+
+        public ActionResult ChildrenDonation()
+        {
+            return View();
+        }
+
         [HttpPost]
         public JsonResult SaveDonationDetails(Home model, HttpPostedFileBase Image)
         {
