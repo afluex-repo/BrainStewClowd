@@ -10,6 +10,7 @@ namespace BrainStew.Models
     public class Home : Common
     {
         public List<Home> lstMenu { get; set; }
+        public List<Home> lst { get; set; }
         public List<Home> lstsubmenu { get; set; }
         public string Amount { get; set; }
         public string WalletBalance { get; set; }
@@ -56,8 +57,8 @@ namespace BrainStew.Models
         public DataTable dtBrothersDetails { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
-
-
+        public string ChildCharity { get; set; }
+       
         #endregion
         #region Sponsor
         public DataSet GetMemberDetails()
@@ -276,7 +277,19 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("SaveDonationDetails", para);
             return ds;
         }
-        
+
+        public DataSet GetChildrenDonationDetails()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@FatherName", FatherName),
+                new SqlParameter("@MotherName", MotherName)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetChildrenDonationList", para);
+            return ds;
+        }
+
+
+
 
     }
 }
