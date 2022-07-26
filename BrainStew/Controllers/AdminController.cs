@@ -659,7 +659,7 @@ namespace BrainStew.Controllers
                 ViewBag.Name = ds.Tables[0].Rows[0]["Name"].ToString();
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
-                   
+
                     Admin obj = new Admin();
                     obj.PK_PayoutWalletId = r["PK_PayoutWalletId"].ToString();
                     obj.Fk_UserId = r["FK_UserId"].ToString();
@@ -1345,11 +1345,11 @@ namespace BrainStew.Controllers
                     if (ds.Tables[0].Rows[0][0].ToString() == "1")
                     {
                         //TempData["msg"] = "Your request has been approved Successfully !!";
-                       // Session["Name"] = ds.Tables[0].Rows[0]["Name"].ToString();
-                       // Session["Email"] = ds.Tables[0].Rows[0]["Email"].ToString();
-                       //model.Email = ds.Tables[0].Rows[0]["Email"].ToString();
-                       // Session["TransactionNo"] = ds.Tables[0].Rows[0]["TransactionNo"].ToString();
-                       // Session["TransactionDate"] = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
+                        // Session["Name"] = ds.Tables[0].Rows[0]["Name"].ToString();
+                        // Session["Email"] = ds.Tables[0].Rows[0]["Email"].ToString();
+                        //model.Email = ds.Tables[0].Rows[0]["Email"].ToString();
+                        // Session["TransactionNo"] = ds.Tables[0].Rows[0]["TransactionNo"].ToString();
+                        // Session["TransactionDate"] = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
 
                         //if (model.Email != "" && model.Email != null)
                         //{
@@ -1632,7 +1632,7 @@ namespace BrainStew.Controllers
             return View();
 
         }
-        public ActionResult getLevel(string DonationId ,string loginId)
+        public ActionResult getLevel(string DonationId, string loginId)
         {
             List<SelectListItem> lstDonation = new List<SelectListItem>();
             AdminReports model = new AdminReports();
@@ -1697,9 +1697,9 @@ namespace BrainStew.Controllers
             Admin model = new Admin();
             model.LoginId = Loginid;
             DataSet ds = model.CheckActivateLogin();
-            if(ds !=null && ds.Tables.Count>0 && ds.Tables[0].Rows.Count>0)
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-                if (ds.Tables[0].Rows[0]["Msg"].ToString()=="1")
+                if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
                 {
                     model.Result = "1";
                     model.LoginId = ds.Tables[0].Rows[0]["Loginid"].ToString();
@@ -1713,12 +1713,42 @@ namespace BrainStew.Controllers
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public ActionResult DeleteDonation(Admin model, string Id)
+        {
+            try
+            {
+                model.DonationId = Id;
+                model.AddedBy = Session["Pk_AdminId"].ToString();
+                DataSet ds = model.DeleteDonation();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        model.Result = "1";
+                        TempData["Donation"] = "This record deleted successfully !!";
+                    }
+                    else
+                    {
+                        model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                model.Result = ex.Message;
+            }
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
 
-     
 
 
 
 
-        
+
+
+
+
+
     }
 }

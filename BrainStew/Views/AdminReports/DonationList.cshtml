@@ -38,7 +38,7 @@
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label>From Date</label>
-                                    @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @placeholder = "dd/mm/yyyy",@readonly="true" })
+                                    @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @placeholder = "dd/mm/yyyy", @readonly = "true" })
                                 </div>
                             </div>
                             <div class="col-lg-3">
@@ -50,7 +50,7 @@
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <br />
-                                    <input type="submit" id="btnSearch" class="btn btn-success pull-left" name="Search" value="Search"/>
+                                    <input type="submit" id="btnSearch" class="btn btn-success pull-left" name="Search" value="Search" />
                                 </div>
                             </div>
                         </div>
@@ -99,12 +99,12 @@
                                                     <td>@Item.ChildCharity</td>
                                                     <td><span class="remark_@Item.DonationId">@Item.Description</span></td>
                                                     @*<input type="hidden" class="remark_@Item.DonationId" value="@Item.Description"/>*@
-                                                   <td><a href="/AdminReports/SisterList?Id=@Item.DonationId" class="btn btn-primary btn-sm">Sister Details</a></td>
+                                                    <td><a href="/AdminReports/SisterList?Id=@Item.DonationId" class="btn btn-primary btn-sm">Sister Details</a></td>
                                                     <td><a href="/AdminReports/BrotherList?Id=@Item.DonationId" class="btn btn-success btn-sm">Brother Details</a></td>
                                                     <td>
-                                                            <a href="javascript:void(0)" class="btn btn-success btn-sm" onclick="openPopup(@Item.DonationId);">Approve</a>
+                                                        <a href="javascript:void(0)" class="btn btn-success btn-sm" onclick="openPopup(@Item.DonationId);">Approve</a>
 
-                                                    <a href="javascript:void(0)" class="btn btn-danger btn-sm" onclick="DeleteDonation(@Item.DonationId)">Delete</a>
+                                                        <a href="javascript:void(0)" class="btn btn-danger btn-sm" onclick="DeleteDonation(@Item.DonationId)">Delete</a>
                                                     </td>
                                                 </tr>
                                                 i++;
@@ -168,60 +168,60 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-danger" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
-                 
+
                 </div>
             </div>
         </div>
     </div>
 
 
-        <div class="modal fade" id="BrotherModal" tabindex="-1" role="dialog" aria-labelledby="BrotherModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="BrotherModal">Brother List</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <table id="html5-extension" class="table table-hover non-hover" style="width:100%" data-page-length='20'>
-                            <thead>
-                                <tr>
-                                    <th>Sr No.</th>
-                                    <th>Brother's Name</th>
-                                    <th>Brother's Age</th>
-                                    <th>Gender</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (Model != null)
+    <div class="modal fade" id="BrotherModal" tabindex="-1" role="dialog" aria-labelledby="BrotherModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="BrotherModal">Brother List</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table id="html5-extension" class="table table-hover non-hover" style="width:100%" data-page-length='20'>
+                        <thead>
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>Brother's Name</th>
+                                <th>Brother's Age</th>
+                                <th>Gender</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                if (Model.lstSister != null)
                                 {
-                                    if (Model.lstSister != null)
+                                    int i = 1;
+                                    foreach (var Item in Model.lstSister)
                                     {
-                                        int i = 1;
-                                        foreach (var Item in Model.lstSister)
-                                        {
-                                            <tr class="text-left">
-                                                <td>@i</td>
-                                                <td>@Item.Name</td>
-                                                <td>@Item.Age</td>
-                                                <td>@Item.Gender</td>
-                                            </tr>
-                                            i++;
-                                        }
+                                        <tr class="text-left">
+                                            <td>@i</td>
+                                            <td>@Item.Name</td>
+                                            <td>@Item.Age</td>
+                                            <td>@Item.Gender</td>
+                                        </tr>
+                                        i++;
                                     }
                                 }
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-danger" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
-                     
-                    </div>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
+
                 </div>
             </div>
         </div>
+    </div>
 
         <div class="modal fade" id="myModal" role="dialog" style="display: none;padding-top:55px;">
             <div class="modal-dialog modal-dialog-centered">
@@ -247,7 +247,7 @@
                                     @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @placeholder = "Description" })
                                 </div>
                             </div>
-                          
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="button" class="btn btn-sm btn-success" onclick="return approved()" value="Update" />&nbsp;&nbsp;
@@ -292,6 +292,7 @@
     $('#ToDate').datepicker({
         dateFormat: 'dd/mm/yy',
     });
+
     function DeleteDonation(Id) {
         debugger;
         var r = confirm('Are you sure you want to delete this record ?');
@@ -302,10 +303,15 @@
                 dataType: 'json',
                 data: { 'Id': Id },
                 success: function (data) {
-                    window.location.href = '/AdminReports/DonationList';
-                },
-                Error: function () {
-                    //alert('Record not deleted');
+                    if(data.Result=="1")
+                    {
+                        //alert('This record deleted successfully !!');
+                        window.location.href = '/AdminReports/DonationList';
+                    }
+                    else
+                    {
+                        alert(data.Result);
+                    }
                 }
             });
         }
@@ -361,4 +367,4 @@
         }
     }
 
-    </script>
+</script>
