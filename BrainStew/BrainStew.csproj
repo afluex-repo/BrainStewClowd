@@ -974,6 +974,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ChildImageUpload\" />
     <Folder Include="Documents\" />
     <Folder Include="PanUpload\" />
     <Folder Include="ProfilePicture\" />

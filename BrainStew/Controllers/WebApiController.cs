@@ -1855,8 +1855,8 @@ namespace BrainStew.Controllers
                     //obj.Fk_SponsorId = r["Fk_SponsorId"].ToString();
                     obj.LoginId = r["LoginId"].ToString();
                     obj.FirstName = r["FirstName"].ToString();
-                    obj.Status = r["Status"].ToString();
-                    //obj.ActiveStatus = r["ActiveStatus"].ToString();
+                    //obj.Status = r["Status"].ToString();
+                    obj.ActiveStatus = r["ActiveStatus"].ToString();
                     obj.SponsorID = r["SponsorId"].ToString();
                     //obj.SponsorName = r["SponsorName"].ToString();
                     obj.ActivationDate = r["PermanentDate"].ToString();
