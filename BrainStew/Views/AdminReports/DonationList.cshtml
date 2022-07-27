@@ -70,6 +70,7 @@
                                         <th>Family Work</th>
                                         <th>Need</th>
                                         <th>Need Amount</th>
+                                        <th>Approved Amount</th>
                                         <th>Child Charity</th>
                                         <th>Description</th>
                                         <th>Sister Details</th>
@@ -96,15 +97,22 @@
                                                     <td>@Item.FamilyWork</td>
                                                     <td>@Item.Need</td>
                                                     <td>@Item.NeedAmount</td>
+                                                    <td>@Item.Amount</td>
                                                     <td>@Item.ChildCharity</td>
                                                     <td><span class="remark_@Item.DonationId">@Item.Description</span></td>
                                                     @*<input type="hidden" class="remark_@Item.DonationId" value="@Item.Description"/>*@
                                                     <td><a href="/AdminReports/SisterList?Id=@Item.DonationId" class="btn btn-primary btn-sm">Sister Details</a></td>
                                                     <td><a href="/AdminReports/BrotherList?Id=@Item.DonationId" class="btn btn-success btn-sm">Brother Details</a></td>
                                                     <td>
-                                                        <a href="javascript:void(0)" class="btn btn-success btn-sm" onclick="openPopup(@Item.DonationId);">Approve</a>
-
-                                                        <a href="javascript:void(0)" class="btn btn-danger btn-sm" onclick="DeleteDonation(@Item.DonationId)">Delete</a>
+                                                        @if (Item.Status != "Approved")
+                                                        {
+                                                            <a href="javascript:void(0)" class="btn btn-success btn-sm" onclick="openPopup(@Item.DonationId);">Approve</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>Approved</span>
+                                                        }
+                                                    <a href="javascript:void(0)" class="btn btn-danger btn-sm" onclick="DeleteDonation(@Item.DonationId)">Delete</a>
                                                     </td>
                                                 </tr>
                                                 i++;
