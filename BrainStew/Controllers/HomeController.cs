@@ -455,22 +455,14 @@ namespace BrainStew.Controllers
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
                     Home obj = new Home();
-                    obj.MemberNo = dr["MemberNo"].ToString();
                     obj.ChildName = dr["ChildName"].ToString();
-                    obj.Gender = dr["Gender"].ToString();
                     obj.DOB = dr["DOB"].ToString();
-                    obj.FatherName = dr["FatherName"].ToString();
-                    obj.MotherName = dr["MotherName"].ToString();
-                    //objagbj.Name = dr["Name"].ToString();
-                    //objagbj.Age = dr["Age"].ToString();
-                    //objagbj.GenderType = dr["GenderType"].ToString();
-                    obj.FamilyWork = dr["FamilyWork"].ToString();
                     obj.Need = dr["Need"].ToString();
                     obj.NeedAmount = dr["NeedAmount"].ToString();
-                    obj.ChildCharity = dr["ChildCharity"].ToString();
                     obj.Description = dr["Description"].ToString();
-                    obj.Image = "/ChildImageUpload/" + dr["ChildImage"].ToString();
+                    obj.Image =dr["ChildImage"].ToString();
                     obj.Address = dr["Address"].ToString();
+                    obj.ApprovedAmount = dr["ApprovedAmount"].ToString();
                     lst.Add(obj);
                 }
                 model.lst = lst;

@@ -58,7 +58,9 @@ namespace BrainStew.Models
         public string Description { get; set; }
         public string Image { get; set; }
         public string ChildCharity { get; set; }
-       
+        public string ApprovedAmount { get; set; }
+        
+
         #endregion
         #region Sponsor
         public DataSet GetMemberDetails()
@@ -273,6 +275,8 @@ namespace BrainStew.Models
                                               new SqlParameter("@LoginId", LoginId),
                                     new SqlParameter("@ChildImage", Image),
                                     new SqlParameter("@Description", Description),
+                                    new SqlParameter("@Address", Address),
+                                    
     };
             DataSet ds = DBHelper.ExecuteQuery("SaveDonationDetails", para);
             return ds;
@@ -280,11 +284,7 @@ namespace BrainStew.Models
 
         public DataSet GetChildrenDonationDetails()
         {
-            SqlParameter[] para = {
-                new SqlParameter("@FatherName", FatherName),
-                new SqlParameter("@MotherName", MotherName)
-            };
-            DataSet ds = DBHelper.ExecuteQuery("GetChildrenDonationList", para);
+            DataSet ds = DBHelper.ExecuteQuery("GetChildrenDonationList");
             return ds;
         }
 
