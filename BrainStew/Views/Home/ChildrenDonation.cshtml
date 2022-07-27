@@ -3,7 +3,16 @@
 }
 
 <script src="~/assets/asset-web/js/header.js"></script>
-
+<style>
+    .donation_form
+    {
+        display:none;
+    }
+    .btn-orange
+    {
+        background:#f15b43;
+    }
+</style>
 
 <main>
 
@@ -42,12 +51,7 @@
                                     <div class="cases-progress mb-60">
                                         <h4 class="funding semi-02-title">Raised- <span> ₹0 of ₹1,000</span></h4>
                                     </div>
-                                    <div class="cases-btn mb-10 d-none d-xl-inline-block">
-                                        <a href="#" class="theme_btn theme_btn2 theme_btn_bg_02">
-                                            donate
-                                            Now <span><i class="fas fa-heart"></i></span>
-                                        </a>
-                                    </div>
+                                    
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-3">
@@ -75,78 +79,159 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-9">
-                                        <div class="widget grey-bg2 mb-30">
-                                            <div class="widget-post">
-                                                <h3 class="cases-title mb-30"> BrainStew Foundation</h3>
-                                                <div class="post d-flex align-items-center mb-20">
-                                                    <div class="post__thumb mr-20">
-                                                        <h4>Category -</h4>
-                                                    </div>
-                                                    <div class="post__content">
-                                                        <h5>
-                                                            Mid Day Meals
-                                                        </h5>
+                                    <div class="col-sm-9 grey-bg2">
+                                        <div class="row">
+                                            <div class="col-lg-5">
+                                                <div class="widget mb-30">
+                                                    <div class="widget-post">
+                                                        <h3 class="cases-title mb-30"> BrainStew Foundation</h3>
+                                                        <div class="post d-flex align-items-center mb-20">
+                                                            <div class="post__thumb mr-20">
+                                                                <h4>Category -</h4>
+                                                            </div>
+                                                            <div class="post__content">
+                                                                <h5>
+                                                                    Mid Day Meals
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post d-flex align-items-center mb-20">
+                                                            <div class="post__thumb mr-20">
+                                                                <h4>Age -</h4>
+                                                            </div>
+                                                            <div class="post__content">
+                                                                <h5>
+                                                                    25
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post d-flex align-items-center mb-20">
+                                                            <div class="post__thumb mr-20">
+                                                                <h4>Son/ Daughter -</h4>
+                                                            </div>
+                                                            <div class="post__content">
+                                                                <h5>
+                                                                    --
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post d-flex align-items-center mb-20">
+                                                            <div class="post__thumb mr-20">
+                                                                <h4> Address -</h4>
+                                                            </div>
+                                                            <div class="post__content">
+                                                                <h5>
+                                                                    Gomti Nagar, Lucknow
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post d-flex align-items-center mb-20">
+                                                            <div class="post__thumb mr-20">
+                                                                <h4> INR <i class="fa fa-rupee-sign"></i> -</h4>
+                                                            </div>
+                                                            <div class="post__content">
+                                                                <h5>
+                                                                    500
+                                                                </h5>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="post d-flex align-items-center mb-20">
-                                                    <div class="post__thumb mr-20">
-                                                        <h4>Age -</h4>
-                                                    </div>
-                                                    <div class="post__content">
-                                                        <h5>
-                                                            25
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                                <div class="post d-flex align-items-center mb-20">
-                                                    <div class="post__thumb mr-20">
-                                                        <h4>Son/ Daughter -</h4>
-                                                    </div>
-                                                    <div class="post__content">
-                                                        <h5>
-                                                            --
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                                <div class="post d-flex align-items-center mb-20">
-                                                    <div class="post__thumb mr-20">
-                                                        <h4> Address -</h4>
-                                                    </div>
-                                                    <div class="post__content">
-                                                        <h5>
-                                                            Gomti Nagar, Lucknow
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                                <div class="post d-flex align-items-center mb-20">
-                                                    <div class="post__thumb mr-20">
-                                                        <h4> INR <i class="fa fa-rupee-sign"></i> -</h4>
-                                                    </div>
-                                                    <div class="post__content">
-                                                        <h5>
-                                                            500
-                                                        </h5>
-                                                    </div>
+                                            </div>
+                                            <div class="col-lg-7 text-right">
+                                                <div class="cases-btn mt-5 mb-10 d-xl-inline-block">
+                                                    <button href="#" class="btn btn-orange text-white" id="donate_btn">
+                                                         Donate Now 
+                                                    </button>
+                                                    <form class="text-left donation_form">
+                                                        <div class="row mt-3">
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">First Name<span class="text-danger">*</span></label>
+                                                                    <input type="text" name="MemberNo" id="MemberNo" class="form-control" placeholder="Enter First Name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Last Name <span class="text-danger">*</span></label>
+                                                                    <input type="text" name="ChildName" id="ChildName" class="form-control" placeholder="Enter Last name" onkeypress="return onlyAlphabets();">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Email Address <span class="text-danger">*</span></label>
+                                                                    <input type="email" name="" class="form-control" placeholder="Enter Email Address">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Phone No.<span class="text-danger">*</span></label>
+                                                                    <input type="number" name="FatherName" class="form-control" placeholder="Enter Phone No.">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-12"><h4>Billing Details</h4></div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">City<span class="text-danger">*</span></label>
+                                                                    <input type="text" class="form-control" placeholder="Enter City Name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Pincode<span class="text-danger">*</span></label>
+                                                                    <input type="text" name="" class="form-control" placeholder="Enter Code">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Zip/Postal Code<span class="text-danger">*</span></label>
+                                                                    <input type="text" name="" class="form-control" placeholder="Enter Code">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">PAN No.<span class="text-danger">*</span></label>
+                                                                    <input type="text" name="" class="form-control" placeholder="Enter PAN No.">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-12">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Address<span class="text-danger">*</span></label>
+                                                                    <textarea class="form-control" rows="2"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-12 mb-5 table-responsive">
+                                                                <table class="table table-bordered bg-white">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <th>Donation Total:</th>
+                                                                            <td><i class="fa fa-rupee-sign"></i> 1000</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                                <div class="col-xl-6">
+                                                                    <button id="btnfinalsubmit" class="theme_btn theme_btn_bg">Donate now <span><i class="fas fa-heart"></i></span></button>
+                                                                </div>
+                                                            </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                               
-                              
                                 <h3 class="cases-title mb-20">Description</h3>
                                 <p>
                                     She is currently deserted and living in a small hut. She had 3 sons and unfortunately who died in separate accidents leaving her alone. Currently, she has 2 grandchildren. One of the grandson working as a construction worker to support her and his sister. She needs love, care and proper support to lead the rest of life with minimum.
                                 </p>
                             </div>
                         </div>
-                        <div class="cases-feature mb-20">
+                        @*<div class="cases-feature mb-20">
                             <h3 class="cases-title mb-20">Impact</h3>
                             <p class="mb-30">
                                 BrainStew Foundation is supporting her with hygienic and nutritious food daily consisting of steam cooked rice, dal, sambar, vegetable curry, curd and seasonal fruits. Currently, she needs your support. In this regard, even you can support BrainStew Foundation for her well-being so that she can lead rest of her healthy life.
                             </p>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
             </div>
@@ -169,4 +254,12 @@
     <!--cases-details-area end-->
 </main>
 <script src="~/assets/asset-web/js/footer.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#donate_btn").click(function () {
+            $(".donation_form").toggle();
+        });
+    });
+</script>
 
