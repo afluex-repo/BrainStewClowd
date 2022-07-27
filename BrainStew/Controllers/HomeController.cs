@@ -441,9 +441,9 @@ namespace BrainStew.Controllers
             DataSet ds1 = model.TransferPlacementUpgradeIncome();
             return View();
         }
-        public ActionResult CharityDonation()
+        public ActionResult CharityDonation(Home model)
         {
-            return View();
+            return View(model);
         }
 
         public ActionResult ChildrenDonation(Home model)
@@ -483,20 +483,26 @@ namespace BrainStew.Controllers
         {
             var profile = Request.Files;
             bool status = false;
-            var datavalue = Request["SistersdataValue"];
-            var jssss = new JavaScriptSerializer();
-            var jdvvv = jssss.Deserialize<dynamic>(Request["SistersdataValue"]);
-            DataTable dtSistersDetails = new DataTable();
-            dtSistersDetails = JsonConvert.DeserializeObject<DataTable>(jdvvv["SistersAddData"]);
-            model.dtSistersDetails = dtSistersDetails;
-
-            var datavaluee = Request["BrothersdataValue"];
-            var jssss1 = new JavaScriptSerializer();
-            var jdvvv1 = jssss1.Deserialize<dynamic>(Request["BrothersdataValue"]);
-            DataTable dtBrothersDetails = new DataTable();
-            dtBrothersDetails = JsonConvert.DeserializeObject<DataTable>(jdvvv1["BrothersAddData"]);
-            model.dtBrothersDetails = dtBrothersDetails;
-
+            var sisterdatavalue = Request["SistersdataValue"];
+            var SisCount = Request["Siscount"];
+            var BroCount = Request["BroCount"];
+            if (Convert.ToInt32(SisCount) > 0)
+            {
+                var jssss = new JavaScriptSerializer();
+                var jdvvv = jssss.Deserialize<dynamic>(Request["SistersdataValue"]);
+                DataTable dtSistersDetails = new DataTable();
+                dtSistersDetails = JsonConvert.DeserializeObject<DataTable>(jdvvv["SistersAddData"]);
+                model.dtSistersDetails = dtSistersDetails;
+            }
+            var brotherdatavalue = Request["BrothersdataValue"];
+            if (Convert.ToInt32(BroCount) > 0)
+            {
+                var brojssc = new JavaScriptSerializer();
+                var brojdv = brojssc.Deserialize<dynamic>(Request["BrothersdataValue"]);
+                DataTable dtBrothersDetails = new DataTable();
+                dtBrothersDetails = JsonConvert.DeserializeObject<DataTable>(brojdv["BrothersAddData"]);
+                model.dtBrothersDetails = dtBrothersDetails;
+            }
             if (Image != null)
             {
                 model.Image = "/ChildImageUpload/" + Guid.NewGuid() + Path.GetExtension(Image.FileName);
@@ -508,18 +514,20 @@ namespace BrainStew.Controllers
             {
                 if (ds.Tables[0].Rows[0][0].ToString() == "1")
                 {
-                    //TempData["Donation"] = "Donated successfully";
+                    TempData["Donation"] = "Donated successfully";
                     model.Result = "1";
                 }
                 else if (ds.Tables[0].Rows[0][0].ToString() == "0")
                 {
                     model.Result = "0";
+                    TempData["Donation"]= ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                     model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                 }
             }
             else
             {
                 model.Result = "0";
+
                 TempData["Donation"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
             }
             return new JsonResult { Data = new { status = status } };

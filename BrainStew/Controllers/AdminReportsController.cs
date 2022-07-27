@@ -1319,12 +1319,13 @@ namespace BrainStew.Controllers
                     obj.MotherName = r["MotherName"].ToString();
                     //obj.Name = r["Name"].ToString();
                     //obj.Age = r["Age"].ToString();
-                    //obj.GenderType = r["GenderType"].ToString();
+                    obj.Amount = r["ApprovedAmount"].ToString();
                     obj.FamilyWork = r["FamilyWork"].ToString();
                     obj.Need = r["Need"].ToString();
                     obj.NeedAmount = r["NeedAmount"].ToString();
                     obj.ChildCharity = r["ChildCharity"].ToString();
                     obj.Description = r["Description"].ToString();
+                    obj.Status = r["Status"].ToString();
                     lst.Add(obj);
                 }
                 model.lstdonation = lst;
