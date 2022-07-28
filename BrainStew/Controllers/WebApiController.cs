@@ -1010,7 +1010,7 @@ namespace BrainStew.Controllers
             }
             else
             {
-                obj.Status1 = "0";
+                obj.Status1 = "1";
                 obj.Message = "Record Not Found";
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
@@ -1231,7 +1231,7 @@ namespace BrainStew.Controllers
             }
             else
             {
-                Response.Status = "0";
+                Response.Status = "1";
                 Response.Message = "Record Not Found";
             }
 
