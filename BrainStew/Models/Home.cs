@@ -287,13 +287,23 @@ namespace BrainStew.Models
             return ds;
         }
 
-        public DataSet GetChildrenDonationDetails()
+        public DataSet GetChildrenDonationList()
         {
             DataSet ds = DBHelper.ExecuteQuery("GetChildrenDonationList");
             return ds;
-
-
+            
+        }
+        public DataSet GetChildrenDonationDetails()
+        {
+            SqlParameter[] para = {
+                                    new SqlParameter("@DonationId", DonationId),
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetChildrenDonationDetails", para);
+            return ds;
 
         }
+
+
+        
     }
 }
