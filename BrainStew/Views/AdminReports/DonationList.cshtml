@@ -19,7 +19,7 @@
                                     @TempData["Donation"]
                                 </span>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                     <div class="widget-content widget-content-area">
                         <div class="row">
@@ -73,6 +73,7 @@
                                         <th>Approved Amount</th>
                                         <th>Child Charity</th>
                                         <th>Description</th>
+                                        <th>Address</th>
                                         <th>Sister Details</th>
                                         <th>Brother Details</th>
                                         <th>Action</th>
@@ -100,6 +101,7 @@
                                                     <td>@Item.Amount</td>
                                                     <td>@Item.ChildCharity</td>
                                                     <td><span class="remark_@Item.DonationId">@Item.Description</span></td>
+                                                    <td>@Item.Address</td>
                                                     @*<input type="hidden" class="remark_@Item.DonationId" value="@Item.Description"/>*@
                                                     <td><a href="/AdminReports/SisterList?Id=@Item.DonationId" class="btn btn-primary btn-sm">Sister Details</a></td>
                                                     <td><a href="/AdminReports/BrotherList?Id=@Item.DonationId" class="btn btn-success btn-sm">Brother Details</a></td>

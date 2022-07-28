@@ -12,6 +12,7 @@ namespace BrainStew.Models
         public List<Home> lstMenu { get; set; }
         public List<Home> lst { get; set; }
         public List<Home> lstsubmenu { get; set; }
+        public List<Home> lstChildrenDonation { get; set; }
         public string Amount { get; set; }
         public string WalletBalance { get; set; }
         #region property
@@ -59,8 +60,12 @@ namespace BrainStew.Models
         public string Image { get; set; }
         public string ChildCharity { get; set; }
         public string ApprovedAmount { get; set; }
-        
-
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+        public string Status { get; set; }
+        public string Age { get; set; }
+        public string DonationId { get; set; }
+        public string SisName { get; set; }
         #endregion
         #region Sponsor
         public DataSet GetMemberDetails()
@@ -286,10 +291,9 @@ namespace BrainStew.Models
         {
             DataSet ds = DBHelper.ExecuteQuery("GetChildrenDonationList");
             return ds;
+
+
+
         }
-
-
-
-
     }
 }

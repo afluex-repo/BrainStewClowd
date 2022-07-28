@@ -1,0 +1,295 @@
+﻿@*@model BrainStew.Models.Home*@
+
+@{
+    Layout = null;
+}
+<script src="~/assets/asset-web/js/header.js"></script>
+<link rel="icon" type="jpg/png" href="~/assets/asset-web/img/logo/favicon.png" />
+<style>
+    .font-25 {
+        font-size: 20px;
+        color: #000;
+    }
+</style>
+<!--page-title-area start-->
+<section class="page-title-area" style="background-image: url(/assets/asset-web/img/bg/breadcrumb.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 offset-xl-4">
+                <div class="page-title-wrapper text-center pt-125">
+                    <div class="page-title-box">
+                        <h2 class="page-title" style="font-size:59px;">Children Donation List</h2>
+                        <ul class="breadcrumb-list">
+                            <li><a href="/BrainStew/index.html">Home <i class="far fa-chevron-right"></i></a></li>
+                            <li><a href="#">Children Donation List</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--page-title-area end-->
+<!--donation-form-area start-->
+<section class="donation-form-area-02 grey-bg2 pt-125 pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="donation-form-left">
+                    <div class="donar-information donation-form white-bg mb-30 wow fadeInUp2 animated" data-wow-delay='.1s'>
+                        <div class="section-title text-left mb-50">
+                            <h6><span><i class="fas fa-heart"></i></span> Brain Stew</h6>
+                            <h1>Children Donation List</h1> <span>@TempData["Donation"]</span>
+                        </div>
+                        <div class="table-responsive">
+                        <table id="html5-extension" class="table  table-striped" data-page-length='20'>
+                            <thead>
+                                <tr>
+                                    <th>Sr No.</th>
+                                    @*<th>Member No</th>
+                                    <th>Child Name</th>
+                                    <th>Gender</th>*@
+                                    @*<th>DOB</th>*@
+                                    @*<th>Father Name</th>
+                                    <th>Mother Name</th>*@
+                                    <th>Family Work</th>
+                                    <th>Need</th>
+                                    <th>Need Amount</th>
+                                    <th>Approved Amount</th>
+                                    <th>Child Charity</th>
+                                    <th>Description</th>
+                                    <th>Address</th>
+                                    <th>Sister/Brother's Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    if (Model.lstChildrenDonation != null)
+                                    {
+                                        int i = 1;
+                                        foreach (var Item in Model.lstChildrenDonation)
+                                        {
+                                            <tr class="text-left">
+                                                <td>@i</td>
+                                                <td style="display:none" class="MemberNo_@Item.DonationId">@Item.MemberNo</td>
+                                                <td style="display:none" class="ChildName_@Item.DonationId">@Item.ChildName</td>
+                                                <td style="display:none" class="Gender_@Item.DonationId">@Item.Gender</td>
+                                                <td style="display:none" class="DOB_@Item.DonationId">@Item.DOB</td>
+                                                <td style="display:none" class="FatherName_@Item.DonationId">@Item.FatherName</td>
+                                                <td style="display:none" class="MotherName_@Item.DonationId">@Item.MotherName</td>
+                                                <td>@Item.FamilyWork</td>
+                                                <td>@Item.Need</td>
+                                                <td>@Item.NeedAmount</td>
+                                                <td>@Item.Amount</td>
+                                                <td>@Item.ChildCharity</td>
+                                                <td>@Item.Description</td>
+                                                <td>@Item.Address</td>
+                                                <td><span class="Name_@Item.DonationId">@Item.Name</span></td>
+                                                @*<td><span class="Age_@Item.DonationId">@Item.Age</span></td>*@
+                                                <td><a href="javascript:void(0)" class="btn btn-success btn-sm" onclick="SistersDetails(@Item.DonationId);">Sister Details</a></td>
+                                                @*<td>@Item.Age</td>*@
+                                            </tr>
+                                            i++;
+                                        }
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="modal fade" id="SisterModal" role="dialog" style="display: none;padding-top:55px;">
+    <div class="modal-dialog modal-dialog-centered">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Sister's Details</h5>
+                <button type="button" class="close" data-dismiss="modal" onclick="closeModal();">&times;</button>
+            </div>
+            <div class="modal-body" style="color: black">
+                <input type="text" id="DonationId" name="DonationId"/>
+                <div class="row">
+                    @*<div class="table-responsive">
+                        <table id="html5-extension" class="table  table-striped" data-page-length='20'>
+                            <thead>
+                                <tr>
+                                    <th>Sr No.</th>
+                                    <th>Member No</th>
+                                    <th>Child Name</th>
+                                    <th>Gender</th>
+                                    <th>DOB</th>
+                                    <th>Father Name</th>
+                                    <th>Mother Name</th>
+                                    <th>Family Work</th>
+                                    <th>Need</th>
+                                    <th>Need Amount</th>
+                                    <th>Approved Amount</th>
+                                    <th>Child Charity</th>
+                                    <th>Description</th>
+                                    <th>Address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    if (Model.lstChildrenDonation != null)
+                                    {
+                                        int i = 1;
+                                        foreach (var Item in Model.lstChildrenDonation)
+                                        {
+                                            <tr class="text-left">
+                                                <td>@i</td>
+                                                <td>@Item.MemberNo</td>
+                                                <td>@Item.ChildName</td>
+                                                <td>@Item.Gender</td>
+                                                <td>@Item.DOB</td>
+                                                <td>@Item.FatherName</td>
+                                                <td>@Item.MotherName</td>
+                                                <td>@Item.FamilyWork</td>
+                                                <td>@Item.Need</td>
+                                                <td>@Item.NeedAmount</td>
+                                                <td>@Item.Amount</td>
+                                                <td>@Item.ChildCharity</td>
+                                                <td>@Item.Description</td>
+                                                <td class="Address_@Item.DonationId">@Item.Address</td>
+                                            </tr>
+                                            i++;
+                                        }
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>*@
+
+                    @*<div class="col-md-6">
+                        <div class="form-group">
+                            <label id="">MemberNo</label>
+                            <label id="MemberNo"></label>
+                            <input type="text" id="MemberNo" name="MemberNo" class="form-control" />
+                        </div>
+                    </div>*@
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>ChildName</label>
+                            @*<label id="ChildName"></label>*@
+                            <input type="text" id="ChildName" name="ChildName"  class="form-control" />
+                        </div>
+                    </div>
+                    @*<div class="col-md-6">
+                        <div class="form-group">
+                            <label id="">Gender</label>
+                            <label id="Gender"></label>
+                            <input type="text" id="Gender" name="Gender" class="form-control" />
+                        </div>
+                    </div>*@
+                    @*<div class="col-md-6">
+                        <div class="form-group">
+                            <label>DOB</label>
+                            <label id="DOB"></label>
+                            <input type="text" id="DOB" name="DOB" class="form-control" />
+                        </div>
+                    </div>*@
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label id="">FatherName</label>
+                            @*<label id="FatherName"></label>*@
+                            <input type="text" id="FatherName" name="FatherName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>MotherName</label>
+                            @*<label id="MotherName"></label>*@
+                            <input type="text" id="MotherName" name="MotherName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="button" class="btn btn-sm btn-success btn-block" onclick="return SaveRecord()" value="Update" />                         
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-sm btn-danger btn-block" data-dismiss="modal" onclick="closeModal();">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              
+            </div>
+        </div>
+    </div>
+</div>
+<!--donation-form-area end-->
+<script src="~/assets/asset-web/js/footer.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+
+
+<script>
+    function SistersDetails(Id) {
+        debugger
+        jQuery.noConflict();
+        var DonationId = $("#DonationId").val(Id);
+        var MemberNo = $(".MemberNo_" + Id).text();
+        var ChildName = $(".ChildName_" + Id).text();
+        var Gender = $('.Gender_' + Id).text();
+        var DOB = $(".DOB_" + Id).text();
+        var FatherName = $('.FatherName_' + Id).text();
+        var MotherName = $(".MotherName_" + Id).text();
+        $("#MemberNo").val(MemberNo);
+        $("#ChildName").val(ChildName);
+        $("#Gender").val(Gender);
+        $("#DOB").val(DOB);
+        $("#FatherName").val(FatherName);
+        $("#MotherName").val(MotherName);
+        $("#SisterModal").modal('show');
+      
+    }
+
+    //function SaveRecord()
+    //{
+    //    debugger;
+    //    var Name=$("#").val();
+    //    var Name=$("#").val();
+    //    var Name=$("#").val();
+    //    $.ajax({
+    //    url:'/Home/SaveEmployee',
+    //    type:'Post',
+    //    dataType:'json',
+    //    data:{},
+    //    success:function(data)
+    //    {
+    //        if(data.Result=="yes")
+    //        {
+    //            alert('Employee Save Successfully');
+    //            windoe.location.href
+    //        }
+    //    }
+        
+        
+    //    });
+
+    //}
+
+</script>
+
+
+
+
+ 
+
+
+
+
+

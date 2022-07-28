@@ -526,5 +526,37 @@ namespace BrainStew.Controllers
             //return Json(model, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult ChildrenDonationList(Home model)
+        {
+            List<Home> lst = new List<Home>();
+            DataSet ds = model.GetChildrenDonationDetails();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Home obj = new Home();
+                    obj.DonationId = r["Pk_DonationId"].ToString();
+                    obj.MemberNo = r["MemberNo"].ToString();
+                    obj.ChildName = r["ChildName"].ToString();
+                    obj.Gender = r["Gender"].ToString();
+                    obj.DOB = r["DOB"].ToString();
+                    obj.FatherName = r["FatherName"].ToString();
+                    obj.MotherName = r["MotherName"].ToString();
+                    //obj.Name = r["Name"].ToString();
+                    //obj.Age = r["Age"].ToString();
+                    obj.FamilyWork = r["FamilyWork"].ToString();
+                    obj.Need = r["Need"].ToString();
+                    obj.NeedAmount = r["NeedAmount"].ToString();
+                    obj.ChildCharity = r["ChildCharity"].ToString();
+                    obj.Description = r["Description"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    obj.Address = r["Address"].ToString();
+                    lst.Add(obj);
+                }
+                model.lstChildrenDonation = lst;
+            }
+            return View(model);
+        }
+
     }
 }
