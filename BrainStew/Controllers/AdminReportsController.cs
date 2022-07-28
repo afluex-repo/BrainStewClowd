@@ -1326,6 +1326,7 @@ namespace BrainStew.Controllers
                     obj.ChildCharity = r["ChildCharity"].ToString();
                     obj.Description = r["Description"].ToString();
                     obj.Status = r["Status"].ToString();
+                    obj.Address = r["Address"].ToString();
                     lst.Add(obj);
                 }
                 model.lstdonation = lst;
@@ -1376,6 +1377,9 @@ namespace BrainStew.Controllers
                     obj.Need = r["Need"].ToString();
                     obj.NeedAmount = r["NeedAmount"].ToString();
                     obj.ChildCharity = r["ChildCharity"].ToString();
+                    obj.Description = r["Description"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    obj.Address = r["Address"].ToString();
                     lst.Add(obj);
                 }
                 model.lstdonation = lst;

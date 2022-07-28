@@ -446,34 +446,25 @@ namespace BrainStew.Controllers
             return View(model);
         }
 
-        public ActionResult ChildrenDonation(Home model)
+        public ActionResult ChildrenDonation(Home model, string Id)
         {
             List<Home> lst = new List<Home>();
-            DataSet ds = model.GetChildrenDonationDetails();
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            if (Id != null)
             {
-                foreach (DataRow dr in ds.Tables[0].Rows)
+                model.DonationId = Id;
+                DataSet ds = model.GetChildrenDonationDetails();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
-                    Home obj = new Home();
-                    obj.MemberNo = dr["MemberNo"].ToString();
-                    obj.ChildName = dr["ChildName"].ToString();
-                    obj.Gender = dr["Gender"].ToString();
-                    obj.DOB = dr["DOB"].ToString();
-                    obj.FatherName = dr["FatherName"].ToString();
-                    obj.MotherName = dr["MotherName"].ToString();
-                    //objagbj.Name = dr["Name"].ToString();
-                    //objagbj.Age = dr["Age"].ToString();
-                    //objagbj.GenderType = dr["GenderType"].ToString();
-                    obj.FamilyWork = dr["FamilyWork"].ToString();
-                    obj.Need = dr["Need"].ToString();
-                    obj.NeedAmount = dr["NeedAmount"].ToString();
-                    obj.ChildCharity = dr["ChildCharity"].ToString();
-                    obj.Description = dr["Description"].ToString();
-                    obj.Image = "/ChildImageUpload/" + dr["ChildImage"].ToString();
-                    obj.Address = dr["Address"].ToString();
-                    lst.Add(obj);
+                    ViewBag.ChildName = ds.Tables[0].Rows[0]["ChildName"].ToString();
+                    ViewBag.DOB = ds.Tables[0].Rows[0]["DOB"].ToString();
+                    ViewBag.Need = ds.Tables[0].Rows[0]["Need"].ToString();
+                    ViewBag.NeedAmount = ds.Tables[0].Rows[0]["NeedAmount"].ToString();
+                    ViewBag.Description = ds.Tables[0].Rows[0]["Description"].ToString();
+                    ViewBag.Image = ds.Tables[0].Rows[0]["ChildImage"].ToString();
+                    ViewBag.Address = ds.Tables[0].Rows[0]["Address"].ToString();
+                    ViewBag.ApprovedAmount = ds.Tables[0].Rows[0]["ApprovedAmount"].ToString();
+                    ViewBag.Gender = ds.Tables[0].Rows[0]["Gender"].ToString();
                 }
-                model.lst = lst;
             }
             return View(model);
         }
@@ -520,7 +511,7 @@ namespace BrainStew.Controllers
                 else if (ds.Tables[0].Rows[0][0].ToString() == "0")
                 {
                     model.Result = "0";
-                    TempData["Donation"]= ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    TempData["Donation"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                     model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                 }
             }
@@ -533,6 +524,33 @@ namespace BrainStew.Controllers
             return new JsonResult { Data = new { status = status } };
             //return Json(model, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult ChildrenDonationList(Home model)
+        {
+            List<Home> lst = new List<Home>();
+            DataSet ds = model.GetChildrenDonationList();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    Home obj = new Home();
+                    obj.DonationId = dr["Pk_DonationId"].ToString();
+                    obj.ChildName = dr["ChildName"].ToString();
+                    obj.DOB = dr["DOB"].ToString();
+                    obj.Need = dr["Need"].ToString();
+                    obj.NeedAmount = dr["NeedAmount"].ToString();
+                    obj.Description = dr["Description"].ToString();
+                    obj.Image = dr["ChildImage"].ToString();
+                    obj.Address = dr["Address"].ToString();
+                    obj.ApprovedAmount = dr["ApprovedAmount"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+
+
 
     }
 }
