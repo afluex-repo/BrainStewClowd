@@ -550,6 +550,41 @@ namespace BrainStew.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult SaveBillingDetails(Home model,string FK_DonationId, string FirstName, string LastName,
+            string Email, string Mobile, string City, string PinCode, string ZipPostalCode, string PanNumber, string Address, string TotalDonation)
+        {
+            DataSet ds = new DataSet();
+            model.FK_DonationId = FK_DonationId;
+            model.FirstName = FirstName;
+            model.LastName = LastName;
+            model.Email = Email;
+            model.MobileNo = Mobile;
+            model.City = City;
+            model.PinCode = PinCode;
+            model.ZipPostalCode = ZipPostalCode;
+            model.PanNo = PanNumber;
+            model.TotalDonation = TotalDonation;
+            ds = model.SaveBillingDetails();
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                {
+                    //TempData["SaveBilling"] = "Donated amount succesfully !!";
+                     model.Result = "yes";
+                }
+                else if (ds.Tables[0].Rows[0][0].ToString() == "0")
+                {
+                    model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+            }
+            else
+            {
+                TempData["SaveBilling"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+            }
+            return Json(model,JsonRequestBehavior.AllowGet);
+        }
+
 
 
     }

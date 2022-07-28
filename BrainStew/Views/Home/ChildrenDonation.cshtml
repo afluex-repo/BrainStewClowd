@@ -4,13 +4,12 @@
 
 <script src="~/assets/asset-web/js/header.js"></script>
 <style>
-    .donation_form
-    {
-        display:none;
+    .donation_form {
+        display: none;
     }
-    .btn-orange
-    {
-        background:#f15b43;
+
+    .btn-orange {
+        background: #f15b43;
     }
 </style>
 
@@ -36,229 +35,347 @@
     <!--page-title-area end-->
     <!--cases-details-area start-->
     <section class="cases-details-area pt-125">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12 col-lg-8 col-md-12">
-                                <div class="details-left-area pb-50">
-                                    <div class="cases cases-wrapper-box wow fadeInUp2 animated" data-wow-delay='.2s'>
-                                        <div class="cases__content">
-                                            <h2>
-                                                Children Donation
-                                            </h2>
-                                            <input type="hidden" id="DonationId" name="DonationId" value="@Model.DonationId"/>
-                                            <div class="cases-meta d-sm-flex justify-content-between">
-                                                <div class="cases-progress mb-60">
-                                                    <h4 class="funding semi-02-title">Raised- <span> ₹0 of ₹ @ViewBag.ApprovedAmount</span></h4>
-                                                </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-8 col-md-12">
+                    <div class="details-left-area pb-50">
+                        <div class="cases cases-wrapper-box wow fadeInUp2 animated" data-wow-delay='.2s'>
+                            <div class="cases__content">
+                                <h2>
+                                    Children Donation
+                                </h2>
+                                <input type="hidden" id="DonationId" name="DonationId" value="@Model.DonationId" />
+                                <div class="cases-meta d-sm-flex justify-content-between">
+                                    <div class="cases-progress mb-60">
+                                        <h4 class="funding semi-02-title">Raised- <span> ₹0 of ₹ @ViewBag.ApprovedAmount</span></h4>
+                                    </div>
 
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <div class="cases__box mb-40">
-                                                        <img  src="@ViewBag.Image" height="270" width="270" alt="">
-                                                        <div class="team-details-wrapper mt-4">
-                                                            <div class="teams__thumb--social">
-                                                                <a href="#">
-                                                                    <i class="fab fa-facebook-f"></i>
-                                                                    <i class="fab fa-facebook-f"></i>
-                                                                </a>
-                                                                <a href="#">
-                                                                    <i class="fab fa-twitter"></i>
-                                                                    <i class="fab fa-twitter"></i>
-                                                                </a>
-                                                                <a href="#">
-                                                                    <i class="fab fa-youtube"></i>
-                                                                    <i class="fab fa-youtube"></i>
-                                                                </a>
-                                                                <a href="#">
-                                                                    <i class="fab fa-linkedin"></i>
-                                                                    <i class="fab fa-linkedin"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-9 grey-bg2">
-                                                    <div class="row">
-                                                        <div class="col-lg-5">
-                                                            <div class="widget mb-30">
-                                                                <div class="widget-post">
-                                                                    <h3 class="cases-title mb-30">@ViewBag.ChildName</h3>
-                                                                    <div class="post d-flex align-items-center mb-20">
-                                                                        <div class="post__thumb mr-20">
-                                                                            <h4>Category -</h4>
-                                                                        </div>
-                                                                        <div class="post__content">
-                                                                            <h5>
-                                                                              @ViewBag.Need
-                                                                            </h5>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="post d-flex align-items-center mb-20">
-                                                                        <div class="post__thumb mr-20">
-                                                                            <h4>Age -</h4>
-                                                                        </div>
-                                                                        <div class="post__content">
-                                                                            <h5>
-                                                                             @ViewBag.DOB
-                                                                            </h5>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="post d-flex align-items-center mb-20">
-                                                                        <div class="post__thumb mr-20">
-                                                                            <h4>Gender</h4>
-                                                                        </div>
-                                                                        <div class="post__content">
-                                                                            <h5>
-                                                                              @ViewBag.Gender
-                                                                            </h5>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="post d-flex align-items-center mb-20">
-                                                                        <div class="post__thumb mr-20">
-                                                                            <h4> Address -</h4>
-                                                                        </div>
-                                                                        <div class="post__content">
-                                                                            <h5>
-                                                                            @ViewBag.Address 
-                                                                            </h5>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="post d-flex align-items-center mb-20">
-                                                                        <div class="post__thumb mr-20">
-                                                                            <h4> INR <i class="fa fa-rupee-sign"></i> -</h4>
-                                                                        </div>
-                                                                        <div class="post__content">
-                                                                            <h5>
-                                                                          @ViewBag.NeedAmount
-                                                                            </h5>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-7 text-right">
-                                                            <div class="cases-btn mt-5 mb-10 d-xl-inline-block">
-                                                                <button href="#" class="btn btn-orange text-white" id="donate_btn">
-                                                                    Donate Now
-                                                                </button>
-                                                                <form class="text-left donation_form">
-                                                                    <div class="row mt-3">
-                                                                        <div class="col-xl-6">
-                                                                            <div class="input-area mb-30">
-                                                                                <label class="font-25">First Name<span class="text-danger">*</span></label>
-                                                                                <input type="text" name="MemberNo" id="MemberNo" class="form-control" placeholder="Enter First Name">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xl-6">
-                                                                            <div class="input-area mb-30">
-                                                                                <label class="font-25">Last Name <span class="text-danger">*</span></label>
-                                                                                <input type="text" name="ChildName" id="ChildName" class="form-control" placeholder="Enter Last name" onkeypress="return onlyAlphabets();">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xl-6">
-                                                                            <div class="input-area mb-30">
-                                                                                <label class="font-25">Email Address <span class="text-danger">*</span></label>
-                                                                                <input type="email" name="" class="form-control" placeholder="Enter Email Address">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xl-6">
-                                                                            <div class="input-area mb-30">
-                                                                                <label class="font-25">Phone No.<span class="text-danger">*</span></label>
-                                                                                <input type="text" name="FatherName" class="form-control" placeholder="Enter Phone No.">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xl-12"><h4>Billing Details</h4></div>
-                                                                        <div class="col-xl-6">
-                                                                            <div class="input-area mb-30">
-                                                                                <label class="font-25">City<span class="text-danger">*</span></label>
-                                                                                <input type="text" class="form-control" placeholder="Enter City Name">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xl-6">
-                                                                            <div class="input-area mb-30">
-                                                                                <label class="font-25">Pincode<span class="text-danger">*</span></label>
-                                                                                <input type="text" name="" class="form-control" placeholder="Enter Code">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xl-6">
-                                                                            <div class="input-area mb-30">
-                                                                                <label class="font-25">Zip/Postal Code<span class="text-danger">*</span></label>
-                                                                                <input type="text" name="" class="form-control" placeholder="Enter Code">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xl-6">
-                                                                            <div class="input-area mb-30">
-                                                                                <label class="font-25">PAN No.<span class="text-danger">*</span></label>
-                                                                                <input type="text" name="" class="form-control" placeholder="Enter PAN No.">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xl-12">
-                                                                            <div class="input-area mb-30">
-                                                                                <label class="font-25">Address<span class="text-danger">*</span></label>
-                                                                                <textarea class="form-control" rows="2"></textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xl-12 mb-5 table-responsive">
-                                                                            <table class="table table-bordered bg-white">
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <th>Donation Total:</th>
-                                                                                        <td><i class="fa fa-rupee-sign"></i> 1000</td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </div>
-                                                                        <div class="col-xl-6">
-                                                                            <button id="btnfinalsubmit" class="theme_btn theme_btn_bg">Donate now <span><i class="fas fa-heart"></i></span></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="cases__box mb-40">
+                                            <img src="@ViewBag.Image" height="270" width="270" alt="">
+                                            <div class="team-details-wrapper mt-4">
+                                                <div class="teams__thumb--social">
+                                                    <a href="#">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                        <i class="fab fa-facebook-f"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="fab fa-twitter"></i>
+                                                        <i class="fab fa-twitter"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="fab fa-youtube"></i>
+                                                        <i class="fab fa-youtube"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="fab fa-linkedin"></i>
+                                                        <i class="fab fa-linkedin"></i>
+                                                    </a>
                                                 </div>
                                             </div>
-                                            <h3 class="cases-title mb-20">Description</h3>
-                                            <p>
-                                             @ViewBag.Description
-                                            </p>
                                         </div>
                                     </div>
-                                    @*<div class="cases-feature mb-20">
-                                            <h3 class="cases-title mb-20">Impact</h3>
-                                            <p class="mb-30">
-                                                BrainStew Foundation is supporting her with hygienic and nutritious food daily consisting of steam cooked rice, dal, sambar, vegetable curry, curd and seasonal fruits. Currently, she needs your support. In this regard, even you can support BrainStew Foundation for her well-being so that she can lead rest of her healthy life.
-                                            </p>
-                                        </div>*@
+                                    <div class="col-sm-9 grey-bg2">
+                                        <div class="row">
+                                            <div class="col-lg-5">
+                                                <div class="widget mb-30">
+                                                    <div class="widget-post">
+                                                        <h3 class="cases-title mb-30">@ViewBag.ChildName</h3>
+                                                        <div class="post d-flex align-items-center mb-20">
+                                                            <div class="post__thumb mr-20">
+                                                                <h4>Category -</h4>
+                                                            </div>
+                                                            <div class="post__content">
+                                                                <h5>
+                                                                    @ViewBag.Need
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post d-flex align-items-center mb-20">
+                                                            <div class="post__thumb mr-20">
+                                                                <h4>Age -</h4>
+                                                            </div>
+                                                            <div class="post__content">
+                                                                <h5>
+                                                                    @ViewBag.DOB
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post d-flex align-items-center mb-20">
+                                                            <div class="post__thumb mr-20">
+                                                                <h4>Gender</h4>
+                                                            </div>
+                                                            <div class="post__content">
+                                                                <h5>
+                                                                    @ViewBag.Gender
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post d-flex align-items-center mb-20">
+                                                            <div class="post__thumb mr-20">
+                                                                <h4> Address -</h4>
+                                                            </div>
+                                                            <div class="post__content">
+                                                                <h5>
+                                                                    @ViewBag.Address
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post d-flex align-items-center mb-20">
+                                                            <div class="post__thumb mr-20">
+                                                                <h4> INR <i class="fa fa-rupee-sign"></i> -</h4>
+                                                            </div>
+                                                            <div class="post__content">
+                                                                <h5>
+                                                                    @ViewBag.NeedAmount
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-7 text-right">
+                                                <div class="cases-btn mt-5 mb-10 d-xl-inline-block">
+                                                    <button href="#" class="btn btn-orange text-white" id="donate_btn">
+                                                        Donate Now
+                                                    </button>
+                                                    <form class="text-left donation_form">
+                                                        <div class="row mt-3">
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">First Name<span class="text-danger">*</span></label>
+                                                                    <input type="text" onkeypress="return onlyAlphabets();" name="FirstName" id="FirstName" class="form-control" placeholder="Enter First Name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Last Name</label>
+                                                                    <input type="text" onkeypress="return onlyAlphabets();" name="LastName" id="LastName" class="form-control" placeholder="Enter Last name" onkeypress="return onlyAlphabets();">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Email Address <span class="text-danger">*</span></label>
+                                                                    <input type="text" name="Email" id="Email" class="form-control" placeholder="Enter Email Address">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Phone No.<span class="text-danger">*</span></label>
+                                                                    <input type="text" onkeypress="return isNumberKey(event);" maxlength="10" name="Mobile" id="Mobile" class="form-control" placeholder="Enter Phone No.">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-12"><h4>Billing Details</h4></div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">City<span class="text-danger">*</span></label>
+                                                                    <input type="text" id="City" name="City" class="form-control" placeholder="Enter City Name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Pincode<span class="text-danger">*</span></label>
+                                                                    <input type="text" onkeypress="return isNumberKey(event);" maxlength="6" name="PinCode" id="PinCode" class="form-control" placeholder="Enter PinCode">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Zip/Postal Code<span class="text-danger">*</span></label>
+                                                                    <input type="text" name="ZipPostalCode" id="ZipPostalCode" class="form-control" placeholder="Enter Code">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">PAN No.<span class="text-danger">*</span></label>
+                                                                    <input type="text" name="PanNumber" id="PanNumber" class="form-control" placeholder="Enter PAN No.">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-12">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Address</label>
+                                                                    <textarea class="form-control" id="Address" name="Address" rows="2"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-12 mb-5 table-responsive">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Donation Total:<span class="text-danger">*</span></label>
+                                                                    <input type="text" onkeypress="return isNumberKey(event);" name="TotalDonation" id="TotalDonation" class="form-control" placeholder="Enter Total Donation">
+                                                                </div>
+
+                                                                @*<table class="table table-bordered bg-white">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <th>Donation Total:</th>
+                                                                                <td id="TotalAmount"><i class="fa fa-rupee-sign"></i> 1000</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>*@
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <button id="btnfinalsubmit" class="theme_btn theme_btn_bg" onclick="return SaveBillingDetails();">Donate now <span><i class="fas fa-heart"></i></span></button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                <h3 class="cases-title mb-20">Description</h3>
+                                <p>
+                                    @ViewBag.Description
+                                </p>
                             </div>
                         </div>
-                        @*<div class="row">
-                            <div class="col-xl-12">
-                                <div class="pagination-area mb-50">
-                                    <nav aria-label="Page navigation">
-                                        <ul class="pagination justify-content-center">
-                                            <li class="page-item"><a class="page-link" href="#"><i class="far fa-chevron-left"></i></a></li>
-                                            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                            <li class="page-item"><a class="page-link" href="#"><i class="far fa-chevron-right"></i></a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>*@
+                        @*<div class="cases-feature mb-20">
+                                <h3 class="cases-title mb-20">Impact</h3>
+                                <p class="mb-30">
+                                    BrainStew Foundation is supporting her with hygienic and nutritious food daily consisting of steam cooked rice, dal, sambar, vegetable curry, curd and seasonal fruits. Currently, she needs your support. In this regard, even you can support BrainStew Foundation for her well-being so that she can lead rest of her healthy life.
+                                </p>
+                            </div>*@
                     </div>
-                </section>
+                </div>
+            </div>
+            @*<div class="row">
+                    <div class="col-xl-12">
+                        <div class="pagination-area mb-50">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item"><a class="page-link" href="#"><i class="far fa-chevron-left"></i></a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                    <li class="page-item"><a class="page-link" href="#"><i class="far fa-chevron-right"></i></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+    </section>
     <!--cases-details-area end-->
 </main>
 <script src="~/assets/asset-web/js/footer.js"></script>
 
 <script>
+    function SaveBillingDetails() {
+        debugger;
+        var FK_DonationId = $("#DonationId").val();
+        var FirstName = $("#FirstName").val();
+        var LastName = $("#LastName").val();
+        var Email = $("#Email").val();
+        var Mobile = $("#Mobile").val();
+        var City = $("#City").val();
+        var PinCode = $("#PinCode").val();
+        var ZipPostalCode = $("#ZipPostalCode").val();
+        var PanNumber = $("#PanNumber").val();
+        var Address = $("#Address").val();
+        var TotalDonation = $("#TotalDonation").val();
+
+        if ($("#FirstName").val() == "") {
+            $("#FirstName").addClass('errortext');
+            $("#FirstName").focus();
+            return false;
+        }
+        else if ($("#Email").val() == "") {
+            $("#Email").addClass('errortext');
+            $("#Email").focus();
+            return false;
+        }
+        else if ($("#Mobile").val() == "") {
+            $("#Mobile").addClass('errortext');
+            $("#Mobile").focus();
+            return false;
+        }
+        else if ($("#City").val() == "") {
+            $("#City").addClass('errortext');
+            $("#City").focus();
+            return false;
+        }
+        else if ($("#PinCode").val() == "") {
+            $("#PinCode").addClass('errortext');
+            $("#PinCode").focus();
+            return false;
+        }
+        else if ($("#ZipPostalCode").val() == "") {
+            $("#ZipPostalCode").addClass('errortext');
+            $("#ZipPostalCode").focus();
+            return false;
+        }
+        else if ($("#PanNumber").val() == "") {
+            $("#PanNumber").addClass('errortext');
+            $("#PanNumber").focus();
+            return false;
+        }
+        else if ($("#TotalDonation").val() == "") {
+            $("#TotalDonation").addClass('errortext');
+            $("#TotalDonation").focus();
+            return false;
+        }
+        else {
+            $.ajax({
+                url: '/Home/SaveBillingDetails',
+                type: 'Post',
+                dataType: 'json',
+                data: { FK_DonationId: FK_DonationId, FirstName: FirstName, LastName: LastName, Email: Email, Mobile: Mobile, City: City, PinCode: PinCode, ZipPostalCode: ZipPostalCode, PanNumber: PanNumber, Address: Address, TotalDonation: TotalDonation },
+                success: function (data) {
+                    if (data.Result == "yes") {
+                        debugger;
+                        alert('Donated amount succesfully !!');
+                        var url = "/Home/ChildrenDonation?Id=" + FK_DonationId;
+                        window.location.href = url;
+                    }
+                    else {
+                        alert(data.Result);
+                    }
+                }
+            });
+        }
+    }
+
     $(document).ready(function () {
         $("#donate_btn").click(function () {
             $(".donation_form").toggle();
         });
     });
+
+
+    function isNumberKey(evt) {
+
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode != 46 && charCode > 31
+          && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+
+
+    function onlyAlphabets(e, t) {
+        try {
+            if (window.event) {
+                var charCode = window.event.keyCode;
+            }
+            else if (e) {
+                var charCode = e.which;
+            }
+            else { return true; }
+            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+                return true;
+            else
+                return false;
+        }
+        catch (err) {
+            alert(err.Description);
+        }
+    }
+
 </script>
 
+<style>
+    .errortext {
+        border: 1px solid red !important;
+        background-color: #fff0f0 !important;
+    }
+</style>
