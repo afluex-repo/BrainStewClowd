@@ -1001,7 +1001,7 @@ namespace BrainStew.Controllers
                 obj.StewMatrixBenefits = ds.Tables[6].Rows[0]["Stewmatrixincome"].ToString();
                 if (obj.Status == "Active")
                 {
-                    obj.CopyReferralLink = "http://brainstewfoundation.com/Home/Registration?Pid=" + model.Fk_UserId;
+                    obj.CopyReferralLink = "http://brainstewfoundation.com/Home/Registration?Pid=" + Crypto.Encrypt(model.Fk_UserId);
                 }
                 else
                 {
@@ -1959,7 +1959,7 @@ namespace BrainStew.Controllers
                     //obj.Percentage = r["CommissionPercentage"].ToString();
                     //obj.PayoutNo = r["PayoutNo"].ToString();
                     obj.Status = r["Status"].ToString();
-                    //obj.Amount = r["Amount"].ToString();
+                    obj.Amount = Convert.ToDecimal(r["Amount"].ToString());
                     //obj.Level = r["Lvl"].ToString();
                     obj.TransactionDate = r["TransactionDate"].ToString();
                     lst.Add(obj);
@@ -1994,7 +1994,7 @@ namespace BrainStew.Controllers
                     //obj.Percentage = r["CommissionPercentage"].ToString();
                     //obj.PayoutNo = r["PayoutNo"].ToString();
                     obj.Status = r["Status"].ToString();
-                    //obj.Amount = r["Amount"].ToString();
+                    obj.Amount = Convert.ToDecimal(r["Amount"].ToString());
                     //obj.Level = r["Lvl"].ToString();
                     obj.TransactionDate = r["TransactionDate"].ToString();
                     lst.Add(obj);
@@ -2029,7 +2029,7 @@ namespace BrainStew.Controllers
                     //obj.Percentage = r["CommissionPercentage"].ToString();
                     //obj.PayoutNo = r["PayoutNo"].ToString();
                     obj.Status = r["Status"].ToString();
-                    //obj.Amount = r["Amount"].ToString();
+                    obj.Amount = Convert.ToDecimal(r["Amount"].ToString());
                     //obj.Level = r["Lvl"].ToString();
                     obj.TransactionDate = r["TransactionDate"].ToString();
                     lst.Add(obj);
