@@ -18,6 +18,7 @@ namespace BrainStew.Models
         public List<AdminReports> lstdonation { get; set; }
         public List<AdminReports> lstSister { get; set; }
         public List<AdminReports> lstBrother { get; set; }
+        public List<AdminReports> lstledger { get; set; }
 
         public string isBlocked { get; set; }
 
@@ -106,7 +107,8 @@ namespace BrainStew.Models
 
         public string DonationPlanTypeId { get; set; }
         public List<SelectListItem> lstLevelDonation { get; set; }
-
+        public string DonationDate { get; set; }
+        public string DontaionAmount { get; set; }
         public string PK_RequestID { get; set; }
 
         #region associatelist
@@ -456,5 +458,19 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("ApproveCharityDonation", para);
             return ds;
         }
+
+
+        public DataSet ViewDonationLedger()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@FK_DonationId",FK_DonationId),
+                         new SqlParameter("@Name",Name),
+                new SqlParameter("@FromDate",FromDate),
+                new SqlParameter("@ToDate",ToDate)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("ViewDonationLedger", para);
+            return ds;
+        }
+     
     }
 }
