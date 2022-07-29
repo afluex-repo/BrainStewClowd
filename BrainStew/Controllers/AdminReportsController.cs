@@ -1503,6 +1503,8 @@ namespace BrainStew.Controllers
             return View(model);
         }
        [HttpPost]
+       [ActionName("ViewDonationLedger")]
+       [OnAction(ButtonName = "btnSearch")]
         public ActionResult ViewDonationLedger(AdminReports model)
         {
             //AdminReports model = new AdminReports();
