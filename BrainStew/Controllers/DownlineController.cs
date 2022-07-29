@@ -87,6 +87,7 @@ namespace BrainStew.Controllers
 
             }
             model.Fk_UserId = Session["Pk_UserId"].ToString();
+
             DataSet ds = model.GetDirectList();
 
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)

@@ -125,12 +125,12 @@
                     </p>
                 </div>
                 <div class="col-sm-6 col-12">
-                    <input type="hidden" id="DonationId" name="DonationId" value="@Model.DonationId" />
+                    @*<input type="text" id="FK_DonationId" name="FK_DonationId" value="@Model.DonationId" />*@
                     <h3 class="cases-title mb-30">@ViewBag.ChildName</h3>
-                    <span class="btn-orange p-2 text-white">Donation: 0</span>
+                    <span class="btn-orange p-2 text-white">Donation: @ViewBag.TotalDonation</span>
                     <div class="cases-progress mt-20">
-                        <h4 class="funding semi-02-title">Raised- <span> ₹0 of ₹ @ViewBag.ApprovedAmount</span></h4>
-                        <div class="table-responsive">
+                        <h4 class="funding semi-02-title">Raised- <span> ₹ @ViewBag.TotalDonation of ₹ @ViewBag.ApprovedAmount</span></h4>
+                        @*<div class="table-responsive">
                             <table class="table table-bordered bg-white mt-20">
                                 <tbody>
                                     <tr>
@@ -139,14 +139,15 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
+                        </div>*@ 
                         <h4 class="mt-3">Custom Amount</h4>
                         <div class="cases-btn mt-3 mb-10 d-xl-inline-block">
                             <button href="#" class="btn btn-orange text-white" id="donate_btn">
                                 Donate Now
                             </button>
-                            <form class="text-left donation_form mt-20">
+                            <form class="text-left donation_form mt-20" action="/Home/ChildrenDonation" method="post">
                                 <div class="row">
+                                    <input type="hidden" id="FK_DonationId" name="FK_DonationId" value="@Model.DonationId" />
                                     <div class="col-xl-6">
                                         <div class="input-area mb-30">
                                             <label class="font-25">First Name<span class="text-danger">*</span></label>
@@ -174,26 +175,28 @@
                                     <div class="col-xl-12"><h4>Billing Details</h4></div>
                                     <div class="col-xl-6">
                                         <div class="input-area mb-30">
+                                            <label class="font-25">PinCode<span class="text-danger">*</span></label>
+                                            <input type="text" onkeypress="return isNumberKey(event);" maxlength="6" name="PinCode" id="PinCode" class="form-control" placeholder="Enter PinCode" onchange="return GetStateCity();">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <div class="input-area mb-30">
+                                            <label class="font-25">State<span class="text-danger">*</span></label>
+                                            <input type="text" name="State" id="State" class="form-control" placeholder="Enter Code" readonly="true">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <div class="input-area mb-30">
                                             <label class="font-25">City<span class="text-danger">*</span></label>
-                                            <input type="text" id="City" name="City" class="form-control" placeholder="Enter City Name">
+                                            <input type="text" id="City" name="City" class="form-control" placeholder="Enter City Name" readonly="true">
                                         </div>
                                     </div>
-                                    <div class="col-xl-6">
-                                        <div class="input-area mb-30">
-                                            <label class="font-25">Pincode<span class="text-danger">*</span></label>
-                                            <input type="text" onkeypress="return isNumberKey(event);" maxlength="6" name="PinCode" id="PinCode" class="form-control" placeholder="Enter PinCode">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="input-area mb-30">
-                                            <label class="font-25">Zip/Postal Code<span class="text-danger">*</span></label>
-                                            <input type="text" name="ZipPostalCode" id="ZipPostalCode" class="form-control" placeholder="Enter Code">
-                                        </div>
-                                    </div>
+                            
+                                 
                                     <div class="col-xl-6">
                                         <div class="input-area mb-30">
                                             <label class="font-25">PAN No.<span class="text-danger">*</span></label>
-                                            <input type="text" name="PanNumber" id="PanNumber" class="form-control" placeholder="Enter PAN No.">
+                                            <input type="text" name="PanNo" id="PanNo" class="form-control" placeholder="Enter PAN No.">
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
@@ -209,7 +212,9 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-6">
-                                        <button id="btnfinalsubmit" class="theme_btn theme_btn_bg" onclick="return SaveBillingDetails();">Donate now <span><i class="fas fa-heart"></i></span></button>
+                                        @*<button id="btnfinalsubmit" class="theme_btn theme_btn_bg" name="SaveBilling" onclick="return SaveBillingDetails();">Donate now <span><i class="fas fa-heart"></i></span></button>*@
+                                        @*<button id="btnfinalsubmit" class="theme_btn theme_btn_bg" name="SaveBilling">Donate now <span><i class="fas fa-heart"></i></span></button>*@
+                                        <input type="submit" class="theme_btn theme_btn_bg fas fa-heart" name="SaveBilling" value="Donate now" />
                                     </div>
                                 </div>
                             </form>
@@ -237,159 +242,159 @@
                                             <h4 class="funding semi-02-title">Raised- <span> ₹0 of ₹ @ViewBag.ApprovedAmount</span></h4>
                                         </div>
 
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <div class="cases__box mb-40">
-                                                <img src="@ViewBag.Image" height="270" width="270" alt="">
-                                                <div class="team-details-wrapper mt-4">
-                                                    <div class="teams__thumb--social">
-                                                        <a href="#">
-                                                            <i class="fab fa-facebook-f"></i>
-                                                            <i class="fab fa-facebook-f"></i>
-                                                        </a>
-                                                        <a href="#">
-                                                            <i class="fab fa-twitter"></i>
-                                                            <i class="fab fa-twitter"></i>
-                                                        </a>
-                                                        <a href="#">
-                                                            <i class="fab fa-youtube"></i>
-                                                            <i class="fab fa-youtube"></i>
-                                                        </a>
-                                                        <a href="#">
-                                                            <i class="fab fa-linkedin"></i>
-                                                            <i class="fab fa-linkedin"></i>
-                                                        </a>
-                                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="cases__box mb-40">
+                                            <img src="@ViewBag.Image" height="270" width="270" alt="">
+                                            <div class="team-details-wrapper mt-4">
+                                                <div class="teams__thumb--social">
+                                                    <a href="#">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                        <i class="fab fa-facebook-f"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="fab fa-twitter"></i>
+                                                        <i class="fab fa-twitter"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="fab fa-youtube"></i>
+                                                        <i class="fab fa-youtube"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="fab fa-linkedin"></i>
+                                                        <i class="fab fa-linkedin"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-9 grey-bg2">
-                                            <div class="row">
-                                                <div class="col-lg-5">
-                                                    <div class="widget mb-30">
-                                                        <div class="widget-post">
-                                                            <h3 class="cases-title mb-30">@ViewBag.ChildName</h3>
-                                                            <div class="post d-flex align-items-center mb-20">
-                                                                <div class="post__thumb mr-20">
-                                                                    <h4>Category -</h4>
-                                                                </div>
-                                                                <div class="post__content">
-                                                                    <h5>
-                                                                        @ViewBag.Need
-                                                                    </h5>
-                                                                </div>
+                                    </div>
+                                    <div class="col-sm-9 grey-bg2">
+                                        <div class="row">
+                                            <div class="col-lg-5">
+                                                <div class="widget mb-30">
+                                                    <div class="widget-post">
+                                                        <h3 class="cases-title mb-30">@ViewBag.ChildName</h3>
+                                                        <div class="post d-flex align-items-center mb-20">
+                                                            <div class="post__thumb mr-20">
+                                                                <h4>Category -</h4>
                                                             </div>
-                                                            <div class="post d-flex align-items-center mb-20">
-                                                                <div class="post__thumb mr-20">
-                                                                    <h4>Age -</h4>
-                                                                </div>
-                                                                <div class="post__content">
-                                                                    <h5>
-                                                                        @ViewBag.DOB
-                                                                    </h5>
-                                                                </div>
+                                                            <div class="post__content">
+                                                                <h5>
+                                                                    @ViewBag.Need
+                                                                </h5>
                                                             </div>
-                                                            <div class="post d-flex align-items-center mb-20">
-                                                                <div class="post__thumb mr-20">
-                                                                    <h4>Gender</h4>
-                                                                </div>
-                                                                <div class="post__content">
-                                                                    <h5>
-                                                                        @ViewBag.Gender
-                                                                    </h5>
-                                                                </div>
+                                                        </div>
+                                                        <div class="post d-flex align-items-center mb-20">
+                                                            <div class="post__thumb mr-20">
+                                                                <h4>Age -</h4>
                                                             </div>
-                                                            <div class="post d-flex align-items-center mb-20">
-                                                                <div class="post__thumb mr-20">
-                                                                    <h4> Address -</h4>
-                                                                </div>
-                                                                <div class="post__content">
-                                                                    <h5>
-                                                                        @ViewBag.Address
-                                                                    </h5>
-                                                                </div>
+                                                            <div class="post__content">
+                                                                <h5>
+                                                                    @ViewBag.DOB
+                                                                </h5>
                                                             </div>
-                                                            <div class="post d-flex align-items-center mb-20">
-                                                                <div class="post__thumb mr-20">
-                                                                    <h4> INR <i class="fa fa-rupee-sign"></i> -</h4>
-                                                                </div>
-                                                                <div class="post__content">
-                                                                    <h5>
-                                                                        @ViewBag.NeedAmount
-                                                                    </h5>
-                                                                </div>
+                                                        </div>
+                                                        <div class="post d-flex align-items-center mb-20">
+                                                            <div class="post__thumb mr-20">
+                                                                <h4>Gender</h4>
+                                                            </div>
+                                                            <div class="post__content">
+                                                                <h5>
+                                                                    @ViewBag.Gender
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post d-flex align-items-center mb-20">
+                                                            <div class="post__thumb mr-20">
+                                                                <h4> Address -</h4>
+                                                            </div>
+                                                            <div class="post__content">
+                                                                <h5>
+                                                                    @ViewBag.Address
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post d-flex align-items-center mb-20">
+                                                            <div class="post__thumb mr-20">
+                                                                <h4> INR <i class="fa fa-rupee-sign"></i> -</h4>
+                                                            </div>
+                                                            <div class="post__content">
+                                                                <h5>
+                                                                    @ViewBag.NeedAmount
+                                                                </h5>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-7 text-right">
-                                                    <div class="cases-btn mt-5 mb-10 d-xl-inline-block">
-                                                        <button href="#" class="btn btn-orange text-white" id="donate_btn">
-                                                            Donate Now
-                                                        </button>
-                                                        <form class="text-left donation_form">
-                                                            <div class="row mt-3">
-                                                                <div class="col-xl-6">
-                                                                    <div class="input-area mb-30">
-                                                                        <label class="font-25">First Name<span class="text-danger">*</span></label>
-                                                                        <input type="text" onkeypress="return onlyAlphabets();" name="FirstName" id="FirstName" class="form-control" placeholder="Enter First Name">
-                                                                    </div>
+                                            </div>
+                                            <div class="col-lg-7 text-right">
+                                                <div class="cases-btn mt-5 mb-10 d-xl-inline-block">
+                                                    <button href="#" class="btn btn-orange text-white" id="donate_btn">
+                                                        Donate Now
+                                                    </button>
+                                                    <form action="/Home/ChildrenDonation" method="post" class="text-left donation_form">
+                                                        <div class="row mt-3">
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">First Name<span class="text-danger">*</span></label>
+                                                                    <input type="text" onkeypress="return onlyAlphabets();" name="FirstName" id="FirstName" class="form-control" placeholder="Enter First Name">
                                                                 </div>
-                                                                <div class="col-xl-6">
-                                                                    <div class="input-area mb-30">
-                                                                        <label class="font-25">Last Name</label>
-                                                                        <input type="text" onkeypress="return onlyAlphabets();" name="LastName" id="LastName" class="form-control" placeholder="Enter Last name" onkeypress="return onlyAlphabets();">
-                                                                    </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Last Name</label>
+                                                                    <input type="text" onkeypress="return onlyAlphabets();" name="LastName" id="LastName" class="form-control" placeholder="Enter Last name" onkeypress="return onlyAlphabets();">
                                                                 </div>
-                                                                <div class="col-xl-6">
-                                                                    <div class="input-area mb-30">
-                                                                        <label class="font-25">Email Address <span class="text-danger">*</span></label>
-                                                                        <input type="text" name="Email" id="Email" class="form-control" placeholder="Enter Email Address">
-                                                                    </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Email Address <span class="text-danger">*</span></label>
+                                                                    <input type="text" name="Email" id="Email" class="form-control" placeholder="Enter Email Address">
                                                                 </div>
-                                                                <div class="col-xl-6">
-                                                                    <div class="input-area mb-30">
-                                                                        <label class="font-25">Phone No.<span class="text-danger">*</span></label>
-                                                                        <input type="text" onkeypress="return isNumberKey(event);" maxlength="10" name="Mobile" id="Mobile" class="form-control" placeholder="Enter Phone No.">
-                                                                    </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Phone No.<span class="text-danger">*</span></label>
+                                                                    <input type="text" onkeypress="return isNumberKey(event);" maxlength="10" name="Mobile" id="Mobile" class="form-control" placeholder="Enter Phone No.">
                                                                 </div>
-                                                                <div class="col-xl-12"><h4>Billing Details</h4></div>
-                                                                <div class="col-xl-6">
-                                                                    <div class="input-area mb-30">
-                                                                        <label class="font-25">City<span class="text-danger">*</span></label>
-                                                                        <input type="text" id="City" name="City" class="form-control" placeholder="Enter City Name">
-                                                                    </div>
+                                                            </div>
+                                                            <div class="col-xl-12"><h4>Billing Details</h4></div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">City<span class="text-danger">*</span></label>
+                                                                    <input type="text" id="City" name="City" class="form-control" placeholder="Enter City Name">
                                                                 </div>
-                                                                <div class="col-xl-6">
-                                                                    <div class="input-area mb-30">
-                                                                        <label class="font-25">Pincode<span class="text-danger">*</span></label>
-                                                                        <input type="text" onkeypress="return isNumberKey(event);" maxlength="6" name="PinCode" id="PinCode" class="form-control" placeholder="Enter PinCode">
-                                                                    </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Pincode<span class="text-danger">*</span></label>
+                                                                    <input type="text" onkeypress="return isNumberKey(event);" maxlength="6" name="PinCode" id="PinCode" class="form-control" placeholder="Enter PinCode">
                                                                 </div>
-                                                                <div class="col-xl-6">
-                                                                    <div class="input-area mb-30">
-                                                                        <label class="font-25">Zip/Postal Code<span class="text-danger">*</span></label>
-                                                                        <input type="text" name="ZipPostalCode" id="ZipPostalCode" class="form-control" placeholder="Enter Code">
-                                                                    </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Zip/Postal Code<span class="text-danger">*</span></label>
+                                                                    <input type="text" name="ZipPostalCode" id="ZipPostalCode" class="form-control" placeholder="Enter Code">
                                                                 </div>
-                                                                <div class="col-xl-6">
-                                                                    <div class="input-area mb-30">
-                                                                        <label class="font-25">PAN No.<span class="text-danger">*</span></label>
-                                                                        <input type="text" name="PanNumber" id="PanNumber" class="form-control" placeholder="Enter PAN No.">
-                                                                    </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">PAN No.<span class="text-danger">*</span></label>
+                                                                    <input type="text" name="PanNumber" id="PanNumber" class="form-control" placeholder="Enter PAN No.">
                                                                 </div>
-                                                                <div class="col-xl-12">
-                                                                    <div class="input-area mb-30">
-                                                                        <label class="font-25">Address</label>
-                                                                        <textarea class="form-control" id="Address" name="Address" rows="2"></textarea>
-                                                                    </div>
+                                                            </div>
+                                                            <div class="col-xl-12">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Address</label>
+                                                                    <textarea class="form-control" id="Address" name="Address" rows="2"></textarea>
                                                                 </div>
-                                                                <div class="col-xl-12 mb-5 table-responsive">
-                                                                    <div class="input-area mb-30">
-                                                                        <label class="font-25">Donation Total:<span class="text-danger">*</span></label>
-                                                                        <input type="text" onkeypress="return isNumberKey(event);" name="TotalDonation" id="TotalDonation" class="form-control" placeholder="Enter Total Donation">
-                                                                    </div>
+                                                            </div>
+                                                            <div class="col-xl-12 mb-5 table-responsive">
+                                                                <div class="input-area mb-30">
+                                                                    <label class="font-25">Donation Total:<span class="text-danger">*</span></label>
+                                                                    <input type="text" onkeypress="return isNumberKey(event);" name="TotalDonation" id="TotalDonation" class="form-control" placeholder="Enter Total Donation">
+                                                                </div>
 
                                                                     @*<table class="table table-bordered bg-white">
                                                                             <tbody>
@@ -475,21 +480,23 @@
             $("#Mobile").focus();
             return false;
         }
-        else if ($("#City").val() == "") {
-            $("#City").addClass('errortext');
-            $("#City").focus();
-            return false;
-        }
+     
         else if ($("#PinCode").val() == "") {
             $("#PinCode").addClass('errortext');
             $("#PinCode").focus();
             return false;
         }
-        else if ($("#ZipPostalCode").val() == "") {
-            $("#ZipPostalCode").addClass('errortext');
-            $("#ZipPostalCode").focus();
-            return false;
-        }
+        //else if ($("#State").val() == "") {
+        //    $("#State").addClass('errortext');
+        //    $("#State").focus();
+        //    return false;
+        //}
+        //else if ($("#City").val() == "") {
+        //    $("#City").addClass('errortext');
+        //    $("#City").focus();
+        //    return false;
+        //}
+     
         else if ($("#PanNumber").val() == "") {
             $("#PanNumber").addClass('errortext');
             $("#PanNumber").focus();
@@ -505,13 +512,14 @@
                 url: '/Home/SaveBillingDetails',
                 type: 'Post',
                 dataType: 'json',
-                data: { FK_DonationId: FK_DonationId, FirstName: FirstName, LastName: LastName, Email: Email, Mobile: Mobile, City: City, PinCode: PinCode, ZipPostalCode: ZipPostalCode, PanNumber: PanNumber, Address: Address, TotalDonation: TotalDonation },
+                data: { FK_DonationId: FK_DonationId, FirstName: FirstName, LastName: LastName, Email: Email, Mobile: Mobile, PinCode: PinCode, PanNumber: PanNumber, Address: Address, TotalDonation: TotalDonation },
                 success: function (data) {
                     if (data.Result == "yes") {
                         debugger;
                         alert('Donated amount succesfully !!');
-                        var url = "/Home/ChildrenDonation?Id=" + FK_DonationId;
-                        window.location.href = url;
+                        window.location.href='/Home/ChildrenDonationList';
+                        //var url = "/Home/ChildrenDonation?Id=" + FK_DonationId;
+                        //window.location.href = url;
                     }
                     else {
                         alert(data.Result);
@@ -520,6 +528,35 @@
             });
         }
     }
+
+
+    function GetStateCity()
+    {
+        debugger;
+         $.ajax({
+             url: '/Home/GetStateCity',
+             type: 'Post',
+             dataType: 'json',
+             data: { "PinCode": $("#PinCode").val() },
+             success: function (data) {
+                 if (data.Result == "yes") {
+                     $("#State").val(data.State);
+                     $("#City").val(data.City);
+                 }
+                 else {
+                     alert(data.Result);
+                 }
+             }
+         });
+     
+
+    }
+
+
+
+
+
+
 
     $(document).ready(function () {
         $("#donate_btn").click(function () {
