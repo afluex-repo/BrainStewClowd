@@ -181,18 +181,16 @@
                                     </div>
                                     <div class="col-xl-6">
                                         <div class="input-area mb-30">
-                                            <label class="font-25">State<span class="text-danger">*</span></label>
-                                            <input type="text" name="State" id="State" class="form-control" placeholder="Enter Code" readonly="true">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="input-area mb-30">
                                             <label class="font-25">City<span class="text-danger">*</span></label>
                                             <input type="text" id="City" name="City" class="form-control" placeholder="Enter City Name" readonly="true">
                                         </div>
                                     </div>
-                            
-                                 
+                                    <div class="col-xl-6">
+                                        <div class="input-area mb-30">
+                                            <label class="font-25">State<span class="text-danger">*</span></label>
+                                            <input type="text" name="State" id="State" class="form-control" placeholder="Enter Code" readonly="true">
+                                        </div>
+                                    </div>
                                     <div class="col-xl-6">
                                         <div class="input-area mb-30">
                                             <label class="font-25">PAN No.<span class="text-danger">*</span></label>
@@ -214,7 +212,7 @@
                                     <div class="col-xl-6">
                                         @*<button id="btnfinalsubmit" class="theme_btn theme_btn_bg" name="SaveBilling" onclick="return SaveBillingDetails();">Donate now <span><i class="fas fa-heart"></i></span></button>*@
                                         @*<button id="btnfinalsubmit" class="theme_btn theme_btn_bg" name="SaveBilling">Donate now <span><i class="fas fa-heart"></i></span></button>*@
-                                        <input type="submit" class="theme_btn theme_btn_bg fas fa-heart" name="SaveBilling" value="Donate now" />
+                                        <input type="submit" class="theme_btn theme_btn_bg fas fa-heart" name="SaveBilling" value="Donate now" onclick="return Validate();" />
                                     </div>
                                 </div>
                             </form>
@@ -451,83 +449,120 @@
 <script src="~/assets/asset-web/js/footer.js"></script>
 
 <script>
-    function SaveBillingDetails() {
-        debugger;
-        var FK_DonationId = $("#DonationId").val();
-        var FirstName = $("#FirstName").val();
-        var LastName = $("#LastName").val();
-        var Email = $("#Email").val();
-        var Mobile = $("#Mobile").val();
-        var City = $("#City").val();
-        var PinCode = $("#PinCode").val();
-        var ZipPostalCode = $("#ZipPostalCode").val();
-        var PanNumber = $("#PanNumber").val();
-        var Address = $("#Address").val();
-        var TotalDonation = $("#TotalDonation").val();
 
+    function Validate()
+    {
+        debugger;
         if ($("#FirstName").val() == "") {
             $("#FirstName").addClass('errortext');
             $("#FirstName").focus();
             return false;
         }
-        else if ($("#Email").val() == "") {
+         if ($("#Email").val() == "") {
             $("#Email").addClass('errortext');
             $("#Email").focus();
             return false;
         }
-        else if ($("#Mobile").val() == "") {
-            $("#Mobile").addClass('errortext');
-            $("#Mobile").focus();
+         if ($("#MobileNo").val() == "") {
+             $("#MobileNo").addClass('errortext');
+             $("#MobileNo").focus();
             return false;
         }
-     
-        else if ($("#PinCode").val() == "") {
+
+         if ($("#PinCode").val() == "") {
             $("#PinCode").addClass('errortext');
             $("#PinCode").focus();
             return false;
         }
-        //else if ($("#State").val() == "") {
-        //    $("#State").addClass('errortext');
-        //    $("#State").focus();
-        //    return false;
-        //}
-        //else if ($("#City").val() == "") {
-        //    $("#City").addClass('errortext');
-        //    $("#City").focus();
-        //    return false;
-        //}
-     
-        else if ($("#PanNumber").val() == "") {
-            $("#PanNumber").addClass('errortext');
-            $("#PanNumber").focus();
+         if ($("#PanNo").val() == "") {
+             $("#PanNo").addClass('errortext');
+             $("#PanNo").focus();
             return false;
         }
-        else if ($("#TotalDonation").val() == "") {
+         if ($("#TotalDonation").val() == "") {
             $("#TotalDonation").addClass('errortext');
             $("#TotalDonation").focus();
             return false;
         }
-        else {
-            $.ajax({
-                url: '/Home/SaveBillingDetails',
-                type: 'Post',
-                dataType: 'json',
-                data: { FK_DonationId: FK_DonationId, FirstName: FirstName, LastName: LastName, Email: Email, Mobile: Mobile, PinCode: PinCode, PanNumber: PanNumber, Address: Address, TotalDonation: TotalDonation },
-                success: function (data) {
-                    if (data.Result == "yes") {
-                        debugger;
-                        alert('Donated amount succesfully !!');
-                        window.location.href='/Home/ChildrenDonationList';
-                        //var url = "/Home/ChildrenDonation?Id=" + FK_DonationId;
-                        //window.location.href = url;
-                    }
-                    else {
-                        alert(data.Result);
-                    }
-                }
-            });
-        }
     }
+
+    //function SaveBillingDetails() {
+    //    debugger;
+    //    var FK_DonationId = $("#DonationId").val();
+    //    var FirstName = $("#FirstName").val();
+    //    var LastName = $("#LastName").val();
+    //    var Email = $("#Email").val();
+    //    var Mobile = $("#Mobile").val();
+    //    var City = $("#City").val();
+    //    var PinCode = $("#PinCode").val();
+    //    var ZipPostalCode = $("#ZipPostalCode").val();
+    //    var PanNumber = $("#PanNumber").val();
+    //    var Address = $("#Address").val();
+    //    var TotalDonation = $("#TotalDonation").val();
+
+    //    if ($("#FirstName").val() == "") {
+    //        $("#FirstName").addClass('errortext');
+    //        $("#FirstName").focus();
+    //        return false;
+    //    }
+    //    else if ($("#Email").val() == "") {
+    //        $("#Email").addClass('errortext');
+    //        $("#Email").focus();
+    //        return false;
+    //    }
+    //    else if ($("#Mobile").val() == "") {
+    //        $("#Mobile").addClass('errortext');
+    //        $("#Mobile").focus();
+    //        return false;
+    //    }
+     
+    //    else if ($("#PinCode").val() == "") {
+    //        $("#PinCode").addClass('errortext');
+    //        $("#PinCode").focus();
+    //        return false;
+    //    }
+    //    //else if ($("#State").val() == "") {
+    //    //    $("#State").addClass('errortext');
+    //    //    $("#State").focus();
+    //    //    return false;
+    //    //}
+    //    //else if ($("#City").val() == "") {
+    //    //    $("#City").addClass('errortext');
+    //    //    $("#City").focus();
+    //    //    return false;
+    //    //}
+     
+    //    else if ($("#PanNumber").val() == "") {
+    //        $("#PanNumber").addClass('errortext');
+    //        $("#PanNumber").focus();
+    //        return false;
+    //    }
+    //    else if ($("#TotalDonation").val() == "") {
+    //        $("#TotalDonation").addClass('errortext');
+    //        $("#TotalDonation").focus();
+    //        return false;
+    //    }
+    //    else {
+    //        $.ajax({
+    //            url: '/Home/SaveBillingDetails',
+    //            type: 'Post',
+    //            dataType: 'json',
+    //            data: { FK_DonationId: FK_DonationId, FirstName: FirstName, LastName: LastName, Email: Email, Mobile: Mobile, PinCode: PinCode, PanNumber: PanNumber, Address: Address, TotalDonation: TotalDonation },
+    //            success: function (data) {
+    //                if (data.Result == "yes") {
+    //                    debugger;
+    //                    alert('Donated amount succesfully !!');
+    //                    window.location.href='/Home/ChildrenDonationList';
+    //                    //var url = "/Home/ChildrenDonation?Id=" + FK_DonationId;
+    //                    //window.location.href = url;
+    //                }
+    //                else {
+    //                    alert(data.Result);
+    //                }
+    //            }
+    //        });
+    //    }
+    //}
 
 
     function GetStateCity()
@@ -551,12 +586,6 @@
      
 
     }
-
-
-
-
-
-
 
     $(document).ready(function () {
         $("#donate_btn").click(function () {
