@@ -76,7 +76,7 @@ document.write(`
                                     <li><a href="/BrainStew/what-we-do.html">What We Do</a></li>
                                     <li><a href="/BrainStew/gallery.html">Gallery</a></li>
                                     <li><a href="/Home/CharityDonation">Child Registration</a></li>
-                                    <li><a href="/Home/ChildrenDonation">Children Donation</a></li>
+                                    <li><a href="/Home/ChildrenDonationList">Children Donation</a></li>
                                     <li><a href="/BrainStew/contact.html">Contact</a></li>
                                 </ul>
                             </nav>
