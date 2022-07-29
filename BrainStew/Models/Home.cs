@@ -318,14 +318,27 @@ namespace BrainStew.Models
                                        new SqlParameter("@Email",Email) ,
                                       new SqlParameter("@MobileNo", MobileNo) ,
                                       new SqlParameter("@PinCode", PinCode),
-                                      new SqlParameter("@State", State) ,
-                                      new SqlParameter("@City", City),
-                                        new SqlParameter("@ZipPostalCode", ZipPostalCode),
+                                      //new SqlParameter("@State", State) ,
+                                      //new SqlParameter("@City", City),
+                                      //  new SqlParameter("@ZipPostalCode", ZipPostalCode),
                                          new SqlParameter("@PanNumber", PanNo),
                                           new SqlParameter("@Address", Address),
                                               new SqlParameter("@TotalDonation",TotalDonation)
     };
             DataSet ds = DBHelper.ExecuteQuery("SaveBillingDetails", para);
+            return ds;
+        }
+
+
+
+
+        public DataSet GetStateCity()
+        {
+            SqlParameter[] para = {
+                                    new SqlParameter("@PinCode", PinCode),
+
+    };
+            DataSet ds = DBHelper.ExecuteQuery("GetStateCity", para);
             return ds;
         }
 
