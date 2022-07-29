@@ -66,6 +66,11 @@ namespace BrainStew.Models
         public string Age { get; set; }
         public string DonationId { get; set; }
         public string SisName { get; set; }
+
+        public string FK_DonationId { get; set; }
+        public string ZipPostalCode { get; set; }
+        public string TotalDonation { get; set; }
+
         #endregion
         #region Sponsor
         public DataSet GetMemberDetails()
@@ -281,7 +286,7 @@ namespace BrainStew.Models
                                     new SqlParameter("@ChildImage", Image),
                                     new SqlParameter("@Description", Description),
                                     new SqlParameter("@Address", Address),
-                                    
+
     };
             DataSet ds = DBHelper.ExecuteQuery("SaveDonationDetails", para);
             return ds;
@@ -291,7 +296,7 @@ namespace BrainStew.Models
         {
             DataSet ds = DBHelper.ExecuteQuery("GetChildrenDonationList");
             return ds;
-            
+
         }
         public DataSet GetChildrenDonationDetails()
         {
@@ -304,6 +309,25 @@ namespace BrainStew.Models
         }
 
 
-        
+        public DataSet SaveBillingDetails()
+        {
+            SqlParameter[] para = {
+                                    new SqlParameter("@FK_DonationId", FK_DonationId),
+                                      new SqlParameter("@FirstName", FirstName),
+                                     new SqlParameter("@LastName", LastName),
+                                       new SqlParameter("@Email",Email) ,
+                                      new SqlParameter("@MobileNo", MobileNo) ,
+                                      new SqlParameter("@PinCode", PinCode),
+                                      new SqlParameter("@State", State) ,
+                                      new SqlParameter("@City", City),
+                                        new SqlParameter("@ZipPostalCode", ZipPostalCode),
+                                         new SqlParameter("@PanNumber", PanNo),
+                                          new SqlParameter("@Address", Address),
+                                              new SqlParameter("@TotalDonation",TotalDonation)
+    };
+            DataSet ds = DBHelper.ExecuteQuery("SaveBillingDetails", para);
+            return ds;
+        }
+
     }
 }

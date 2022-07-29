@@ -1001,7 +1001,7 @@ namespace BrainStew.Controllers
                 obj.StewMatrixBenefits = ds.Tables[6].Rows[0]["Stewmatrixincome"].ToString();
                 if (obj.Status == "Active")
                 {
-                    obj.CopyReferralLink = "http://brainstewfoundation.com/Home/Registration?Pid=" + model.Fk_UserId;
+                    obj.CopyReferralLink = "http://brainstewfoundation.com/Home/Registration?Pid=" + Crypto.Encrypt(model.Fk_UserId);
                 }
                 else
                 {
