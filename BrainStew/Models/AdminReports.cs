@@ -370,8 +370,7 @@ namespace BrainStew.Models
             SqlParameter[] para = {
                 new SqlParameter("@LoginId", LoginId),
                   new SqlParameter("@DonationPlanId",DonationPlanTypeId),
-                  new SqlParameter("@DonationlevelId",Level),
-                  new SqlParameter("@DonationDate",TransactionDate)
+                  new SqlParameter("@DonationlevelId",Level)
             };
             DataSet ds = DBHelper.ExecuteQuery("SavePushupPayment", para);
             return ds;

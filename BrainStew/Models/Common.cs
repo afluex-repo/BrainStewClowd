@@ -138,7 +138,7 @@ namespace BrainStew.Models
         {
             List<SelectListItem> DonationPlanList = new List<SelectListItem>();
             DonationPlanList.Add(new SelectListItem { Text = "Select Donation Plan", Value = "0" });
-            DonationPlanList.Add(new SelectListItem { Text = "Brain Stew Donation", Value = "1" });
+            DonationPlanList.Add(new SelectListItem { Text = "Brain Stew Donation Plan", Value = "1" });
             DonationPlanList.Add(new SelectListItem { Text = "Stew Matrix Donation Plan", Value = "2" });
             return DonationPlanList;
         }

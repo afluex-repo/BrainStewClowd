@@ -80,16 +80,18 @@
                     <div class="entry-container">
                      <div class="give-social-share-post">
                         <div class="share-post-wrap">
-                          <a class="share-post-item s-facebook" href="https://www.facebook.com/Brainstewfoundation/" target="_blank" data-toggle="tooltip" title="Share on Facebook">
+                            <a class="share-post-item s-whatsapp" href="https://api.whatsapp.com/send?text=http://brainstewfoundation.com//Home/ChildrenDonation?Id=@ViewBag.Pk_DonationId" target="_blank" data-toggle="tooltip" title="Share on whatsapp">
+                                <span class="fab fa-whatsapp"></span>
+                            </a>
+                          <a class="share-post-item s-facebook" href="https://www.facebook.com/sharer.php?u=http://brainstewfoundation.com//Home/ChildrenDonation?Id=@ViewBag.Pk_DonationId" target="_blank" data-toggle="tooltip" title="Share on Facebook">
                             <span class="fab fa-facebook"></span>
                             </a>
-                          <a class="share-post-item s-twitter" href="https://twitter.com/FoundationStew" target="_blank" data-toggle="tooltip" data-original-title="Share on Twitter">
+                          <a class="share-post-item s-twitter" href="https://twitter.com/intent/tweet?text=http://brainstewfoundation.com//Home/ChildrenDonation?Id=@ViewBag.Pk_DonationId" target="_blank" data-toggle="tooltip" data-original-title="Share on Twitter">
                             <span class="fab fa-twitter"></span>
                             </a>
-                          <a class="share-post-item s-insgram" href="https://www.instagram.com/accounts/login/?next=/brainstewfoundation/" target="_blank" data-toggle="tooltip" data-original-title="Share on Instagram">
+                          <a class="share-post-item s-insgram" href="https://www.instagram.com/?url=http://brainstewfoundation.com//Home/ChildrenDonation?Id=@ViewBag.Pk_DonationId" target="_blank" data-toggle="tooltip" data-original-title="Share on Instagram">
                             <span class="fab fa-instagram"></span>
-                            </a><a class ="share-post-item s-linkedin" href="https://t.me/Brainstewfoundation" target="_blank" data-toggle="tooltip" data-original-title="Share on Telegram">
-                            <span class="fab fa-telegram"></span>
+                          
                             </a>
                         </div>
                         </div>
@@ -105,12 +107,12 @@
                                     <td> @ViewBag.Need</td>
                                 </tr>
                                 <tr>
-                                    <th>Age :</th>
+                                    <th>DOB :</th>
                                     <td> @ViewBag.DOB</td>
                                 </tr>
                                 <tr>
                                     <th>Son/ Daughter :</th>
-                                    <td>@ViewBag.Gender</td>
+                                    <td>@ViewBag.TotalSon / @ViewBag.TotalDaughter</td>
                                 </tr>
                                 <tr>
                                     <th>Address :</th>
