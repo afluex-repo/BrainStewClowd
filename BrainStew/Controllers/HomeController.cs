@@ -455,7 +455,11 @@ namespace BrainStew.Controllers
                 DataSet ds = model.GetChildrenDonationDetails();
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
+                    ViewBag.Pk_DonationId = ds.Tables[0].Rows[0]["Pk_DonationId"].ToString();
+                    ViewBag.LoginId = ds.Tables[0].Rows[0]["LoginId"].ToString();
                     ViewBag.ChildName = ds.Tables[0].Rows[0]["ChildName"].ToString();
+                    ViewBag.TotalDaughter = ds.Tables[0].Rows[0]["TotalDaughter"].ToString();
+                    ViewBag.TotalSon = ds.Tables[0].Rows[0]["TotalSon"].ToString();
                     ViewBag.DOB = ds.Tables[0].Rows[0]["DOB"].ToString();
                     ViewBag.Need = ds.Tables[0].Rows[0]["Need"].ToString();
                     ViewBag.NeedAmount = ds.Tables[0].Rows[0]["NeedAmount"].ToString();
@@ -561,6 +565,7 @@ namespace BrainStew.Controllers
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
                     Home obj = new Home();
+                    //obj.Fk_UserId = dr["loginId"].ToString();
                     obj.DonationId = dr["Pk_DonationId"].ToString();
                     obj.ChildName = dr["ChildName"].ToString();
                     obj.DOB = dr["DOB"].ToString();

@@ -76,7 +76,7 @@
                                         <th>Address</th>
                                         <th>Sister Details</th>
                                         <th>Brother Details</th>
-                                        <th>View Ledger</th>
+                                        <th>View Donation</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -107,7 +107,7 @@
                                                     <td><a href="/AdminReports/SisterList?Id=@Item.DonationId" class="btn btn-primary btn-sm">Sister Details</a></td>
                                                     <td><a href="/AdminReports/BrotherList?Id=@Item.DonationId" class="btn btn-success btn-sm">Brother Details</a></td>
 
-                                                    <td><a style="width:120px;" href="/AdminReports/ViewDonationLedger?DonationId=@Item.DonationId" class="btn btn-warning btn-sm">View Ledger</a></td>
+                                                    <td><a style="width:120px;" href="/AdminReports/ViewDonationLedger?DonationId=@Item.DonationId" class="btn btn-warning btn-sm">View Donation</a></td>
 
                                                     <td>
                                                         @if (Item.Status != "Approved")

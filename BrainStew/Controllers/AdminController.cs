@@ -1512,7 +1512,6 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("AdvanceDeduction", "Admin");
         }
-
         public ActionResult CommissionReport()
         {
             List<Admin> lst = new List<Admin>();
@@ -1536,7 +1535,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         [HttpPost]
         public ActionResult CommissionReport(Admin model)
         {
@@ -1562,8 +1560,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
         public ActionResult TopUpWalletLedgerForAdmin(string loginid)
         {
             List<Admin> lst = new List<Admin>();
@@ -1592,8 +1588,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
         [HttpPost]
         public ActionResult TopUpWalletLedgerForAdmin(Admin model, string loginId)
         {
@@ -1619,7 +1613,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         public ActionResult PushupPayment()
         {
             #region DonationPlan
@@ -1670,7 +1663,7 @@ namespace BrainStew.Controllers
                 ddlLevel.Add(new SelectListItem { Text = "Select Level", Value = "0" });
                 ViewBag.ddlLevel = ddlLevel;
                 #endregion
-                model.TransactionDate = string.IsNullOrEmpty(model.TransactionDate) ? null : Common.ConvertToSystemDate(model.TransactionDate, "dd/MM/yyyy");
+                //model.TransactionDate = string.IsNullOrEmpty(model.TransactionDate) ? null : Common.ConvertToSystemDate(model.TransactionDate, "dd/MM/yyyy");
                 DataSet ds = model.SavePushupPayment();
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
@@ -1690,7 +1683,7 @@ namespace BrainStew.Controllers
 
                 throw ex;
             }
-            return View(model);
+            return RedirectToAction("PushupPayment", "Admin");
         }
         public ActionResult CheckLoginDetails(string Loginid)
         {
@@ -1712,7 +1705,6 @@ namespace BrainStew.Controllers
             }
             return Json(model, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public ActionResult DeleteDonation(Admin model, string Id)
         {
@@ -1740,6 +1732,5 @@ namespace BrainStew.Controllers
             }
             return Json(model, JsonRequestBehavior.AllowGet);
         }
-        
     }
 }

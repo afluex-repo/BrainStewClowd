@@ -37,14 +37,15 @@
                                     @Html.DropDownListFor(m=>m.Level,new SelectList(ViewBag.ddlLevel, "Value","Text"), new { @class="form-control"})
                                     
                                 </div>
-                                <div class="col-md-3">
+                                @*<div class="col-md-3">
                                     <label for="TransactionDate" id="lbltdate">Donation Date</label>
                                     @Html.TextBoxFor(m => m.TransactionDate, new { @class = "form-control", @placeholder = "Donation Date" })
+                                </div>*@
+                                <div class="col-md-3 mt-4">
+                                    <input class="btn btn-success" name="btn_Save" id="btn_Save" type="submit" value="Submit" onclick="return ValidateForm();" />
                                 </div>
                             </div>
-                        <div class="col-md-4">
-                            <input class="btn btn-success" name="btn_Save" id="btn_Save" type="submit" value="Submit" onclick="return ValidateForm();" />
-                        </div>
+                        
 
                     </div>
                 </div>
@@ -140,11 +141,11 @@
             $('#Level').focus();
             return false;
         }
-          if ($('#TransactionDate').val() == '') {
-            $("#TransactionDate").addClass('errortext');
-            $('#TransactionDate').focus();
-            return false;
-          }
+          //if ($('#TransactionDate').val() == '') {
+          //  $("#TransactionDate").addClass('errortext');
+          //  $('#TransactionDate').focus();
+          //  return false;
+          //}
           return true;
     }
     
