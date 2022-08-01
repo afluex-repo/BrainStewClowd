@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -440,35 +441,123 @@ namespace BrainStew.Controllers
             DataSet ds1 = model.TransferPlacementUpgradeIncome();
             return View();
         }
-        public ActionResult CharityDonation()
+        public ActionResult CharityDonation(Home model)
         {
-            return View();
+            #region Payment Mode
+            List<SelectListItem> ddlpaymentmode = new List<SelectListItem>();
+            ddlpaymentmode.Add(new SelectListItem { Text = "Select Payment Mode", Value = "0" });
+            DataSet ds1 = model.PaymentList();
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds1.Tables[0].Rows)
+                {
+                    ddlpaymentmode.Add(new SelectListItem { Text = r["PaymentMode"].ToString(), Value = r["PK_paymentID"].ToString() });
+                }
+            }
+            ViewBag.ddlpaymentmode = ddlpaymentmode;
+            #endregion
+            return View(model);
         }
 
-        public ActionResult ChildrenDonation()
+        public ActionResult ChildrenDonation(Home model, string Id)
         {
-            return View();
+            List<Home> lst = new List<Home>();
+            if (Id != null)
+            {
+                model.DonationId = Id;
+                DataSet ds = model.GetChildrenDonationDetails();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    ViewBag.Pk_DonationId = ds.Tables[0].Rows[0]["Pk_DonationId"].ToString();
+                    ViewBag.LoginId = ds.Tables[0].Rows[0]["LoginId"].ToString();
+                    ViewBag.ChildName = ds.Tables[0].Rows[0]["ChildName"].ToString();
+                    ViewBag.TotalDaughter = ds.Tables[0].Rows[0]["TotalDaughter"].ToString();
+                    ViewBag.TotalSon = ds.Tables[0].Rows[0]["TotalSon"].ToString();
+                    ViewBag.DOB = ds.Tables[0].Rows[0]["DOB"].ToString();
+                    ViewBag.Need = ds.Tables[0].Rows[0]["Need"].ToString();
+                    ViewBag.NeedAmount = ds.Tables[0].Rows[0]["NeedAmount"].ToString();
+                    ViewBag.Description = ds.Tables[0].Rows[0]["Description"].ToString();
+                    ViewBag.Image = ds.Tables[0].Rows[0]["ChildImage"].ToString();
+                    ViewBag.Address = ds.Tables[0].Rows[0]["Address"].ToString();
+                    ViewBag.ApprovedAmount = ds.Tables[0].Rows[0]["ApprovedAmount"].ToString();
+                    ViewBag.Gender = ds.Tables[0].Rows[0]["Gender"].ToString();
+                    ViewBag.TotalDonation = ds.Tables[0].Rows[0]["TotalDonation"].ToString();
+                }
+            }
+            return View(model);
         }
 
         [HttpPost]
-        public JsonResult SaveDonationDetails(Home model)
+        [ActionName("ChildrenDonation")]
+        [OnAction(ButtonName = "SaveBilling")]
+        public ActionResult SaveChildrenDonation(Home model)
+        {
+           
+            DataSet ds = model.SaveBillingDetails();
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                {
+                    TempData["SaveBilling"] = "Donated amount succesfully !!";
+                   // model.Result = "yes";
+                }
+                else if (ds.Tables[0].Rows[0][0].ToString() == "0")
+                {
+                    TempData["SaveBilling"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+            }
+            else
+            {
+                TempData["SaveBilling"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+            }
+            return RedirectToAction("ChildrenDonationList", "Home");
+        }
+
+        [HttpPost]
+        public JsonResult SaveDonationDetails(Home model, HttpPostedFileBase Image)
         {
             var profile = Request.Files;
             bool status = false;
-            var datavalue = Request["SistersdataValue"];
-            var jssss = new JavaScriptSerializer();
-            var jdvvv = jssss.Deserialize<dynamic>(Request["SistersdataValue"]);
-            DataTable dtSistersDetails = new DataTable();
-            dtSistersDetails = JsonConvert.DeserializeObject<DataTable>(jdvvv["SistersAddData"]);
-            model.dtSistersDetails = dtSistersDetails;
-            
-            var datavaluee = Request["BrothersdataValue"];
-            var jssss1 = new JavaScriptSerializer();
-            var jdvvv1 = jssss1.Deserialize<dynamic>(Request["BrothersdataValue"]);
-            DataTable dtBrothersDetails = new DataTable();
-            dtBrothersDetails = JsonConvert.DeserializeObject<DataTable>(jdvvv1["BrothersAddData"]);
-            model.dtBrothersDetails = dtBrothersDetails;
-            
+            var sisterdatavalue = Request["SistersdataValue"];
+            var SisCount = Request["Siscount"];
+            var BroCount = Request["BroCount"];
+            if (Convert.ToInt32(SisCount) > 0)
+            {
+                var jssss = new JavaScriptSerializer();
+                var jdvvv = jssss.Deserialize<dynamic>(Request["SistersdataValue"]);
+                DataTable dtSistersDetails = new DataTable();
+                dtSistersDetails = JsonConvert.DeserializeObject<DataTable>(jdvvv["SistersAddData"]);
+                model.dtSistersDetails = dtSistersDetails;
+            }
+            var brotherdatavalue = Request["BrothersdataValue"];
+            if (Convert.ToInt32(BroCount) > 0)
+            {
+                var brojssc = new JavaScriptSerializer();
+                var brojdv = brojssc.Deserialize<dynamic>(Request["BrothersdataValue"]);
+                DataTable dtBrothersDetails = new DataTable();
+                dtBrothersDetails = JsonConvert.DeserializeObject<DataTable>(brojdv["BrothersAddData"]);
+                model.dtBrothersDetails = dtBrothersDetails;
+            }
+            if (Image != null)
+            {
+                model.Image = "/ChildImageUpload/" + Guid.NewGuid() + Path.GetExtension(Image.FileName);
+                Image.SaveAs(Path.Combine(Server.MapPath(model.Image)));
+            }
+
+            #region Payment Mode
+            List<SelectListItem> ddlpaymentmode = new List<SelectListItem>();
+            ddlpaymentmode.Add(new SelectListItem { Text = "Select Payment Mode", Value = "0" });
+            DataSet ds1 = model.PaymentList();
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds1.Tables[0].Rows)
+                {
+                    ddlpaymentmode.Add(new SelectListItem { Text = r["PaymentMode"].ToString(), Value = r["PK_paymentID"].ToString() });
+                }
+            }
+            ViewBag.ddlpaymentmode = ddlpaymentmode;
+            #endregion
+
             DataSet ds = new DataSet();
             ds = model.SaveDonationDetails();
             if (ds != null && ds.Tables[0].Rows.Count > 0)
@@ -482,16 +571,104 @@ namespace BrainStew.Controllers
                 {
                     model.Result = "0";
                     TempData["Donation"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                 }
             }
             else
             {
                 model.Result = "0";
+
                 TempData["Donation"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
             }
             return new JsonResult { Data = new { status = status } };
             //return Json(model, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult ChildrenDonationList(Home model)
+        {
+            List<Home> lst = new List<Home>();
+            DataSet ds = model.GetChildrenDonationList();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    Home obj = new Home();
+                    //obj.Fk_UserId = dr["loginId"].ToString();
+                    obj.DonationId = dr["Pk_DonationId"].ToString();
+                    obj.ChildName = dr["ChildName"].ToString();
+                    obj.DOB = dr["DOB"].ToString();
+                    obj.Need = dr["Need"].ToString();
+                    obj.NeedAmount = dr["NeedAmount"].ToString();
+                    obj.Description = dr["Description"].ToString();
+                    obj.Image = dr["ChildImage"].ToString();
+                    obj.Address = dr["Address"].ToString();
+                    obj.ApprovedAmount = dr["ApprovedAmount"].ToString();
+                    lst.Add(obj);
+                }
+                model.lst = lst;
+            }
+            return View(model);
+        }
+
+        //[HttpPost]
+        //public ActionResult SaveBillingDetails(Home model, string FK_DonationId, string FirstName, string LastName,
+        //    string Email, string Mobile,string PinCode, string PanNumber, string Address, string TotalDonation)
+        //{
+        //    DataSet ds = new DataSet();
+        //    model.FK_DonationId = FK_DonationId;
+        //    model.FirstName = FirstName;
+        //    model.LastName = LastName;
+        //    model.Email = Email;
+        //    model.MobileNo = Mobile;
+        //    model.PinCode = PinCode;
+        //    model.PanNo = PanNumber;
+        //    model.TotalDonation = TotalDonation;
+        //    ds = model.SaveBillingDetails();
+        //    if (ds != null && ds.Tables[0].Rows.Count > 0)
+        //    {
+        //        if (ds.Tables[0].Rows[0][0].ToString() == "1")
+        //        {
+        //            //TempData["SaveBilling"] = "Donated amount succesfully !!";
+        //            model.Result = "yes";
+        //        }
+        //        else if (ds.Tables[0].Rows[0][0].ToString() == "0")
+        //        {
+        //            model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        TempData["SaveBilling"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+        //    }
+        //    return Json(model, JsonRequestBehavior.AllowGet);
+        //}
         
+        [HttpPost]
+        public ActionResult GetStateCity(Home model, string PinCode)
+        {
+            DataSet ds = new DataSet();
+            model.PinCode = PinCode;
+            ds = model.GetStateCity();
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                    model.Result = "yes";
+                    model.State = ds.Tables[0].Rows[0]["State"].ToString();
+                    model.City = ds.Tables[0].Rows[0]["City"].ToString();
+              
+            }
+            else
+            {
+                model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+            }
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+
+
+
+
     }
 }

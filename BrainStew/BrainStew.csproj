@@ -130,6 +130,127 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\asset-web\css\all.min.css" />
+    <Content Include="assets\asset-web\css\animate.css" />
+    <Content Include="assets\asset-web\css\bootstrap.min.css" />
+    <Content Include="assets\asset-web\css\css2.css" />
+    <Content Include="assets\asset-web\css\flaticon.css" />
+    <Content Include="assets\asset-web\css\magnific-popup.css" />
+    <Content Include="assets\asset-web\css\main.css" />
+    <Content Include="assets\asset-web\css\metisMenu.css" />
+    <Content Include="assets\asset-web\css\nice-select.css" />
+    <Content Include="assets\asset-web\css\owl.carousel.min.css" />
+    <Content Include="assets\asset-web\css\slick.css" />
+    <Content Include="assets\asset-web\css\themify-icons.css" />
+    <Content Include="assets\asset-web\fonts\fa-brands-400.svg" />
+    <Content Include="assets\asset-web\fonts\fa-duotone-900.svg" />
+    <Content Include="assets\asset-web\fonts\fa-light-300.svg" />
+    <Content Include="assets\asset-web\fonts\fa-regular-400.svg" />
+    <Content Include="assets\asset-web\fonts\fa-solid-900.svg" />
+    <Content Include="assets\asset-web\fonts\Flaticon.svg" />
+    <Content Include="assets\asset-web\fonts\themify.svg" />
+    <Content Include="assets\asset-web\img\about\02.jpg" />
+    <Content Include="assets\asset-web\img\about\about-front.png" />
+    <Content Include="assets\asset-web\img\about\about-img.png" />
+    <Content Include="assets\asset-web\img\about\about-img3.png" />
+    <Content Include="assets\asset-web\img\about\img-back.png" />
+    <Content Include="assets\asset-web\img\bg\01.jpg" />
+    <Content Include="assets\asset-web\img\bg\03.jpg" />
+    <Content Include="assets\asset-web\img\bg\04.jpg" />
+    <Content Include="assets\asset-web\img\bg\05.jpg" />
+    <Content Include="assets\asset-web\img\bg\07.jpg" />
+    <Content Include="assets\asset-web\img\bg\08.jpg" />
+    <Content Include="assets\asset-web\img\bg\09.jpg" />
+    <Content Include="assets\asset-web\img\bg\10.jpg" />
+    <Content Include="assets\asset-web\img\bg\breadcrumb.jpg" />
+    <Content Include="assets\asset-web\img\bg\celebration_bg.png" />
+    <Content Include="assets\asset-web\img\bg\con_bg.png" />
+    <Content Include="assets\asset-web\img\cases\01.jpg" />
+    <Content Include="assets\asset-web\img\cases\03.jpg" />
+    <Content Include="assets\asset-web\img\cases\06.jpg" />
+    <Content Include="assets\asset-web\img\cases\08.png" />
+    <Content Include="assets\asset-web\img\cases\11.jpg" />
+    <Content Include="assets\asset-web\img\cases\15.jpg" />
+    <Content Include="assets\asset-web\img\cases\19.jpg" />
+    <Content Include="assets\asset-web\img\cases\21.jpg" />
+    <Content Include="assets\asset-web\img\cases\22.jpg" />
+    <Content Include="assets\asset-web\img\cases\23.jpg" />
+    <Content Include="assets\asset-web\img\cases\29.jpg" />
+    <Content Include="assets\asset-web\img\cases\child_education.jpg" />
+    <Content Include="assets\asset-web\img\cases\child_education2.jpg" />
+    <Content Include="assets\asset-web\img\cases\computer_training.jpg" />
+    <Content Include="assets\asset-web\img\cases\dayout.jpg" />
+    <Content Include="assets\asset-web\img\cases\educational_kit.jpg" />
+    <Content Include="assets\asset-web\img\cases\fashion_designing.jpeg" />
+    <Content Include="assets\asset-web\img\cases\hungry-child.jpg" />
+    <Content Include="assets\asset-web\img\cases\labour_child.jpg" />
+    <Content Include="assets\asset-web\img\cases\oldage_home.jpg" />
+    <Content Include="assets\asset-web\img\cases\pict_original.jpg" />
+    <Content Include="assets\asset-web\img\cases\save_women.jpg" />
+    <Content Include="assets\asset-web\img\cases\tailoring.jpg" />
+    <Content Include="assets\asset-web\img\instagram\1.png" />
+    <Content Include="assets\asset-web\img\instagram\2.png" />
+    <Content Include="assets\asset-web\img\instagram\3.png" />
+    <Content Include="assets\asset-web\img\instagram\4.png" />
+    <Content Include="assets\asset-web\img\instagram\5.png" />
+    <Content Include="assets\asset-web\img\instagram\6.png" />
+    <Content Include="assets\asset-web\img\instagram\7.png" />
+    <Content Include="assets\asset-web\img\instagram\8.png" />
+    <Content Include="assets\asset-web\img\instagram\9.png" />
+    <Content Include="assets\asset-web\img\logo\brainstew-logo.png" />
+    <Content Include="assets\asset-web\img\logo\brainstew_logo %281%29.jpg" />
+    <Content Include="assets\asset-web\img\logo\brainstew_logo.jpg" />
+    <Content Include="assets\asset-web\img\logo\favicon.jpg" />
+    <Content Include="assets\asset-web\img\logo\favicon.png" />
+    <Content Include="assets\asset-web\img\logo\final_logo.png" />
+    <Content Include="assets\asset-web\img\logo\footer_logo.png" />
+    <Content Include="assets\asset-web\img\logo\header_logo_1.png" />
+    <Content Include="assets\asset-web\img\logo\logo_1.png" />
+    <Content Include="assets\asset-web\img\shape\01.png" />
+    <Content Include="assets\asset-web\img\shape\02.png" />
+    <Content Include="assets\asset-web\img\shape\03.png" />
+    <Content Include="assets\asset-web\img\shape\05.png" />
+    <Content Include="assets\asset-web\img\shape\06.png" />
+    <Content Include="assets\asset-web\img\shape\07.png" />
+    <Content Include="assets\asset-web\img\shape\08.png" />
+    <Content Include="assets\asset-web\img\shape\09.png" />
+    <Content Include="assets\asset-web\img\shape\10.png" />
+    <Content Include="assets\asset-web\img\shape\11.png" />
+    <Content Include="assets\asset-web\img\shape\12.png" />
+    <Content Include="assets\asset-web\img\shape\13.png" />
+    <Content Include="assets\asset-web\img\shape\14.png" />
+    <Content Include="assets\asset-web\img\shape\15.png" />
+    <Content Include="assets\asset-web\img\slider\slide-1.png" />
+    <Content Include="assets\asset-web\img\slider\slide5.png" />
+    <Content Include="assets\asset-web\img\team\06.jpg" />
+    <Content Include="assets\asset-web\img\team\07.jpg" />
+    <Content Include="assets\asset-web\img\team\09.jpg" />
+    <Content Include="assets\asset-web\img\team\12.jpg" />
+    <Content Include="assets\asset-web\img\testimonial\user.png" />
+    <Content Include="assets\asset-web\js\ajax-form.js" />
+    <Content Include="assets\asset-web\js\bootstrap.min.js" />
+    <Content Include="assets\asset-web\js\footer.js" />
+    <Content Include="assets\asset-web\js\header.js" />
+    <Content Include="assets\asset-web\js\imagesloaded.pkgd.min.js" />
+    <Content Include="assets\asset-web\js\isotope.pkgd.min.js" />
+    <Content Include="assets\asset-web\js\jquery.counterup.min.js" />
+    <Content Include="assets\asset-web\js\jquery.easypiechart.js" />
+    <Content Include="assets\asset-web\js\jquery.magnific-popup.min.js" />
+    <Content Include="assets\asset-web\js\jquery.meanmenu.min.js" />
+    <Content Include="assets\asset-web\js\jquery.nice-select.js" />
+    <Content Include="assets\asset-web\js\jquery.scrollUp.min.js" />
+    <Content Include="assets\asset-web\js\main.js" />
+    <Content Include="assets\asset-web\js\metisMenu.min.js" />
+    <Content Include="assets\asset-web\js\owl.carousel.min.js" />
+    <Content Include="assets\asset-web\js\parallax.min.js" />
+    <Content Include="assets\asset-web\js\plugins.js" />
+    <Content Include="assets\asset-web\js\popper.min.js" />
+    <Content Include="assets\asset-web\js\slick.min.js" />
+    <Content Include="assets\asset-web\js\tilt.jquery.js" />
+    <Content Include="assets\asset-web\js\vendor\jquery-1.12.4.min.js" />
+    <Content Include="assets\asset-web\js\vendor\modernizr-3.5.0.min.js" />
+    <Content Include="assets\asset-web\js\waypoints.min.js" />
+    <Content Include="assets\asset-web\js\wow.min.js" />
     <Content Include="assets\css\apps\contacts.css" />
     <Content Include="assets\css\apps\invoice-add.css" />
     <Content Include="assets\css\apps\invoice-edit.css" />
@@ -594,6 +715,7 @@
     <Content Include="BrainStew\assets\js\waypoints.min.js" />
     <Content Include="BrainStew\assets\js\wow.min.js" />
     <Content Include="BrainStew\contact.html" />
+    <Content Include="BrainStew\donation.html" />
     <Content Include="BrainStew\gallery.html" />
     <Content Include="BrainStew\index.html" />
     <Content Include="BrainStew\projects.html" />
@@ -743,7 +865,9 @@
     <Content Include="Views\Master\AddNews.cshtml" />
     <Content Include="Views\Master\NewsList.cshtml" />
     <Content Include="Views\Report\BrainMatrixDonationList.cshtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Registration.cshtml" />
   </ItemGroup>
@@ -857,6 +981,38 @@
     <Content Include="BrainStew\assets\fonts\themify.eot" />
     <Content Include="BrainStew\assets\fonts\themify.ttf" />
     <Content Include="BrainStew\assets\fonts\themify.woff" />
+    <Content Include="assets\asset-web\fonts\fa-brands-400-1.eot" />
+    <Content Include="assets\asset-web\fonts\fa-brands-400.eot" />
+    <Content Include="assets\asset-web\fonts\fa-brands-400.ttf" />
+    <Content Include="assets\asset-web\fonts\fa-brands-400.woff" />
+    <Content Include="assets\asset-web\fonts\fa-brands-400.woff2" />
+    <Content Include="assets\asset-web\fonts\fa-duotone-900-1.eot" />
+    <Content Include="assets\asset-web\fonts\fa-duotone-900.eot" />
+    <Content Include="assets\asset-web\fonts\fa-duotone-900.ttf" />
+    <Content Include="assets\asset-web\fonts\fa-duotone-900.woff" />
+    <Content Include="assets\asset-web\fonts\fa-duotone-900.woff2" />
+    <Content Include="assets\asset-web\fonts\fa-light-300-1.eot" />
+    <Content Include="assets\asset-web\fonts\fa-light-300.eot" />
+    <Content Include="assets\asset-web\fonts\fa-light-300.ttf" />
+    <Content Include="assets\asset-web\fonts\fa-light-300.woff" />
+    <Content Include="assets\asset-web\fonts\fa-light-300.woff2" />
+    <Content Include="assets\asset-web\fonts\fa-regular-400-1.eot" />
+    <Content Include="assets\asset-web\fonts\fa-regular-400.eot" />
+    <Content Include="assets\asset-web\fonts\fa-regular-400.ttf" />
+    <Content Include="assets\asset-web\fonts\fa-regular-400.woff" />
+    <Content Include="assets\asset-web\fonts\fa-regular-400.woff2" />
+    <Content Include="assets\asset-web\fonts\fa-solid-900-1.eot" />
+    <Content Include="assets\asset-web\fonts\fa-solid-900.eot" />
+    <Content Include="assets\asset-web\fonts\fa-solid-900.ttf" />
+    <Content Include="assets\asset-web\fonts\fa-solid-900.woff" />
+    <Content Include="assets\asset-web\fonts\fa-solid-900.woff2" />
+    <Content Include="assets\asset-web\fonts\Flaticon.eot" />
+    <Content Include="assets\asset-web\fonts\Flaticon.woff" />
+    <Content Include="assets\asset-web\fonts\Flaticon.woff2" />
+    <Content Include="assets\asset-web\fonts\themify-1.eot" />
+    <Content Include="assets\asset-web\fonts\themify.eot" />
+    <Content Include="assets\asset-web\fonts\themify.ttf" />
+    <Content Include="assets\asset-web\fonts\themify.woff" />
     <None Include="Properties\PublishProfiles\BrainStew.pubxml" />
     <Content Include="Views\Home\CompleteRegistration.cshtml" />
     <Content Include="Views\User\ActivateByPin.cshtml" />
@@ -965,6 +1121,8 @@
     <Content Include="Views\Home\CharityDonation.cshtml" />
     <Content Include="Views\Admin\PushupPayment.cshtml" />
     <Content Include="Views\Home\ChildrenDonation.cshtml" />
+    <Content Include="Views\Home\ChildrenDonationList.cshtml" />
+    <Content Include="Views\AdminReports\ViewDonationLedger.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -974,6 +1132,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="assets\asset-web\img\donation\" />
+    <Folder Include="assets\asset-web\img\gallery\" />
+    <Folder Include="ChildImageUpload\" />
     <Folder Include="Documents\" />
     <Folder Include="PanUpload\" />
     <Folder Include="ProfilePicture\" />
@@ -996,7 +1157,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53405</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53404/</IISUrl>
+          <IISUrl>http://localhost:53406/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

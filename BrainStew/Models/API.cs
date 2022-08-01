@@ -1285,7 +1285,7 @@ namespace BrainStew.Models
         public string FirstName { get; set; }
         public string Mobile { get; set; }
         public string SponsorID { get; set; }
-        public string Status { get; set; }
+        public string ActiveStatus { get; set; }
         public string ActivationDate { get; set; }
     }
     public class BusinessReportsRequest

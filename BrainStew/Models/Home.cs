@@ -10,9 +10,12 @@ namespace BrainStew.Models
     public class Home : Common
     {
         public List<Home> lstMenu { get; set; }
+        public List<Home> lst { get; set; }
         public List<Home> lstsubmenu { get; set; }
+        public List<Home> lstChildrenDonation { get; set; }
         public string Amount { get; set; }
         public string WalletBalance { get; set; }
+        public string BankBranch { get; set; }
         #region property
         public string SponsorId { get; set; }
         public string LoginId { get; set; }
@@ -54,8 +57,20 @@ namespace BrainStew.Models
 
         public DataTable dtSistersDetails { get; set; }
         public DataTable dtBrothersDetails { get; set; }
+        public string Description { get; set; }
+        public string Image { get; set; }
+        public string ChildCharity { get; set; }
+        public string ApprovedAmount { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+        public string Status { get; set; }
+        public string Age { get; set; }
+        public string DonationId { get; set; }
+        public string SisName { get; set; }
 
-
+        public string FK_DonationId { get; set; }
+        public string ZipPostalCode { get; set; }
+        public string TotalDonation { get; set; }
 
         #endregion
         #region Sponsor
@@ -254,12 +269,15 @@ namespace BrainStew.Models
             return ds;
         }
 
+
+
+       
         public DataSet SaveDonationDetails()
         {
             SqlParameter[] para = {
-                                      new SqlParameter("@MemberNo", MemberNo),
-                                          new SqlParameter("@Gender", Gender),
+                                    new SqlParameter("@MemberNo", MemberNo),
                                       new SqlParameter("@ChildName", ChildName),
+                                     new SqlParameter("@Gender", Gender),
                                        new SqlParameter("@DOB",DOB) ,
                                       new SqlParameter("@FatherName", FatherName) ,
                                       new SqlParameter("@MotherName", MotherName),
@@ -267,16 +285,64 @@ namespace BrainStew.Models
                                       new SqlParameter("@Need", Need),
                                         new SqlParameter("@NeedAmount", NeedAmount),
                                          new SqlParameter("@dtSistersDetails", dtSistersDetails),
-                                          new SqlParameter("@dtBrothersDetails", dtBrothersDetails)
+                                          new SqlParameter("@dtBrothersDetails", dtBrothersDetails),
+                                              new SqlParameter("@LoginId", LoginId),
+                                    new SqlParameter("@ChildImage", Image),
+                                    new SqlParameter("@Description", Description),
+                                     new SqlParameter("@MobileNo", MobileNo),
+                                    new SqlParameter("@Address", Address)
     };
             DataSet ds = DBHelper.ExecuteQuery("SaveDonationDetails", para);
             return ds;
         }
+        public DataSet GetChildrenDonationList()
+        {
+            DataSet ds = DBHelper.ExecuteQuery("GetChildrenDonationList");
+            return ds;
+        }
+        public DataSet GetChildrenDonationDetails()
+        {
+            SqlParameter[] para = {
+                                    new SqlParameter("@DonationId", DonationId),
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetChildrenDonationDetails", para);
+            return ds;
 
+        }
+        public DataSet SaveBillingDetails()
+        {
+            SqlParameter[] para = {
+                                    new SqlParameter("@FK_DonationId", FK_DonationId),
+                                      new SqlParameter("@FirstName", FirstName),
+                                     new SqlParameter("@LastName", LastName),
+                                       new SqlParameter("@Email",Email) ,
+                                      new SqlParameter("@MobileNo", MobileNo) ,
+                                      new SqlParameter("@PinCode", PinCode),
+                                      //new SqlParameter("@State", State) ,
+                                      //new SqlParameter("@City", City),
+                                      //  new SqlParameter("@ZipPostalCode", ZipPostalCode),
+                                         new SqlParameter("@PanNumber", PanNo),
+                                          new SqlParameter("@Address", Address),
+                                              new SqlParameter("@TotalDonation",TotalDonation),
+                                    new SqlParameter("@PaymentMode",Fk_Paymentid),
+                                        new SqlParameter("@BankName",BankName),
+                                       new SqlParameter("@BranchName",BankBranch),
+                                       new SqlParameter("@TransactionNo",TransactionNo),
+                                       new SqlParameter("@TransactionDate",TransactionDate)
+    };
+            DataSet ds = DBHelper.ExecuteQuery("SaveBillingDetails", para);
+            return ds;
+        }
+        public DataSet GetStateCity()
+        {
+            SqlParameter[] para = {
+                                    new SqlParameter("@PinCode", PinCode)
+    };
+            DataSet ds = DBHelper.ExecuteQuery("GetStateCity", para);
+            return ds;
+        }
 
-
-
-
+       
 
     }
 }

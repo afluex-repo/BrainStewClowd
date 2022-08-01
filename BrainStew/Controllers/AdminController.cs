@@ -659,7 +659,7 @@ namespace BrainStew.Controllers
                 ViewBag.Name = ds.Tables[0].Rows[0]["Name"].ToString();
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
-                   
+
                     Admin obj = new Admin();
                     obj.PK_PayoutWalletId = r["PK_PayoutWalletId"].ToString();
                     obj.Fk_UserId = r["FK_UserId"].ToString();
@@ -1345,11 +1345,11 @@ namespace BrainStew.Controllers
                     if (ds.Tables[0].Rows[0][0].ToString() == "1")
                     {
                         //TempData["msg"] = "Your request has been approved Successfully !!";
-                       // Session["Name"] = ds.Tables[0].Rows[0]["Name"].ToString();
-                       // Session["Email"] = ds.Tables[0].Rows[0]["Email"].ToString();
-                       //model.Email = ds.Tables[0].Rows[0]["Email"].ToString();
-                       // Session["TransactionNo"] = ds.Tables[0].Rows[0]["TransactionNo"].ToString();
-                       // Session["TransactionDate"] = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
+                        // Session["Name"] = ds.Tables[0].Rows[0]["Name"].ToString();
+                        // Session["Email"] = ds.Tables[0].Rows[0]["Email"].ToString();
+                        //model.Email = ds.Tables[0].Rows[0]["Email"].ToString();
+                        // Session["TransactionNo"] = ds.Tables[0].Rows[0]["TransactionNo"].ToString();
+                        // Session["TransactionDate"] = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
 
                         //if (model.Email != "" && model.Email != null)
                         //{
@@ -1512,7 +1512,6 @@ namespace BrainStew.Controllers
             }
             return RedirectToAction("AdvanceDeduction", "Admin");
         }
-
         public ActionResult CommissionReport()
         {
             List<Admin> lst = new List<Admin>();
@@ -1536,7 +1535,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         [HttpPost]
         public ActionResult CommissionReport(Admin model)
         {
@@ -1562,8 +1560,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
         public ActionResult TopUpWalletLedgerForAdmin(string loginid)
         {
             List<Admin> lst = new List<Admin>();
@@ -1592,8 +1588,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
-
         [HttpPost]
         public ActionResult TopUpWalletLedgerForAdmin(Admin model, string loginId)
         {
@@ -1619,7 +1613,6 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-
         public ActionResult PushupPayment()
         {
             #region DonationPlan
@@ -1632,7 +1625,7 @@ namespace BrainStew.Controllers
             return View();
 
         }
-        public ActionResult getLevel(string DonationId ,string loginId)
+        public ActionResult getLevel(string DonationId, string loginId)
         {
             List<SelectListItem> lstDonation = new List<SelectListItem>();
             AdminReports model = new AdminReports();
@@ -1670,7 +1663,7 @@ namespace BrainStew.Controllers
                 ddlLevel.Add(new SelectListItem { Text = "Select Level", Value = "0" });
                 ViewBag.ddlLevel = ddlLevel;
                 #endregion
-                model.TransactionDate = string.IsNullOrEmpty(model.TransactionDate) ? null : Common.ConvertToSystemDate(model.TransactionDate, "dd/MM/yyyy");
+                //model.TransactionDate = string.IsNullOrEmpty(model.TransactionDate) ? null : Common.ConvertToSystemDate(model.TransactionDate, "dd/MM/yyyy");
                 DataSet ds = model.SavePushupPayment();
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
@@ -1690,16 +1683,16 @@ namespace BrainStew.Controllers
 
                 throw ex;
             }
-            return View(model);
+            return RedirectToAction("PushupPayment", "Admin");
         }
         public ActionResult CheckLoginDetails(string Loginid)
         {
             Admin model = new Admin();
             model.LoginId = Loginid;
             DataSet ds = model.CheckActivateLogin();
-            if(ds !=null && ds.Tables.Count>0 && ds.Tables[0].Rows.Count>0)
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-                if (ds.Tables[0].Rows[0]["Msg"].ToString()=="1")
+                if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
                 {
                     model.Result = "1";
                     model.LoginId = ds.Tables[0].Rows[0]["Loginid"].ToString();
@@ -1709,6 +1702,33 @@ namespace BrainStew.Controllers
                 {
                     model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                 }
+            }
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult DeleteDonation(Admin model, string Id)
+        {
+            try
+            {
+                model.DonationId = Id;
+                model.AddedBy = Session["Pk_AdminId"].ToString();
+                DataSet ds = model.DeleteDonation();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+                        model.Result = "1";
+                        TempData["Donation"] = "This record deleted successfully !!";
+                    }
+                    else
+                    {
+                        model.Result = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                model.Result = ex.Message;
             }
             return Json(model, JsonRequestBehavior.AllowGet);
         }

@@ -1319,12 +1319,14 @@ namespace BrainStew.Controllers
                     obj.MotherName = r["MotherName"].ToString();
                     //obj.Name = r["Name"].ToString();
                     //obj.Age = r["Age"].ToString();
-                    //obj.GenderType = r["GenderType"].ToString();
+                    obj.Amount = r["ApprovedAmount"].ToString();
                     obj.FamilyWork = r["FamilyWork"].ToString();
                     obj.Need = r["Need"].ToString();
                     obj.NeedAmount = r["NeedAmount"].ToString();
                     obj.ChildCharity = r["ChildCharity"].ToString();
                     obj.Description = r["Description"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    obj.Address = r["Address"].ToString();
                     lst.Add(obj);
                 }
                 model.lstdonation = lst;
@@ -1375,6 +1377,9 @@ namespace BrainStew.Controllers
                     obj.Need = r["Need"].ToString();
                     obj.NeedAmount = r["NeedAmount"].ToString();
                     obj.ChildCharity = r["ChildCharity"].ToString();
+                    obj.Description = r["Description"].ToString();
+                    obj.Status = r["Status"].ToString();
+                    obj.Address = r["Address"].ToString();
                     lst.Add(obj);
                 }
                 model.lstdonation = lst;
@@ -1470,5 +1475,68 @@ namespace BrainStew.Controllers
             }
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+        
+        public ActionResult ViewDonationLedger(string DonationId)
+        {
+            AdminReports model = new AdminReports();
+            List<AdminReports> lst = new List<AdminReports>();
+            model.FK_DonationId = DonationId;
+            DataSet ds = model.ViewDonationLedger();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.FK_DonationId = r["Pk_BillingDetailsId"].ToString();
+                    obj.Name = r["Name"].ToString();
+                    obj.Email = r["Email"].ToString();
+                    obj.PinCode = r["PinCode"].ToString();
+                    obj.PanNo = r["PanNumber"].ToString();
+                    obj.Address = r["Address"].ToString();
+                    obj.DonationDate = r["DonationDate"].ToString();
+                    obj.DontaionAmount = r["DontaionAmount"].ToString();
+                    obj.MobileNo = r["MobileNo"].ToString();
+                    lst.Add(obj);
+                }
+                model.lstledger = lst;
+            }
+            return View(model);
+        }
+       [HttpPost]
+       [ActionName("ViewDonationLedger")]
+       [OnAction(ButtonName = "btnSearch")]
+        public ActionResult ViewDonationLedger(AdminReports model)
+        {
+            //AdminReports model = new AdminReports();
+            model.FK_DonationId = model.FK_DonationId == "" ? null : model.FK_DonationId;
+            model.Name = model.Name == "" ? null : model.Name;
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            List<AdminReports> lst = new List<AdminReports>();
+            //model.FK_DonationId = DonationId;
+            DataSet ds = model.ViewDonationLedger();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.FK_DonationId = r["Pk_BillingDetailsId"].ToString();
+                    obj.Name = r["Name"].ToString();
+                    obj.Email = r["Email"].ToString();
+                    obj.PinCode = r["PinCode"].ToString();
+                    obj.PanNo = r["PanNumber"].ToString();
+                    obj.Address = r["Address"].ToString();
+                    obj.DonationDate = r["DonationDate"].ToString();
+                    obj.DontaionAmount = r["DontaionAmount"].ToString();
+                    obj.MobileNo = r["MobileNo"].ToString();
+                    lst.Add(obj);
+                }
+                model.lstledger = lst;
+            }
+            return View(model);
+        }
+
+
+
     }
 }
