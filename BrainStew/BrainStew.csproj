@@ -1123,6 +1123,7 @@
     <Content Include="Views\Home\ChildrenDonation.cshtml" />
     <Content Include="Views\Home\ChildrenDonationList.cshtml" />
     <Content Include="Views\AdminReports\ViewDonationLedger.cshtml" />
+    <Content Include="Views\AdminReports\BenefitsReports.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

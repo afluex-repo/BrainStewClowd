@@ -1536,7 +1536,54 @@ namespace BrainStew.Controllers
             return View(model);
         }
 
-
-
+        public ActionResult BenefitsReports()
+        {
+            AdminReports model = new AdminReports();
+            List<AdminReports> lst = new List<AdminReports>();
+            DataSet ds = model.BenefitsReports();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.LoginId = r["LoginId"].ToString();
+                    obj.Name = r["Name"].ToString();
+                    obj.BusinessAmount = r["BusinessAmount"].ToString();
+                    obj.BenefitAmount = r["BenefitAmount"].ToString();
+                    obj.LastIncomeDate = r["LastIncomeDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lstbenefitreports = lst;
+            }
+            return View(model);
+        }
+        [HttpPost]
+        [ActionName("BenefitsReports")]
+        [OnAction(ButtonName = "btnSearching")]
+        public ActionResult BenefitsReports(AdminReports model)
+        {
+            List<AdminReports> lst = new List<AdminReports>();
+            model.LoginId = model.LoginId == "" ? null : model.LoginId;
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+           
+            DataSet ds = model.BenefitsReports();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    AdminReports obj = new AdminReports();
+                    obj.LoginId = r["LoginId"].ToString();
+                    obj.Name = r["Name"].ToString();
+                    obj.BusinessAmount = r["BusinessAmount"].ToString();
+                    obj.BenefitAmount = r["BenefitAmount"].ToString();
+                    obj.LastIncomeDate = r["LastIncomeDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lstbenefitreports = lst;
+            }
+            return View(model);
+        }
+        
     }
 }

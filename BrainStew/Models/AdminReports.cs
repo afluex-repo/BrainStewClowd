@@ -19,7 +19,7 @@ namespace BrainStew.Models
         public List<AdminReports> lstSister { get; set; }
         public List<AdminReports> lstBrother { get; set; }
         public List<AdminReports> lstledger { get; set; }
-
+        public List<AdminReports> lstbenefitreports { get; set; }
         public string isBlocked { get; set; }
 
         public string Email { get; set; }
@@ -110,6 +110,13 @@ namespace BrainStew.Models
         public string DonationDate { get; set; }
         public string DontaionAmount { get; set; }
         public string PK_RequestID { get; set; }
+
+        public string BenefitAmount { get; set; }
+        public string LastIncomeDate { get; set; }
+        
+
+
+
 
         #region associatelist
         public DataSet WalletLedger()
@@ -470,6 +477,18 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("ViewDonationLedger", para);
             return ds;
         }
-     
+
+
+        public DataSet BenefitsReports()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId",LoginId),
+                new SqlParameter("@FromDate",FromDate),
+                new SqlParameter("@ToDate",ToDate)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("BenefitsReports", para);
+            return ds;
+        }
+        
     }
 }
