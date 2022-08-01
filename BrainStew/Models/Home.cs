@@ -267,7 +267,6 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("ActivateUserByWallet", para);
             return ds;
         }
-
         public DataSet SaveDonationDetails()
         {
             SqlParameter[] para = {
@@ -285,18 +284,15 @@ namespace BrainStew.Models
                                               new SqlParameter("@LoginId", LoginId),
                                     new SqlParameter("@ChildImage", Image),
                                     new SqlParameter("@Description", Description),
-                                    new SqlParameter("@Address", Address),
-
+                                    new SqlParameter("@Address", Address)
     };
             DataSet ds = DBHelper.ExecuteQuery("SaveDonationDetails", para);
             return ds;
         }
-
         public DataSet GetChildrenDonationList()
         {
             DataSet ds = DBHelper.ExecuteQuery("GetChildrenDonationList");
             return ds;
-
         }
         public DataSet GetChildrenDonationDetails()
         {
@@ -307,8 +303,6 @@ namespace BrainStew.Models
             return ds;
 
         }
-
-
         public DataSet SaveBillingDetails()
         {
             SqlParameter[] para = {
@@ -328,15 +322,10 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("SaveBillingDetails", para);
             return ds;
         }
-
-
-
-
         public DataSet GetStateCity()
         {
             SqlParameter[] para = {
-                                    new SqlParameter("@PinCode", PinCode),
-
+                                    new SqlParameter("@PinCode", PinCode)
     };
             DataSet ds = DBHelper.ExecuteQuery("GetStateCity", para);
             return ds;
