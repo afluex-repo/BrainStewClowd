@@ -15,6 +15,7 @@ namespace BrainStew.Models
         public List<Home> lstChildrenDonation { get; set; }
         public string Amount { get; set; }
         public string WalletBalance { get; set; }
+        public string BankBranch { get; set; }
         #region property
         public string SponsorId { get; set; }
         public string LoginId { get; set; }
@@ -267,6 +268,10 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("ActivateUserByWallet", para);
             return ds;
         }
+
+
+
+       
         public DataSet SaveDonationDetails()
         {
             SqlParameter[] para = {
@@ -284,6 +289,7 @@ namespace BrainStew.Models
                                               new SqlParameter("@LoginId", LoginId),
                                     new SqlParameter("@ChildImage", Image),
                                     new SqlParameter("@Description", Description),
+                                     new SqlParameter("@MobileNo", MobileNo),
                                     new SqlParameter("@Address", Address)
     };
             DataSet ds = DBHelper.ExecuteQuery("SaveDonationDetails", para);
@@ -317,7 +323,12 @@ namespace BrainStew.Models
                                       //  new SqlParameter("@ZipPostalCode", ZipPostalCode),
                                          new SqlParameter("@PanNumber", PanNo),
                                           new SqlParameter("@Address", Address),
-                                              new SqlParameter("@TotalDonation",TotalDonation)
+                                              new SqlParameter("@TotalDonation",TotalDonation),
+                                    new SqlParameter("@PaymentMode",Fk_Paymentid),
+                                        new SqlParameter("@BankName",BankName),
+                                       new SqlParameter("@BranchName",BankBranch),
+                                       new SqlParameter("@TransactionNo",TransactionNo),
+                                       new SqlParameter("@TransactionDate",TransactionDate)
     };
             DataSet ds = DBHelper.ExecuteQuery("SaveBillingDetails", para);
             return ds;
@@ -330,6 +341,8 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("GetStateCity", para);
             return ds;
         }
+
+       
 
     }
 }
