@@ -1740,15 +1740,6 @@ namespace BrainStew.Controllers
             }
             return Json(model, JsonRequestBehavior.AllowGet);
         }
-
-
-
-
-
-
-
-
-
-
+        
     }
 }
