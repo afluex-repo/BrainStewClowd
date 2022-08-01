@@ -443,6 +443,19 @@ namespace BrainStew.Controllers
         }
         public ActionResult CharityDonation(Home model)
         {
+            #region Payment Mode
+            List<SelectListItem> ddlpaymentmode = new List<SelectListItem>();
+            ddlpaymentmode.Add(new SelectListItem { Text = "Select Payment Mode", Value = "0" });
+            DataSet ds1 = model.PaymentList();
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds1.Tables[0].Rows)
+                {
+                    ddlpaymentmode.Add(new SelectListItem { Text = r["PaymentMode"].ToString(), Value = r["PK_paymentID"].ToString() });
+                }
+            }
+            ViewBag.ddlpaymentmode = ddlpaymentmode;
+            #endregion
             return View(model);
         }
 
@@ -530,6 +543,21 @@ namespace BrainStew.Controllers
                 model.Image = "/ChildImageUpload/" + Guid.NewGuid() + Path.GetExtension(Image.FileName);
                 Image.SaveAs(Path.Combine(Server.MapPath(model.Image)));
             }
+
+            #region Payment Mode
+            List<SelectListItem> ddlpaymentmode = new List<SelectListItem>();
+            ddlpaymentmode.Add(new SelectListItem { Text = "Select Payment Mode", Value = "0" });
+            DataSet ds1 = model.PaymentList();
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds1.Tables[0].Rows)
+                {
+                    ddlpaymentmode.Add(new SelectListItem { Text = r["PaymentMode"].ToString(), Value = r["PK_paymentID"].ToString() });
+                }
+            }
+            ViewBag.ddlpaymentmode = ddlpaymentmode;
+            #endregion
+
             DataSet ds = new DataSet();
             ds = model.SaveDonationDetails();
             if (ds != null && ds.Tables[0].Rows.Count > 0)
