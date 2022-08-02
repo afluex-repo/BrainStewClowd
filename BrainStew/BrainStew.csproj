@@ -1124,6 +1124,7 @@
     <Content Include="Views\Home\ChildrenDonationList.cshtml" />
     <Content Include="Views\AdminReports\ViewDonationLedger.cshtml" />
     <Content Include="Views\AdminReports\BenefitsReports.cshtml" />
+    <Content Include="Views\AdminReports\ChildViewProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1158,7 +1159,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53405</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53406/</IISUrl>
+          <IISUrl>http://localhost:53407/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

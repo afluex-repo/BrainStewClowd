@@ -77,6 +77,7 @@
                                         <th>Sister Details</th>
                                         <th>Brother Details</th>
                                         <th>View Donation</th>
+                                        <th>View Profile</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -108,7 +109,7 @@
                                                     <td><a href="/AdminReports/BrotherList?Id=@Item.DonationId" class="btn btn-success btn-sm">Brother Details</a></td>
 
                                                     <td><a style="width:120px;" href="/AdminReports/ViewDonationLedger?DonationId=@Item.DonationId" class="btn btn-warning btn-sm">View Donation</a></td>
-
+                                                    <td><a style="width:120px;" href="/AdminReports/ChildViewProfile?Id=@Item.DonationId" class="btn btn-secondary btn-sm">View Profile</a></td>
                                                     <td>
                                                         @if (Item.Status != "Approved")
                                                         {
