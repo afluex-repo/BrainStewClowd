@@ -142,7 +142,7 @@
                                 </tbody>
                             </table>
                         </div>*@ 
-                        <h4 class="mt-3">Custom Amount</h4>
+                        @*<h4 class="mt-3">Custom Amount</h4>*@
                         <div class="cases-btn mt-3 mb-10 d-xl-inline-block">
                             <button href="#" class="btn btn-orange text-white" id="donate_btn">
                                 Donate Now
@@ -199,18 +199,68 @@
                                             <input type="text" name="PanNo" id="PanNo" class="form-control" placeholder="Enter PAN No.">
                                         </div>
                                     </div>
-                                    <div class="col-xl-12">
+                                    <div class="col-xl-6">
                                         <div class="input-area mb-30">
                                             <label class="font-25">Address</label>
                                             <textarea class="form-control" id="Address" name="Address" rows="2"></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-xl-12 mb-5 table-responsive">
+                                    <div class="col-xl-6 mb-5 table-responsive">
                                         <div class="input-area mb-30">
                                             <label class="font-25">Donation Total:<span class="text-danger">*</span></label>
                                             <input type="text" onkeypress="return isNumberKey(event);" name="TotalDonation" id="TotalDonation" class="form-control" placeholder="Enter Total Donation">
                                         </div>
                                     </div>
+
+
+
+
+                                    <div class="col-xl-6">
+                                        <div class="input-area mb-30">
+                                            <label class="font-25">Payment Mode</label>
+                                            <select class="form-control" id="Fk_Paymentid" name="Fk_Paymentid" onchange = "getpaymentdetails();" >
+                                                <option>Payment Mode</option>
+                                                <option value="1">Cash</option>
+                                                <option value="2">Cheque</option>
+                                                <option value="3">NEFT</option>
+                                                <option value="4">DD</option>
+                                                <option value="5">RTGS</option>
+                                                <option value="6">IMPS</option>
+                                                <option value="10">UPI</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-xl-6">
+                                        <div class="input-area mb-30" id="divtransactiono" style="display: none">
+                                            <label class="font-25">TransactionNo <span style="color: red">*</span></label>
+                                            <input type="text" name="TransactionNo" id="TransactionNo" class="form-control" placeholder="Mobile Number" maxlength = "50">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <div class="input-area mb-30" id="divPaymentMode" style="display: none">
+                                            <label class="font-25">TransactionDate<span style="color: red">*</span></label>
+                                            <input type="text" name="TransactionDate" id="TransactionDate" class="form-control" placeholder="Transaction Date"  Readonly = "readonly">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-6">
+                                        <div class="input-area mb-30" id="divbankname" style="display: none">
+                                            <label class="font-25">Bank Name<span style="color: red">*</span></label>
+                                            <input type="text" name="BankName" id="BankName" class="form-control" maxlength = "100" Placeholder = "Bank Name" >
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-6">
+                                        <div class="input-area mb-30"  id="divbankbranch" style="display: none">
+                                            <label class="font-25">Bank Branch<span style="color: red">*</span></label>
+                                            <input type="text" name="BankBranch" id="BankBranch" class="form-control" maxlength="100" Placeholder="Bank Branch">
+                                        </div>
+                                    </div>
+
+
                                     <div class="col-xl-6">
                                         @*<button id="btnfinalsubmit" class="theme_btn theme_btn_bg" name="SaveBilling" onclick="return SaveBillingDetails();">Donate now <span><i class="fas fa-heart"></i></span></button>*@
                                         @*<button id="btnfinalsubmit" class="theme_btn theme_btn_bg" name="SaveBilling">Donate now <span><i class="fas fa-heart"></i></span></button>*@
@@ -450,10 +500,17 @@
 </main>
 <script src="~/assets/asset-web/js/footer.js"></script>
 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
 <script>
 
     function Validate()
     {
+        $("#divload").css({ 'display': '' })
+        $(".errortext").removeClass("errortext");
         debugger;
         if ($("#FirstName").val() == "") {
             $("#FirstName").addClass('errortext');
@@ -485,7 +542,43 @@
             $("#TotalDonation").addClass('errortext');
             $("#TotalDonation").focus();
             return false;
-        }
+         }
+
+        
+
+         if ($('#Fk_Paymentid').val() == '0') {
+             $("#Fk_Paymentid").addClass('errortext');
+             $('#Fk_Paymentid').focus();
+             return false;
+         }
+
+         if ($('#Fk_Paymentid').val() != '1') {
+             if ($('#TransactionNo').val() == '') {
+                 $("#TransactionNo").addClass('errortext');
+                 $('#TransactionNo').focus();
+                 $("#divload").css({ 'display': 'none' });
+                 return false;
+             }
+             if ($('#TransactionDate').val() == '') {
+                 $("#TransactionDate").addClass('errortext');
+                 $('#TransactionDate').focus();
+                 $("#divload").css({ 'display': 'none' });
+                 return false;
+             }
+             if ($('#BankName').val() == '') {
+                 $("#BankName").addClass('errortext');
+                 $('#BankName').focus();
+                 $("#divload").css({ 'display': 'none' });
+                 return false;
+             }
+             if ($('#BankBranch').val() == '') {
+                 $("#BankBranch").addClass('errortext');
+                 $('#BankBranch').focus();
+                 $("#divload").css({ 'display': 'none' });
+                 return false;
+             }
+         }
+
     }
 
     //function SaveBillingDetails() {
@@ -626,9 +719,154 @@
         }
     }
 
+
+    function getpaymentdetails() {
+
+        debugger;
+        if ($('#Fk_Paymentid').val() == '1') {
+
+            $('#txnNo').text('Mobile No.');
+            $("#divPaymentMode").show();
+            $("#divtransactiono").hide();
+            $("#divbankname").hide();
+            $("#divbankbranch").hide();
+            $("#divPaymentMode").hide();
+            $("#divutrname").hide();
+            $("#divutramount").hide();
+            $("#TransactionNo").attr("placeholder", "Mobile No.");
+        }
+
+
+        else if ($('#Fk_Paymentid').val() == '2') {
+            $('#txnNo').html('Cheque No.');
+            $('#txndt').html('Cheque Date');
+            $("#divPaymentMode").show();
+            $("#divtransactiono").show();
+            $("#divbankname").show();
+            $("#divbankbranch").show();
+            $("#divutrname").show();
+            $("#divutramount").show();
+            $("#TransactionNo").attr("placeholder", "Cheque No.");
+            $("#TransactionDate").attr("placeholder", "Cheque Date");
+
+        }
+        else if ($('#Fk_Paymentid').val() == '3') {
+            $('#txndt').html('NEFT Date');
+            $('#txnNo').text('NEFT No.');
+            $("#divPaymentMode").show();
+            $("#divtransactiono").show();
+            $("#divbankname").show();
+            $("#divbankbranch").show();
+            $("#divutrname").show();
+            $("#divutramount").show();
+            $("#TransactionNo").attr("placeholder", "NEFT No.");
+            $("#TransactionDate").attr("placeholder", "NEFT Date");
+        }
+        else if ($('#Fk_Paymentid').val() == '4') {
+            $('#txndt').html('DD Date');
+            $('#txnNo').text('DD No.');
+            $("#divPaymentMode").show();
+            $("#divtransactiono").show();
+            $("#divbankname").show();
+            $("#divbankbranch").show();
+            $("#divutrname").show();
+            $("#divutramount").show();
+            $("#TransactionNo").attr("placeholder", "DD No.");
+            $("#TransactionDate").attr("placeholder", "DD Date");
+        }
+        else if ($('#Fk_Paymentid').val() == '6') {
+            $('#txndt').html('IMPS Date');
+            $('#txnNo').text('IMPS No.');
+            $("#divPaymentMode").show();
+            $("#divtransactiono").show();
+            $("#divbankname").show();
+            $("#divbankbranch").show();
+            $("#divutrname").show();
+            $("#divutramount").show();
+            $("#TransactionNo").attr("placeholder", "IMPS No.");
+            $("#TransactionDate").attr("placeholder", "IMPS Date");
+        }
+
+        else if ($('#Fk_Paymentid').val() == '10') {
+            $('#txndt').html('UPI Date');
+            $('#txnNo').text('UPI No.');
+            $("#divPaymentMode").show();
+            $("#divtransactiono").show();
+            $("#divbankname").hide();
+            $("#divbankbranch").hide();
+            $("#divutrname").hide();
+            $("#divutramount").hide();
+            $("#TransactionNo").attr("placeholder", "UPI No.");
+            $("#TransactionDate").attr("placeholder", "UPI Date");
+        }
+        else if ($('#Fk_Paymentid').val() == '7') {
+
+            $('#txnNo').text('Mobile No.');
+            $("#divPaymentMode").show();
+            $("#divtransactiono").show();
+            $("#divbankname").hide();
+            $("#divbankbranch").hide();
+            $("#divPaymentMode").hide();
+            $("#divutrname").hide();
+            $("#divutramount").hide();
+            $("#TransactionNo").attr("placeholder", "Mobile No.");
+        }
+        else if ($('#Fk_Paymentid').val() == '5') {
+            $('#txndt').html('RTGS Date');
+            $('#txnNo').text('RTGS No.');
+            $("#divPaymentMode").show();
+            $("#divtransactiono").show();
+            $("#divbankname").show();
+            $("#divbankbranch").show();
+            $("#divutrname").hide();
+            $("#divutramount").hide();
+            $("#TransactionNo").attr("placeholder", "RTGS No.");
+            $("#TransactionDate").attr("placeholder", "RTGS Date");
+        }
+        else if ($('#Fk_Paymentid').val() == '9') {
+
+            $('#txnNo').text('Mobile No.');
+            $("#divPaymentMode").show();
+            $("#divtransactiono").show();
+            $("#divbankname").hide();
+            $("#divbankbranch").hide();
+            $("#divPaymentMode").hide();
+            $("#divutrname").hide();
+            $("#divutramount").hide();
+            $("#TransactionNo").attr("placeholder", "Mobile No.");
+        }
+        else if ($('#Fk_Paymentid').val() == '1') {
+
+            $('#txnNo').text('Mobile No.');
+            $("#divPaymentMode").show();
+            $("#divtransactiono").show();
+            $("#divbankname").hide();
+            $("#divbankbranch").hide();
+            $("#divPaymentMode").hide();
+            $("#divutrname").hide();
+            $("#divutramount").hide();
+            $("#TransactionNo").attr("placeholder", "Mobile No.");
+        }
+        else {
+            $("#divPaymentMode").hide();
+            $("#divtransactiono").hide();
+            $("#divbankname").hide();
+            $("#divbankbranch").hide();
+            $("#divutrname").hide();
+            $("#divutramount").hide();
+        }
+    }
+
+
+    $('#TransactionDate').datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeYear: 'true',
+        changeMonth: 'true'
+    });
 </script>
 <script>
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();
 });
 </script>
+
