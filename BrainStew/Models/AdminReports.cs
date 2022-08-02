@@ -477,8 +477,6 @@ namespace BrainStew.Models
             DataSet ds = DBHelper.ExecuteQuery("ViewDonationLedger", para);
             return ds;
         }
-
-
         public DataSet BenefitsReports()
         {
             SqlParameter[] para = {
@@ -487,6 +485,14 @@ namespace BrainStew.Models
                 new SqlParameter("@ToDate",ToDate)
             };
             DataSet ds = DBHelper.ExecuteQuery("BenefitsReports", para);
+            return ds;
+        }
+
+        public DataSet ChildViewProfile()
+        {
+            SqlParameter[] para = { new SqlParameter("@DonationId", DonationId)
+                                  };
+            DataSet ds = DBHelper.ExecuteQuery("ChildViewProfile", para);
             return ds;
         }
         

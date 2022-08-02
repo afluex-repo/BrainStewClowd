@@ -1584,6 +1584,53 @@ namespace BrainStew.Controllers
             }
             return View(model);
         }
-        
+
+
+
+
+        public ActionResult ChildViewProfile(string Id)
+        {
+            AdminReports model = new AdminReports();
+            if (Id != null)
+            {
+                model.DonationId = Id;
+                DataSet ds = model.ChildViewProfile();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    ViewBag.DonationId = ds.Tables[0].Rows[0]["Pk_DonationId"].ToString();
+                    ViewBag.MemberNo = ds.Tables[0].Rows[0]["MemberNo"].ToString();
+                    ViewBag.ChildName = ds.Tables[0].Rows[0]["ChildName"].ToString();
+                    ViewBag.Gender = ds.Tables[0].Rows[0]["Gender"].ToString();
+                    ViewBag.DOB = ds.Tables[0].Rows[0]["DOB"].ToString();
+                    ViewBag.FatherName = ds.Tables[0].Rows[0]["FatherName"].ToString();
+                    ViewBag.MotherName = ds.Tables[0].Rows[0]["MotherName"].ToString();
+
+                    ViewBag.SisterName = ds.Tables[0].Rows[0]["SisterName"].ToString();
+                    ViewBag.SisterAge = ds.Tables[0].Rows[0]["SisterAge"].ToString();
+
+                    ViewBag.BrotherName = ds.Tables[0].Rows[0]["BrotherName"].ToString();
+                    ViewBag.BrotherAge = ds.Tables[0].Rows[0]["BrotherAge"].ToString();
+
+                    ViewBag.FamilyWork = ds.Tables[0].Rows[0]["FamilyWork"].ToString();
+                    ViewBag.Need = ds.Tables[0].Rows[0]["Need"].ToString();
+                    ViewBag.NeedAmount = ds.Tables[0].Rows[0]["NeedAmount"].ToString();
+                    ViewBag.ChildCharity = ds.Tables[0].Rows[0]["ChildCharity"].ToString();
+                    ViewBag.LoginId = ds.Tables[0].Rows[0]["LoginId"].ToString();
+                    ViewBag.Image = ds.Tables[0].Rows[0]["ChildImage"].ToString();
+                    ViewBag.Description = ds.Tables[0].Rows[0]["Description"].ToString();
+                    ViewBag.Status = ds.Tables[0].Rows[0]["Status"].ToString();
+                    ViewBag.Address = ds.Tables[0].Rows[0]["Address"].ToString();
+                    ViewBag.ApprovedAmount = ds.Tables[0].Rows[0]["ApprovedAmount"].ToString();
+                }
+            }
+            return View(model);
+        }
+
+
+
+
+
+
+
     }
 }

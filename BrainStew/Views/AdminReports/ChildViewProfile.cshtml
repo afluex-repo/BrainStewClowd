@@ -1,0 +1,249 @@
+﻿@model BrainStew.Models.AdminReports
+
+@{
+    ViewBag.Title = "ChildViewProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .user-profile .widget-content-area .user-info-list ul.contacts-block {
+        max-width: 260px !important;
+    }
+
+        .user-profile .widget-content-area .user-info-list ul.contacts-block li {
+            /*margin-bottom: 22px !important;*/
+            margin-bottom: 39px !important;
+        }
+</style>
+
+@using (Html.BeginForm("ChildViewProfile", "AdminReports", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+{
+    <div class="layout-px-spacing">
+        <div class="row layout-spacing">
+            <!-- Content -->
+            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 layout-top-spacing">
+                <div class="user-profile layout-spacing">
+                    <div class="widget-content widget-content-area">
+                        <div class="d-flex justify-content-between">
+                            <h3 class="">Profile</h3>
+                            @*<a href="/AdminReports/ViewProfileForAdmin?Id=@Model.Fk_UserId" class="mt-2 edit-profile"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></a>*@
+                        </div>
+                        <div class="text-center user-info">
+                            <img src="@ViewBag.Image" height="100" width="100" class="rounded-circle" alt="avatar">
+                            <p class="">@ViewBag.ChildName</p>
+                            <span style="color:red;">@ViewBag.LoginId</span>
+                        </div>
+                        <div class="user-info-list">
+                            <div class="">
+                                <ul class="contacts-block list-unstyled">
+                                    <li class="contacts-block__item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>@ViewBag.DOB
+                                    </li>
+                                    <li class="contacts-block__item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>@ViewBag.Address
+                                    </li>
+                                    <li class="contacts-block__item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fas fa-genderless fa-fw"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                     
+                                         @ViewBag.Gender
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 layout-top-spacing">
+                <div class="education layout-spacing ">
+                    <div class="widget-content widget-content-area">
+                        @*<h3 class="">Profile Details</h3>*@
+                        <div class="timeline-alter">
+                            @*<div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">LoginId</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@ViewBag.LoginId</p>
+                                </div>
+                            </div>*@
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">Member No</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@ViewBag.MemberNo</p>
+                                </div>
+                            </div>
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">Father Name</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@ViewBag.FatherName</p>
+                                </div>
+                            </div>
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">Mother Name</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@ViewBag.MotherName</p>
+                                </div>
+                            </div>
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">Sister Name</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@ViewBag.SisterName</p>
+                                </div>
+                            </div>
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">Sister Age</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@ViewBag.SisterAge</p>
+                                </div>
+                            </div>
+
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">Brother Name</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@ViewBag.BrotherName</p>
+                                </div>
+                            </div>
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">Brother Age</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@ViewBag.BrotherAge </p>
+                                </div>
+                            </div>
+
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">Family Work</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@ViewBag.FamilyWork</p>
+                                </div>
+                            </div>
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">Need</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@ViewBag.Need</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-alter">
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">Need Amount</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@ViewBag.NeedAmount</p>
+                                </div>
+                            </div>
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">Child Charity</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@ViewBag.ChildCharity</p>
+                                </div>
+                            </div>
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">Status</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@ViewBag.Status</p>
+                                </div>
+                            </div>
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">Address</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@ViewBag.Address</p>
+                                </div>
+                            </div>
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">Approved Amount</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@ViewBag.ApprovedAmount</p>
+                                </div>
+                            </div>
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">Description</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@ViewBag.Description</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="row">
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4">
+                    <a href="/AdminReports/ViewProfileVeriFy?Id=@Model.Fk_UserId" name="Verify" id="Verify" class="btn btn-success">Verify</a><br /><br />
+                    <p style="color:red;">@TempData["verify"]</p>
+                </div>
+                <div class="col-sm-4">
+                </div>
+            </div>*@
+    </div>
+}
+
+@*<script>
+        var loadFile_adhar = function (event) {
+            var image = document.getElementById('PanImage');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>*@
+
