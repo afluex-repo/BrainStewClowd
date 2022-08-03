@@ -14,7 +14,19 @@
             /*margin-bottom: 22px !important;*/
             margin-bottom: 39px !important;
         }
+
+    .user-profile .widget-content-area h3 {
+        position: relative;
+        font-size: 30px;
+        font-weight: 600;
+        color: #3b3f5c;
+        margin: 6px 0px 0 0;
+    }
 </style>
+
+
+
+
 
 @using (Html.BeginForm("ChildViewProfile", "AdminReports", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
 {
@@ -31,7 +43,7 @@
                         <div class="text-center user-info">
                             <img src="@ViewBag.Image" height="100" width="100" class="rounded-circle" alt="avatar">
                             <p class="">@ViewBag.ChildName</p>
-                            <span style="color:red;">@ViewBag.LoginId</span>
+                            <span class="text-primary">@ViewBag.LoginId</span>
                         </div>
                         <div class="user-info-list">
                             <div class="">
@@ -44,8 +56,8 @@
                                     </li>
                                     <li class="contacts-block__item">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fas fa-genderless fa-fw"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                     
-                                         @ViewBag.Gender
+
+                                        @ViewBag.Gender
                                     </li>
                                 </ul>
                             </div>
@@ -59,15 +71,15 @@
                         @*<h3 class="">Profile Details</h3>*@
                         <div class="timeline-alter">
                             @*<div class="item-timeline">
-                                <div class="t-meta-date">
-                                    <p class="">LoginId</p>
-                                </div>
-                                <div class="t-dot">
-                                </div>
-                                <div class="t-text">
-                                    <p>@ViewBag.LoginId</p>
-                                </div>
-                            </div>*@
+                                    <div class="t-meta-date">
+                                        <p class="">LoginId</p>
+                                    </div>
+                                    <div class="t-dot">
+                                    </div>
+                                    <div class="t-text">
+                                        <p>@ViewBag.LoginId</p>
+                                    </div>
+                                </div>*@
                             <div class="item-timeline">
                                 <div class="t-meta-date">
                                     <p class="">Member No</p>
@@ -192,7 +204,7 @@
                                     <p>@ViewBag.Status</p>
                                 </div>
                             </div>
-                            <div class="item-timeline">
+                            @*<div class="item-timeline">
                                 <div class="t-meta-date">
                                     <p class="">Address</p>
                                 </div>
@@ -201,7 +213,7 @@
                                 <div class="t-text">
                                     <p>@ViewBag.Address</p>
                                 </div>
-                            </div>
+                            </div>*@
                             <div class="item-timeline">
                                 <div class="t-meta-date">
                                     <p class="">Approved Amount</p>
